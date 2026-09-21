@@ -64,7 +64,7 @@ export default async function ExpertiseDetailPage({ params }: { params: Promise<
                 <div className="lg:col-span-6">
                   <DisciplineHero
                     id={item.slug}
-                    className="aspect-[1200/700] w-full rounded-[14px] shadow-[0_28px_64px_-30px_rgba(0,0,0,0.95)]"
+                    className="aspect-video w-full rounded-[14px] shadow-[0_28px_64px_-30px_rgba(0,0,0,0.95)]"
                   />
                 </div>
               )}

@@ -36,8 +36,8 @@ export function hasDisciplineImage(id: string) {
   return SUBJECTS.has(id);
 }
 
-/* Subjects that also have a taller crop, for surfaces large enough to show
-   the detail in the frame rather than cropping it away. */
+/* The nine disciplines also ship an uncropped 16:9 frame, for surfaces large
+   enough to show the dashboard detail rather than cropping it away. */
 const HERO_SUBJECTS = new Set([
   "enterprise-risk-management",
   "actuarial-consulting",
@@ -45,6 +45,9 @@ const HERO_SUBJECTS = new Set([
   "risk-based-capital",
   "regulatory-licensing",
   "aml-cft",
+  "insurtech-digital",
+  "market-entry",
+  "financial-modelling",
 ]);
 
 export function hasDisciplineHero(id: string) {
@@ -62,10 +65,11 @@ export function DisciplineHero({ id, className = "" }: { id: string; className?:
         fill
         sizes="(max-width: 1024px) 100vw, 50vw"
         priority
-        className="object-cover [filter:saturate(0.62)_contrast(1.02)_brightness(0.92)]"
+        className="object-cover [filter:saturate(0.78)_contrast(1.01)_brightness(0.97)]"
       />
-      <div className="absolute inset-0 mix-blend-multiply bg-[linear-gradient(150deg,rgba(10,22,40,0.34),transparent_55%,rgba(30,159,216,0.10))]" />
-      <div className="absolute inset-0 ring-1 ring-inset ring-white/[0.07]" />
+      {/* Kept light: these frames carry readable dashboard detail worth seeing */}
+      <div className="absolute inset-0 mix-blend-multiply bg-[linear-gradient(150deg,rgba(10,22,40,0.18),transparent_60%,rgba(201,160,64,0.07))]" />
+      <div className="absolute inset-0 ring-1 ring-inset ring-white/[0.08]" />
     </div>
   );
 }
