@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { EXPERTISE, INDUSTRIES, CASE_STUDIES, INSIGHTS_PLACEHOLDER } from "@/lib/data";
 
+export const dynamic = "force-static";
+
 const BASE = "https://alphacoasia.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
