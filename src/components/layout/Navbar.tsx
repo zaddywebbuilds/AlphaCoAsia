@@ -47,7 +47,7 @@ export function Navbar() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
         solid
-          ? "bg-[#070D18]/92 backdrop-blur-xl border-b border-white/[0.09] shadow-[0_8px_40px_-20px_rgba(0,0,0,0.9)]"
+          ? "bg-[#050A12]/93 backdrop-blur-xl border-b border-[#C9A040]/18 shadow-[0_8px_40px_-20px_rgba(0,0,0,0.9)]"
           : "bg-transparent border-b border-transparent"
       }`}
     >
@@ -125,7 +125,7 @@ export function Navbar() {
           {/* CTA */}
           <Link
             href="/contact"
-            className="btn-magnetic hidden lg:inline-flex items-center gap-2 px-5 py-2.5 bg-[#C9A040] text-[#0A1628] text-[13px] font-semibold rounded-md hover:bg-[#D4AF60] shrink-0"
+            className="btn-magnetic hidden lg:inline-flex items-center gap-2 px-6 py-2.5 rounded-md text-[13px] font-semibold text-[#E8D9A8] border border-[#C9A040]/45 hover:text-[#221805] hover:bg-[linear-gradient(135deg,#E8D9A8,#C9A040_60%)] hover:border-[#C9A040] shrink-0 transition-colors"
           >
             Discuss Your Challenge
             <ArrowRight size={13} className="btn-arrow" />

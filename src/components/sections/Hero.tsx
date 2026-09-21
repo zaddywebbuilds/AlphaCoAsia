@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { DioramaMount } from "@/components/three/DioramaMount";
 import { HeroVideo } from "@/components/sections/HeroVideo";
 
 const DISCIPLINES = [
@@ -18,131 +17,81 @@ const DISCIPLINES = [
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center bg-[#05090F] overflow-hidden tex-grain">
-      {/* L1 base gradient */}
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,#05090F_0%,#0A1628_46%,#071120_100%)]" />
-      {/* L2 atmospheric lighting */}
-      <div className="absolute top-[-18%] right-[-6%] w-[820px] h-[820px] rounded-full bg-[#1E9FD8] opacity-[0.10] blur-[130px]" />
-      <div className="absolute bottom-[-24%] left-[-10%] w-[640px] h-[640px] rounded-full bg-[#1E3F9E] opacity-[0.16] blur-[140px]" />
-      <div className="absolute top-[42%] left-[34%] w-[380px] h-[380px] rounded-full bg-[#C9A040] opacity-[0.045] blur-[120px]" />
-      {/* L3 technical grid */}
-      <div className="absolute inset-0 tex-grid opacity-60" />
-      {/* L4 vignette */}
-      <div className="absolute inset-0 tex-vignette" />
-      {/* Top edge light */}
-      <div className="absolute top-0 inset-x-0 h-px bg-[linear-gradient(to_right,transparent,#C9A040_35%,#38BDF8_65%,transparent)] opacity-70" />
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#050A12]">
+      <HeroVideo />
 
-      <div className="container-xl relative z-10 pt-32 pb-24 lg:pt-28 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
-          {/* ---------- content ---------- */}
-          <div className="lg:col-span-6 xl:col-span-6">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex items-center gap-3 mb-8"
+      <div className="container-xl relative z-10 pt-32 pb-32">
+        <div className="max-w-[46rem]">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-3 mb-7"
+          >
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-[#C9A040] opacity-70 anim-node" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#C9A040]" />
+            </span>
+            <span className="type-technical text-[#D9C99A]">
+              Singapore Based · Asia Pacific Advisory
+            </span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 26 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.08 }}
+            className="font-display text-white mb-7"
+            style={{
+              fontSize: "clamp(2.5rem, 5.4vw, 4.6rem)",
+              fontWeight: 600,
+              lineHeight: 1.03,
+              letterSpacing: "-0.03em",
+            }}
+          >
+            Insurance, Risk, Actuarial{" "}
+            <span className="bg-[linear-gradient(100deg,#E8D9A8,#C9A040)] bg-clip-text text-transparent">
+              &amp;
+            </span>
+            <br />
+            Regulatory Advisory
+            <br />
+            <span className="bg-[linear-gradient(100deg,#F0E4C0,#C9A040_70%)] bg-clip-text text-transparent">
+              Across Asia Pacific
+            </span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-[17px] sm:text-[18px] text-slate-300/90 leading-relaxed max-w-xl mb-10"
+          >
+            Helping insurers, financial institutions, fintechs and growing businesses navigate
+            regulation, risk, market entry and transformation across Asia Pacific.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-wrap gap-3.5"
+          >
+            <Link
+              href="/contact"
+              className="btn-magnetic inline-flex items-center gap-2.5 px-8 py-4 rounded-md text-[14px] font-semibold text-[#221805] bg-[linear-gradient(135deg,#E8D9A8,#C9A040_55%,#B08C2E)] shadow-[0_14px_38px_-12px_rgba(201,160,64,0.55)]"
             >
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-[#C9A040] opacity-70 anim-node" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#C9A040]" />
-              </span>
-              <span className="type-technical text-slate-400">
-                Singapore Based · Asia Pacific Advisory
-              </span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 26 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.08 }}
-              className="font-display text-white mb-7"
-              style={{
-                fontSize: "clamp(2.3rem, 4.6vw, 4.1rem)",
-                fontWeight: 600,
-                lineHeight: 1.06,
-                letterSpacing: "-0.028em",
-              }}
+              Discuss Your Challenge
+              <ArrowRight size={15} className="btn-arrow" />
+            </Link>
+            <Link
+              href="/expertise"
+              className="btn-magnetic inline-flex items-center gap-2.5 px-8 py-4 rounded-md text-[14px] font-medium text-white border border-[#C9A040]/35 hover:border-[#C9A040]/70 hover:bg-[#C9A040]/[0.07]"
             >
-              Insurance, Risk, Actuarial{" "}
-              <span className="text-[#C9A040]">&amp;</span>
-              <br />
-              Regulatory Advisory
-              <br />
-              <span className="relative inline-block">
-                Across Asia Pacific
-                <span className="absolute -bottom-2 left-0 right-0 h-px bg-[linear-gradient(to_right,#38BDF8,transparent)] opacity-60" />
-              </span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.18 }}
-              className="text-[17px] text-slate-300/90 leading-relaxed max-w-xl mb-10"
-            >
-              Helping insurers, financial institutions, fintechs and growing businesses navigate
-              regulation, risk, market entry and transformation across Asia Pacific.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.28 }}
-              className="flex flex-wrap gap-3"
-            >
-              <Link
-                href="/contact"
-                className="btn-magnetic inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#C9A040] text-[#0A1628] text-sm font-semibold rounded-md hover:bg-[#D4AF60] shadow-[0_10px_30px_-10px_rgba(201,160,64,0.6)]"
-              >
-                Discuss Your Challenge
-                <ArrowRight size={15} className="btn-arrow" />
-              </Link>
-              <Link
-                href="/expertise"
-                className="btn-magnetic inline-flex items-center gap-2.5 px-7 py-3.5 text-white text-sm font-medium rounded-md border border-white/18 hover:border-[#38BDF8]/50 hover:bg-white/[0.04]"
-              >
-                Explore Our Expertise
-                <ArrowRight size={15} className="btn-arrow opacity-60" />
-              </Link>
-            </motion.div>
-          </div>
-
-          {/* ---------- console: two surfaces, network above, footage below ---------- */}
-          <div className="lg:col-span-6 xl:col-span-6">
-            <motion.div
-              initial={{ opacity: 0, y: 24, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-              className="panel-dim overflow-hidden mx-auto w-full max-w-[420px] sm:max-w-[500px] lg:max-w-[580px]"
-            >
-              {/* Console header */}
-              <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/[0.08]">
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] anim-node" />
-                  <span className="type-technical text-slate-400">APAC Network · Active</span>
-                </div>
-                <span className="type-technical text-slate-600 tabular hidden sm:block">
-                  1.3521° N &nbsp;103.8198° E
-                </span>
-              </div>
-
-              {/* Pane 1 — the model city */}
-              <div className="relative aspect-[4/3.05]">
-                <DioramaMount />
-              </div>
-
-              {/* Pane 2 — footage */}
-              <div className="relative border-t border-white/[0.08]">
-                <div className="relative aspect-[16/6.2]">
-                  <HeroVideo />
-                  <div className="absolute inset-x-0 bottom-0 flex items-center justify-between px-4 py-2.5">
-                    <span className="type-technical text-slate-300">Singapore</span>
-                    <span className="type-technical text-[#C9A040]/70 hidden sm:block">Base of Operations</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+              Explore Our Expertise
+              <ArrowRight size={15} className="btn-arrow opacity-70" />
+            </Link>
+          </motion.div>
         </div>
       </div>
 
@@ -150,15 +99,15 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        className="absolute bottom-0 inset-x-0 z-10 border-t border-white/[0.07] bg-[#05090F]/40 backdrop-blur-sm"
+        transition={{ duration: 0.8, delay: 0.55 }}
+        className="absolute bottom-0 inset-x-0 z-10 border-t border-[#C9A040]/15"
       >
         <div className="container-xl">
-          <div className="flex items-center gap-x-6 gap-y-2 py-3.5 overflow-x-auto scrollbar-none">
-            <span className="type-technical text-[#C9A040]/70 shrink-0">Disciplines</span>
-            <div className="w-px h-3 bg-white/12 shrink-0" />
+          <div className="flex items-center gap-x-6 gap-y-2 py-4 overflow-x-auto scrollbar-none">
+            <span className="type-technical text-[#C9A040]/80 shrink-0">Disciplines</span>
+            <div className="w-px h-3 bg-[#C9A040]/25 shrink-0" />
             {DISCIPLINES.map((d) => (
-              <span key={d} className="type-technical text-slate-500 whitespace-nowrap shrink-0">
+              <span key={d} className="type-technical text-slate-400 whitespace-nowrap shrink-0">
                 {d}
               </span>
             ))}

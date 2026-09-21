@@ -6,9 +6,9 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const POSTER = `${BASE}/media/hero-poster.jpg`;
 const SRC = `${BASE}/media/hero.mp4`;
 
-/** Footage presented as a surface: a framed pane inside the hero console, shown
- *  at full clarity rather than washed behind type. The poster carries the pane
- *  on low-tier devices and under reduced motion. */
+/** Full-bleed hero plate. The footage carries the whole frame; scrims are shaped
+ *  so the headline column stays legible while the right side of the scene reads
+ *  at full clarity. Poster carries it on low-tier devices and reduced motion. */
 export function HeroVideo() {
   const el = useRef<HTMLVideoElement>(null);
   const reduced = usePrefersReducedMotion();
@@ -18,7 +18,7 @@ export function HeroVideo() {
 
   useEffect(() => {
     if (reduced || tier === "low" || !inView) return;
-    const id = window.setTimeout(() => setPlay(true), 400);
+    const id = window.setTimeout(() => setPlay(true), 350);
     return () => window.clearTimeout(id);
   }, [reduced, tier, inView]);
 
@@ -41,11 +41,10 @@ export function HeroVideo() {
   }, [play, inView]);
 
   return (
-    <div ref={ref} className="relative w-full h-full overflow-hidden bg-[#05090F]">
+    <div ref={ref} className="absolute inset-0 overflow-hidden bg-[#050A12]" aria-hidden="true">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${POSTER})` }}
-        aria-hidden="true"
       />
       {play && (
         <video
@@ -58,12 +57,16 @@ export function HeroVideo() {
           playsInline
           preload="none"
           tabIndex={-1}
-          aria-label="Singapore central business district and Marina Bay"
         />
       )}
-      {/* Just enough scrim for the caption rail to sit on */}
-      <div className="absolute inset-x-0 bottom-0 h-16 bg-[linear-gradient(to_top,rgba(5,9,15,0.92),transparent)]" />
-      <div className="absolute inset-0 ring-1 ring-inset ring-white/[0.06]" />
+
+      {/* Headline scrim — heavy at the left, clearing by mid-frame */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(5,10,18,0.985)_0%,rgba(5,10,18,0.96)_30%,rgba(5,10,18,0.86)_46%,rgba(5,10,18,0.52)_62%,rgba(5,10,18,0.14)_82%,transparent_100%)]" />
+      {/* Nav and rail scrims */}
+      <div className="absolute inset-x-0 top-0 h-40 bg-[linear-gradient(to_bottom,rgba(5,10,18,0.85),transparent)]" />
+      <div className="absolute inset-x-0 bottom-0 h-56 bg-[linear-gradient(to_top,rgba(5,10,18,0.96),transparent)]" />
+      {/* Warm horizon lift, tying the footage to the gold palette */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_78%_38%,rgba(201,160,64,0.10),transparent_70%)]" />
     </div>
   );
 }
