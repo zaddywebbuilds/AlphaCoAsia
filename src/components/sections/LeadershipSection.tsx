@@ -2,42 +2,25 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { LEADERSHIP } from "@/lib/data";
 
-function initials(name: string) {
-  return name.split(" ").map((n) => n[0]).join("");
-}
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-/* Portrait plate — a dimensional frame with the career history sitting on a
-   lower plane behind the monogram. Replace the plate with a photo when one exists. */
+/* Portrait taken from alphacoasia.com. Shown at full clarity — a headshot is a
+   surface, not a texture — with only a foot gradient so the gold rule reads. */
 function Plate({ person, tall }: { person: (typeof LEADERSHIP)[number]; tall?: boolean }) {
   return (
-    <div className={`relative overflow-hidden bg-[#0A1628] ${tall ? "h-[300px]" : "h-full min-h-[168px]"}`}>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_65%_at_35%_25%,#1A3550_0%,#0A1628_70%)]" />
-      <div className="absolute inset-0 tex-grid-fine opacity-50" />
-
-      {/* Career companies on a recessed plane */}
-      <div className="absolute inset-0 flex flex-col justify-end p-4 gap-1 opacity-[0.16]">
-        {person.pastRoles.slice(0, 4).map((r) => (
-          <span key={r} className="type-technical text-white whitespace-nowrap overflow-hidden text-ellipsis">
-            {r}
-          </span>
-        ))}
-      </div>
-
-      {/* Monogram */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <span
-          className="font-display font-semibold text-white/[0.13] select-none"
-          style={{ fontSize: tall ? "7rem" : "3.6rem", letterSpacing: "-0.04em" }}
-        >
-          {initials(person.name)}
-        </span>
-      </div>
-
-      {/* Spotlight sweep */}
-      <div className="absolute -inset-x-8 -top-16 h-32 bg-[linear-gradient(105deg,transparent,rgba(201,160,64,0.10),transparent)] rotate-[-8deg]" />
+    <div className={`relative overflow-hidden bg-[#0A1628] ${tall ? "h-[340px]" : "h-full min-h-[190px]"}`}>
+      <Image
+        src={`${BASE}${person.image}`}
+        alt={`${person.name}, ${person.title}`}
+        fill
+        sizes={tall ? "(max-width: 1024px) 100vw, 420px" : "180px"}
+        className="object-cover object-top"
+      />
+      <div className="absolute inset-x-0 bottom-0 h-20 bg-[linear-gradient(to_top,rgba(10,22,40,0.9),transparent)]" />
       <div className="absolute bottom-0 inset-x-0 h-px bg-[linear-gradient(to_right,transparent,#C9A040,transparent)]" />
     </div>
   );

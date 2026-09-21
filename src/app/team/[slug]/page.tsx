@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { LEADERSHIP, EXPERTISE } from "@/lib/data";
+
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export async function generateStaticParams() {
   return LEADERSHIP.map((p) => ({ slug: p.slug }));
@@ -54,7 +57,21 @@ export default async function TeamPage({ params }: { params: Promise<{ slug: str
               Leadership
             </Link>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              <div className="lg:col-span-4">
+                <div className="relative aspect-[4/5] w-full max-w-[320px] rounded-[14px] overflow-hidden border border-white/[0.10] shadow-[0_30px_70px_-32px_rgba(0,0,0,0.95)]">
+                  <Image
+                    src={`${BASE}${person.image}`}
+                    alt={`${person.name}, ${person.title}`}
+                    fill
+                    sizes="(max-width: 1024px) 60vw, 320px"
+                    priority
+                    className="object-cover object-top"
+                  />
+                  <div className="absolute bottom-0 inset-x-0 h-px bg-[linear-gradient(to_right,transparent,#C9A040,transparent)]" />
+                </div>
+              </div>
+
               <div className="lg:col-span-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-8 h-px bg-[#C9A040]" />
@@ -67,20 +84,34 @@ export default async function TeamPage({ params }: { params: Promise<{ slug: str
                   {person.name}
                 </h1>
                 {person.credentials && (
-                  <p className="type-technical text-[#C9A040]/80">{person.credentials}</p>
+                  <p className="type-technical text-[#C9A040]/80 mb-6">{person.credentials}</p>
                 )}
-              </div>
-              <div className="lg:col-span-4">
-                <div className="rule-h mb-4" />
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <span className="type-technical text-slate-600 block mb-1">Markets</span>
-                    <span className="text-[13px] text-slate-300">{person.markets.length}</span>
-                  </div>
-                  <div>
-                    <span className="type-technical text-slate-600 block mb-1">Disciplines</span>
-                    <span className="text-[13px] text-slate-300">{person.expertise.length}</span>
-                  </div>
+                <p className="text-[17px] text-slate-300 leading-relaxed max-w-2xl mb-7">
+                  {person.shortBio}
+                </p>
+                <div className="flex flex-wrap items-center gap-5">
+                  {person.email && (
+                    <a
+                      href={`mailto:${person.email}`}
+                      className="type-technical text-[#C9A040] hover:text-[#E8D9A8] transition-colors"
+                    >
+                      {person.email}
+                    </a>
+                  )}
+                  {person.linkedin && (
+                    <a
+                      href={person.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 type-technical text-slate-400 hover:text-white transition-colors"
+                    >
+                      <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                        <circle cx="4" cy="4" r="2" />
+                      </svg>
+                      LinkedIn
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -92,13 +123,22 @@ export default async function TeamPage({ params }: { params: Promise<{ slug: str
           <div className="container-xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
               <div className="lg:col-span-8">
-                <div className="mb-11">
-                  <div className="flex items-center gap-3 mb-5">
-                    <div className="w-8 h-px bg-[#C9A040]" />
-                    <span className="type-technical text-[#C9A040]">Overview</span>
+                {person.highlights.length > 0 && (
+                  <div className="mb-11">
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className="w-8 h-px bg-[#C9A040]" />
+                      <span className="type-technical text-[#C9A040]">Selected Highlights</span>
+                    </div>
+                    <ul className="space-y-3">
+                      {person.highlights.map((h) => (
+                        <li key={h} className="flex items-start gap-3 text-[15.5px] text-slate-300 leading-relaxed">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C9A040] mt-2.5 shrink-0" />
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <p className="text-[17px] text-slate-300 leading-relaxed">{person.shortBio}</p>
-                </div>
+                )}
 
                 {person.pastRoles.length > 0 && (
                   <div className="mb-11">

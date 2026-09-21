@@ -156,6 +156,9 @@ export const INDUSTRIES = [
   },
 ];
 
+/* Order, titles, bios, highlights, portraits and emails all taken from the
+   leadership section of alphacoasia.com. Highlights are the firm's own wording.
+   Eugene Cheong is no longer listed there and has been removed accordingly. */
 export const LEADERSHIP = [
   {
     slug: "raymond-cheung",
@@ -163,17 +166,46 @@ export const LEADERSHIP = [
     title: "Founder & Managing Director",
     credentials: "B.Bus, AIA, ASAS, ACLP, MBA",
     shortBio:
-      "Chartered actuary and C-suite executive with over 20 years in insurance, reinsurance, capital markets and regulatory engagement across Asia Pacific. Former Group CRO at AIG Asia Pacific and Asia Capital Reinsurance, and Regional Insurance Lead at Grab.",
+      "Chartered Actuary and C-suite executive with over 20 years in insurance, reinsurance, capital markets and regulatory engagement across Asia Pacific.",
+    highlights: [
+      "Former Group CEO of Basel Medical Group (Nasdaq: BMGL), whose Nasdaq IPO he led",
+      "Independent Director of iO3 Ltd (Nasdaq) and SDAI Ltd (SGX); formerly of BJCG Ltd (SGX)",
+      "Singapore Director and MAS Key Appointment Holder at a Major Payment Institution",
+      "Former CRO of AIG Asia Pacific and Group CRO of Asia Capital Re; former Regional Insurance Lead at Grab",
+      "Chaired the Singapore Actuarial Society's RBC Working Party for 8 years",
+    ],
     expertise: ["Enterprise Risk Management", "Actuarial", "Regulatory Advisory", "Insurtech", "RBC2", "Capital Markets"],
     markets: ["Singapore", "Hong Kong", "Malaysia", "Indonesia", "Regional APAC"],
-    affiliations: ["Singapore Actuarial Society", "Institute and Faculty of Actuaries"],
+    affiliations: ["Singapore Actuarial Society", "Singapore College of Insurance", "SMU Academy"],
     pastRoles: [
       "AIG Asia Pacific (CRO)",
       "Asia Capital Reinsurance (Group CRO)",
-      "Grab Financial Group (Regional Insurance Lead)",
+      "Grab (Regional Insurance Lead)",
       "Basel Medical Group (Group CEO, Nasdaq IPO)",
     ],
-    image: "/team/raymond-cheung.jpg",
+    email: "raymond.cheung@alphacoasia.com",
+    linkedin: "https://www.linkedin.com/in/raymond-cheung-erm/",
+    image: "/media/team/raymond-cheung.jpg",
+  },
+  {
+    slug: "edmund-chan",
+    name: "Edmund Chan",
+    title: "Partner",
+    credentials: "MBA",
+    shortBio:
+      "Over 28 years in corporate finance and business across many industries, now focused on the energy sector.",
+    highlights: [
+      "Cross-border IPO and M&A advisory",
+      "Project management of corporate deals spanning Asia Pacific and North America",
+      "Leads Alpha's Capital Markets and Corporate Deals practice",
+    ],
+    expertise: ["IPO Advisory", "M&A & Due Diligence", "Cross-Border Deals", "Corporate Finance", "Capital Markets"],
+    markets: ["Singapore", "Asia Pacific", "North America"],
+    affiliations: [],
+    pastRoles: [],
+    email: "ed@alphacoasia.com",
+    linkedin: "",
+    image: "/media/team/edmund-chan.jpg",
   },
   {
     slug: "byong-chon",
@@ -181,7 +213,11 @@ export const LEADERSHIP = [
     title: "Technology Director",
     credentials: "",
     shortBio:
-      "Over 15 years across US technology multinationals, consultancies and start-ups, with experience in portfolio management, fintech, insurtech and supply-chain financing across Southeast Asia. Former enterprise account manager at Apple, R&D researcher at LG Electronics and business analyst at Intel China.",
+      "Over 15 years with technology MNCs, consultancies and start-ups, including portfolio management.",
+    highlights: [
+      "Fintech, insurtech and supply-chain financing across Southeast Asia",
+      "Digital transformation and technology strategy",
+    ],
     expertise: ["Technology Strategy", "Digital Transformation", "Fintech & Insurtech", "Business Development", "Supply-Chain Financing"],
     markets: ["Singapore", "Indonesia", "Philippines", "Regional APAC"],
     affiliations: [],
@@ -191,37 +227,9 @@ export const LEADERSHIP = [
       "Intel China (Business Analyst)",
       "AccelerAsia (Senior Business Consultant)",
     ],
-    image: "/team/byong-chon.jpg",
-  },
-  {
-    slug: "eugene-cheong",
-    name: "Eugene Cheong",
-    title: "Strategic Business Advisor",
-    credentials: "B.Sc. (Mathematical Statistics & Applied Mathematics)",
-    shortBio:
-      "Over 20 years in the insurance industry across APAC. Managing Director of Delta Insurance Singapore, which he co-founded. Former Regional Head of Professional Liability, Technology, Construction and Cyber, managing a portfolio of more than USD 100 million annually. Deep expertise in financial lines, business operations and distribution development.",
-    expertise: ["Professional Liability", "Financial Lines", "Technology & Cyber", "Business Operations", "Distribution & Partnerships"],
-    markets: ["Singapore", "Regional APAC"],
-    affiliations: [],
-    pastRoles: [
-      "Delta Insurance Singapore (Managing Director & Co-Founder)",
-      "Regional Head of Professional Liability, Technology, Construction & Cyber",
-      "Head of Singapore Financial Lines (Global Insurer)",
-    ],
-    image: "/team/eugene-cheong.jpg",
-  },
-  {
-    slug: "edmund-chan",
-    name: "Edmund Chan",
-    title: "Partner",
-    credentials: "MBA",
-    shortBio:
-      "Over 28 years in corporate finance and business across Asia Pacific and North America. Leads Alpha's Capital Markets and Corporate Deals practice, with a focus on cross-border IPO and M&A project management.",
-    expertise: ["IPO Advisory", "M&A & Due Diligence", "Cross-Border Deals", "Corporate Finance", "Capital Markets"],
-    markets: ["Singapore", "Hong Kong", "North America", "Regional APAC"],
-    affiliations: [],
-    pastRoles: [],
-    image: "/team/edmund-chan.jpg",
+    email: "",
+    linkedin: "",
+    image: "/media/team/byong-chon.jpg",
   },
 ];
 
