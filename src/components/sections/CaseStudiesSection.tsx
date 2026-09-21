@@ -3,10 +3,12 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
+import { DisciplineImage, SUBJECT_FOR_SERVICE } from "@/components/viz/DisciplineImage";
 import { CASE_STUDIES } from "@/lib/data";
 
 /* Editorial spans — deliberately uneven so the row never reads as a card grid. */
 const SPAN = ["lg:col-span-7", "lg:col-span-5", "lg:col-span-5", "lg:col-span-7", "lg:col-span-12"];
+
 
 export function CaseStudiesSection() {
   const ref = useRef<HTMLElement>(null);
@@ -65,15 +67,20 @@ export function CaseStudiesSection() {
                 {/* Cover sheet */}
                 <Link
                   href={`/case-studies/${cs.slug}`}
-                  className="relative block h-full bg-white rounded-[12px] border border-[#E4E0D6] overflow-hidden shadow-[0_2px_4px_rgba(10,22,40,0.04)] group-hover:shadow-[0_26px_54px_-26px_rgba(10,22,40,0.42)] group-hover:-translate-y-[3px] transition-[transform,box-shadow] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  className="relative flex flex-col h-full bg-white rounded-[12px] border border-[#E4E0D6] overflow-hidden shadow-[0_2px_4px_rgba(10,22,40,0.04)] group-hover:shadow-[0_26px_54px_-26px_rgba(10,22,40,0.42)] group-hover:-translate-y-[3px] transition-[transform,box-shadow] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
                 >
                   {/* File tab */}
                   <span className="absolute top-0 left-8 h-[3px] w-16 bg-[#C9A040] rounded-b-sm" />
                   {/* Corner registration marks */}
                   <span aria-hidden className="absolute top-3 right-3 w-3 h-3 border-t border-r border-[#C9A040]/0 group-hover:border-[#C9A040]/60 transition-colors duration-500" />
-                  <span aria-hidden className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-[#C9A040]/0 group-hover:border-[#C9A040]/60 transition-colors duration-500" />
+                  <span aria-hidden className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-[#C9A040]/0 group-hover:border-[#C9A040]/60 transition-colors duration-500 z-10" />
 
-                  <div className={`p-7 sm:p-8 h-full flex ${wide ? "flex-col lg:flex-row lg:items-center gap-8" : "flex-col"}`}>
+                  <DisciplineImage
+                    id={SUBJECT_FOR_SERVICE[cs.service] ?? "enterprise-risk-management"}
+                    className={wide ? "h-[128px]" : "h-[150px]"}
+                  />
+
+                  <div className={`p-7 sm:p-8 flex ${wide ? "flex-col lg:flex-row lg:items-center gap-8" : "flex-col flex-1"}`}>
                     <div className={wide ? "lg:w-[58%]" : ""}>
                       <div className="flex items-baseline gap-4 mb-5">
                         <span className="type-index text-[#0D1B2A]/13 text-[2.75rem] group-hover:text-[#C9A040]/35 transition-colors duration-600">

@@ -352,67 +352,6 @@ body {
 }
 .anim-drift { animation: drift-slow 11s ease-in-out infinite; }
 
-/* ---- Live diagram motion ----
-   Each discipline diagram draws on once, then keeps a slow continuous life:
-   current flowing along links, nodes firing in sequence, sweeps rotating.
-   Every one of these is killed by the reduced-motion block below. */
-
-@keyframes glyph-flow   { to   { stroke-dashoffset: -60; } }
-@keyframes glyph-spin   { to   { transform: rotate(360deg); } }
-@keyframes glyph-travel { from { offset-distance: 0%; } to { offset-distance: 100%; } }
-
-@keyframes glyph-node {
-  0%, 68%, 100% { opacity: 0.45; transform: scale(0.82); }
-  16%           { opacity: 1;    transform: scale(1.18); }
-}
-@keyframes glyph-bar {
-  0%, 100% { transform: scaleY(0.78); }
-  50%      { transform: scaleY(1); }
-}
-@keyframes glyph-float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-2.5px); }
-}
-@keyframes glyph-ring {
-  0%   { transform: scale(0.5);  opacity: 0.7; }
-  100% { transform: scale(1.35); opacity: 0; }
-}
-@keyframes glyph-blink {
-  0%, 100% { opacity: 0.3; }
-  50%      { opacity: 1; }
-}
-@keyframes glyph-breathe {
-  0%, 100% { opacity: 0.35; }
-  50%      { opacity: 0.85; }
-}
-
-/* SVG transforms need an explicit box + origin to scale about themselves. */
-.g-node, .g-bar, .g-float, .g-ring, .g-spin {
-  transform-box: fill-box;
-  transform-origin: center;
-}
-.g-bar { transform-origin: bottom; }
-
-.g-flow    { animation: glyph-flow   2.8s linear infinite; }
-.g-node    { animation: glyph-node   3.6s ease-in-out infinite; }
-.g-bar     { animation: glyph-bar    3.2s ease-in-out infinite; }
-.g-float   { animation: glyph-float  4.2s ease-in-out infinite; }
-.g-ring    { animation: glyph-ring   3s   ease-out     infinite; }
-.g-blink   { animation: glyph-blink  2.6s ease-in-out infinite; }
-.g-breathe { animation: glyph-breathe 4s  ease-in-out infinite; }
-.g-spin    { animation: glyph-spin   9s   linear      infinite; }
-.g-travel  { animation: glyph-travel 3.4s cubic-bezier(0.5,0,0.5,1) infinite; offset-rotate: 0deg; }
-
-/* Paused until the diagram has drawn itself in */
-.glyph-idle .g-flow,
-.glyph-idle .g-node,
-.glyph-idle .g-bar,
-.glyph-idle .g-float,
-.glyph-idle .g-ring,
-.glyph-idle .g-blink,
-.glyph-idle .g-breathe,
-.glyph-idle .g-spin,
-.glyph-idle .g-travel { animation-play-state: paused; }
 
 /* --- WebGL canvas host --- */
 .webgl-host { position: absolute; inset: 0; pointer-events: none; }
@@ -431,7 +370,5 @@ body {
     scroll-behavior: auto !important;
   }
   .anim-dash, .anim-node, .anim-drift { animation: none !important; }
-  .g-flow, .g-node, .g-bar, .g-float, .g-ring,
-  .g-blink, .g-breathe, .g-spin, .g-travel { animation: none !important; }
   .tilt-card { transform: none !important; }
 }

@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight, MapPin } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FinalCTA } from "@/components/sections/FinalCTA";
-import { ExpertiseGlyph } from "@/components/viz/ExpertiseGlyph";
+import { DisciplineImage } from "@/components/viz/DisciplineImage";
 import { CASE_STUDIES, EXPERTISE } from "@/lib/data";
 
 /* Maps an engagement to the discipline diagram used across the site, so the
@@ -98,13 +98,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
               <div className="lg:col-span-5">
                 <div className="panel-dim overflow-hidden">
-                  <div className="relative h-[190px] bg-[#070D14] text-slate-500 border-b border-white/[0.07]">
-                    <div className="absolute inset-0 tex-grid-fine opacity-50" />
-                    <div className="absolute inset-0">
-                      <ExpertiseGlyph id={glyph} active className="w-full h-full" />
-                    </div>
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_78%_78%_at_50%_45%,transparent_35%,rgba(7,13,20,0.8)_100%)]" />
-                  </div>
+                  <DisciplineImage id={glyph} className="h-[190px] border-b border-white/[0.07]" />
                   <div className="p-7">
                     <div className="grid grid-cols-2 gap-5">
                       <div>

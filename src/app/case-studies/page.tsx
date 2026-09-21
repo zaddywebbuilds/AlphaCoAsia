@@ -4,6 +4,7 @@ import { ArrowRight, MapPin } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { DisciplineImage, SUBJECT_FOR_SERVICE } from "@/components/viz/DisciplineImage";
 import { CASE_STUDIES } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -37,12 +38,17 @@ export default function CaseStudiesPage() {
         <section className="section-py bg-white">
           <div className="container-xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {CASE_STUDIES.map((cs) => (
+              {CASE_STUDIES.map((cs, i) => (
                 <Link
                   key={cs.slug}
                   href={`/case-studies/${cs.slug}`}
-                  className="card p-8 flex flex-col group"
+                  className="card p-8 flex flex-col group overflow-hidden"
                 >
+                  <DisciplineImage
+                    id={SUBJECT_FOR_SERVICE[cs.service] ?? "enterprise-risk-management"}
+                    priority={i < 2}
+                    className="-mx-8 -mt-8 mb-6 h-[160px]"
+                  />
                   <div className="flex items-center justify-between mb-5">
                     <div className="flex items-center gap-2">
                       <span className="px-2.5 py-1 bg-[#EDF3F9] text-[#1A3550] text-xs font-semibold rounded-md">

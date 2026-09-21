@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { DisciplineImage } from "@/components/viz/DisciplineImage";
 import { INDUSTRIES } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -48,10 +49,11 @@ export default function IndustriesPage() {
                 <Link
                   key={ind.slug}
                   href={`/industries/${ind.slug}`}
-                  className="card p-7 flex flex-col group"
+                  className="card p-7 flex flex-col group overflow-hidden"
                 >
-                  <div className="flex items-baseline justify-between mb-4">
-                    <span className="type-index text-[#0D1B2A]/14 text-[2.2rem] group-hover:text-[#C9A040]/40 transition-colors duration-500">
+                  <DisciplineImage id={ind.slug} priority={i < 3} className="-mx-7 -mt-7 mb-6 h-[164px]" />
+                  <div className="flex items-baseline justify-between mb-3">
+                    <span className="type-technical text-[#94A3B8] tabular">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>

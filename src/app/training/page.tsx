@@ -4,6 +4,7 @@ import { ArrowRight, Users, Clock, Award } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { DisciplineImage } from "@/components/viz/DisciplineImage";
 
 export const metadata: Metadata = {
   title: "Insurance, Risk & Actuarial Training Programmes",
@@ -13,48 +14,56 @@ export const metadata: Metadata = {
 
 const COURSES = [
   {
+    subject: "enterprise-risk-management",
     title: "Enterprise Risk Management",
     topics: ["ERM framework fundamentals", "Risk governance", "Risk appetite design", "ORSA integration"],
     audience: "Risk officers, CFOs, board members",
     format: "Workshop / Custom corporate",
   },
   {
+    subject: "risk-based-capital",
     title: "Risk-Based Capital (RBC2)",
     topics: ["RBC2 framework overview", "Capital requirements", "Reporting obligations", "Implementation planning"],
     audience: "Actuaries, finance teams, risk professionals",
     format: "Workshop / Seminar",
   },
   {
+    subject: "orsa-advisory",
     title: "ORSA for Insurers",
     topics: ["ORSA requirements", "Framework design", "Regulatory expectations", "Governance integration"],
     audience: "Risk officers, actuaries, compliance professionals",
     format: "Workshop / Custom corporate",
   },
   {
+    subject: "aml-cft",
     title: "AML/CFT Compliance",
     topics: ["MAS AML/CFT requirements", "Risk-based approach", "Customer due diligence", "Suspicious transaction reporting"],
     audience: "Compliance officers, MLROs, risk teams",
     format: "Workshop / Custom corporate",
   },
   {
+    subject: "cyber-risk",
     title: "Cyber Risk & Insurance",
     topics: ["Cyber risk landscape", "Insurance implications", "Governance frameworks", "Incident response"],
     audience: "Risk officers, IT leaders, insurance professionals",
     format: "Seminar / Workshop",
   },
   {
+    subject: "esg-risk",
     title: "ESG Risk Management",
     topics: ["ESG regulatory trends", "Integration into risk frameworks", "Reporting requirements", "Scenario analysis"],
     audience: "Risk professionals, executives, compliance teams",
     format: "Workshop / Seminar",
   },
   {
+    subject: "insurtech-digital",
     title: "Insurtech & Digital Insurance",
     topics: ["Digital insurance landscape", "Regulatory considerations", "Technology platforms", "Business model innovation"],
     audience: "Insurance professionals, fintech teams, executives",
     format: "Workshop / Seminar",
   },
   {
+    subject: "actuarial-consulting",
     title: "Actuarial Pricing & Reserving",
     topics: ["Pricing methodology", "Reserving approaches", "Regulatory context", "Model validation"],
     audience: "Actuaries, finance professionals, risk teams",
@@ -121,8 +130,9 @@ export default function TrainingPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {COURSES.map((course) => (
-                <div key={course.title} className="card p-6 flex flex-col">
+              {COURSES.map((course, i) => (
+                <div key={course.title} className="card p-6 flex flex-col group overflow-hidden">
+                  <DisciplineImage id={course.subject} priority={i < 2} className="-mx-6 -mt-6 mb-5 h-[150px]" />
                   <h3 className="text-base font-semibold text-[#0D1B2A] mb-3">{course.title}</h3>
                   <ul className="space-y-1.5 mb-4 flex-1">
                     {course.topics.map((t) => (

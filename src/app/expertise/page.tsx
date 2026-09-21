@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FinalCTA } from "@/components/sections/FinalCTA";
-import { ExpertiseGlyph } from "@/components/viz/ExpertiseGlyph";
+import { DisciplineImage } from "@/components/viz/DisciplineImage";
 import { EXPERTISE } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -45,13 +45,7 @@ export default function ExpertisePage() {
                   className="card p-7 flex flex-col group overflow-hidden"
                 >
                   {/* Discipline diagram on its own dark plane */}
-                  <div className="relative -mx-7 -mt-7 mb-6 h-[176px] bg-[#070D14] overflow-hidden">
-                    <div className="absolute inset-0 tex-grid-fine opacity-50" />
-                    <div className="absolute inset-0 text-slate-500 group-hover:text-slate-300 transition-colors duration-500">
-                      <ExpertiseGlyph id={item.slug} active className="w-full h-full" />
-                    </div>
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_48%,transparent_42%,rgba(7,13,20,0.72)_100%)]" />
-                  </div>
+                  <DisciplineImage id={item.slug} priority={i < 3} className="-mx-7 -mt-7 mb-6 h-[176px]" />
 
                   <div className="flex items-center justify-between mb-3">
                     <span className="type-technical text-[#94A3B8] tabular">

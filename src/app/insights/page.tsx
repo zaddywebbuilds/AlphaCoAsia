@@ -2,7 +2,16 @@ import type { Metadata } from "next";
 import { Clock } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { DisciplineImage } from "@/components/viz/DisciplineImage";
 import { INSIGHTS_PLACEHOLDER } from "@/lib/data";
+
+const SUBJECT_FOR: Record<string, string> = {
+  "Regulatory Compliance": "regulatory-licensing",
+  "Risk & Governance": "enterprise-risk-management",
+  Actuarial: "actuarial-consulting",
+  "Fintech & Insurtech": "insurtech-digital",
+  "APAC Markets": "market-entry",
+};
 
 export const metadata: Metadata = {
   title: "Insurance, Risk & Regulatory Insights",
@@ -54,7 +63,11 @@ export default function InsightsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {INSIGHTS_PLACEHOLDER.map((insight) => (
-                <article key={insight.slug} className="card bg-white p-6 flex flex-col">
+                <article key={insight.slug} className="card bg-white p-6 flex flex-col group overflow-hidden">
+                  <DisciplineImage
+                    id={SUBJECT_FOR[insight.category] ?? "enterprise-risk-management"}
+                    className="-mx-6 -mt-6 mb-5 h-[140px]"
+                  />
                   <div className="flex items-center gap-2 mb-4">
                     <span className="inline-block px-2.5 py-1 bg-[#EDF3F9] text-[#1A3550] text-xs font-semibold rounded-md">
                       {insight.category}

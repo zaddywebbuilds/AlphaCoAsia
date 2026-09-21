@@ -3,7 +3,7 @@ import { useRef, useState, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { ExpertiseGlyph } from "@/components/viz/ExpertiseGlyph";
+import { DisciplineImage } from "@/components/viz/DisciplineImage";
 import { usePrefersReducedMotion, useDeviceTier } from "@/lib/useClient";
 
 /* Each challenge carries the glyph of the discipline that answers it — the same
@@ -100,15 +100,12 @@ export function ChallengeNav() {
               >
                 <span className="absolute top-0 left-[16%] right-[16%] h-px bg-[linear-gradient(to_right,transparent,rgba(56,189,248,0.6),transparent)] opacity-0 group-hover/p:opacity-100 transition-opacity duration-500" />
 
-                {/* The discipline diagram surfaces behind the panel on hover */}
+                {/* The subject surfaces behind the panel on hover */}
                 <div
-                  className="absolute -right-4 -bottom-3 w-[152px] h-[95px] text-slate-500 pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                  style={{
-                    opacity: hover === i ? 0.5 : 0.1,
-                    transform: `scale(${hover === i ? 1.06 : 0.94})`,
-                  }}
+                  className="absolute inset-0 pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  style={{ opacity: hover === i ? 0.42 : 0 }}
                 >
-                  <ExpertiseGlyph id={c.glyph} active={hover === i} className="w-full h-full" />
+                  <DisciplineImage id={c.glyph} className="w-full h-full" />
                 </div>
 
                 <div className="relative p-5 flex flex-col h-full min-h-[132px]">

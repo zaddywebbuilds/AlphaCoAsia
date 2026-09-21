@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FinalCTA } from "@/components/sections/FinalCTA";
-import { ExpertiseGlyph } from "@/components/viz/ExpertiseGlyph";
+import { DisciplineImage } from "@/components/viz/DisciplineImage";
 import { INDUSTRIES, EXPERTISE, CASE_STUDIES } from "@/lib/data";
 
 /* Which disciplines each institution type most often engages us on. */
@@ -85,13 +85,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {disciplines.map((d) => (
                     <Link key={d.slug} href={`/expertise/${d.slug}`} className="card p-6 flex flex-col group overflow-hidden">
-                      <div className="relative -mx-6 -mt-6 mb-5 h-[150px] bg-[#070D14] overflow-hidden">
-                        <div className="absolute inset-0 tex-grid-fine opacity-50" />
-                        <div className="absolute inset-0 text-slate-500 group-hover:text-slate-300 transition-colors duration-500">
-                          <ExpertiseGlyph id={d.slug} active className="w-full h-full" />
-                        </div>
-                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_78%_78%_at_50%_45%,transparent_35%,rgba(7,13,20,0.8)_100%)]" />
-                      </div>
+                      <DisciplineImage id={d.slug} className="-mx-6 -mt-6 mb-5 h-[150px]" />
                       <h3 className="text-[15px] font-semibold text-[#0D1B2A] mb-1.5 leading-snug">
                         <span className="link-rule">{d.title}</span>
                       </h3>

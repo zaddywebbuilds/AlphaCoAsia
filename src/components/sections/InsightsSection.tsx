@@ -1,46 +1,24 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
+import { DisciplineImage } from "@/components/viz/DisciplineImage";
 import { INSIGHTS_PLACEHOLDER } from "@/lib/data";
 
-/* Abstract data thumbnail — reveals on hover, keyed to the row index so each
-   topic gets its own signature rather than a repeated motif. */
-function Thumb({ n, on }: { n: number; on: boolean }) {
-  const bars = [
-    [22, 48, 34, 62, 40, 70],
-    [58, 30, 66, 24, 52, 38],
-    [30, 44, 58, 72, 50, 28],
-  ][n % 3];
-  return (
-    <svg viewBox="0 0 120 80" className="w-full h-full" aria-hidden="true">
-      {bars.map((h, i) => (
-        <rect
-          key={i}
-          x={12 + i * 17}
-          y={70 - h * 0.7}
-          width="9"
-          height={h * 0.7}
-          fill={i === n % bars.length ? "#C9A040" : "#38BDF8"}
-          opacity={on ? (i === n % bars.length ? 0.9 : 0.4) : 0.16}
-          style={{
-            transform: `scaleY(${on ? 1 : 0.45})`,
-            transformOrigin: "bottom",
-            transformBox: "fill-box",
-            transition: `transform .55s cubic-bezier(0.22,1,0.36,1) ${i * 0.04}s, opacity .45s ease`,
-          }}
-        />
-      ))}
-      <line x1="8" y1="70" x2="112" y2="70" stroke="#0D1B2A" strokeOpacity={on ? 0.35 : 0.14} strokeWidth="0.8" />
-    </svg>
-  );
-}
+/* Article subject keyed off its category, so the index reads as one art-directed
+   set rather than assorted imagery. */
+const SUBJECT_FOR: Record<string, string> = {
+  "Regulatory Compliance": "regulatory-licensing",
+  "Risk & Governance": "enterprise-risk-management",
+  Actuarial: "actuarial-consulting",
+  "Fintech & Insurtech": "insurtech-digital",
+  "APAC Markets": "market-entry",
+};
 
 export function InsightsSection() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-70px" });
-  const [hover, setHover] = useState<number | null>(null);
 
   return (
     <section ref={ref} className="relative section-py bg-white overflow-hidden">
@@ -77,8 +55,6 @@ export function InsightsSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              onMouseEnter={() => setHover(i)}
-              onMouseLeave={() => setHover(null)}
               className="group grid grid-cols-1 sm:grid-cols-[72px_1fr_auto] items-center gap-5 py-7 border-b border-[#E4E0D6]"
             >
               <span className="type-index text-[#0D1B2A]/14 text-[2.4rem] group-hover:text-[#C9A040]/40 transition-colors duration-500">
@@ -104,9 +80,10 @@ export function InsightsSection() {
                 </p>
               </div>
 
-              <div className="hidden sm:block w-[108px] h-[72px] shrink-0">
-                <Thumb n={i} on={hover === i} />
-              </div>
+              <DisciplineImage
+                id={SUBJECT_FOR[a.category] ?? "enterprise-risk-management"}
+                className="hidden sm:block w-[150px] h-[84px] shrink-0 rounded-lg"
+              />
             </motion.div>
           ))}
         </div>
