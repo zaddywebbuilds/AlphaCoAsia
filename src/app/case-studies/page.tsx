@@ -35,7 +35,7 @@ export default function CaseStudiesPage() {
           </div>
         </section>
 
-        <section className="section-py bg-white">
+        <section className="section-py bg-[#0A1628]">
           <div className="container-xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {CASE_STUDIES.map((cs, i) => (
@@ -51,31 +51,31 @@ export default function CaseStudiesPage() {
                   />
                   <div className="flex items-center justify-between mb-5">
                     <div className="flex items-center gap-2">
-                      <span className="px-2.5 py-1 bg-[#EDF3F9] text-[#1A3550] text-xs font-semibold rounded-md">
+                      <span className="px-2.5 py-1 bg-[#C9A040]/12 text-[#E8D9A8] text-xs font-semibold rounded-md">
                         {cs.industry}
                       </span>
-                      <span className="flex items-center gap-1 text-xs text-[#64748B]">
+                      <span className="flex items-center gap-1 text-xs text-slate-400">
                         <MapPin size={10} />
                         {cs.market}
                       </span>
                     </div>
-                    <span className="text-xs text-[#A8801A] font-medium">{cs.service}</span>
+                    <span className="text-xs text-[#C9A040] font-medium">{cs.service}</span>
                   </div>
 
-                  <h2 className="text-base font-semibold text-[#0D1B2A] mb-3 leading-snug group-hover:text-[#1A3550] transition-colors">
+                  <h2 className="text-base font-semibold text-white mb-3 leading-snug group-hover:text-[#E8D9A8] transition-colors">
                     {cs.title}
                   </h2>
-                  <p className="text-sm text-[#64748B] leading-relaxed flex-1">{cs.challenge}</p>
+                  <p className="text-sm text-slate-400 leading-relaxed flex-1">{cs.challenge}</p>
 
                   <div className="flex flex-wrap gap-1.5 mt-5">
                     {cs.tags.map((tag) => (
-                      <span key={tag} className="px-2 py-0.5 bg-[#F8F6F1] border border-[#E4E0D6] text-xs text-[#64748B] rounded">
+                      <span key={tag} className="px-2 py-0.5 bg-[#0A1628] border border-white/[0.09] text-xs text-slate-400 rounded">
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-1.5 mt-5 pt-4 border-t border-[#E4E0D6] text-xs font-semibold text-[#A8801A]">
+                  <div className="flex items-center gap-1.5 mt-5 pt-4 border-t border-white/[0.09] text-xs font-semibold text-[#C9A040]">
                     Read engagement
                     <ArrowRight size={11} className="translate-x-0 group-hover:translate-x-1 transition-transform" />
                   </div>

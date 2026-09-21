@@ -22,10 +22,10 @@ export default function NotFound() {
             <Link href="/" className="btn-magnetic inline-flex items-center gap-2 px-6 py-3 bg-[#C9A040] text-[#0A1628] text-sm font-semibold rounded-lg hover:bg-[#D4AF60]">
               <Home size={14} /> Return Home
             </Link>
-            <Link href="/expertise" className="btn-magnetic inline-flex items-center gap-2 px-6 py-3 border border-white/18 text-white text-sm font-medium rounded-lg hover:border-[#38BDF8]/50 hover:bg-white/[0.04]">
+            <Link href="/expertise" className="btn-magnetic inline-flex items-center gap-2 px-6 py-3 border border-white/18 text-white text-sm font-medium rounded-lg hover:border-[#C9A040]/50 hover:bg-white/[0.04]">
               Explore Expertise <ArrowRight size={14} className="btn-arrow" />
             </Link>
-            <Link href="/contact" className="btn-magnetic inline-flex items-center gap-2 px-6 py-3 border border-white/18 text-white text-sm font-medium rounded-lg hover:border-[#38BDF8]/50 hover:bg-white/[0.04]">
+            <Link href="/contact" className="btn-magnetic inline-flex items-center gap-2 px-6 py-3 border border-white/18 text-white text-sm font-medium rounded-lg hover:border-[#C9A040]/50 hover:bg-white/[0.04]">
               Contact Alpha <ArrowRight size={14} className="btn-arrow" />
             </Link>
           </div>

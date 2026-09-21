@@ -41,8 +41,8 @@ export default function IndustriesPage() {
           </div>
         </section>
 
-        <section className="section-py bg-[#F8F6F1] relative">
-          <div className="absolute inset-0 tex-grid-dark opacity-50" />
+        <section className="section-py bg-[#0A1628] relative">
+          <div className="absolute inset-0 tex-grid-fine opacity-50" />
           <div className="container-xl relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {INDUSTRIES.map((ind, i) => (
@@ -53,22 +53,22 @@ export default function IndustriesPage() {
                 >
                   <DisciplineImage id={ind.slug} priority={i < 3} className="-mx-7 -mt-7 mb-6 h-[164px]" />
                   <div className="flex items-baseline justify-between mb-3">
-                    <span className="type-technical text-[#94A3B8] tabular">
+                    <span className="type-technical text-slate-500 tabular">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <h2 className="text-base font-semibold text-[#0D1B2A] mb-2.5 leading-snug">
+                  <h2 className="text-base font-semibold text-white mb-2.5 leading-snug">
                     <span className="link-rule">{ind.title}</span>
                   </h2>
-                  <p className="text-sm text-[#64748B] leading-relaxed flex-1 mb-5">{ind.description}</p>
+                  <p className="text-sm text-slate-400 leading-relaxed flex-1 mb-5">{ind.description}</p>
                   <div className="flex flex-wrap gap-1.5 mb-5">
                     {ind.challenges.slice(0, 3).map((c) => (
-                      <span key={c} className="px-2 py-0.5 bg-[#F8F6F1] border border-[#E4E0D6] text-[11.5px] text-[#64748B] rounded">
+                      <span key={c} className="px-2 py-0.5 bg-[#0A1628] border border-white/[0.09] text-[11.5px] text-slate-400 rounded">
                         {c}
                       </span>
                     ))}
                   </div>
-                  <span className="inline-flex items-center gap-1.5 type-technical text-[#0D1B2A] group-hover:text-[#A8801A] transition-colors">
+                  <span className="inline-flex items-center gap-1.5 type-technical text-white group-hover:text-[#C9A040] transition-colors">
                     Explore sector
                     <ArrowRight size={11} className="group-hover:translate-x-1 transition-transform duration-500" />
                   </span>

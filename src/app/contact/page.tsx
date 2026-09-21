@@ -55,20 +55,20 @@ export default function ContactPage() {
         </section>
 
         {/* Form + details */}
-        <section className="section-py bg-white">
+        <section className="section-py bg-[#0A1628]">
           <div className="container-xl">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
               {/* Form */}
               <div className="lg:col-span-2">
                 {submitted ? (
-                  <div className="p-10 bg-[#F8F6F1] rounded-2xl border border-[#E4E0D6] text-center">
+                  <div className="p-10 bg-[#0A1628] rounded-2xl border border-white/[0.09] text-center">
                     <div className="w-14 h-14 rounded-full bg-[#0D1B2A] flex items-center justify-center mx-auto mb-5">
                       <Send size={22} className="text-[#C9A040]" />
                     </div>
-                    <h2 className="font-display text-xl font-semibold text-[#0D1B2A] mb-3">
+                    <h2 className="font-display text-xl font-semibold text-white mb-3">
                       Thank You for Getting in Touch
                     </h2>
-                    <p className="text-sm text-[#64748B] leading-relaxed max-w-md mx-auto">
+                    <p className="text-sm text-slate-400 leading-relaxed max-w-md mx-auto">
                       We have received your message and will be in touch shortly. We look forward to understanding how we can support your business.
                     </p>
                   </div>
@@ -76,27 +76,27 @@ export default function ContactPage() {
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
-                        <label className="block text-xs font-semibold text-[#0D1B2A] mb-1.5 uppercase tracking-wide">Name *</label>
-                        <input required type="text" placeholder="Your name" className="w-full px-4 py-3 border border-[#E4E0D6] rounded-lg text-sm text-[#0D1B2A] focus:outline-none focus:border-[#1A3550] focus:ring-1 focus:ring-[#1A3550] bg-white" />
+                        <label className="block text-xs font-semibold text-white mb-1.5 uppercase tracking-wide">Name *</label>
+                        <input required type="text" placeholder="Your name" className="w-full px-4 py-3 border border-white/[0.09] rounded-lg text-sm text-white focus:outline-none focus:border-[#C9A040] focus:ring-1 focus:ring-[#C9A040] bg-white/[0.06]" />
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold text-[#0D1B2A] mb-1.5 uppercase tracking-wide">Company *</label>
-                        <input required type="text" placeholder="Your organisation" className="w-full px-4 py-3 border border-[#E4E0D6] rounded-lg text-sm text-[#0D1B2A] focus:outline-none focus:border-[#1A3550] focus:ring-1 focus:ring-[#1A3550] bg-white" />
+                        <label className="block text-xs font-semibold text-white mb-1.5 uppercase tracking-wide">Company *</label>
+                        <input required type="text" placeholder="Your organisation" className="w-full px-4 py-3 border border-white/[0.09] rounded-lg text-sm text-white focus:outline-none focus:border-[#C9A040] focus:ring-1 focus:ring-[#C9A040] bg-white/[0.06]" />
                       </div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
-                        <label className="block text-xs font-semibold text-[#0D1B2A] mb-1.5 uppercase tracking-wide">Work Email *</label>
-                        <input required type="email" placeholder="your@company.com" className="w-full px-4 py-3 border border-[#E4E0D6] rounded-lg text-sm text-[#0D1B2A] focus:outline-none focus:border-[#1A3550] focus:ring-1 focus:ring-[#1A3550] bg-white" />
+                        <label className="block text-xs font-semibold text-white mb-1.5 uppercase tracking-wide">Work Email *</label>
+                        <input required type="email" placeholder="your@company.com" className="w-full px-4 py-3 border border-white/[0.09] rounded-lg text-sm text-white focus:outline-none focus:border-[#C9A040] focus:ring-1 focus:ring-[#C9A040] bg-white/[0.06]" />
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold text-[#0D1B2A] mb-1.5 uppercase tracking-wide">Country</label>
-                        <input type="text" placeholder="Singapore" className="w-full px-4 py-3 border border-[#E4E0D6] rounded-lg text-sm text-[#0D1B2A] focus:outline-none focus:border-[#1A3550] focus:ring-1 focus:ring-[#1A3550] bg-white" />
+                        <label className="block text-xs font-semibold text-white mb-1.5 uppercase tracking-wide">Country</label>
+                        <input type="text" placeholder="Singapore" className="w-full px-4 py-3 border border-white/[0.09] rounded-lg text-sm text-white focus:outline-none focus:border-[#C9A040] focus:ring-1 focus:ring-[#C9A040] bg-white/[0.06]" />
                       </div>
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold text-[#0D1B2A] mb-1.5 uppercase tracking-wide">Area of Interest</label>
-                      <select className="w-full px-4 py-3 border border-[#E4E0D6] rounded-lg text-sm text-[#0D1B2A] focus:outline-none focus:border-[#1A3550] focus:ring-1 focus:ring-[#1A3550] bg-white">
+                      <label className="block text-xs font-semibold text-white mb-1.5 uppercase tracking-wide">Area of Interest</label>
+                      <select className="w-full px-4 py-3 border border-white/[0.09] rounded-lg text-sm text-white focus:outline-none focus:border-[#C9A040] focus:ring-1 focus:ring-[#C9A040] bg-white/[0.06]">
                         <option value="">Select a service area</option>
                         {SERVICE_OPTIONS.map((s) => (
                           <option key={s} value={s}>{s}</option>
@@ -104,18 +104,18 @@ export default function ContactPage() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold text-[#0D1B2A] mb-1.5 uppercase tracking-wide">Message *</label>
+                      <label className="block text-xs font-semibold text-white mb-1.5 uppercase tracking-wide">Message *</label>
                       <textarea
                         required
                         rows={5}
                         placeholder="Please describe your business challenge or what you would like to discuss..."
-                        className="w-full px-4 py-3 border border-[#E4E0D6] rounded-lg text-sm text-[#0D1B2A] focus:outline-none focus:border-[#1A3550] focus:ring-1 focus:ring-[#1A3550] bg-white resize-y"
+                        className="w-full px-4 py-3 border border-white/[0.09] rounded-lg text-sm text-white focus:outline-none focus:border-[#C9A040] focus:ring-1 focus:ring-[#C9A040] bg-white/[0.06] resize-y"
                       />
                     </div>
                     <button
                       type="submit"
                       disabled={loading}
-                      className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#0D1B2A] text-white text-sm font-semibold rounded-lg hover:bg-[#1A3550] transition-colors disabled:opacity-60"
+                      className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#C9A040] text-[#221805] text-sm font-semibold rounded-lg hover:bg-[#12213A] transition-colors disabled:opacity-60"
                     >
                       {loading ? "Sending..." : "Send Message"}
                       <Send size={14} />
@@ -126,22 +126,22 @@ export default function ContactPage() {
 
               {/* Details */}
               <div className="space-y-6">
-                <div className="p-6 bg-[#F8F6F1] rounded-2xl border border-[#E4E0D6]">
-                  <h3 className="text-sm font-semibold text-[#0D1B2A] mb-4">Contact Details</h3>
+                <div className="p-6 bg-[#0A1628] rounded-2xl border border-white/[0.09]">
+                  <h3 className="text-sm font-semibold text-white mb-4">Contact Details</h3>
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
                       <MapPin size={15} className="text-[#C9A040] mt-0.5 shrink-0" />
-                      <p className="text-sm text-[#64748B] leading-relaxed">{COMPANY.address}</p>
+                      <p className="text-sm text-slate-400 leading-relaxed">{COMPANY.address}</p>
                     </div>
-                    <a href={`tel:${COMPANY.phone}`} className="flex items-center gap-3 text-sm text-[#64748B] hover:text-[#0D1B2A] transition-colors">
+                    <a href={`tel:${COMPANY.phone}`} className="flex items-center gap-3 text-sm text-slate-400 hover:text-white transition-colors">
                       <Phone size={15} className="text-[#C9A040] shrink-0" />
                       {COMPANY.phone}
                     </a>
-                    <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-3 text-sm text-[#64748B] hover:text-[#0D1B2A] transition-colors">
+                    <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-3 text-sm text-slate-400 hover:text-white transition-colors">
                       <Mail size={15} className="text-[#C9A040] shrink-0" />
                       {COMPANY.email}
                     </a>
-                    <a href={COMPANY.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-[#64748B] hover:text-[#0D1B2A] transition-colors">
+                    <a href={COMPANY.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-slate-400 hover:text-white transition-colors">
                       <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" className="text-[#C9A040] shrink-0"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
                       LinkedIn
                     </a>

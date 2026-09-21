@@ -104,24 +104,24 @@ export function WhyAlpha() {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section ref={ref} className="relative section-py bg-[#F0EDE5] overflow-hidden">
-      <div className="absolute inset-0 tex-grid-dark opacity-60" />
+    <section ref={ref} className="relative section-py bg-[#0A1628] overflow-hidden">
+      <div className="absolute inset-0 tex-grid-fine opacity-60" />
       <div className="absolute -top-24 -right-20 w-[520px] h-[520px] rounded-full bg-[#C9A040] opacity-[0.07] blur-[120px]" />
 
       <div className="container-xl relative z-10">
         <div className="max-w-2xl mb-14">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-px bg-[#A8801A]" />
-            <span className="type-technical text-[#A8801A]">Why Alpha Consultant</span>
+            <div className="w-8 h-px bg-[#C9A040]" />
+            <span className="type-technical text-[#C9A040]">Why Alpha Consultant</span>
           </div>
           <h2
-            className="font-display text-[#0D1B2A] leading-[1.08] mb-5"
+            className="font-display text-white leading-[1.08] mb-5"
             style={{ fontSize: "clamp(1.9rem, 3.6vw, 3.1rem)", fontWeight: 600, letterSpacing: "-0.025em" }}
           >
             Senior expertise. Direct access.
             <br className="hidden sm:block" /> Practical execution.
           </h2>
-          <p className="text-[15px] text-[#64748B] leading-relaxed">
+          <p className="text-[15px] text-slate-400 leading-relaxed">
             Large consultancies sell scale. Alpha Consultant offers specialist depth, senior-level
             involvement and the kind of direct access that drives better outcomes for clients.
           </p>
@@ -134,7 +134,7 @@ export function WhyAlpha() {
               <Framework active={active} inView={inView} />
               <div className="mt-4 flex items-center justify-center gap-2">
                 <span className="w-1 h-1 rounded-full bg-[#C9A040]" />
-                <span className="type-technical text-[#94A3B8]">The Alpha Framework · 6 Components</span>
+                <span className="type-technical text-slate-500">The Alpha Framework · 6 Components</span>
               </div>
             </div>
           </div>
@@ -150,22 +150,22 @@ export function WhyAlpha() {
                 onMouseEnter={() => setActive(i)}
                 onFocus={() => setActive(i)}
                 tabIndex={0}
-                className={`group relative py-5 pl-7 pr-4 border-b border-[#DED9CC] last:border-b-0 outline-none transition-colors duration-400 ${
+                className={`group relative py-5 pl-7 pr-4 border-b border-white/[0.09] last:border-b-0 outline-none transition-colors duration-400 ${
                   active === i ? "bg-white/70" : ""
                 }`}
               >
                 <span
                   className={`absolute left-0 top-5 bottom-5 w-[2px] transition-all duration-400 ${
-                    active === i ? "bg-[#C9A040]" : "bg-[#DED9CC]"
+                    active === i ? "bg-[#C9A040]" : "bg-white/15"
                   }`}
                 />
                 <div className="flex items-baseline gap-3 mb-1.5">
-                  <span className="type-technical text-[#A8801A] tabular">
+                  <span className="type-technical text-[#C9A040] tabular">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="text-[15px] font-semibold text-[#0D1B2A]">{p.title}</h3>
+                  <h3 className="text-[15px] font-semibold text-white">{p.title}</h3>
                 </div>
-                <p className="text-[13.5px] text-[#64748B] leading-relaxed">{p.description}</p>
+                <p className="text-[13.5px] text-slate-400 leading-relaxed">{p.description}</p>
               </motion.div>
             ))}
           </div>

@@ -88,35 +88,35 @@ export default async function TeamPage({ params }: { params: Promise<{ slug: str
         </section>
 
         {/* Body */}
-        <section className="section-py bg-white">
+        <section className="section-py bg-[#0A1628]">
           <div className="container-xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
               <div className="lg:col-span-8">
                 <div className="mb-11">
                   <div className="flex items-center gap-3 mb-5">
-                    <div className="w-8 h-px bg-[#A8801A]" />
-                    <span className="type-technical text-[#A8801A]">Overview</span>
+                    <div className="w-8 h-px bg-[#C9A040]" />
+                    <span className="type-technical text-[#C9A040]">Overview</span>
                   </div>
-                  <p className="text-[17px] text-[#334155] leading-relaxed">{person.shortBio}</p>
+                  <p className="text-[17px] text-slate-300 leading-relaxed">{person.shortBio}</p>
                 </div>
 
                 {person.pastRoles.length > 0 && (
                   <div className="mb-11">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-8 h-px bg-[#A8801A]" />
-                      <span className="type-technical text-[#A8801A]">Career Experience</span>
+                      <div className="w-8 h-px bg-[#C9A040]" />
+                      <span className="type-technical text-[#C9A040]">Career Experience</span>
                     </div>
                     {/* Timeline rail */}
                     <div className="relative pl-7">
-                      <span className="absolute left-[3px] top-2 bottom-2 w-px bg-[#E4E0D6]" />
+                      <span className="absolute left-[3px] top-2 bottom-2 w-px bg-white/20" />
                       {person.pastRoles.map((role) => (
                         <div key={role} className="relative pb-6 last:pb-0">
                           <span className="absolute -left-[26px] top-[7px] w-[7px] h-[7px] rounded-full bg-[#C9A040]" />
-                          <p className="text-[14.5px] text-[#334155] leading-relaxed">{role}</p>
+                          <p className="text-[14.5px] text-slate-300 leading-relaxed">{role}</p>
                         </div>
                       ))}
                     </div>
-                    <p className="mt-5 text-[12px] text-[#94A3B8]">
+                    <p className="mt-5 text-[12px] text-slate-500">
                       Roles listed are previous positions held prior to or alongside Alpha Consultant.
                     </p>
                   </div>
@@ -125,15 +125,15 @@ export default async function TeamPage({ params }: { params: Promise<{ slug: str
                 {related.length > 0 && (
                   <div>
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-8 h-px bg-[#A8801A]" />
-                      <span className="type-technical text-[#A8801A]">Related Expertise</span>
+                      <div className="w-8 h-px bg-[#C9A040]" />
+                      <span className="type-technical text-[#C9A040]">Related Expertise</span>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {related.map((r) => (
                         <Link
                           key={r.slug}
                           href={`/expertise/${r.slug}`}
-                          className="px-3.5 py-2 bg-[#F8F6F1] border border-[#E4E0D6] rounded-lg text-[13px] text-[#0D1B2A] hover:border-[#C9A040] transition-colors"
+                          className="px-3.5 py-2 bg-[#0A1628] border border-white/[0.09] rounded-lg text-[13px] text-white hover:border-[#C9A040] transition-colors"
                         >
                           {r.title}
                         </Link>
@@ -145,10 +145,10 @@ export default async function TeamPage({ params }: { params: Promise<{ slug: str
 
               <aside className="lg:col-span-4 flex flex-col gap-5">
                 <div className="panel-light p-6">
-                  <span className="type-technical text-[#A8801A] block mb-4">Areas of Expertise</span>
+                  <span className="type-technical text-[#C9A040] block mb-4">Areas of Expertise</span>
                   <div className="flex flex-wrap gap-1.5">
                     {person.expertise.map((e) => (
-                      <span key={e} className="px-2.5 py-1 bg-[#F8F6F1] border border-[#E4E0D6] rounded text-[11.5px] text-[#64748B]">
+                      <span key={e} className="px-2.5 py-1 bg-[#0A1628] border border-white/[0.09] rounded text-[11.5px] text-slate-400">
                         {e}
                       </span>
                     ))}
@@ -156,10 +156,10 @@ export default async function TeamPage({ params }: { params: Promise<{ slug: str
                 </div>
 
                 <div className="panel-light p-6">
-                  <span className="type-technical text-[#A8801A] block mb-4">Regional Experience</span>
+                  <span className="type-technical text-[#C9A040] block mb-4">Regional Experience</span>
                   <div className="flex flex-wrap gap-1.5">
                     {person.markets.map((m) => (
-                      <span key={m} className="px-2.5 py-1 bg-[#F8F6F1] border border-[#E4E0D6] rounded text-[11.5px] text-[#64748B]">
+                      <span key={m} className="px-2.5 py-1 bg-[#0A1628] border border-white/[0.09] rounded text-[11.5px] text-slate-400">
                         {m}
                       </span>
                     ))}
@@ -168,10 +168,10 @@ export default async function TeamPage({ params }: { params: Promise<{ slug: str
 
                 {person.affiliations.length > 0 && (
                   <div className="panel-light p-6">
-                    <span className="type-technical text-[#A8801A] block mb-4">Professional Involvement</span>
+                    <span className="type-technical text-[#C9A040] block mb-4">Professional Involvement</span>
                     <ul className="space-y-2">
                       {person.affiliations.map((a) => (
-                        <li key={a} className="flex items-start gap-2.5 text-[13px] text-[#64748B]">
+                        <li key={a} className="flex items-start gap-2.5 text-[13px] text-slate-400">
                           <span className="w-1 h-1 rounded-full bg-[#C9A040] mt-2 shrink-0" />
                           {a}
                         </li>
@@ -183,16 +183,16 @@ export default async function TeamPage({ params }: { params: Promise<{ slug: str
             </div>
 
             {/* Other advisors */}
-            <div className="mt-16 pt-10 border-t border-[#E4E0D6]">
-              <span className="type-technical text-[#A8801A] block mb-6">Other Advisors</span>
+            <div className="mt-16 pt-10 border-t border-white/[0.09]">
+              <span className="type-technical text-[#C9A040] block mb-6">Other Advisors</span>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {others.map((p) => (
                   <Link key={p.slug} href={`/team/${p.slug}`} className="card p-5 group">
-                    <h3 className="text-[14.5px] font-semibold text-[#0D1B2A] mb-1">
+                    <h3 className="text-[14.5px] font-semibold text-white mb-1">
                       <span className="link-rule">{p.name}</span>
                     </h3>
-                    <p className="text-[12.5px] text-[#64748B] mb-3">{p.title}</p>
-                    <span className="inline-flex items-center gap-1.5 type-technical text-[#0D1B2A] group-hover:text-[#A8801A] transition-colors">
+                    <p className="text-[12.5px] text-slate-400 mb-3">{p.title}</p>
+                    <span className="inline-flex items-center gap-1.5 type-technical text-white group-hover:text-[#C9A040] transition-colors">
                       Profile
                       <ArrowRight size={10} className="group-hover:translate-x-1 transition-transform" />
                     </span>

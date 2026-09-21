@@ -117,14 +117,14 @@ export default function TrainingPage() {
         </section>
 
         {/* Courses */}
-        <section className="section-py bg-white">
+        <section className="section-py bg-[#0A1628]">
           <div className="container-xl">
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-px bg-[#C9A040]" />
-                <span className="text-xs font-semibold text-[#A8801A] uppercase tracking-[0.15em]">Programmes</span>
+                <span className="text-xs font-semibold text-[#C9A040] uppercase tracking-[0.15em]">Programmes</span>
               </div>
-              <h2 className="font-display text-[#0D1B2A] text-3xl font-semibold leading-tight" style={{ letterSpacing: "-0.015em" }}>
+              <h2 className="font-display text-white text-3xl font-semibold leading-tight" style={{ letterSpacing: "-0.015em" }}>
                 Training Programmes
               </h2>
             </div>
@@ -133,31 +133,31 @@ export default function TrainingPage() {
               {COURSES.map((course, i) => (
                 <div key={course.title} className="card p-6 flex flex-col group overflow-hidden">
                   <DisciplineImage id={course.subject} priority={i < 2} className="-mx-6 -mt-6 mb-5 h-[150px]" />
-                  <h3 className="text-base font-semibold text-[#0D1B2A] mb-3">{course.title}</h3>
+                  <h3 className="text-base font-semibold text-white mb-3">{course.title}</h3>
                   <ul className="space-y-1.5 mb-4 flex-1">
                     {course.topics.map((t) => (
-                      <li key={t} className="flex items-center gap-2 text-sm text-[#64748B]">
+                      <li key={t} className="flex items-center gap-2 text-sm text-slate-400">
                         <div className="w-1 h-1 rounded-full bg-[#C9A040] shrink-0" />
                         {t}
                       </li>
                     ))}
                   </ul>
-                  <div className="pt-4 border-t border-[#E4E0D6] space-y-1">
-                    <p className="text-xs text-[#94A3B8]"><span className="font-medium text-[#64748B]">Audience:</span> {course.audience}</p>
-                    <p className="text-xs text-[#94A3B8]"><span className="font-medium text-[#64748B]">Format:</span> {course.format}</p>
+                  <div className="pt-4 border-t border-white/[0.09] space-y-1">
+                    <p className="text-xs text-slate-500"><span className="font-medium text-slate-400">Audience:</span> {course.audience}</p>
+                    <p className="text-xs text-slate-500"><span className="font-medium text-slate-400">Format:</span> {course.format}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="mt-12 p-8 bg-[#F8F6F1] rounded-2xl border border-[#E4E0D6] text-center">
-              <h3 className="font-display text-xl font-semibold text-[#0D1B2A] mb-3">Enquire About Corporate Training</h3>
-              <p className="text-sm text-[#64748B] max-w-md mx-auto mb-6">
+            <div className="mt-12 p-8 bg-[#0A1628] rounded-2xl border border-white/[0.09] text-center">
+              <h3 className="font-display text-xl font-semibold text-white mb-3">Enquire About Corporate Training</h3>
+              <p className="text-sm text-slate-400 max-w-md mx-auto mb-6">
                 We deliver custom training programmes tailored to your organisation&apos;s specific requirements. Get in touch to discuss your training needs.
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3 bg-[#0D1B2A] text-white text-sm font-semibold rounded-lg hover:bg-[#1A3550] transition-colors"
+                className="inline-flex items-center gap-2 px-7 py-3 bg-[#C9A040] text-[#221805] text-sm font-semibold rounded-lg hover:bg-[#12213A] transition-colors"
               >
                 Request Training Information <ArrowRight size={14} />
               </Link>

@@ -41,7 +41,7 @@ export function FinalCTA() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#C9A040] text-white font-semibold rounded-md hover:bg-[#A8801A] transition-colors text-sm"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#C9A040] text-white font-semibold rounded-md hover:bg-[#C9A040] transition-colors text-sm"
             >
               Start a Conversation
               <ArrowRight size={15} />

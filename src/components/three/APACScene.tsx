@@ -7,7 +7,9 @@ import { APAC_MARKETS } from "@/lib/data";
 import { projectAPAC } from "@/lib/geo";
 import type { DeviceTier } from "@/lib/useClient";
 
-const CYAN = "#38BDF8";
+/* Two tones only: gold carries the hub and the active market, muted steel
+   carries everything at rest, so selection stays legible. */
+const MUTED = "#7F91AC";
 const GOLD = "#C9A040";
 const SPAN_X = 2.15;
 const SPAN_Z = 1.55;
@@ -32,7 +34,7 @@ function GridPlane() {
     const verts: number[] = [];
     const cols: number[] = [];
     const nx = 26, nz = 20;
-    const base = new THREE.Color(CYAN);
+    const base = new THREE.Color(MUTED);
 
     const push = (a: THREE.Vector3, b: THREE.Vector3) => {
       for (const v of [a, b]) {
@@ -116,7 +118,7 @@ function Links({ active, tier }: { active: string; tier: DeviceTier }) {
           <Line
             key={a.code}
             points={a.pts}
-            color={on ? GOLD : CYAN}
+            color={on ? GOLD : MUTED}
             lineWidth={on ? 1.8 : 0.9}
             transparent
             opacity={on ? 0.95 : 0.26}
@@ -157,7 +159,7 @@ function Nodes({ active, onSelect }: { active: string; onSelect: (c: string) => 
 
       {NODES.map((n) => {
         const on = n.code === active;
-        const color = n.hub || on ? GOLD : CYAN;
+        const color = n.hub || on ? GOLD : MUTED;
         return (
           <group key={n.code} position={n.pos}>
             {/* Stem */}

@@ -31,16 +31,16 @@ function StaticPlane({ active }: { active: string }) {
     <svg viewBox={`0 0 ${VB.w} ${VB.h}`} className="w-full h-full" aria-hidden="true">
       <defs>
         <linearGradient id="planeFade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#38BDF8" stopOpacity="0.03" />
-          <stop offset="60%" stopColor="#38BDF8" stopOpacity="0.30" />
-          <stop offset="100%" stopColor="#38BDF8" stopOpacity="0.46" />
+          <stop offset="0%" stopColor="#C9A040" stopOpacity="0.03" />
+          <stop offset="60%" stopColor="#C9A040" stopOpacity="0.30" />
+          <stop offset="100%" stopColor="#C9A040" stopOpacity="0.46" />
         </linearGradient>
         <mask id="planeMask">
           <rect width={VB.w} height={VB.h} fill="url(#planeFade)" />
         </mask>
       </defs>
 
-      <g mask="url(#planeMask)" stroke="#38BDF8" fill="none">
+      <g mask="url(#planeMask)" stroke="#7F91AC" fill="none">
         {zLines.map((pz) => {
           const a = project(-1, pz), b = project(1, pz);
           return <line key={`z${pz}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} strokeWidth="0.7" />;
@@ -63,14 +63,14 @@ function StaticPlane({ active }: { active: string }) {
         const my = (hub.y + n.y) / 2 - 42;
         return (
           <path key={n.code} d={`M ${hub.x} ${hub.y} Q ${mx} ${my} ${n.x} ${n.y}`} fill="none"
-            stroke={on ? "#C9A040" : "#38BDF8"} strokeOpacity={on ? 0.95 : 0.26} strokeWidth={on ? 1.8 : 0.9} />
+            stroke={on ? "#C9A040" : "#7F91AC"} strokeOpacity={on ? 0.95 : 0.3} strokeWidth={on ? 1.8 : 0.9} />
         );
       })}
 
       {/* Nodes */}
       {nodes.map((n) => {
         const on = n.code === active;
-        const c = n.hub || on ? "#C9A040" : "#38BDF8";
+        const c = n.hub || on ? "#C9A040" : "#7F91AC";
         const stem = n.hub ? 30 : 20;
         return (
           <g key={n.code}>
@@ -110,7 +110,7 @@ export function APACMap() {
     <section className="relative section-py bg-[#05090F] overflow-hidden tex-grain">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_45%_45%,#0D2338_0%,#05090F_72%)]" />
       <div className="absolute inset-0 tex-grid-fine opacity-40" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[760px] h-[420px] rounded-full bg-[#1E9FD8] opacity-[0.09] blur-[140px]" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[760px] h-[420px] rounded-full bg-[#C9A040] opacity-[0.09] blur-[140px]" />
 
       <div className="container-xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
@@ -146,7 +146,7 @@ export function APACMap() {
                 </div>
               )}
               <div className="absolute top-4 left-4 flex items-center gap-2 pointer-events-none">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] anim-node" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A040] anim-node" />
                 <span className="type-technical text-slate-500">Engagement Markets · {APAC_MARKETS.length}</span>
               </div>
             </div>
@@ -163,7 +163,7 @@ export function APACMap() {
                   className={`px-3 py-2.5 rounded-lg text-left transition-all duration-300 border ${
                     active === m.code
                       ? "bg-[#C9A040] border-[#C9A040] text-[#0A1628]"
-                      : "bg-white/[0.04] border-white/[0.09] text-slate-300 hover:border-[#38BDF8]/40 hover:bg-white/[0.07]"
+                      : "bg-white/[0.04] border-white/[0.09] text-slate-300 hover:border-[#C9A040]/40 hover:bg-white/[0.07]"
                   }`}
                 >
                   <div className="type-technical opacity-70 mb-0.5">{m.code}</div>

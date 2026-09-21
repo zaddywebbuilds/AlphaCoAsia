@@ -57,7 +57,7 @@ export function ChallengeNav() {
     <section ref={ref} className="relative section-py bg-[#070D18] overflow-hidden tex-grain">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_65%_50%_at_50%_0%,#12263D_0%,#070D18_70%)]" />
       <div className="absolute inset-0 tex-grid opacity-50" />
-      <div className="absolute top-0 inset-x-0 h-px bg-[linear-gradient(to_right,transparent,#38BDF8_50%,transparent)] opacity-40" />
+      <div className="absolute top-0 inset-x-0 h-px bg-[linear-gradient(to_right,transparent,#C9A040_50%,transparent)] opacity-40" />
 
       <div className="container-xl relative z-10">
         <div className="max-w-2xl mb-14">
@@ -95,10 +95,10 @@ export function ChallengeNav() {
                 href={c.href}
                 onPointerEnter={() => setHover(i)}
                 onFocus={() => setHover(i)}
-                className="tilt-card group/p relative block h-full overflow-hidden rounded-[13px] border border-white/[0.09] bg-[linear-gradient(158deg,rgba(255,255,255,0.07),rgba(255,255,255,0.018)_55%,rgba(255,255,255,0.04))] hover:border-[#38BDF8]/40 hover:[--tz:18px] focus-visible:[--tz:18px] shadow-[0_20px_44px_-24px_rgba(0,0,0,0.9)]"
+                className="tilt-card group/p relative block h-full overflow-hidden rounded-[13px] border border-white/[0.09] bg-[linear-gradient(158deg,rgba(255,255,255,0.07),rgba(255,255,255,0.018)_55%,rgba(255,255,255,0.04))] hover:border-[#C9A040]/40 hover:[--tz:18px] focus-visible:[--tz:18px] shadow-[0_20px_44px_-24px_rgba(0,0,0,0.9)]"
                 style={{ ["--tz" as string]: `${c.z}px` }}
               >
-                <span className="absolute top-0 left-[16%] right-[16%] h-px bg-[linear-gradient(to_right,transparent,rgba(56,189,248,0.6),transparent)] opacity-0 group-hover/p:opacity-100 transition-opacity duration-500" />
+                <span className="absolute top-0 left-[16%] right-[16%] h-px bg-[linear-gradient(to_right,transparent,rgba(201,160,64,0.6),transparent)] opacity-0 group-hover/p:opacity-100 transition-opacity duration-500" />
 
                 {/* The subject surfaces behind the panel on hover */}
                 <div

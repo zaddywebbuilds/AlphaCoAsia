@@ -39,18 +39,18 @@ export default function AboutPage() {
         </section>
 
         {/* Story */}
-        <section className="section-py bg-white">
+        <section className="section-py bg-[#0A1628]">
           <div className="container-xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-8 h-px bg-[#C9A040]" />
-                  <span className="text-xs font-semibold text-[#A8801A] uppercase tracking-[0.15em]">Our Story</span>
+                  <span className="text-xs font-semibold text-[#C9A040] uppercase tracking-[0.15em]">Our Story</span>
                 </div>
-                <h2 className="font-display text-[#0D1B2A] text-2xl font-semibold mb-5 leading-tight">
+                <h2 className="font-display text-white text-2xl font-semibold mb-5 leading-tight">
                   Senior Expertise Across Insurance, Risk and Regulation in Asia Pacific
                 </h2>
-                <div className="space-y-4 text-sm text-[#64748B] leading-relaxed">
+                <div className="space-y-4 text-sm text-slate-400 leading-relaxed">
                   <p>
                     Alpha Consultant brings senior-level insurance, actuarial, risk and regulatory expertise to organisations across Asia Pacific. Our roots are in actuarial science, enterprise risk management and regulatory compliance.
                   </p>
@@ -69,10 +69,10 @@ export default function AboutPage() {
                   { title: "Where We Operate", body: "Primarily Singapore, with active advisory experience across Hong Kong, Malaysia, Indonesia, Myanmar, Cambodia, Vietnam, Brunei, Taiwan and broader Asia Pacific markets." },
                   { title: "How We Work", body: "As a boutique firm, senior practitioners remain closely involved throughout every engagement. We bring deep expertise and stay accountable to the outcome." },
                 ].map((item) => (
-                  <div key={item.title} className="p-5 bg-[#F8F6F1] rounded-xl border border-[#E4E0D6]">
+                  <div key={item.title} className="p-5 bg-[#0A1628] rounded-xl border border-white/[0.09]">
                     <div className="w-5 h-0.5 bg-[#C9A040] mb-3" />
-                    <h3 className="text-sm font-semibold text-[#0D1B2A] mb-2">{item.title}</h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed">{item.body}</p>
+                    <h3 className="text-sm font-semibold text-white mb-2">{item.title}</h3>
+                    <p className="text-sm text-slate-400 leading-relaxed">{item.body}</p>
                   </div>
                 ))}
               </div>
@@ -130,16 +130,16 @@ export default function AboutPage() {
         </section>
 
         {/* Contact strip */}
-        <section className="py-12 bg-[#F8F6F1] border-y border-[#E4E0D6]">
+        <section className="py-12 bg-[#0A1628] border-y border-white/[0.09]">
           <div className="container-xl">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
               <div>
-                <p className="text-sm font-semibold text-[#0D1B2A]">Get in touch</p>
-                <p className="text-sm text-[#64748B]">{COMPANY.address}</p>
+                <p className="text-sm font-semibold text-white">Get in touch</p>
+                <p className="text-sm text-slate-400">{COMPANY.address}</p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4 text-sm text-[#64748B]">
-                <a href={`tel:${COMPANY.phone}`} className="hover:text-[#0D1B2A] transition-colors">{COMPANY.phone}</a>
-                <a href={`mailto:${COMPANY.email}`} className="hover:text-[#0D1B2A] transition-colors">{COMPANY.email}</a>
+              <div className="flex flex-col sm:flex-row gap-4 text-sm text-slate-400">
+                <a href={`tel:${COMPANY.phone}`} className="hover:text-white transition-colors">{COMPANY.phone}</a>
+                <a href={`mailto:${COMPANY.email}`} className="hover:text-white transition-colors">{COMPANY.email}</a>
               </div>
             </div>
           </div>

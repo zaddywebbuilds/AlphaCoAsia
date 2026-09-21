@@ -15,15 +15,15 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-[#0D1B2A] text-white hover:bg-[#1A3550] border border-[#0D1B2A] hover:border-[#1A3550]",
+    "bg-[linear-gradient(135deg,#E8D9A8,#C9A040_55%,#B08C2E)] text-[#221805] border border-[#C9A040] hover:brightness-110",
   secondary:
-    "bg-white text-[#0D1B2A] hover:bg-[#F8F6F1] border border-[#E4E0D6]",
+    "bg-white/[0.06] text-white hover:bg-white/[0.11] border border-white/[0.12]",
   outline:
-    "bg-transparent text-[#0D1B2A] hover:bg-[#F8F6F1] border border-[#0D1B2A]",
+    "bg-transparent text-white hover:bg-[#C9A040]/[0.08] border border-[#C9A040]/35 hover:border-[#C9A040]/70",
   ghost:
-    "bg-transparent text-[#0D1B2A] hover:bg-[#F8F6F1] border border-transparent",
+    "bg-transparent text-slate-300 hover:text-white hover:bg-white/[0.05] border border-transparent",
   gold:
-    "bg-[#C9A040] text-white hover:bg-[#A8801A] border border-[#C9A040] hover:border-[#A8801A]",
+    "bg-[linear-gradient(135deg,#E8D9A8,#C9A040_55%,#B08C2E)] text-[#221805] border border-[#C9A040] hover:brightness-110",
 };
 
 const sizes: Record<Size, string> = {

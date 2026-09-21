@@ -22,7 +22,7 @@ export function SectionHeader({
           <div className="w-8 h-px bg-[#C9A040]" />
           <span
             className={`text-xs font-semibold uppercase tracking-[0.15em] ${
-              light ? "text-[#C9A040]" : "text-[#A8801A]"
+              light ? "text-[#C9A040]" : "text-[#C9A040]"
             }`}
           >
             {eyebrow}
@@ -31,7 +31,7 @@ export function SectionHeader({
       )}
       <h2
         className={`text-display-md font-display mb-4 ${
-          light ? "text-white" : "text-[#0D1B2A]"
+          light ? "text-white" : "text-white"
         }`}
       >
         {title}
@@ -39,7 +39,7 @@ export function SectionHeader({
       {description && (
         <p
           className={`text-base leading-relaxed max-w-xl ${
-            light ? "text-slate-300" : "text-[#64748B]"
+            light ? "text-slate-300" : "text-slate-400"
           } ${align === "left" ? "" : "mx-auto"}`}
         >
           {description}

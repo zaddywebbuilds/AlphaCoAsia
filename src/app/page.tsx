@@ -2,7 +2,6 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { AuthorityStrip } from "@/components/sections/AuthorityStrip";
-import { ExpertiseSection } from "@/components/sections/ExpertiseSection";
 import { IndustriesSection } from "@/components/sections/IndustriesSection";
 import { ChallengeNav } from "@/components/sections/ChallengeNav";
 import { CaseStudiesSection } from "@/components/sections/CaseStudiesSection";
@@ -20,7 +19,6 @@ export default function HomePage() {
       <main>
         <Hero />
         <AuthorityStrip />
-        <ExpertiseSection />
         <IndustriesSection />
         <ChallengeNav />
         <CaseStudiesSection />

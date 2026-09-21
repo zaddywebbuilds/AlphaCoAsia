@@ -39,18 +39,18 @@ export function IndustriesSection() {
   const current = INDUSTRIES[active];
 
   return (
-    <section ref={ref} className="relative section-py bg-[#F8F6F1] overflow-hidden">
-      <div className="absolute inset-0 tex-grid-dark opacity-50" />
+    <section ref={ref} className="relative section-py bg-[#0A1628] overflow-hidden">
+      <div className="absolute inset-0 tex-grid-fine opacity-50" />
 
       <div className="container-xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
           <div className="lg:col-span-7">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-px bg-[#A8801A]" />
-              <span className="type-technical text-[#A8801A]">Who We Help</span>
+              <div className="w-8 h-px bg-[#C9A040]" />
+              <span className="type-technical text-[#C9A040]">Who We Help</span>
             </div>
             <h2
-              className="font-display text-[#0D1B2A] leading-[1.08]"
+              className="font-display text-white leading-[1.08]"
               style={{ fontSize: "clamp(1.9rem, 3.6vw, 3.1rem)", fontWeight: 600, letterSpacing: "-0.025em" }}
             >
               Serving the financial
@@ -58,8 +58,8 @@ export function IndustriesSection() {
             </h2>
           </div>
           <div className="lg:col-span-5 lg:pb-2">
-            <div className="rule-h-dark mb-5" />
-            <p className="text-sm text-[#64748B] leading-relaxed">
+            <div className="rule-h mb-5" />
+            <p className="text-sm text-slate-400 leading-relaxed">
               Select an institution type to see how we support it.
             </p>
           </div>
@@ -148,14 +148,14 @@ export function IndustriesSection() {
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="panel-light p-7"
             >
-              <span className="type-technical text-[#A8801A] mb-3 block">Institution Type</span>
-              <h3 className="font-display text-[#0D1B2A] text-xl font-semibold mb-3">{current.title}</h3>
-              <p className="text-sm text-[#64748B] leading-relaxed mb-6">{current.description}</p>
+              <span className="type-technical text-[#C9A040] mb-3 block">Institution Type</span>
+              <h3 className="font-display text-white text-xl font-semibold mb-3">{current.title}</h3>
+              <p className="text-sm text-slate-400 leading-relaxed mb-6">{current.description}</p>
 
-              <span className="type-technical text-[#94A3B8] mb-3 block">Typical Challenges</span>
+              <span className="type-technical text-slate-500 mb-3 block">Typical Challenges</span>
               <div className="flex flex-wrap gap-1.5 mb-6">
                 {current.challenges.map((c) => (
-                  <span key={c} className="px-2.5 py-1 bg-[#F8F6F1] border border-[#E4E0D6] rounded text-[11.5px] text-[#64748B]">
+                  <span key={c} className="px-2.5 py-1 bg-[#0A1628] border border-white/[0.09] rounded text-[11.5px] text-slate-400">
                     {c}
                   </span>
                 ))}
@@ -163,7 +163,7 @@ export function IndustriesSection() {
 
               <Link
                 href={`/industries/${current.slug}`}
-                className="inline-flex items-center gap-1.5 type-technical text-[#0D1B2A] hover:text-[#A8801A] transition-colors group"
+                className="inline-flex items-center gap-1.5 type-technical text-white hover:text-[#C9A040] transition-colors group"
               >
                 <span className="link-rule">Explore this sector</span>
                 <ArrowRight size={11} className="group-hover:translate-x-1 transition-transform" />
@@ -180,7 +180,7 @@ export function IndustriesSection() {
                   className={`px-3 py-1.5 rounded-full text-[11.5px] font-medium border transition-all ${
                     i === active
                       ? "bg-[#0D1B2A] border-[#0D1B2A] text-white"
-                      : "bg-white border-[#E4E0D6] text-[#64748B] hover:border-[#0D1B2A]"
+                      : "bg-white/[0.05] border-white/[0.09] text-slate-400 hover:border-[#C9A040]"
                   }`}
                 >
                   {n.short}

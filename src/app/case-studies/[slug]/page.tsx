@@ -118,28 +118,28 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         </section>
 
         {/* Body */}
-        <section className="section-py bg-white">
+        <section className="section-py bg-[#0A1628]">
           <div className="container-xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
               <div className="lg:col-span-8">
                 <div className="mb-11">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-8 h-px bg-[#A8801A]" />
-                    <span className="type-technical text-[#A8801A]">Context</span>
+                    <div className="w-8 h-px bg-[#C9A040]" />
+                    <span className="type-technical text-[#C9A040]">Context</span>
                   </div>
-                  <p className="text-[17px] text-[#334155] leading-relaxed">{cs.challenge}</p>
+                  <p className="text-[17px] text-slate-300 leading-relaxed">{cs.challenge}</p>
                 </div>
 
                 <div className="mb-11">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-8 h-px bg-[#A8801A]" />
-                    <span className="type-technical text-[#A8801A]">Alpha&apos;s Role</span>
+                    <div className="w-8 h-px bg-[#C9A040]" />
+                    <span className="type-technical text-[#C9A040]">Alpha&apos;s Role</span>
                   </div>
-                  <p className="text-[17px] text-[#334155] leading-relaxed">{cs.alphaRole}</p>
+                  <p className="text-[17px] text-slate-300 leading-relaxed">{cs.alphaRole}</p>
                 </div>
 
-                <div className="p-6 bg-[#F8F6F1] border border-[#E4E0D6] rounded-xl">
-                  <p className="text-[12.5px] text-[#94A3B8] leading-relaxed">
+                <div className="p-6 bg-[#0A1628] border border-white/[0.09] rounded-xl">
+                  <p className="text-[12.5px] text-slate-500 leading-relaxed">
                     Engagement details are summarised at a level that preserves client
                     confidentiality. Specific outcomes are described only where they can be stated
                     factually.
@@ -151,12 +151,12 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
               <aside className="lg:col-span-4 flex flex-col gap-5">
                 {related && (
                   <div className="panel-light p-6">
-                    <span className="type-technical text-[#A8801A] block mb-3">Related Expertise</span>
-                    <h3 className="text-[15px] font-semibold text-[#0D1B2A] mb-2">{related.title}</h3>
-                    <p className="text-[13px] text-[#64748B] leading-relaxed mb-4">{related.tagline}</p>
+                    <span className="type-technical text-[#C9A040] block mb-3">Related Expertise</span>
+                    <h3 className="text-[15px] font-semibold text-white mb-2">{related.title}</h3>
+                    <p className="text-[13px] text-slate-400 leading-relaxed mb-4">{related.tagline}</p>
                     <Link
                       href={`/expertise/${related.slug}`}
-                      className="inline-flex items-center gap-1.5 type-technical text-[#0D1B2A] hover:text-[#A8801A] transition-colors group"
+                      className="inline-flex items-center gap-1.5 type-technical text-white hover:text-[#C9A040] transition-colors group"
                     >
                       <span className="link-rule">View discipline</span>
                       <ArrowRight size={11} className="group-hover:translate-x-1 transition-transform" />
@@ -165,14 +165,14 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 )}
 
                 <div className="panel-light p-6">
-                  <span className="type-technical text-[#A8801A] block mb-3">Next Engagement</span>
-                  <h3 className="text-[15px] font-semibold text-[#0D1B2A] mb-2">{next.title}</h3>
-                  <p className="text-[13px] text-[#64748B] leading-relaxed mb-4">
+                  <span className="type-technical text-[#C9A040] block mb-3">Next Engagement</span>
+                  <h3 className="text-[15px] font-semibold text-white mb-2">{next.title}</h3>
+                  <p className="text-[13px] text-slate-400 leading-relaxed mb-4">
                     {next.market} · {next.service}
                   </p>
                   <Link
                     href={`/case-studies/${next.slug}`}
-                    className="inline-flex items-center gap-1.5 type-technical text-[#0D1B2A] hover:text-[#A8801A] transition-colors group"
+                    className="inline-flex items-center gap-1.5 type-technical text-white hover:text-[#C9A040] transition-colors group"
                   >
                     <span className="link-rule">Open engagement</span>
                     <ArrowRight size={11} className="group-hover:translate-x-1 transition-transform" />

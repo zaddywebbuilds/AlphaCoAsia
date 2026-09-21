@@ -22,7 +22,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-[linear-gradient(120deg,#070D18_0%,#0A1628_52%,#050A12_100%)]" />
       <div className="absolute inset-0 tex-grid-fine opacity-30" />
       <div className="absolute top-[-14%] right-[-8%] w-[640px] h-[640px] rounded-full bg-[#C9A040] opacity-[0.07] blur-[150px]" />
-      <div className="absolute bottom-[-18%] left-[-6%] w-[520px] h-[520px] rounded-full bg-[#1E3F9E] opacity-[0.14] blur-[150px]" />
+      <div className="absolute bottom-[-18%] left-[-6%] w-[520px] h-[520px] rounded-full bg-[#12213A] opacity-[0.14] blur-[150px]" />
 
       <div className="container-xl relative z-10 pt-32 pb-28">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">

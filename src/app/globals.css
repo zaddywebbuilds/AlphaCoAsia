@@ -32,19 +32,21 @@
   --color-warm-200: #F0EDE5;
   --color-warm-300: #E4E0D6;
 
-  /* Intelligence layer — data / network / depth.
-     Gold stays the brand voice; cyan-blue is the data voice. */
-  --color-ink: #05090F;
+  /* Three colours only: deep blue ground, gold accent, white/ivory type.
+     No cyan, no electric blue, no violet — they pulled the brand technical. */
+  --color-ink: #050A12;
   --color-ink-800: #070D18;
   --color-graphite: #141C28;
   --color-graphite-light: #1E2937;
 
-  --color-data-500: #38BDF8;
-  --color-data-400: #5FCDF9;
-  --color-data-600: #1E9FD8;
-  --color-electric: #3B6FE8;
-  --color-electric-deep: #1E3F9E;
-  --color-violet: #7B6FE8;
+  --color-deep-900: #050A12;
+  --color-deep-800: #0A1628;
+  --color-deep-700: #12213A;
+  --color-deep-600: #1B2F4D;
+
+  --color-gold-bright: #E8D9A8;
+  --color-gold-pale: #F0E4C0;
+  --color-gold-deep: #B08C2E;
 
   /* Semantic tokens */
   --color-background: var(--color-warm-100);
@@ -89,8 +91,8 @@
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
 body {
-  background-color: #ffffff;
-  color: var(--color-navy-900);
+  background-color: #050A12;
+  color: #ffffff;
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.6;
@@ -157,16 +159,17 @@ body {
   margin-bottom: 1rem;
 }
 
-/* Card base */
+/* Card base — deep blue ground, gold on hover */
 .card {
-  background: #ffffff;
-  border: 1px solid var(--color-border);
+  background: linear-gradient(158deg, rgba(255,255,255,0.055), rgba(255,255,255,0.015) 55%, rgba(255,255,255,0.035));
+  border: 1px solid rgba(255,255,255,0.09);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 18px 44px -24px rgba(0,0,0,0.9);
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
 }
 .card:hover {
-  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(201,160,64,0.42);
+  box-shadow: 0 26px 56px -26px rgba(0,0,0,0.95);
   transform: translateY(-2px);
 }
 
@@ -281,14 +284,14 @@ body {
   position: absolute;
   top: 0; left: 12%; right: 12%;
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(56,189,248,0.55), transparent);
+  background: linear-gradient(to right, transparent, rgba(201,160,64,0.55), transparent);
 }
 
 .panel-light {
-  background: #fff;
-  border: 1px solid var(--color-border);
+  background: linear-gradient(158deg, rgba(255,255,255,0.06), rgba(255,255,255,0.018) 55%, rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.10);
   border-radius: 14px;
-  box-shadow: 0 1px 2px rgba(10,22,40,0.05), 0 16px 40px -20px rgba(10,22,40,0.22);
+  box-shadow: 0 18px 44px -22px rgba(0,0,0,0.85);
 }
 
 /* Hairline rules */

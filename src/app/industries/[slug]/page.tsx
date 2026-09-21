@@ -74,22 +74,22 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
           </div>
         </section>
 
-        <section className="section-py bg-white">
+        <section className="section-py bg-[#0A1628]">
           <div className="container-xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
               <div className="lg:col-span-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-8 h-px bg-[#A8801A]" />
-                  <span className="type-technical text-[#A8801A]">How We Support You</span>
+                  <div className="w-8 h-px bg-[#C9A040]" />
+                  <span className="type-technical text-[#C9A040]">How We Support You</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {disciplines.map((d) => (
                     <Link key={d.slug} href={`/expertise/${d.slug}`} className="card p-6 flex flex-col group overflow-hidden">
                       <DisciplineImage id={d.slug} className="-mx-6 -mt-6 mb-5 h-[150px]" />
-                      <h3 className="text-[15px] font-semibold text-[#0D1B2A] mb-1.5 leading-snug">
+                      <h3 className="text-[15px] font-semibold text-white mb-1.5 leading-snug">
                         <span className="link-rule">{d.title}</span>
                       </h3>
-                      <p className="text-[13px] text-[#64748B] leading-relaxed">{d.tagline}</p>
+                      <p className="text-[13px] text-slate-400 leading-relaxed">{d.tagline}</p>
                     </Link>
                   ))}
                 </div>
@@ -97,10 +97,10 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
 
               <aside className="lg:col-span-4 flex flex-col gap-5">
                 <div className="panel-light p-6">
-                  <span className="type-technical text-[#A8801A] block mb-4">Typical Challenges</span>
+                  <span className="type-technical text-[#C9A040] block mb-4">Typical Challenges</span>
                   <ul className="space-y-2.5">
                     {ind.challenges.map((c) => (
-                      <li key={c} className="flex items-start gap-2.5 text-[13.5px] text-[#64748B]">
+                      <li key={c} className="flex items-start gap-2.5 text-[13.5px] text-slate-400">
                         <span className="w-1 h-1 rounded-full bg-[#C9A040] mt-2 shrink-0" />
                         {c}
                       </li>
@@ -110,14 +110,14 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
 
                 {engagements.length > 0 && (
                   <div className="panel-light p-6">
-                    <span className="type-technical text-[#A8801A] block mb-4">Related Engagements</span>
+                    <span className="type-technical text-[#C9A040] block mb-4">Related Engagements</span>
                     <div className="space-y-4">
                       {engagements.map((e) => (
                         <Link key={e.slug} href={`/case-studies/${e.slug}`} className="block group">
-                          <h4 className="text-[13.5px] font-semibold text-[#0D1B2A] leading-snug mb-1">
+                          <h4 className="text-[13.5px] font-semibold text-white leading-snug mb-1">
                             <span className="link-rule">{e.title}</span>
                           </h4>
-                          <p className="type-technical text-[#94A3B8]">{e.market} · {e.service}</p>
+                          <p className="type-technical text-slate-500">{e.market} · {e.service}</p>
                         </Link>
                       ))}
                     </div>
@@ -126,7 +126,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
 
                 <Link
                   href="/contact"
-                  className="btn-magnetic inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-[#0D1B2A] text-white text-sm font-semibold rounded-lg hover:bg-[#1A3550]"
+                  className="btn-magnetic inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-[#C9A040] text-[#221805] text-sm font-semibold rounded-lg hover:bg-[#12213A]"
                 >
                   Discuss your requirements
                   <ArrowRight size={14} className="btn-arrow" />
