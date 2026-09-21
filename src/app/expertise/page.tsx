@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { ChallengeNav } from "@/components/sections/ChallengeNav";
 import { DisciplineImage } from "@/components/viz/DisciplineImage";
 import { EXPERTISE } from "@/lib/data";
 
@@ -35,8 +36,24 @@ export default function ExpertisePage() {
           </div>
         </section>
 
+        {/* Need-framed entry, ahead of the service-named list — for visitors who
+            know what they are facing but not what it is called. */}
+        <ChallengeNav />
+
         <section className="section-py bg-[#0A1628]">
           <div className="container-xl">
+            <div className="mb-12 max-w-2xl">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-8 h-px bg-[#C9A040]" />
+                <span className="type-technical text-[#C9A040]">Disciplines</span>
+              </div>
+              <h2
+                className="font-display text-white leading-[1.08]"
+                style={{ fontSize: "clamp(1.8rem, 3.2vw, 2.6rem)", fontWeight: 600, letterSpacing: "-0.025em" }}
+              >
+                The full range of our advisory
+              </h2>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {EXPERTISE.map((item, i) => (
                 <Link
