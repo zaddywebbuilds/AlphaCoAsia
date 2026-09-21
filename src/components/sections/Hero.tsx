@@ -46,7 +46,7 @@ export function Hero() {
       <div className="container-xl relative z-10 pt-32 pb-24 lg:pt-28 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
           {/* ---------- content ---------- */}
-          <div className="lg:col-span-6 xl:col-span-6 order-2 lg:order-1">
+          <div className="lg:col-span-6 xl:col-span-6">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
@@ -119,7 +119,7 @@ export function Hero() {
           </div>
 
           {/* ---------- console: two surfaces, network above, footage below ---------- */}
-          <div className="lg:col-span-6 xl:col-span-6 order-1 lg:order-2">
+          <div className="lg:col-span-6 xl:col-span-6">
             <motion.div
               initial={{ opacity: 0, y: 24, scale: 0.97 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
