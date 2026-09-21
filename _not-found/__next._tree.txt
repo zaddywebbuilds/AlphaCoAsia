@@ -1,2 +1,2 @@
-:HL["/AlphaCoAsia/_next/static/chunks/10tvy3ql4h62q.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"ifWslMBS1SgClNRE93P1t"}
+:HL["/AlphaCoAsia/_next/static/chunks/1gcr3bnfwkyzn.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"HYtQvUO7P6K00H5vbkOwm"}
