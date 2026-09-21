@@ -1,3 +1,3 @@
-:HL["/AlphaCoAsia/_next/static/chunks/2o7zt-99lfvsl.css","style"]
+:HL["/AlphaCoAsia/_next/static/chunks/35buv8tqsh7hl.css","style"]
 :HL["/AlphaCoAsia/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"team","param":null,"prefetchHints":4160,"slots":{"children":{"name":"slug","param":{"type":"d","key":"raymond-cheung","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"VJSzF4jMU1sF8sPr8eKpX"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"team","param":null,"prefetchHints":4160,"slots":{"children":{"name":"slug","param":{"type":"d","key":"raymond-cheung","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"DTHn61qS8bp-boJY6dIbV"}
