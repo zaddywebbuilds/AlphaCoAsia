@@ -1,5 +1,9 @@
 import Image from "next/image";
 
+/* With images.unoptimized the src passes through untouched, so basePath has to
+   be applied by hand or every image 404s on the GitHub Pages subdirectory. */
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 /* Photographic panel for a discipline. One image per subject, graded to the
    navy/gold palette so a row of them reads as one art-directed set rather than
    assorted stock. Decorative: the card's heading carries the meaning. */
@@ -63,7 +67,7 @@ export function DisciplineImage({
   return (
     <div className={`relative overflow-hidden bg-[#070D14] ${className}`} aria-hidden="true">
       <Image
-        src={`/media/disciplines/${file}.jpg`}
+        src={`${BASE}/media/disciplines/${file}.jpg`}
         alt=""
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
