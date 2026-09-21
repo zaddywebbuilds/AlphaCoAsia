@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center bg-[#0A1628] overflow-hidden">
       {/* Background pattern */}
-      <div className="absolute inset-0 opacity-[0.04]">
+      <div className="absolute inset-0 opacity-[0.07]">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
@@ -19,11 +19,13 @@ export function Hero() {
       </div>
 
       {/* Gold accent line top */}
-      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#C9A040] to-transparent opacity-60" />
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C9A040] to-transparent" />
 
-      {/* Subtle glow */}
-      <div className="absolute top-1/3 right-1/4 w-96 h-96 rounded-full bg-[#1A3550] opacity-30 blur-3xl" />
-      <div className="absolute bottom-1/4 left-1/3 w-72 h-72 rounded-full bg-[#0D2A4A] opacity-20 blur-3xl" />
+      {/* Dramatic glows */}
+      <div className="absolute -top-20 right-0 w-[600px] h-[600px] rounded-full bg-[#C9A040] opacity-[0.04] blur-3xl" />
+      <div className="absolute top-1/3 right-1/4 w-96 h-96 rounded-full bg-[#1A3550] opacity-40 blur-3xl" />
+      <div className="absolute bottom-1/4 left-1/3 w-72 h-72 rounded-full bg-[#0D2A4A] opacity-30 blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-[#C9A040] opacity-[0.03] blur-3xl" />
 
       <div className="container-xl relative z-10 pt-24 pb-16">
         <div className="max-w-4xl">

@@ -7,7 +7,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export function IndustriesSection() {
   return (
-    <section className="section-py bg-[#F8F6F1]">
+    <section className="section-py bg-white">
       <div className="container-xl">
         <SectionHeader
           eyebrow="Who We Help"
@@ -26,15 +26,15 @@ export function IndustriesSection() {
             >
               <Link
                 href={`/industries/${item.slug}`}
-                className="block p-5 bg-white rounded-xl border border-[#E4E0D6] hover:border-[#C9A040] hover:shadow-md transition-all group"
+                className="block p-5 bg-[#F8F6F1] rounded-xl border border-[#E4E0D6] hover:bg-[#0D1B2A] hover:border-[#0D1B2A] transition-all duration-300 group"
               >
-                <h3 className="text-sm font-semibold text-[#0D1B2A] mb-2 group-hover:text-[#1A3550]">
+                <h3 className="text-sm font-semibold text-[#0D1B2A] mb-2 group-hover:text-white transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-xs text-[#64748B] leading-relaxed line-clamp-2">
+                <p className="text-xs text-[#64748B] leading-relaxed line-clamp-2 group-hover:text-slate-400 transition-colors">
                   {item.description}
                 </p>
-                <div className="flex items-center gap-1 mt-3 text-xs font-medium text-[#A8801A]">
+                <div className="flex items-center gap-1 mt-3 text-xs font-medium text-[#A8801A] group-hover:text-[#C9A040] transition-colors">
                   Explore
                   <ArrowRight size={10} className="translate-x-0 group-hover:translate-x-1 transition-transform" />
                 </div>

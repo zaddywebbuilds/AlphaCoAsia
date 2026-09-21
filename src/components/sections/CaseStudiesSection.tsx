@@ -36,8 +36,11 @@ export function CaseStudiesSection({ limit = 4 }: { limit?: number }) {
             >
               <Link
                 href={`/case-studies/${cs.slug}`}
-                className="card p-7 flex flex-col h-full group"
+                className="group flex flex-col h-full bg-white rounded-xl border border-[#E4E0D6] overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               >
+                {/* Gold slide-in bar */}
+                <div className="h-0.5 bg-gradient-to-r from-[#C9A040] to-[#A8801A] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <div className="p-7 flex flex-col flex-1">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
                     <span className="px-2.5 py-1 bg-[#EDF3F9] text-[#1A3550] text-xs font-semibold rounded-md">
@@ -59,6 +62,7 @@ export function CaseStudiesSection({ limit = 4 }: { limit?: number }) {
                 <div className="flex items-center gap-1.5 mt-5 pt-4 border-t border-[#E4E0D6] text-xs font-semibold text-[#A8801A]">
                   Read engagement
                   <ArrowRight size={11} className="translate-x-0 group-hover:translate-x-1 transition-transform" />
+                </div>
                 </div>
               </Link>
             </motion.div>

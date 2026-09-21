@@ -24,14 +24,14 @@ export function LeadershipSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
             >
-              <div className="card bg-white overflow-hidden h-full flex flex-col">
+              <div className="bg-white rounded-xl border border-[#E4E0D6] overflow-hidden h-full flex flex-col hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                 {/* Photo placeholder */}
-                <div className="h-52 bg-gradient-to-br from-[#0D1B2A] to-[#1A3550] flex items-center justify-center relative overflow-hidden">
-                  <div className="text-4xl font-display font-semibold text-white/20">
+                <div className="h-52 bg-gradient-to-br from-[#0A1628] via-[#0D1B2A] to-[#1A3550] flex items-center justify-center relative overflow-hidden">
+                  <div className="text-5xl font-display font-bold text-white/10">
                     {person.name.split(" ").map((n) => n[0]).join("")}
                   </div>
                   {/* Gold line bottom */}
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#C9A040] to-transparent opacity-50" />
+                  <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C9A040] to-transparent" />
                 </div>
 
                 <div className="p-6 flex flex-col flex-1">
