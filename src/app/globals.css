@@ -88,7 +88,21 @@
 /* Base */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+/* Tells the browser to render native UI — select popups, scrollbars, date
+   pickers, autofill, the caret — from its dark palette. Without this the
+   option list opens white regardless of how the select itself is styled. */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  color-scheme: dark;
+}
+
+/* Chrome and Firefox still take option colours from the option itself. */
+select option,
+select optgroup {
+  background-color: #0E1B30;
+  color: #ffffff;
+}
 
 body {
   background-color: #050A12;

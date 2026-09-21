@@ -96,7 +96,9 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <label className="block text-xs font-semibold text-white mb-1.5 uppercase tracking-wide">Area of Interest</label>
-                      <select className="w-full px-4 py-3 border border-white/[0.09] rounded-lg text-sm text-white focus:outline-none focus:border-[#C9A040] focus:ring-1 focus:ring-[#C9A040] bg-white/[0.06]">
+                      {/* Opaque rather than translucent, so the closed control and
+                          the open option list sit on the same colour. */}
+                      <select className="w-full px-4 py-3 border border-white/[0.09] rounded-lg text-sm text-white focus:outline-none focus:border-[#C9A040] focus:ring-1 focus:ring-[#C9A040] bg-[#0E1B30]">
                         <option value="">Select a service area</option>
                         {SERVICE_OPTIONS.map((s) => (
                           <option key={s} value={s}>{s}</option>
