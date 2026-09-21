@@ -23,7 +23,7 @@ export default function HomePage() {
         <ExpertiseSection />
         <IndustriesSection />
         <ChallengeNav />
-        <CaseStudiesSection limit={4} />
+        <CaseStudiesSection />
         <APACMap />
         <WhyAlpha />
         <LeadershipSection />

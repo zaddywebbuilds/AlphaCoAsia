@@ -1,128 +1,199 @@
 "use client";
-import { useState } from "react";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { APAC_MARKETS } from "@/lib/data";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { projectAPAC } from "@/lib/geo";
+import { useDeviceTier, usePrefersReducedMotion, useWebGLSupported, useInView } from "@/lib/useClient";
 
-export function APACMap() {
-  const [active, setActive] = useState<string | null>("Singapore");
-  const activeMarket = APAC_MARKETS.find((m) => m.country === active);
+const APACScene = dynamic(() => import("@/components/three/APACScene"), { ssr: false });
+
+/* Pseudo-perspective projection shared by the static scene: the plane recedes
+   toward the top, so the fallback carries the same spatial idea as the WebGL one. */
+const VB = { w: 600, h: 380, cx: 300, halfW: 252, yFar: 112, depth: 196 };
+
+function project(px: number, pz: number) {
+  const d = (pz + 1) / 2; // 0 far, 1 near
+  const s = 0.44 + d * 0.56;
+  return { x: VB.cx + px * VB.halfW * s, y: VB.yFar + d * VB.depth, s };
+}
+
+function StaticPlane({ active }: { active: string }) {
+  const nodes = APAC_MARKETS.map((m) => {
+    const p = projectAPAC(m.lat, m.lng);
+    return { ...m, ...project(p.x, -p.y) };
+  });
+  const hub = nodes.find((n) => n.hub)!;
+
+  const zLines = Array.from({ length: 9 }, (_, i) => -1 + (i / 8) * 2);
+  const xLines = Array.from({ length: 13 }, (_, i) => -1 + (i / 12) * 2);
 
   return (
-    <section className="section-py bg-[#0D1B2A]">
-      <div className="container-xl">
-        <SectionHeader
-          eyebrow="APAC Presence"
-          title="Asia Pacific Experience"
-          description="Advisory and consulting engagements across Singapore and key financial markets throughout Asia."
-          light
-        />
+    <svg viewBox={`0 0 ${VB.w} ${VB.h}`} className="w-full h-full" aria-hidden="true">
+      <defs>
+        <linearGradient id="planeFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#38BDF8" stopOpacity="0.03" />
+          <stop offset="60%" stopColor="#38BDF8" stopOpacity="0.30" />
+          <stop offset="100%" stopColor="#38BDF8" stopOpacity="0.46" />
+        </linearGradient>
+        <mask id="planeMask">
+          <rect width={VB.w} height={VB.h} fill="url(#planeFade)" />
+        </mask>
+      </defs>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* SVG Map */}
-          <div className="relative bg-[#0A1628] rounded-2xl border border-white/8 overflow-hidden aspect-[4/3]">
-            <svg viewBox="0 0 100 80" className="w-full h-full" style={{ transform: "scale(1.05)" }}>
-              {/* Subtle grid */}
-              <defs>
-                <pattern id="mapgrid" width="10" height="10" patternUnits="userSpaceOnUse">
-                  <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.2" opacity="0.15" />
-                </pattern>
-              </defs>
-              <rect width="100" height="80" fill="url(#mapgrid)" />
+      <g mask="url(#planeMask)" stroke="#38BDF8" fill="none">
+        {zLines.map((pz) => {
+          const a = project(-1, pz), b = project(1, pz);
+          return <line key={`z${pz}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} strokeWidth="0.7" />;
+        })}
+        {xLines.map((px) => {
+          const a = project(px, -1), b = project(px, 1);
+          return <line key={`x${px}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} strokeWidth="0.7" />;
+        })}
+      </g>
 
-              {/* Connection lines from Singapore */}
-              {APAC_MARKETS.filter((m) => m.country !== "Singapore").map((market) => {
-                const sg = APAC_MARKETS[0];
-                return (
-                  <line
-                    key={market.country}
-                    x1={sg.x} y1={sg.y}
-                    x2={market.x} y2={market.y}
-                    stroke="#C9A040"
-                    strokeWidth="0.4"
-                    strokeDasharray="1.5 2"
-                    opacity="0.3"
-                  />
-                );
-              })}
+      {/* Reach contours from Singapore */}
+      {[42, 78, 116].map((r, i) => (
+        <ellipse key={r} cx={hub.x} cy={hub.y} rx={r} ry={r * 0.34} fill="none" stroke="#C9A040" strokeOpacity={0.17 - i * 0.04} strokeWidth="0.8" />
+      ))}
 
-              {/* Market dots */}
-              {APAC_MARKETS.map((market) => (
-                <g
-                  key={market.country}
-                  onClick={() => setActive(market.country)}
-                  className="cursor-pointer"
-                >
-                  {/* Pulse ring for Singapore */}
-                  {market.country === "Singapore" && (
-                    <circle
-                      cx={market.x} cy={market.y} r="4"
-                      fill="none"
-                      stroke="#C9A040"
-                      strokeWidth="0.6"
-                      opacity="0.4"
-                    />
-                  )}
-                  <circle
-                    cx={market.x} cy={market.y}
-                    r={market.country === active ? "3" : "2"}
-                    fill={market.country === active ? "#C9A040" : market.country === "Singapore" ? "#C9A040" : "#3A6FA5"}
-                    opacity={market.country === active ? 1 : 0.7}
-                    className="transition-all duration-200"
-                  />
-                  <text
-                    x={market.x + 3.5} y={market.y + 1}
-                    fontSize="3.5"
-                    fill="white"
-                    opacity="0.7"
-                    fontFamily="Inter, sans-serif"
-                    fontWeight="500"
-                  >
-                    {market.code}
-                  </text>
-                </g>
-              ))}
-            </svg>
+      {/* Links */}
+      {nodes.filter((n) => !n.hub).map((n) => {
+        const on = n.code === active;
+        const mx = (hub.x + n.x) / 2;
+        const my = (hub.y + n.y) / 2 - 42;
+        return (
+          <path key={n.code} d={`M ${hub.x} ${hub.y} Q ${mx} ${my} ${n.x} ${n.y}`} fill="none"
+            stroke={on ? "#C9A040" : "#38BDF8"} strokeOpacity={on ? 0.95 : 0.26} strokeWidth={on ? 1.8 : 0.9} />
+        );
+      })}
+
+      {/* Nodes */}
+      {nodes.map((n) => {
+        const on = n.code === active;
+        const c = n.hub || on ? "#C9A040" : "#38BDF8";
+        const stem = n.hub ? 30 : 20;
+        return (
+          <g key={n.code}>
+            <ellipse cx={n.x} cy={n.y} rx={on ? 7 : 5} ry={(on ? 7 : 5) * 0.34} fill={c} opacity="0.3" />
+            <line x1={n.x} y1={n.y} x2={n.x} y2={n.y - stem} stroke={c} strokeOpacity={on ? 0.85 : 0.4} strokeWidth="1" />
+            <circle cx={n.x} cy={n.y - stem} r={on ? 4.6 : 3.2} fill={c} />
+            <text x={n.x} y={n.y - stem - 9} textAnchor="middle" fontSize="8.5" letterSpacing="1.6"
+              fill={on ? "#E0C780" : "rgba(148,163,184,0.72)"} fontFamily="Inter, sans-serif" fontWeight="500">
+              {n.code}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
+export function APACMap() {
+  const [active, setActive] = useState("SG");
+  const tier = useDeviceTier();
+  const reduced = usePrefersReducedMotion();
+  const webgl = useWebGLSupported();
+  const { ref, inView } = useInView<HTMLDivElement>("250px");
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    if (webgl === true && tier !== "low" && inView) {
+      const id = window.setTimeout(() => setReady(true), 150);
+      return () => window.clearTimeout(id);
+    }
+  }, [webgl, tier, inView]);
+
+  const useWebGL = ready && webgl === true && tier !== "low";
+  const market = APAC_MARKETS.find((m) => m.code === active)!;
+
+  return (
+    <section className="relative section-py bg-[#05090F] overflow-hidden tex-grain">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_45%_45%,#0D2338_0%,#05090F_72%)]" />
+      <div className="absolute inset-0 tex-grid-fine opacity-40" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[760px] h-[420px] rounded-full bg-[#1E9FD8] opacity-[0.09] blur-[140px]" />
+
+      <div className="container-xl relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-px bg-[#C9A040]" />
+              <span className="type-technical text-[#C9A040]">APAC Network</span>
+            </div>
+            <h2 className="font-display text-white leading-[1.08]"
+              style={{ fontSize: "clamp(1.9rem, 3.6vw, 3.1rem)", fontWeight: 600, letterSpacing: "-0.025em" }}>
+              Asia Pacific experience
+            </h2>
+          </div>
+          <div className="lg:col-span-5 lg:pb-2">
+            <div className="rule-h mb-5" />
+            <p className="text-sm text-slate-400 leading-relaxed">
+              Advisory and consulting engagements across Singapore and key financial markets
+              throughout Asia. Select a market to view engagement categories.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Scene */}
+          <div ref={ref} className="lg:col-span-7 relative">
+            <div className="relative aspect-[600/380] rounded-2xl border border-white/[0.08] overflow-hidden bg-[#070D18]/60">
+              <div className="scene-fallback absolute inset-0" style={{ opacity: useWebGL ? 0 : 1 }}>
+                <StaticPlane active={active} />
+              </div>
+              {useWebGL && (
+                <div className="absolute inset-0">
+                  <APACScene active={active} onSelect={setActive} tier={tier} reduced={reduced} running={inView} />
+                </div>
+              )}
+              <div className="absolute top-4 left-4 flex items-center gap-2 pointer-events-none">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] anim-node" />
+                <span className="type-technical text-slate-500">Engagement Markets · {APAC_MARKETS.length}</span>
+              </div>
+            </div>
           </div>
 
-          {/* Market details */}
-          <div>
-            <div className="grid grid-cols-3 gap-2 mb-8">
-              {APAC_MARKETS.map((market) => (
+          {/* Data panel */}
+          <div className="lg:col-span-5">
+            <div className="grid grid-cols-3 gap-1.5 mb-6">
+              {APAC_MARKETS.map((m) => (
                 <button
-                  key={market.country}
-                  onClick={() => setActive(market.country)}
-                  className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-all text-left ${
-                    active === market.country
-                      ? "bg-[#C9A040] text-white"
-                      : "bg-white/6 text-slate-300 hover:bg-white/12 border border-white/10"
+                  key={m.code}
+                  onClick={() => setActive(m.code)}
+                  aria-pressed={active === m.code}
+                  className={`px-3 py-2.5 rounded-lg text-left transition-all duration-300 border ${
+                    active === m.code
+                      ? "bg-[#C9A040] border-[#C9A040] text-[#0A1628]"
+                      : "bg-white/[0.04] border-white/[0.09] text-slate-300 hover:border-[#38BDF8]/40 hover:bg-white/[0.07]"
                   }`}
                 >
-                  {market.country}
+                  <div className="type-technical opacity-70 mb-0.5">{m.code}</div>
+                  <div className="text-[12.5px] font-medium leading-tight">{m.country}</div>
                 </button>
               ))}
             </div>
 
-            {activeMarket && (
-              <div className="bg-white/6 border border-white/10 rounded-2xl p-7">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-2 h-2 rounded-full bg-[#C9A040]" />
-                  <h3 className="text-base font-semibold text-white">{activeMarket.country}</h3>
-                </div>
-                <p className="text-sm text-slate-400 mb-5">
-                  Selected engagement categories in this market:
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {activeMarket.engagements.map((e) => (
-                    <span
-                      key={e}
-                      className="px-3 py-1.5 bg-white/8 border border-white/12 rounded-full text-xs text-slate-300"
-                    >
-                      {e}
-                    </span>
-                  ))}
-                </div>
+            <div className="panel-dim p-7">
+              <div className="flex items-baseline justify-between mb-1">
+                <h3 className="font-display text-xl font-semibold text-white">{market.country}</h3>
+                <span className="type-technical text-[#C9A040]">{market.code}</span>
               </div>
-            )}
+              <p className="type-technical text-slate-500 mb-5">{market.city}</p>
+
+              <div className="rule-h mb-5" />
+
+              <p className="type-technical text-slate-500 mb-3">Engagement Categories</p>
+              <div className="flex flex-wrap gap-1.5 mb-5">
+                {market.engagements.map((e) => (
+                  <span key={e} className="px-2.5 py-1 bg-white/[0.06] border border-white/[0.10] rounded text-[11.5px] text-slate-300">
+                    {e}
+                  </span>
+                ))}
+              </div>
+
+              <p className="text-[11.5px] text-slate-600 leading-relaxed">
+                Reflects advisory experience in this market. Alpha Consultant is based in Singapore.
+              </p>
+            </div>
           </div>
         </div>
       </div>

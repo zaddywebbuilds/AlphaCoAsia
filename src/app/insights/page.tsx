@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight, Clock } from "lucide-react";
+import { Clock } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { INSIGHTS_PLACEHOLDER } from "@/lib/data";
@@ -55,11 +54,16 @@ export default function InsightsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {INSIGHTS_PLACEHOLDER.map((insight) => (
-                <Link key={insight.slug} href={`/insights/${insight.slug}`} className="card bg-white p-6 flex flex-col group">
-                  <span className="inline-block px-2.5 py-1 bg-[#EDF3F9] text-[#1A3550] text-xs font-semibold rounded-md mb-4">
-                    {insight.category}
-                  </span>
-                  <h2 className="text-sm font-semibold text-[#0D1B2A] leading-snug mb-3 group-hover:text-[#1A3550] transition-colors flex-1">
+                <article key={insight.slug} className="card bg-white p-6 flex flex-col">
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="inline-block px-2.5 py-1 bg-[#EDF3F9] text-[#1A3550] text-xs font-semibold rounded-md">
+                      {insight.category}
+                    </span>
+                    <span className="px-2 py-1 border border-[#E4E0D6] rounded type-technical text-[#94A3B8]">
+                      In Preparation
+                    </span>
+                  </div>
+                  <h2 className="text-sm font-semibold text-[#0D1B2A] leading-snug mb-3 flex-1">
                     {insight.title}
                   </h2>
                   <p className="text-sm text-[#64748B] leading-relaxed mb-5">{insight.excerpt}</p>
@@ -67,11 +71,8 @@ export default function InsightsPage() {
                     <span className="text-xs text-[#94A3B8] flex items-center gap-1">
                       <Clock size={11} /> {insight.readTime}
                     </span>
-                    <span className="text-xs text-[#A8801A] font-semibold flex items-center gap-1">
-                      Read <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform" />
-                    </span>
                   </div>
-                </Link>
+                </article>
               ))}
             </div>
 

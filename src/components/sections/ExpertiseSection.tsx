@@ -1,75 +1,131 @@
 "use client";
-import { motion } from "framer-motion";
+import { useRef, useCallback } from "react";
+import { motion, useInView } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Shield, Calculator, BarChart2, TrendingUp, FileText, Lock, Zap, Globe, BarChart } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { EXPERTISE } from "@/lib/data";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { ExpertiseGlyph } from "@/components/viz/ExpertiseGlyph";
+import { usePrefersReducedMotion, useDeviceTier } from "@/lib/useClient";
 
-const ICONS: Record<string, React.ElementType> = {
-  shield: Shield,
-  calculator: Calculator,
-  chart: BarChart2,
-  trending: TrendingUp,
-  document: FileText,
-  lock: Lock,
-  zap: Zap,
-  globe: Globe,
-  "bar-chart": BarChart,
-};
+/* Static depth offsets — the matrix sits on three planes rather than one flat
+   sheet, so the grid reads dimensional before anyone moves the pointer. */
+const PLANE = [0, -14, -6, -8, 0, -16, -12, -4, -10];
 
 export function ExpertiseSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, { once: true, margin: "-80px" });
+  const cards = useRef<(HTMLAnchorElement | null)[]>([]);
+  const reduced = usePrefersReducedMotion();
+  const tier = useDeviceTier();
+  const tiltOff = reduced || tier === "low";
+
+  const onMove = useCallback(
+    (e: React.PointerEvent) => {
+      if (tiltOff) return;
+      const { clientX, clientY } = e;
+      for (const el of cards.current) {
+        if (!el) continue;
+        const r = el.getBoundingClientRect();
+        const dx = (clientX - (r.left + r.width / 2)) / (r.width / 2);
+        const dy = (clientY - (r.top + r.height / 2)) / (r.height / 2);
+        // Falloff so only nearby cards respond — avoids the whole grid waving.
+        const f = Math.max(0, 1 - Math.hypot(dx, dy) / 2.6);
+        el.style.setProperty("--ty", `${(dx * 4 * f).toFixed(2)}deg`);
+        el.style.setProperty("--tx", `${(-dy * 3 * f).toFixed(2)}deg`);
+      }
+    },
+    [tiltOff]
+  );
+
+  const onLeave = useCallback(() => {
+    for (const el of cards.current) {
+      if (!el) continue;
+      el.style.setProperty("--ty", "0deg");
+      el.style.setProperty("--tx", "0deg");
+    }
+  }, []);
+
   return (
-    <section className="section-py bg-[#F8F6F1]">
-      <div className="container-xl">
-        <SectionHeader
-          eyebrow="Our Expertise"
-          title="Specialist Advisory Across the Insurance & Risk Value Chain"
-          description="From regulatory licensing to ERM and actuarial analytics, we bring senior-level expertise to every engagement."
-        />
+    <section ref={sectionRef} className="relative section-py bg-[#0A1119] overflow-hidden tex-grain">
+      <div className="absolute inset-0 tex-grid-fine opacity-50" />
+      <div className="absolute top-[-10%] left-[-8%] w-[520px] h-[520px] rounded-full bg-[#1E3F9E] opacity-[0.13] blur-[130px]" />
+      <div className="absolute bottom-[-14%] right-[-6%] w-[480px] h-[480px] rounded-full bg-[#1E9FD8] opacity-[0.08] blur-[130px]" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {EXPERTISE.map((item, i) => {
-            const Icon = ICONS[item.icon] || Shield;
-            return (
-              <motion.div
-                key={item.slug}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: i * 0.05, duration: 0.4 }}
+      <div className="container-xl relative z-10">
+        {/* Editorial header */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-px bg-[#C9A040]" />
+              <span className="type-technical text-[#C9A040]">Our Expertise</span>
+            </div>
+            <h2
+              className="font-display text-white leading-[1.08]"
+              style={{ fontSize: "clamp(1.9rem, 3.6vw, 3.1rem)", fontWeight: 600, letterSpacing: "-0.025em" }}
+            >
+              Specialist advisory across the
+              <br className="hidden sm:block" /> insurance &amp; risk value chain
+            </h2>
+          </div>
+          <div className="lg:col-span-5 lg:pb-2">
+            <div className="rule-h mb-5" />
+            <p className="text-sm text-slate-400 leading-relaxed">
+              From regulatory licensing to ERM and actuarial analytics, we bring senior-level
+              expertise to every engagement.
+            </p>
+          </div>
+        </div>
+
+        {/* Capability matrix */}
+        <div
+          className="matrix scene-3d grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          onPointerMove={onMove}
+          onPointerLeave={onLeave}
+        >
+          {EXPERTISE.map((item, i) => (
+            <motion.div
+              key={item.slug}
+              initial={{ opacity: 0, y: 26 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: i * 0.055, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Link
+                ref={(n) => {
+                  cards.current[i] = n;
+                }}
+                href={`/expertise/${item.slug}`}
+                className="tilt-card group/card relative flex flex-col h-full p-6 rounded-[14px] border border-white/[0.09] bg-[linear-gradient(158deg,rgba(255,255,255,0.055),rgba(255,255,255,0.015)_55%,rgba(255,255,255,0.035))] hover:border-[#38BDF8]/35 hover:[--tz:16px] focus-visible:[--tz:16px] shadow-[0_18px_44px_-24px_rgba(0,0,0,0.9)]"
+                style={{ ["--tz" as string]: `${PLANE[i]}px` }}
               >
-                <Link
-                  href={`/expertise/${item.slug}`}
-                  className="group flex flex-col h-full bg-white rounded-xl border border-[#E4E0D6] overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-                >
-                  {/* Gold slide-in top bar */}
-                  <div className="h-0.5 bg-gradient-to-r from-[#C9A040] to-[#A8801A] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                {/* Lit top bevel */}
+                <span className="absolute top-0 left-[14%] right-[14%] h-px bg-[linear-gradient(to_right,transparent,rgba(56,189,248,0.5),transparent)] opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
 
-                  <div className="p-7 flex flex-col flex-1">
-                    {/* Icon */}
-                    <div className="w-12 h-12 rounded-xl bg-[#0D1B2A] flex items-center justify-center mb-5 group-hover:bg-[#1A3550] transition-colors duration-300">
-                      <Icon size={20} className="text-[#C9A040]" />
-                    </div>
+                <div className="flex items-start justify-between mb-4">
+                  <span className="type-technical text-slate-600 tabular">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="type-technical text-[#38BDF8]/50">{item.shortTitle}</span>
+                </div>
 
-                    <h3 className="text-base font-semibold text-[#0D1B2A] mb-2.5 leading-snug group-hover:text-[#1A3550] transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed flex-1">
-                      {item.tagline}
-                    </p>
+                {/* Discipline diagram */}
+                <div className="h-[120px] mb-5 text-slate-500 group-hover/card:text-slate-300 transition-colors duration-500">
+                  <ExpertiseGlyph id={item.slug} active={inView} className="w-full h-full" />
+                </div>
 
-                    <div className="flex items-center gap-1.5 mt-5 text-xs font-semibold text-[#A8801A] group-hover:text-[#8B6914] transition-colors">
-                      Learn more
-                      <ArrowRight
-                        size={12}
-                        className="translate-x-0 group-hover:translate-x-1.5 transition-transform"
-                      />
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            );
-          })}
+                <h3 className="text-[15px] font-semibold text-white mb-2.5 leading-snug">
+                  {item.title}
+                </h3>
+                <p className="text-[13.5px] text-slate-400 leading-relaxed flex-1">
+                  {item.tagline}
+                </p>
+
+                <div className="mt-5 pt-4 border-t border-white/[0.07] flex items-center gap-1.5 type-technical text-[#C9A040] opacity-0 group-hover/card:opacity-100 translate-y-1 group-hover/card:translate-y-0 transition-all duration-400">
+                  View discipline
+                  <ArrowRight size={11} />
+                </div>
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

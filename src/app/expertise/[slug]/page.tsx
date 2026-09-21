@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const item = EXPERTISE.find((e) => e.slug === slug);
   if (!item) return {};
   return {
-    title: `${item.title} | Alpha Consultant Singapore`,
+    title: item.title,
     description: item.description,
   };
 }

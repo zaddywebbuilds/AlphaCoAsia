@@ -1,94 +1,118 @@
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { useRef, useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/data";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { usePrefersReducedMotion } from "@/lib/useClient";
 
 export function TestimonialsSection() {
-  const [idx, setIdx] = useState(0);
-  const t = TESTIMONIALS[idx];
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [i, setI] = useState(0);
+  const [dir, setDir] = useState(1);
+  const reduced = usePrefersReducedMotion();
+  const t = TESTIMONIALS[i];
+
+  const go = useCallback((d: number) => {
+    setDir(d);
+    setI((p) => (p + d + TESTIMONIALS.length) % TESTIMONIALS.length);
+  }, []);
+
+  // Advance on a slow cadence; pauses entirely under reduced motion.
+  useEffect(() => {
+    if (reduced || !inView) return;
+    const id = window.setInterval(() => go(1), 9000);
+    return () => window.clearInterval(id);
+  }, [reduced, inView, go]);
 
   return (
-    <section className="section-py bg-[#0D1B2A] relative overflow-hidden">
-      {/* Accent lines */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A040] to-transparent opacity-60" />
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-[#C9A040] opacity-[0.03] blur-3xl pointer-events-none" />
+    <section ref={ref} className="relative section-py bg-[#05090F] overflow-hidden tex-grain">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_55%_at_40%_45%,#12263D_0%,#05090F_72%)]" />
+      <div className="absolute inset-0 tex-grid-fine opacity-30" />
+
+      {/* Dimensional quote glyph sitting behind the text */}
+      <div
+        aria-hidden
+        className="absolute left-[3%] top-[16%] select-none pointer-events-none font-display text-[#C9A040] leading-none"
+        style={{ fontSize: "clamp(14rem, 30vw, 30rem)", opacity: 0.055 }}
+      >
+        &ldquo;
+      </div>
 
       <div className="container-xl relative z-10">
-        <SectionHeader
-          eyebrow="What Clients Say"
-          title="Trusted by Leading Financial Organisations"
-          align="center"
-          light
-        />
+        <div className="flex items-center gap-3 mb-12">
+          <div className="w-8 h-px bg-[#C9A040]" />
+          <span className="type-technical text-[#C9A040]">What Clients Say</span>
+        </div>
 
-        <div className="max-w-3xl mx-auto">
-          <div className="relative bg-[#0A1628] rounded-2xl border border-white/10 p-10 overflow-hidden">
-            {/* Large quote mark */}
-            <Quote
-              size={64}
-              className="text-[#C9A040] opacity-10 absolute top-6 left-6"
-              fill="currentColor"
-            />
-            {/* Gold accent left edge */}
-            <div className="absolute left-0 top-8 bottom-8 w-0.5 bg-gradient-to-b from-transparent via-[#C9A040] to-transparent opacity-60" />
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.3 }}
-                className="relative z-10"
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <div className="lg:col-span-9">
+            <AnimatePresence mode="wait" custom={dir}>
+              <motion.blockquote
+                key={i}
+                initial={{ opacity: 0, y: 14, rotateX: reduced ? 0 : -4 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                exit={{ opacity: 0, y: -10, rotateX: reduced ? 0 : 3 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="scene-3d"
               >
-                <p className="text-lg text-slate-200 leading-relaxed font-display italic mb-8">
-                  &ldquo;{t.quote}&rdquo;
+                <p
+                  className="font-display text-white leading-[1.32] mb-9"
+                  style={{ fontSize: "clamp(1.25rem, 2.5vw, 2.05rem)", fontWeight: 400, letterSpacing: "-0.015em" }}
+                >
+                  {t.quote}
                 </p>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#C9A040] to-[#A8801A] flex items-center justify-center text-white text-sm font-semibold">
-                    {t.author.split(" ").slice(-1)[0][0]}
-                  </div>
+                <footer className="flex items-center gap-4">
+                  <span className="w-10 h-px bg-[#C9A040]" />
                   <div>
-                    <div className="text-sm font-semibold text-white">{t.role}</div>
-                    <div className="text-sm text-[#C9A040]">{t.company}</div>
+                    <cite className="not-italic text-[15px] font-semibold text-white block">{t.author}</cite>
+                    <span className="text-[13px] text-slate-400">
+                      {t.role} · <span className="text-[#C9A040]">{t.company}</span>
+                    </span>
                   </div>
-                </div>
-              </motion.div>
+                </footer>
+              </motion.blockquote>
             </AnimatePresence>
           </div>
 
           {/* Controls */}
-          <div className="flex items-center justify-between mt-6">
-            <div className="flex gap-1.5">
-              {TESTIMONIALS.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setIdx(i)}
-                  className={`h-1.5 rounded-full transition-all ${
-                    i === idx ? "w-6 bg-[#C9A040]" : "w-2 bg-white/20"
-                  }`}
-                  aria-label={`Testimonial ${i + 1}`}
-                />
-              ))}
+          <div className="lg:col-span-3 flex lg:flex-col lg:items-end justify-between lg:justify-end gap-6">
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => go(-1)}
+                aria-label="Previous testimonial"
+                className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-slate-300 hover:border-[#C9A040] hover:text-[#C9A040] transition-colors"
+              >
+                <ArrowLeft size={15} />
+              </button>
+              <button
+                onClick={() => go(1)}
+                aria-label="Next testimonial"
+                className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-slate-300 hover:border-[#C9A040] hover:text-[#C9A040] transition-colors"
+              >
+                <ArrowRight size={15} />
+              </button>
             </div>
-            <div className="flex gap-2">
-              <button
-                onClick={() => setIdx((p) => (p - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
-                className="p-2 rounded-full border border-white/12 hover:bg-white/8 text-slate-400 hover:text-white transition-colors"
-                aria-label="Previous"
-              >
-                <ChevronLeft size={16} />
-              </button>
-              <button
-                onClick={() => setIdx((p) => (p + 1) % TESTIMONIALS.length)}
-                className="p-2 rounded-full border border-white/12 hover:bg-white/8 text-slate-400 hover:text-white transition-colors"
-                aria-label="Next"
-              >
-                <ChevronRight size={16} />
-              </button>
+            <div className="flex lg:flex-col items-center lg:items-end gap-2">
+              <span className="type-technical text-slate-600 tabular">
+                {String(i + 1).padStart(2, "0")} / {String(TESTIMONIALS.length).padStart(2, "0")}
+              </span>
+              <div className="flex lg:flex-col gap-1.5">
+                {TESTIMONIALS.map((_, n) => (
+                  <button
+                    key={n}
+                    onClick={() => {
+                      setDir(n > i ? 1 : -1);
+                      setI(n);
+                    }}
+                    aria-label={`Testimonial ${n + 1}`}
+                    aria-current={n === i}
+                    className={`transition-all duration-400 rounded-full ${
+                      n === i ? "bg-[#C9A040] w-5 h-1 lg:w-1 lg:h-5" : "bg-white/20 w-1.5 h-1 lg:w-1 lg:h-1.5 hover:bg-white/40"
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>

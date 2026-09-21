@@ -3,17 +3,18 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { EXPERTISE, INDUSTRIES } from "@/lib/data";
+import { ExpertiseGlyph } from "@/components/viz/ExpertiseGlyph";
 
 const NAV = [
   {
     label: "Expertise",
     href: "/expertise",
-    mega: EXPERTISE.map((e) => ({ label: e.title, href: `/expertise/${e.slug}`, sub: e.shortTitle })),
+    mega: EXPERTISE.map((e) => ({ label: e.title, href: `/expertise/${e.slug}`, slug: e.slug, sub: e.tagline })),
   },
   {
     label: "Industries",
     href: "/industries",
-    mega: INDUSTRIES.map((i) => ({ label: i.title, href: `/industries/${i.slug}` })),
+    mega: INDUSTRIES.map((i) => ({ label: i.title, href: `/industries/${i.slug}`, slug: i.slug, sub: "" })),
   },
   { label: "Training", href: "/training" },
   { label: "Case Studies", href: "/case-studies" },
@@ -27,80 +28,97 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handler);
+    const handler = () => setScrolled(window.scrollY > 24);
+    handler();
+    window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  // Lock the page behind the mobile sheet.
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const solid = scrolled || open || active !== null;
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-sm shadow-[0_1px_0_rgba(10,22,40,0.08),0_4px_24px_rgba(10,22,40,0.06)]"
-          : "bg-white/90 backdrop-blur-sm border-b border-[#E4E0D6]"
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        solid
+          ? "bg-[#070D18]/92 backdrop-blur-xl border-b border-white/[0.09] shadow-[0_8px_40px_-20px_rgba(0,0,0,0.9)]"
+          : "bg-transparent border-b border-transparent"
       }`}
     >
       <div className="container-xl">
-        <div className="flex items-center justify-between h-18 py-4">
+        <div className="flex items-center justify-between h-[74px]">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="flex flex-col">
-              <span className="text-[15px] font-semibold text-[#0D1B2A] leading-tight tracking-tight">
-                Alpha Consultant
-              </span>
-              <span className="text-[10px] font-medium text-[#A8801A] tracking-[0.1em] uppercase">
-                AlphaCoAsia
-              </span>
-            </div>
+          <Link href="/" className="flex flex-col leading-none shrink-0">
+            <span className="font-display text-[17px] font-semibold text-white tracking-tight">
+              Alpha Consultant
+            </span>
+            <span className="type-technical text-[#C9A040] mt-1">AlphaCoAsia</span>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1" onMouseLeave={() => setActive(null)}>
+          <nav className="hidden lg:flex items-center gap-0.5" onMouseLeave={() => setActive(null)}>
             {NAV.map((item) => (
-              <div key={item.label} className="relative" onMouseEnter={() => setActive(item.label)}>
+              <div key={item.label} className="relative" onMouseEnter={() => setActive(item.mega ? item.label : null)}>
                 {item.mega ? (
-                  <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-[#334155] hover:text-[#0D1B2A] rounded-md hover:bg-[#F8F6F1] transition-colors">
+                  <Link
+                    href={item.href}
+                    className="flex items-center gap-1.5 px-3.5 py-2 text-[13.5px] font-medium text-slate-300 hover:text-white rounded-md transition-colors"
+                  >
                     {item.label}
                     <ChevronDown
-                      size={14}
-                      className={`transition-transform duration-200 ${active === item.label ? "rotate-180" : ""}`}
+                      size={13}
+                      className={`transition-transform duration-300 ${active === item.label ? "rotate-180 text-[#C9A040]" : ""}`}
                     />
-                  </button>
+                  </Link>
                 ) : (
                   <Link
                     href={item.href}
-                    className="px-3 py-2 text-sm font-medium text-[#334155] hover:text-[#0D1B2A] rounded-md hover:bg-[#F8F6F1] transition-colors block"
+                    className="block px-3.5 py-2 text-[13.5px] font-medium text-slate-300 hover:text-white rounded-md transition-colors"
                   >
                     {item.label}
                   </Link>
                 )}
 
-                {/* Mega menu */}
+                {/* Mega panel */}
                 {item.mega && active === item.label && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[560px] z-50">
-                    <div className="bg-white rounded-xl shadow-[0_8px_40px_rgba(10,22,40,0.12)] border border-[#E4E0D6] overflow-hidden">
-                      <div className="p-2 grid grid-cols-2 gap-0.5">
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[660px]">
+                    <div className="rounded-[14px] border border-white/[0.10] bg-[#0A1119]/97 backdrop-blur-xl shadow-[0_28px_70px_-24px_rgba(0,0,0,0.95)] overflow-hidden">
+                      <div className="p-2.5 grid grid-cols-2 gap-1">
                         {item.mega.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
-                            className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[#F8F6F1] group transition-colors"
+                            className="flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-white/[0.06] group transition-colors"
                           >
-                            <div className="flex-1 min-w-0">
-                              <span className="text-sm font-medium text-[#0D1B2A] group-hover:text-[#1A3550] block truncate">
+                            {item.label === "Expertise" && (
+                              <span className="w-9 h-9 shrink-0 rounded-md bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-slate-500 group-hover:text-slate-300 transition-colors">
+                                <ExpertiseGlyph id={child.slug} active className="w-8 h-6" />
+                              </span>
+                            )}
+                            <span className="min-w-0 flex-1">
+                              <span className="block text-[13px] font-medium text-slate-200 group-hover:text-white transition-colors truncate">
                                 {child.label}
                               </span>
-                            </div>
-                            <ArrowRight size={12} className="text-[#C9A040] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                              {child.sub && (
+                                <span className="block text-[11.5px] text-slate-500 truncate mt-0.5">
+                                  {child.sub}
+                                </span>
+                              )}
+                            </span>
+                            <ArrowRight size={11} className="text-[#C9A040] opacity-0 group-hover:opacity-100 transition-opacity shrink-0 mt-1" />
                           </Link>
                         ))}
                       </div>
-                      <div className="px-4 py-3 bg-[#F8F6F1] border-t border-[#E4E0D6]">
-                        <Link
-                          href={item.href}
-                          className="text-xs font-semibold text-[#A8801A] hover:text-[#8B6914] uppercase tracking-wide flex items-center gap-1"
-                        >
-                          View all {item.label} <ArrowRight size={11} />
+                      <div className="px-4 py-3 bg-white/[0.03] border-t border-white/[0.07]">
+                        <Link href={item.href} className="type-technical text-[#C9A040] hover:text-[#E0C780] flex items-center gap-1.5 transition-colors">
+                          View all {item.label} <ArrowRight size={10} />
                         </Link>
                       </div>
                     </div>
@@ -111,46 +129,46 @@ export function Navbar() {
           </nav>
 
           {/* CTA */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="px-5 py-2.5 bg-[#0D1B2A] text-white text-sm font-medium rounded-md hover:bg-[#1A3550] transition-colors"
-            >
-              Discuss Your Challenge
-            </Link>
-          </div>
+          <Link
+            href="/contact"
+            className="btn-magnetic hidden lg:inline-flex items-center gap-2 px-5 py-2.5 bg-[#C9A040] text-[#0A1628] text-[13px] font-semibold rounded-md hover:bg-[#D4AF60] shrink-0"
+          >
+            Discuss Your Challenge
+            <ArrowRight size={13} className="btn-arrow" />
+          </Link>
 
           {/* Mobile toggle */}
           <button
-            className="lg:hidden p-2 text-[#0D1B2A] rounded-md hover:bg-[#F8F6F1]"
+            className="lg:hidden p-2 -mr-2 text-white rounded-md"
             onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
           >
-            {open ? <X size={20} /> : <Menu size={20} />}
+            {open ? <X size={21} /> : <Menu size={21} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile sheet */}
       {open && (
-        <div className="lg:hidden bg-white border-t border-[#E4E0D6] max-h-[80vh] overflow-y-auto">
-          <div className="container-xl py-4 space-y-1">
+        <div className="lg:hidden bg-[#070D18] border-t border-white/[0.08] h-[calc(100dvh-74px)] overflow-y-auto">
+          <div className="container-xl py-6 space-y-1">
             {NAV.map((item) => (
-              <div key={item.label}>
+              <div key={item.label} className="border-b border-white/[0.06] last:border-b-0 pb-2 mb-2">
                 <Link
                   href={item.href}
-                  className="block px-3 py-3 text-sm font-medium text-[#0D1B2A] hover:bg-[#F8F6F1] rounded-md"
+                  className="block px-1 py-3 text-[15px] font-medium text-white"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
                 </Link>
                 {item.mega && (
-                  <div className="pl-6 space-y-1 mt-1">
-                    {item.mega.slice(0, 5).map((child) => (
+                  <div className="grid grid-cols-2 gap-1 pb-2">
+                    {item.mega.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="block px-3 py-2 text-sm text-[#64748B] hover:text-[#0D1B2A] hover:bg-[#F8F6F1] rounded-md"
+                        className="px-1 py-2 text-[12.5px] text-slate-400 hover:text-white"
                         onClick={() => setOpen(false)}
                       >
                         {child.label}
@@ -160,15 +178,13 @@ export function Navbar() {
                 )}
               </div>
             ))}
-            <div className="pt-3 border-t border-[#E4E0D6]">
-              <Link
-                href="/contact"
-                className="block px-4 py-3 bg-[#0D1B2A] text-white text-sm font-medium rounded-md text-center"
-                onClick={() => setOpen(false)}
-              >
-                Discuss Your Challenge
-              </Link>
-            </div>
+            <Link
+              href="/contact"
+              className="block mt-4 px-4 py-3.5 bg-[#C9A040] text-[#0A1628] text-sm font-semibold rounded-lg text-center"
+              onClick={() => setOpen(false)}
+            >
+              Discuss Your Challenge
+            </Link>
           </div>
         </div>
       )}
