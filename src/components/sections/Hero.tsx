@@ -2,19 +2,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { GlobeMount } from "@/components/three/GlobeMount";
+import { DioramaMount } from "@/components/three/DioramaMount";
 import { HeroVideo } from "@/components/sections/HeroVideo";
-
-/* Disciplines ringed around the globe like an instrument legend.
-   Angles are hand-placed to clear the headline column and each other. */
-const RING = [
-  { label: "ERM", a: -108 },
-  { label: "ORSA", a: -62 },
-  { label: "RBC2", a: -18 },
-  { label: "ACTUARIAL", a: 26 },
-  { label: "REGULATORY", a: 68 },
-  { label: "AML/CFT", a: 112 },
-];
 
 const DISCIPLINES = [
   "Enterprise Risk Management",
@@ -137,28 +126,9 @@ export function Hero() {
                 </span>
               </div>
 
-              {/* Pane 1 — live network */}
+              {/* Pane 1 — the model city */}
               <div className="relative aspect-[4/3.05]">
-                <GlobeMount />
-                {RING.map((d, i) => {
-                  const rad = (d.a * Math.PI) / 180;
-                  return (
-                    <motion.div
-                      key={d.label}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.7, delay: 0.85 + i * 0.09 }}
-                      className="absolute hidden sm:flex items-center gap-1.5 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                      style={{
-                        left: `${50 + Math.cos(rad) * 43}%`,
-                        top: `${50 + Math.sin(rad) * 41}%`,
-                      }}
-                    >
-                      <span className="w-1 h-1 rounded-full bg-[#38BDF8]" />
-                      <span className="type-technical text-[#8FE3FF]/55 whitespace-nowrap">{d.label}</span>
-                    </motion.div>
-                  );
-                })}
+                <DioramaMount />
               </div>
 
               {/* Pane 2 — footage */}
