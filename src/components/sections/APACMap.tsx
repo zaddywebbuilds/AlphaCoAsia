@@ -1,116 +1,65 @@
 "use client";
-import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { APAC_MARKETS } from "@/lib/data";
-import { projectAPAC } from "@/lib/geo";
-import { useDeviceTier, usePrefersReducedMotion, useWebGLSupported, useInView } from "@/lib/useClient";
+import { APAC_VIEW, APAC_LAND, toMap } from "@/lib/apacMap";
+import { usePrefersReducedMotion } from "@/lib/useClient";
 
-const APACScene = dynamic(() => import("@/components/three/APACScene"), { ssr: false });
+/* Natural Earth country outlines for the region, so the section shows Asia
+   Pacific rather than an abstract plane. Markets sit on their real coordinates. */
 
-/* Pseudo-perspective projection shared by the static scene: the plane recedes
-   toward the top, so the fallback carries the same spatial idea as the WebGL one. */
-const VB = { w: 600, h: 380, cx: 300, halfW: 252, yFar: 112, depth: 196 };
+/** Country polygons that correspond to an engagement market. Hong Kong has no
+ *  separate landmass at this scale; its marker carries it. */
+const LAND_FOR_CODE: Record<string, string> = {
+  SG: "Singapore",
+  MY: "Malaysia",
+  ID: "Indonesia",
+  VN: "Vietnam",
+  MM: "Myanmar",
+  KH: "Cambodia",
+  TW: "Taiwan",
+  BN: "Brunei",
+};
 
-function project(px: number, pz: number) {
-  const d = (pz + 1) / 2; // 0 far, 1 near
-  const s = 0.44 + d * 0.56;
-  return { x: VB.cx + px * VB.halfW * s, y: VB.yFar + d * VB.depth, s };
-}
+const ENGAGED = new Set(Object.values(LAND_FOR_CODE));
 
-function StaticPlane({ active }: { active: string }) {
-  const nodes = APAC_MARKETS.map((m) => {
-    const p = projectAPAC(m.lat, m.lng);
-    return { ...m, ...project(p.x, -p.y) };
-  });
-  const hub = nodes.find((n) => n.hub)!;
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-  const zLines = Array.from({ length: 9 }, (_, i) => -1 + (i / 8) * 2);
-  const xLines = Array.from({ length: 13 }, (_, i) => -1 + (i / 12) * 2);
+/* Label offsets, hand-placed: Singapore, KL, Phnom Penh and Ho Chi Minh City
+   sit close enough at this scale that default placement collides. */
+const LABEL: Record<string, { dx: number; dy: number }> = {
+  SG: { dx: 0, dy: 34 },
+  MY: { dx: -34, dy: -18 },
+  KH: { dx: -30, dy: -18 },
+  VN: { dx: 34, dy: -18 },
+  ID: { dx: 0, dy: 34 },
+  MM: { dx: 0, dy: -18 },
+  HK: { dx: 34, dy: -18 },
+  TW: { dx: 0, dy: -18 },
+  BN: { dx: 34, dy: 8 },
+};
 
-  return (
-    <svg viewBox={`0 0 ${VB.w} ${VB.h}`} className="w-full h-full" aria-hidden="true">
-      <defs>
-        <linearGradient id="planeFade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#C9A040" stopOpacity="0.03" />
-          <stop offset="60%" stopColor="#C9A040" stopOpacity="0.30" />
-          <stop offset="100%" stopColor="#C9A040" stopOpacity="0.46" />
-        </linearGradient>
-        <mask id="planeMask">
-          <rect width={VB.w} height={VB.h} fill="url(#planeFade)" />
-        </mask>
-      </defs>
+const CHIP_W = 30;
+const CHIP_H = 20;
 
-      <g mask="url(#planeMask)" stroke="#7F91AC" fill="none">
-        {zLines.map((pz) => {
-          const a = project(-1, pz), b = project(1, pz);
-          return <line key={`z${pz}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} strokeWidth="0.7" />;
-        })}
-        {xLines.map((px) => {
-          const a = project(px, -1), b = project(px, 1);
-          return <line key={`x${px}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} strokeWidth="0.7" />;
-        })}
-      </g>
-
-      {/* Reach contours from Singapore */}
-      {[42, 78, 116].map((r, i) => (
-        <ellipse key={r} cx={hub.x} cy={hub.y} rx={r} ry={r * 0.34} fill="none" stroke="#C9A040" strokeOpacity={0.17 - i * 0.04} strokeWidth="0.8" />
-      ))}
-
-      {/* Links */}
-      {nodes.filter((n) => !n.hub).map((n) => {
-        const on = n.code === active;
-        const mx = (hub.x + n.x) / 2;
-        const my = (hub.y + n.y) / 2 - 42;
-        return (
-          <path key={n.code} d={`M ${hub.x} ${hub.y} Q ${mx} ${my} ${n.x} ${n.y}`} fill="none"
-            stroke={on ? "#C9A040" : "#7F91AC"} strokeOpacity={on ? 0.95 : 0.3} strokeWidth={on ? 1.8 : 0.9} />
-        );
-      })}
-
-      {/* Nodes */}
-      {nodes.map((n) => {
-        const on = n.code === active;
-        const c = n.hub || on ? "#C9A040" : "#7F91AC";
-        const stem = n.hub ? 30 : 20;
-        return (
-          <g key={n.code}>
-            <ellipse cx={n.x} cy={n.y} rx={on ? 7 : 5} ry={(on ? 7 : 5) * 0.34} fill={c} opacity="0.3" />
-            <line x1={n.x} y1={n.y} x2={n.x} y2={n.y - stem} stroke={c} strokeOpacity={on ? 0.85 : 0.4} strokeWidth="1" />
-            <circle cx={n.x} cy={n.y - stem} r={on ? 4.6 : 3.2} fill={c} />
-            <text x={n.x} y={n.y - stem - 9} textAnchor="middle" fontSize="8.5" letterSpacing="1.6"
-              fill={on ? "#E0C780" : "rgba(148,163,184,0.72)"} fontFamily="Inter, sans-serif" fontWeight="500">
-              {n.code}
-            </text>
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
+const NODES = APAC_MARKETS.map((m) => ({
+  ...m,
+  ...toMap(m.lat, m.lng),
+  flag: `${BASE}/media/flags/${m.code.toLowerCase()}.svg`,
+  count: m.engagements.length,
+}));
+const HUB = NODES.find((n) => n.hub)!;
 
 export function APACMap() {
   const [active, setActive] = useState("SG");
-  const tier = useDeviceTier();
   const reduced = usePrefersReducedMotion();
-  const webgl = useWebGLSupported();
-  const { ref, inView } = useInView<HTMLDivElement>("250px");
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    if (webgl === true && tier !== "low" && inView) {
-      const id = window.setTimeout(() => setReady(true), 150);
-      return () => window.clearTimeout(id);
-    }
-  }, [webgl, tier, inView]);
-
-  const useWebGL = ready && webgl === true && tier !== "low";
   const market = APAC_MARKETS.find((m) => m.code === active)!;
+  const activeLand = LAND_FOR_CODE[active];
+  const activeNode = NODES.find((n) => n.code === active)!;
 
   return (
-    <section className="relative section-py bg-[#05090F] overflow-hidden tex-grain">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_45%_45%,#0D2338_0%,#05090F_72%)]" />
-      <div className="absolute inset-0 tex-grid-fine opacity-40" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[760px] h-[420px] rounded-full bg-[#C9A040] opacity-[0.09] blur-[140px]" />
+    <section className="relative section-py bg-[#05090F] overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_40%_45%,#0C1728_0%,#05090F_72%)]" />
+      <div className="absolute inset-0 tex-grid-fine opacity-30" />
 
       <div className="container-xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
@@ -119,8 +68,10 @@ export function APACMap() {
               <div className="w-8 h-px bg-[#C9A040]" />
               <span className="type-technical text-[#C9A040]">APAC Network</span>
             </div>
-            <h2 className="font-display text-white leading-[1.08]"
-              style={{ fontSize: "clamp(1.9rem, 3.6vw, 3.1rem)", fontWeight: 600, letterSpacing: "-0.025em" }}>
+            <h2
+              className="font-display text-white leading-[1.08]"
+              style={{ fontSize: "clamp(1.9rem, 3.6vw, 3.1rem)", fontWeight: 600, letterSpacing: "-0.025em" }}
+            >
               Asia Pacific experience
             </h2>
           </div>
@@ -133,27 +84,162 @@ export function APACMap() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Scene */}
-          <div ref={ref} className="lg:col-span-7 relative">
-            <div className="relative aspect-[600/380] rounded-2xl border border-white/[0.08] overflow-hidden bg-[#070D18]/60">
-              <div className="scene-fallback absolute inset-0" style={{ opacity: useWebGL ? 0 : 1 }}>
-                <StaticPlane active={active} />
-              </div>
-              {useWebGL && (
-                <div className="absolute inset-0">
-                  <APACScene active={active} onSelect={setActive} tier={tier} reduced={reduced} running={inView} />
-                </div>
-              )}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Map */}
+          <div className="lg:col-span-6">
+            <div className="relative rounded-2xl border border-white/[0.08] overflow-hidden bg-[#070D18]">
+              <svg
+                viewBox={`0 0 ${APAC_VIEW.w} ${APAC_VIEW.h}`}
+                className="w-full h-auto block"
+                role="group"
+                aria-label="Asia Pacific engagement markets"
+              >
+                <defs>
+                  <linearGradient id="landFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#2A4368" />
+                    <stop offset="100%" stopColor="#1D3050" />
+                  </linearGradient>
+                  <radialGradient id="seaGlow" cx="42%" cy="48%" r="60%">
+                    <stop offset="0%" stopColor="#0E1B30" />
+                    <stop offset="100%" stopColor="#070D18" />
+                  </radialGradient>
+                </defs>
+
+                <rect width={APAC_VIEW.w} height={APAC_VIEW.h} fill="url(#seaGlow)" />
+
+                {/* Graticule */}
+                <g stroke="#C9A040" strokeOpacity="0.06" strokeWidth="1">
+                  {[0, 10, 20].map((lat) => {
+                    const y = toMap(lat, 0).y;
+                    return <line key={`la${lat}`} x1="0" y1={y} x2={APAC_VIEW.w} y2={y} />;
+                  })}
+                  {[100, 110, 120, 130].map((lng) => {
+                    const x = toMap(0, lng).x;
+                    return <line key={`lo${lng}`} x1={x} y1="0" x2={x} y2={APAC_VIEW.h} />;
+                  })}
+                </g>
+
+                {/* Land */}
+                {APAC_LAND.map((c) => {
+                  const engaged = ENGAGED.has(c.name);
+                  const isActive = c.name === activeLand;
+                  return (
+                    <path
+                      key={c.name}
+                      d={c.d}
+                      fill={isActive ? "rgba(201,160,64,0.30)" : engaged ? "url(#landFill)" : "#182740"}
+                      stroke={isActive ? "#C9A040" : engaged ? "#3E5E8C" : "#26395A"}
+                      strokeWidth={isActive ? 1.8 : 1}
+                      strokeOpacity={isActive ? 1 : engaged ? 0.8 : 0.6}
+                      style={{ transition: "fill .45s ease, stroke .45s ease" }}
+                    />
+                  );
+                })}
+
+                {/* Engagement routes from Singapore, weighted by engagement count */}
+                {NODES.filter((n) => !n.hub).map((n) => {
+                  const on = n.code === active;
+                  const mx = (HUB.x + n.x) / 2;
+                  const my = (HUB.y + n.y) / 2 - Math.hypot(n.x - HUB.x, n.y - HUB.y) * 0.24;
+                  return (
+                    <path
+                      key={n.code}
+                      d={`M ${HUB.x} ${HUB.y} Q ${mx} ${my} ${n.x} ${n.y}`}
+                      fill="none"
+                      stroke={on ? "#C9A040" : "#7F91AC"}
+                      strokeOpacity={on ? 0.9 : 0.26}
+                      strokeWidth={on ? 3 : 0.9 + n.count * 0.45}
+                      strokeDasharray={on ? undefined : "6 6"}
+                      style={{ transition: "stroke .4s ease, stroke-opacity .4s ease" }}
+                    />
+                  );
+                })}
+
+                {/* Markets — the flag is the marker, the badge is the engagement count */}
+                {NODES.map((n) => {
+                  const on = n.code === active;
+                  const off = LABEL[n.code] ?? { dx: 0, dy: -18 };
+                  const cx = n.x - CHIP_W / 2;
+                  const cy = n.y - CHIP_H / 2;
+                  return (
+                    <g
+                      key={n.code}
+                      onClick={() => setActive(n.code)}
+                      style={{ cursor: "pointer" }}
+                      role="button"
+                      aria-label={`${n.country} — ${n.count} engagement categories`}
+                    >
+                      <circle cx={n.x} cy={n.y} r="26" fill="transparent" />
+
+                      {on && (
+                        <rect
+                          x={cx - 7} y={cy - 7} width={CHIP_W + 14} height={CHIP_H + 14} rx="7"
+                          fill="none" stroke="#C9A040" strokeWidth="1.6" strokeOpacity="0.5"
+                          className={reduced ? undefined : "anim-node"}
+                        />
+                      )}
+
+                      <rect
+                        x={cx - 2} y={cy - 2} width={CHIP_W + 4} height={CHIP_H + 4} rx="4.5"
+                        fill={on ? "#C9A040" : "#0B1424"}
+                        stroke={on ? "#C9A040" : "#3A4D6B"} strokeWidth="1"
+                        style={{ transition: "fill .3s ease, stroke .3s ease" }}
+                      />
+                      <image
+                        href={n.flag}
+                        x={cx} y={cy} width={CHIP_W} height={CHIP_H}
+                        preserveAspectRatio="xMidYMid slice"
+                        clipPath={`inset(0 round 3)`}
+                        opacity={on || n.hub ? 1 : 0.82}
+                      />
+
+                      {/* Engagement count */}
+                      <circle
+                        cx={cx + CHIP_W + 3} cy={cy - 1} r="8.5"
+                        fill={on ? "#221805" : "#C9A040"}
+                        stroke={on ? "#C9A040" : "none"} strokeWidth="1"
+                      />
+                      <text
+                        x={cx + CHIP_W + 3} y={cy + 2.5} textAnchor="middle"
+                        fontFamily="Inter, sans-serif" fontSize="11" fontWeight={700}
+                        fill={on ? "#E8D9A8" : "#221805"}
+                      >
+                        {n.count}
+                      </text>
+
+                      <text
+                        x={n.x + off.dx} y={n.y + off.dy} textAnchor="middle"
+                        fontFamily="Inter, sans-serif" fontSize="15" fontWeight={600} letterSpacing="1.2"
+                        fill={on || n.hub ? "#E8D9A8" : "#9DB0C9"}
+                        style={{ transition: "fill .3s ease" }}
+                      >
+                        {n.code}
+                      </text>
+                    </g>
+                  );
+                })}
+              </svg>
+
               <div className="absolute top-4 left-4 flex items-center gap-2 pointer-events-none">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C9A040] anim-node" />
-                <span className="type-technical text-slate-500">Engagement Markets · {APAC_MARKETS.length}</span>
+                <span className="type-technical text-slate-400">
+                  Engagement Markets · {APAC_MARKETS.length}
+                </span>
+              </div>
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-4 pointer-events-none">
+                <div className="flex items-center gap-2">
+                  <span className="w-[17px] h-[17px] rounded-full bg-[#C9A040] text-[#221805] text-[10px] font-bold flex items-center justify-center shrink-0">
+                    n
+                  </span>
+                  <span className="type-technical text-slate-500">Engagement categories</span>
+                </div>
+                <span className="type-technical text-slate-600">{activeNode.city}</span>
               </div>
             </div>
           </div>
 
           {/* Data panel */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-6">
             <div className="grid grid-cols-3 gap-1.5 mb-6">
               {APAC_MARKETS.map((m) => (
                 <button
@@ -162,7 +248,7 @@ export function APACMap() {
                   aria-pressed={active === m.code}
                   className={`px-3 py-2.5 rounded-lg text-left transition-all duration-300 border ${
                     active === m.code
-                      ? "bg-[#C9A040] border-[#C9A040] text-[#0A1628]"
+                      ? "bg-[linear-gradient(135deg,#E8D9A8,#C9A040_60%)] border-[#C9A040] text-[#221805]"
                       : "bg-white/[0.04] border-white/[0.09] text-slate-300 hover:border-[#C9A040]/40 hover:bg-white/[0.07]"
                   }`}
                 >
