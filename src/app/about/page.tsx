@@ -5,10 +5,10 @@ import { LeadershipSection } from "@/components/sections/LeadershipSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { APACMap } from "@/components/sections/APACMap";
 import { FinalCTA } from "@/components/sections/FinalCTA";
-import { LEADERSHIP, COMPANY } from "@/lib/data";
+import { ALPHA_VALUES, COMPANY } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "About Alpha Consultant | Insurance & Risk Advisory Singapore",
+  title: "About Alpha Consultant",
   description:
     "Alpha Consultant is a boutique insurance, actuarial, risk and regulatory advisory firm based in Singapore, led by senior practitioners with 20+ years of APAC experience.",
 };
@@ -48,17 +48,17 @@ export default function AboutPage() {
                   <span className="text-xs font-semibold text-[#A8801A] uppercase tracking-[0.15em]">Our Story</span>
                 </div>
                 <h2 className="font-display text-[#0D1B2A] text-2xl font-semibold mb-5 leading-tight">
-                  Founded on a Belief That Specialist Expertise Should Be Accessible
+                  Senior Expertise Across Insurance, Risk and Regulation in Asia Pacific
                 </h2>
                 <div className="space-y-4 text-sm text-[#64748B] leading-relaxed">
                   <p>
-                    Alpha Consultant was established to bring senior-level insurance, actuarial, risk and regulatory expertise directly to clients across Asia Pacific, without the overhead and delegation common in larger advisory firms.
+                    Alpha Consultant brings senior-level insurance, actuarial, risk and regulatory expertise to organisations across Asia Pacific. Our roots are in actuarial science, enterprise risk management and regulatory compliance.
                   </p>
                   <p>
                     Our team brings direct experience from major regional insurance companies, reinsurers, insurtech platforms and financial institutions across Singapore, Hong Kong, Malaysia, Indonesia and other APAC markets.
                   </p>
                   <p>
-                    We work with licensed insurers, insurance brokers, financial advisers, fintechs, banks, asset managers and professional services firms, providing the kind of hands-on, senior advisory that drives real business outcomes.
+                    We work with licensed insurers, insurance brokers, financial advisers, fintechs, banks, asset managers and professional services firms across Asia Pacific and beyond.
                   </p>
                 </div>
               </div>
@@ -67,7 +67,7 @@ export default function AboutPage() {
                 {[
                   { title: "What We Believe", body: "That specialist advisory requires genuine expertise, not generalist advice. That clients deserve direct access to experienced practitioners. That good risk management and regulatory compliance are strategic advantages, not just cost centres." },
                   { title: "Where We Operate", body: "Primarily Singapore, with active advisory experience across Hong Kong, Malaysia, Indonesia, Myanmar, Cambodia, Vietnam, Brunei, Taiwan and broader Asia Pacific markets." },
-                  { title: "How We Work", body: "As a boutique firm, every engagement involves direct senior participation. We do not delegate to junior staff. We bring deep expertise and we stay accountable to the outcome." },
+                  { title: "How We Work", body: "As a boutique firm, senior practitioners remain closely involved throughout every engagement. We bring deep expertise and stay accountable to the outcome." },
                 ].map((item) => (
                   <div key={item.title} className="p-5 bg-[#F8F6F1] rounded-xl border border-[#E4E0D6]">
                     <div className="w-5 h-0.5 bg-[#C9A040] mb-3" />
@@ -76,6 +76,40 @@ export default function AboutPage() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ALPHA Values */}
+        <section className="section-py bg-[#0A1628] relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.04]">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="valuesgrid" width="60" height="60" patternUnits="userSpaceOnUse">
+                  <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="0.5" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#valuesgrid)" />
+            </svg>
+          </div>
+          <div className="container-xl relative z-10">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-px bg-[#C9A040]" />
+              <span className="text-xs font-semibold text-[#C9A040] uppercase tracking-[0.15em]">Our Values</span>
+            </div>
+            <h2 className="font-display text-white text-2xl font-semibold mb-10 leading-tight" style={{ letterSpacing: "-0.02em" }}>
+              What <span className="text-[#C9A040]">ALPHA</span> Stands For
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {ALPHA_VALUES.map((v) => (
+                <div key={v.letter + v.value} className="p-6 bg-white/5 border border-white/10 rounded-xl">
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="font-display text-4xl font-bold text-[#C9A040] leading-none">{v.letter}</span>
+                    <span className="text-sm font-semibold text-white">{v.value}</span>
+                  </div>
+                  <p className="text-xs text-slate-400 leading-relaxed">{v.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>

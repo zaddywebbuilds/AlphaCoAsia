@@ -10,7 +10,7 @@ const challenges = [
     tag: "Market Entry",
   },
   {
-    label: "Applying for a MAS licence",
+    label: "Navigating regulatory licensing",
     href: "/expertise/regulatory-licensing",
     tag: "Regulatory",
   },

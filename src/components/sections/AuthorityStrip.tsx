@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 
 const stats = [
   { value: "20+", label: "Years Industry Experience" },
-  { value: "9", label: "APAC Markets Served" },
-  { value: "50+", label: "Engagements Completed" },
+  { value: "9", label: "APAC Markets" },
   { value: "5", label: "Core Disciplines" },
 ];
 
 const disciplines = ["Insurance", "Risk", "Actuarial", "Regulatory", "Compliance"];
+
 
 export function AuthorityStrip() {
   return (
@@ -16,7 +16,7 @@ export function AuthorityStrip() {
       <div className="container-xl py-14">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
           {/* Stats */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 flex-1">
+          <div className="grid grid-cols-3 gap-8 flex-1">
             {stats.map((stat, i) => (
               <motion.div
                 key={stat.label}

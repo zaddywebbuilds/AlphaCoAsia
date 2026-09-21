@@ -38,9 +38,9 @@ export const EXPERTISE = [
     shortTitle: "ORSA",
     tagline: "Independent ORSA reviews and framework development for licensed insurers.",
     description:
-      "Own Risk and Solvency Assessment advisory including independent reviews, framework design, governance assessment and regulatory preparation.",
+      "Own Risk and Solvency Assessment advisory including independent reviews, framework design, governance assessment and regulatory alignment.",
     icon: "chart",
-    topics: ["Independent ORSA Review", "ORSA Framework Design", "Governance Assessment", "Regulatory Preparation"],
+    topics: ["Independent ORSA Review", "ORSA Framework Design", "Governance Assessment", "Regulatory Alignment"],
   },
   {
     slug: "risk-based-capital",
@@ -58,7 +58,7 @@ export const EXPERTISE = [
     shortTitle: "Regulatory",
     tagline: "Navigating MAS and regional regulatory requirements with experienced practitioners.",
     description:
-      "MAS insurance licence applications, regulatory compliance advisory, licensing strategy and regulatory change management across Singapore and Asia.",
+      "MAS insurance and financial adviser licence applications, regulatory compliance advisory, licensing strategy and regulatory change management across Singapore and Asia.",
     icon: "document",
     topics: ["MAS Licence Applications", "Regulatory Compliance", "Licensing Strategy", "Regulatory Change"],
   },
@@ -160,152 +160,190 @@ export const LEADERSHIP = [
   {
     slug: "raymond-cheung",
     name: "Raymond Cheung",
-    title: "Founder & Principal Consultant",
-    credentials: "FIAA, FIA",
+    title: "Founder & Managing Director",
+    credentials: "B.Bus, AIA, ASAS, ACLP, MBA",
     shortBio:
-      "Over 20 years of actuarial, insurance and risk management experience across Asia Pacific. Former senior roles at AIG Asia Pacific, Asia Capital Reinsurance and Grab.",
-    expertise: ["Enterprise Risk Management", "Actuarial", "Regulatory Advisory", "Insurtech", "RBC"],
+      "Chartered actuary and C-suite executive with over 20 years in insurance, reinsurance, capital markets and regulatory engagement across Asia Pacific. Former Group CRO at AIG Asia Pacific and Asia Capital Reinsurance, and Regional Insurance Lead at Grab.",
+    expertise: ["Enterprise Risk Management", "Actuarial", "Regulatory Advisory", "Insurtech", "RBC2", "Capital Markets"],
     markets: ["Singapore", "Hong Kong", "Malaysia", "Indonesia", "Regional APAC"],
     affiliations: ["Singapore Actuarial Society", "Institute and Faculty of Actuaries"],
     pastRoles: [
-      "AIG Asia Pacific",
-      "Asia Capital Reinsurance",
-      "Grab Financial Group",
-      "OneDegree",
+      "AIG Asia Pacific (CRO)",
+      "Asia Capital Reinsurance (Group CRO)",
+      "Grab Financial Group (Regional Insurance Lead)",
+      "Basel Medical Group (Group CEO, Nasdaq IPO)",
     ],
     image: "/team/raymond-cheung.jpg",
   },
   {
     slug: "byong-chon",
     name: "Byong Chon",
-    title: "Senior Consultant",
+    title: "Technology Director",
     credentials: "",
     shortBio:
-      "Experienced insurance professional with deep expertise in risk management and regulatory compliance across Asian markets.",
-    expertise: ["Risk Management", "Compliance", "Insurance Advisory"],
-    markets: ["Singapore", "Regional APAC"],
+      "Over 15 years across US technology multinationals, consultancies and start-ups, with experience in portfolio management, fintech, insurtech and supply-chain financing across Southeast Asia. Former enterprise account manager at Apple, R&D researcher at LG Electronics and business analyst at Intel China.",
+    expertise: ["Technology Strategy", "Digital Transformation", "Fintech & Insurtech", "Business Development", "Supply-Chain Financing"],
+    markets: ["Singapore", "Indonesia", "Philippines", "Regional APAC"],
     affiliations: [],
-    pastRoles: [],
+    pastRoles: [
+      "Apple Pte Ltd (Enterprise Account Manager)",
+      "LG Electronics Singapore (R&D)",
+      "Intel China (Business Analyst)",
+      "AccelerAsia (Senior Business Consultant)",
+    ],
     image: "/team/byong-chon.jpg",
   },
   {
     slug: "eugene-cheong",
     name: "Eugene Cheong",
-    title: "Senior Consultant",
-    credentials: "",
+    title: "Strategic Business Advisor",
+    credentials: "B.Sc. (Mathematical Statistics & Applied Mathematics)",
     shortBio:
-      "Senior insurance professional specialising in actuarial and financial services advisory across the Asia Pacific region.",
-    expertise: ["Actuarial", "Financial Services", "Insurance Advisory"],
+      "Over 20 years in the insurance industry across APAC. Managing Director of Delta Insurance Singapore, which he co-founded. Former Regional Head of Professional Liability, Technology, Construction and Cyber, managing a portfolio of more than USD 100 million annually. Deep expertise in financial lines, business operations and distribution development.",
+    expertise: ["Professional Liability", "Financial Lines", "Technology & Cyber", "Business Operations", "Distribution & Partnerships"],
     markets: ["Singapore", "Regional APAC"],
     affiliations: [],
-    pastRoles: [],
+    pastRoles: [
+      "Delta Insurance Singapore (Managing Director & Co-Founder)",
+      "Regional Head of Professional Liability, Technology, Construction & Cyber",
+      "Head of Singapore Financial Lines (Global Insurer)",
+    ],
     image: "/team/eugene-cheong.jpg",
+  },
+  {
+    slug: "edmund-chan",
+    name: "Edmund Chan",
+    title: "Partner",
+    credentials: "MBA",
+    shortBio:
+      "Over 28 years in corporate finance and business across Asia Pacific and North America. Leads Alpha's Capital Markets and Corporate Deals practice, with a focus on cross-border IPO and M&A project management.",
+    expertise: ["IPO Advisory", "M&A & Due Diligence", "Cross-Border Deals", "Corporate Finance", "Capital Markets"],
+    markets: ["Singapore", "Hong Kong", "North America", "Regional APAC"],
+    affiliations: [],
+    pastRoles: [],
+    image: "/team/edmund-chan.jpg",
   },
 ];
 
 export const TESTIMONIALS = [
   {
     quote:
-      "Raymond and his team provided exceptional actuarial and risk management advice that was both rigorous and practical. Their deep understanding of the APAC insurance landscape made all the difference.",
-    author: "Senior Executive",
+      "The folks at Alpha are my Insurtech people, and their services are top-notch with excellent customer services that always manage to keep their cool no matter the situation. I specifically admired their culture and their ability to see through the noise, isolate issues, and develop solutions.",
+    author: "Dr. Winston Go, FLMI",
     company: "AXA Global Healthcare",
-    role: "Regional Director",
-    service: "actuarial-consulting",
+    role: "Head of New Business, Underwriting and Product Development",
+    service: "insurtech-digital",
   },
   {
     quote:
-      "Alpha Consultant's guidance on our ERM framework was invaluable. They brought senior-level expertise and a genuinely hands-on approach that larger consultancies rarely provide.",
-    author: "Chief Risk Officer",
-    company: "Prudential",
-    role: "Chief Risk Officer",
+      "The team leads at Alpha Consult, led by Raymond, a man with the broadest risk management experience and expertise of anyone I've met. While most actuaries focus on narrow insurance underwriting or investment risks, the team lead has delivered value across the entire value chain of organizations from various industries.",
+    author: "Colin Priest",
+    company: "DataRobot",
+    role: "VP AI Strategy",
     service: "enterprise-risk-management",
   },
   {
     quote:
-      "Working with Alpha on our insurtech regulatory strategy gave us the clarity and confidence to navigate MAS requirements. Highly recommended for any company entering the Singapore market.",
-    author: "Founder",
-    company: "Digital Insurance Platform",
+      "We cannot talk of Alpha consultancy without the CEO, who is a seasoned actuarial and risk professional, well versed in his areas of work. I have always enjoyed his thought-provoking discussions and expert presentations.",
+    author: "Mei Eng Chan",
+    company: "Etiqa Insurance Singapore",
+    role: "Chief Financial Officer",
+    service: "actuarial-consulting",
+  },
+  {
+    quote:
+      "Given their tremendous experience in both insurance, reinsurance, and insurtech, they bring a unique combination of experiences, and I look forward to following their thought leadership in the topic of Enterprise Risk Management.",
+    author: "Veng Hoong Loh",
+    company: "Swiss Re",
+    role: "Digital Proposition Lead",
+    service: "enterprise-risk-management",
+  },
+  {
+    quote:
+      "Alpha Consultancy is a reliable Insurtech consultant partner for everything, from every step of our company life cycle, and they perfectly understand what we really need.",
+    author: "Samuel Setiawan",
+    company: "PT Equity Life Indonesia",
     role: "Chief Executive Officer",
     service: "insurtech-digital",
   },
   {
     quote:
-      "The team's expertise in reinsurance and actuarial matters is outstanding. They consistently deliver high-quality work with the kind of senior attention you simply cannot get from large firms.",
-    author: "Senior Professional",
-    company: "Swiss Re",
-    role: "Senior Manager",
-    service: "actuarial-consulting",
+      "The team at Alphacoasia has always been very patient and nurturing in sharing knowledge. They are very good at explaining complicated concepts in laymen's terms.",
+    author: "Ashlea Lam",
+    company: "Prudential Assurance Company Singapore",
+    role: "Operational Risk Manager",
+    service: "enterprise-risk-management",
   },
   {
     quote:
-      "Alpha Consultant brought a rare combination of technical depth and practical business understanding to our risk analytics project. Their regional experience was a significant advantage.",
-    author: "Analytics Lead",
-    company: "DataRobot",
-    role: "Regional Lead",
-    service: "enterprise-risk-management",
+      "Alpha consultancy is a truly dedicated, innovative organization that connects businesses through expert advice and extensive business network in actuary, particularly in the field of risk management.",
+    author: "Caryn Chua",
+    company: "Institute & Faculty of Actuaries, UK",
+    role: "South-East Asia Representative",
+    service: "actuarial-consulting",
   },
 ];
 
 export const CASE_STUDIES = [
   {
-    slug: "erm-orsa-digital-insurer-hong-kong",
-    title: "ERM and ORSA Review for Digital Insurer",
+    slug: "erm-orsa-peer-review-digital-insurer-hong-kong",
+    title: "ERM Framework and ORSA Peer Review",
     industry: "Insurance",
     market: "Hong Kong",
     service: "Enterprise Risk Management",
     challenge:
-      "A licensed digital insurance company required an independent review of its ERM framework and ORSA documentation ahead of a regulatory examination.",
+      "A licensed digital insurer required an independent peer review of its Group ERM framework and ORSA process.",
     alphaRole:
-      "Conducted a comprehensive independent review of the ERM framework, governance structures, risk appetite framework and ORSA processes. Identified improvement opportunities and provided recommendations aligned with regulatory expectations.",
-    tags: ["ERM", "ORSA", "Digital Insurance", "Regulatory Review"],
+      "Conducted an independent peer review of the ERM framework and ORSA documentation, covering governance structures, risk appetite and framework design. Provided recommendations for strengthening alignment with regulatory expectations.",
+    tags: ["ERM", "ORSA", "Digital Insurance", "Peer Review"],
   },
   {
-    slug: "rbc-training-insurance-company",
-    title: "RBC Training Programme for Insurance Professionals",
+    slug: "insurance-broker-licensing-singapore",
+    title: "Insurance Broker Licence Applications",
+    industry: "Insurance",
+    market: "Singapore",
+    service: "Regulatory & Licensing",
+    challenge:
+      "Three insurance brokers sought to obtain MAS licences for their Singapore operations.",
+    alphaRole:
+      "Provided end-to-end advisory on the MAS insurance broker licence application process. All three brokers received in-principle approval from MAS.",
+    tags: ["Licensing", "MAS", "Insurance Broker", "Regulatory"],
+  },
+  {
+    slug: "erm-training-takaful-brunei",
+    title: "ERM Consultancy and Senior Management Training",
+    industry: "Takaful",
+    market: "Brunei",
+    service: "Enterprise Risk Management",
+    challenge:
+      "The largest takaful group in Brunei required ERM consultancy and senior management training to strengthen its enterprise risk capabilities.",
+    alphaRole:
+      "Delivered ERM consultancy and conducted senior management training covering enterprise risk management frameworks, governance and practical implementation.",
+    tags: ["ERM", "Training", "Takaful", "Brunei"],
+  },
+  {
+    slug: "rbc-training-insurance-professionals",
+    title: "RBC Training for Insurance Professionals",
     industry: "Insurance",
     market: "Singapore",
     service: "Risk-Based Capital",
     challenge:
-      "An insurance company needed to upskill its actuarial and finance team on the Risk-Based Capital (RBC2) framework ahead of implementation.",
+      "An insurance company required professional training in the Risk-Based Capital (RBC2) framework for its actuarial and finance team.",
     alphaRole:
-      "Designed and delivered a structured training programme covering RBC2 methodology, capital requirements, reporting obligations and practical implementation considerations.",
+      "Designed and delivered a structured training programme covering RBC2 methodology, capital requirements and reporting obligations.",
     tags: ["RBC2", "Training", "Actuarial", "Singapore"],
   },
   {
-    slug: "aml-cft-framework-financial-institution",
+    slug: "aml-cft-framework-development",
     title: "AML/CFT Framework Development",
     industry: "Financial Services",
     market: "Singapore",
     service: "AML/CFT Compliance",
     challenge:
-      "A financial institution required development of a comprehensive AML/CFT framework to meet MAS regulatory expectations and internal governance requirements.",
+      "A financial institution required development of an AML/CFT framework to meet MAS regulatory requirements and internal governance needs.",
     alphaRole:
-      "Developed a complete AML/CFT governance framework including policies, procedures, risk assessment methodology and training materials aligned with MAS Notice requirements.",
+      "Developed an AML/CFT governance framework including policies, procedures, risk assessment methodology and training materials aligned with MAS Notice requirements.",
     tags: ["AML/CFT", "Compliance", "Regulatory", "MAS"],
-  },
-  {
-    slug: "insurance-licence-application-singapore",
-    title: "Insurance Regulatory Licensing Advisory",
-    industry: "Insurance",
-    market: "Singapore",
-    service: "Regulatory & Licensing",
-    challenge:
-      "A company seeking to establish an insurance operation in Singapore required guidance through the MAS licensing process and regulatory requirements.",
-    alphaRole:
-      "Provided end-to-end advisory on the MAS insurance licence application process, including regulatory requirements assessment, application preparation support and operational readiness review.",
-    tags: ["Licensing", "MAS", "Regulatory", "Market Entry"],
-  },
-  {
-    slug: "market-entry-advisory-southeast-asia",
-    title: "Insurance Market Entry Assessment",
-    industry: "Insurance",
-    market: "Southeast Asia",
-    service: "Market Entry Advisory",
-    challenge:
-      "An international insurance group was evaluating market entry opportunities across multiple Southeast Asian markets and required a structured assessment framework.",
-    alphaRole:
-      "Conducted market assessments across target markets including regulatory environment analysis, competitive landscape review and market opportunity sizing to support entry strategy decisions.",
-    tags: ["Market Entry", "APAC", "Strategy", "Regulatory"],
   },
 ];
 
@@ -315,14 +353,14 @@ export const APAC_MARKETS = [
     code: "SG",
     x: 62,
     y: 65,
-    engagements: ["Insurance Advisory", "Regulatory Licensing", "ERM/ORSA", "AML/CFT", "RBC2", "Actuarial", "Insurtech"],
+    engagements: ["Insurance Licensing", "Regulatory Compliance", "ERM/ORSA", "AML/CFT", "RBC2", "Actuarial", "Insurtech"],
   },
   {
     country: "Hong Kong",
     code: "HK",
     x: 74,
     y: 42,
-    engagements: ["ERM/ORSA Review", "RBC Training", "Insurance Advisory", "Digital Insurance"],
+    engagements: ["ERM/ORSA Peer Review", "Digital Insurance", "Insurance Advisory"],
   },
   {
     country: "Malaysia",
@@ -357,54 +395,85 @@ export const APAC_MARKETS = [
     code: "KH",
     x: 66,
     y: 56,
-    engagements: ["Market Entry", "Insurance Advisory"],
+    engagements: ["Risk Management Review"],
   },
   {
     country: "Taiwan",
     code: "TW",
     x: 78,
     y: 38,
-    engagements: ["Insurance Advisory", "Actuarial"],
+    engagements: ["Insurance Advisory", "Training"],
   },
   {
     country: "Brunei",
     code: "BN",
     x: 66,
     y: 63,
-    engagements: ["Insurance Advisory"],
+    engagements: ["ERM Consultancy", "Senior Management Training"],
   },
 ];
 
 export const INSIGHTS_PLACEHOLDER = [
   {
-    slug: "mas-insurance-regulatory-update-2024",
+    slug: "mas-insurance-regulatory-update",
     title: "MAS Insurance Regulatory Developments: Key Updates for Insurers",
     category: "Regulatory Compliance",
     excerpt:
-      "A review of recent Monetary Authority of Singapore regulatory developments affecting licensed insurers and the implications for risk management frameworks.",
+      "A review of recent Monetary Authority of Singapore regulatory developments affecting licensed insurers and the implications for risk management and compliance frameworks.",
     readTime: "6 min read",
     date: "2024-11-15",
-    author: "Raymond Cheung",
+    author: "Alpha Consultant",
+    draft: true,
   },
   {
-    slug: "orsa-best-practice-apac-insurers",
+    slug: "orsa-best-practice-apac",
     title: "ORSA Best Practice: What Asia-Pacific Insurers Need to Know",
     category: "Risk & Governance",
     excerpt:
       "Key considerations for insurers preparing or refreshing their Own Risk and Solvency Assessment, with a focus on practical governance and regulatory alignment.",
     readTime: "8 min read",
     date: "2024-10-28",
-    author: "Raymond Cheung",
+    author: "Alpha Consultant",
+    draft: true,
   },
   {
     slug: "insurtech-regulatory-strategy-singapore",
-    title: "Navigating MAS Licensing: A Practical Guide for Insurtech Companies",
+    title: "Navigating Regulatory Licensing: A Guide for Insurtech and Digital Insurance Companies",
     category: "Fintech & Insurtech",
     excerpt:
-      "What insurtech founders and digital insurance platform operators need to understand about Singapore's regulatory environment and MAS licensing pathways.",
+      "What insurtech founders and digital insurance platform operators need to understand about Asia Pacific regulatory environments and licensing pathways.",
     readTime: "7 min read",
     date: "2024-09-20",
-    author: "Raymond Cheung",
+    author: "Alpha Consultant",
+    draft: true,
+  },
+];
+
+export const ALPHA_VALUES = [
+  {
+    letter: "A",
+    value: "Authentic",
+    description: "Genuine relationships, honest assessments and advice that reflects the true position rather than what clients want to hear.",
+  },
+  {
+    letter: "L",
+    value: "Learner",
+    description: "Continuously deepening expertise in an industry that never stops changing. Every engagement brings new knowledge.",
+  },
+  {
+    letter: "P",
+    value: "Passion",
+    description: "Genuine enthusiasm for insurance, risk and regulatory disciplines, and for helping clients navigate complex challenges.",
+  },
+  {
+    letter: "H",
+    value: "Honest",
+    description: "Transparent communication and straightforward advice, even when the message is difficult.",
+  },
+  {
+    letter: "A",
+    value: "Adventurous",
+    description: "Willingness to engage with complex, unfamiliar and cross-border challenges across Asia Pacific markets.",
   },
 ];
 

@@ -7,7 +7,7 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { CASE_STUDIES } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Insurance & Risk Consulting Engagements | Alpha Consultant",
+  title: "Selected Advisory Engagements",
   description:
     "A selection of Alpha Consultant's advisory and consulting engagements across insurance, risk, regulatory and actuarial disciplines in Asia Pacific.",
 };

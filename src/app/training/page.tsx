@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Professional Insurance & Risk Training | Alpha Consultant",
+  title: "Insurance, Risk & Actuarial Training Programmes",
   description:
     "Alpha Consultant delivers professional training programmes in ERM, ORSA, RBC2, AML/CFT, cyber risk, ESG and insurtech for insurance and financial services professionals.",
 };
@@ -90,7 +90,7 @@ export default function TrainingPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
               {[
                 { icon: Award, title: "Practitioner-Led", desc: "Delivered by senior professionals with direct industry experience" },
-                { icon: Users, title: "Corporate & Open", desc: "Custom corporate programmes or scheduled open sessions" },
+                { icon: Users, title: "Flexible Delivery", desc: "Custom corporate programmes tailored to your organisation's requirements" },
                 { icon: Clock, title: "Flexible Format", desc: "Half-day workshops, full-day sessions or multi-module programmes" },
               ].map(({ icon: Icon, title, desc }) => (
                 <div key={title} className="flex items-start gap-4">

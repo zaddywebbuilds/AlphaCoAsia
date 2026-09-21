@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { INSIGHTS_PLACEHOLDER } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Insurance, Risk & Regulatory Insights | Alpha Consultant",
+  title: "Insurance, Risk & Regulatory Insights",
   description:
     "Perspectives on insurance regulation, enterprise risk management, actuarial matters, insurtech and emerging financial services trends across Asia Pacific.",
 };
@@ -79,7 +79,7 @@ export default function InsightsPage() {
             <div className="mt-16 p-10 bg-[#0D1B2A] rounded-2xl text-center">
               <h3 className="font-display text-xl font-semibold text-white mb-3">APAC Insurance &amp; Risk Brief</h3>
               <p className="text-sm text-slate-400 max-w-md mx-auto mb-6">
-                Monthly perspectives on insurance regulation, risk management and emerging financial services developments across Asia Pacific.
+                Perspectives on insurance regulation, risk management and emerging financial services developments across Asia Pacific.
               </p>
               <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
                 <input

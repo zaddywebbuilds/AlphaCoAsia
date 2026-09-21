@@ -7,7 +7,7 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { EXPERTISE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Insurance, Risk & Actuarial Consulting Expertise | Alpha Consultant",
+  title: "Insurance, Risk & Actuarial Advisory Expertise",
   description:
     "Alpha Consultant's specialist expertise spans enterprise risk management, actuarial consulting, ORSA, RBC2, regulatory licensing, AML/CFT, insurtech and Asia market entry.",
 };

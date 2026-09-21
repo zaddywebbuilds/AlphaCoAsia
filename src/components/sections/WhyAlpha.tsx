@@ -6,7 +6,7 @@ const differentiators = [
   {
     title: "Senior Practitioners",
     description:
-      "Every engagement is led by experienced professionals, not delegated to junior staff. You work directly with the expertise you are paying for.",
+      "Senior practitioners remain closely involved throughout every engagement. You work directly with experienced professionals who understand your industry.",
   },
   {
     title: "Specialist Depth",
@@ -62,11 +62,12 @@ export function WhyAlpha() {
               description="Large consultancies sell scale. Alpha Consultant offers specialist depth, senior-level involvement and the kind of direct access that drives better outcomes for clients."
               light
             />
-            <blockquote className="border-l-2 border-[#C9A040] pl-5 mt-8">
-              <p className="text-sm text-slate-400 italic leading-relaxed">
-                &ldquo;Alpha doesn&apos;t need a website that merely looks newer. It needs a website that finally reflects the calibre of the people behind the company.&rdquo;
+            <div className="mt-8 p-5 rounded-xl bg-[#0D1B2A] border border-white/8">
+              <div className="w-6 h-0.5 bg-[#C9A040] mb-3" />
+              <p className="text-sm text-slate-300 leading-relaxed">
+                Specialist expertise for complex financial services challenges. Supporting insurers, financial institutions and fintechs across insurance, risk, actuarial and regulatory disciplines throughout Asia Pacific.
               </p>
-            </blockquote>
+            </div>
           </div>
 
           {/* Right: Grid */}
