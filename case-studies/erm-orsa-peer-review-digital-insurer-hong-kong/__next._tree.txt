@@ -1,3 +1,3 @@
-:HL["/AlphaCoAsia/_next/static/chunks/085u4i_xuz9h3.css","style"]
+:HL["/AlphaCoAsia/_next/static/chunks/10tvy3ql4h62q.css","style"]
 :HL["/AlphaCoAsia/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"case-studies","param":null,"prefetchHints":4160,"slots":{"children":{"name":"slug","param":{"type":"d","key":"erm-orsa-peer-review-digital-insurer-hong-kong","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"gbGVCQ79Qw-KNLuJqDMUr"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"case-studies","param":null,"prefetchHints":4160,"slots":{"children":{"name":"slug","param":{"type":"d","key":"erm-orsa-peer-review-digital-insurer-hong-kong","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"ifWslMBS1SgClNRE93P1t"}
