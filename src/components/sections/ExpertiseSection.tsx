@@ -57,11 +57,8 @@ export function ExpertiseSection() {
                 className="group relative block h-full min-h-[232px] rounded-[14px] overflow-hidden border border-white/[0.09] hover:border-[#C9A040]/45 transition-colors duration-500 shadow-[0_20px_46px_-26px_rgba(0,0,0,0.95)]"
               >
                 <div className="absolute inset-0">
-                  <DisciplineImage id={item.slug} priority={i < 4} className="w-full h-full" />
+                  <DisciplineImage id={item.slug} priority={i < 4} scrim className="w-full h-full" />
                 </div>
-
-                {/* Legibility scrim under the copy */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(5,10,18,0.94)_0%,rgba(5,10,18,0.58)_40%,rgba(5,10,18,0.08)_74%,transparent_100%)]" />
 
                 <span className="absolute top-4 left-5 type-technical text-[#C9A040]/85 z-10">
                   {item.shortTitle}

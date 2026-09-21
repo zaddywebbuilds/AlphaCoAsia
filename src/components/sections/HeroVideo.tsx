@@ -6,10 +6,10 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const POSTER = `${BASE}/media/hero-poster.jpg`;
 const SRC = `${BASE}/media/hero.mp4`;
 
-/** Full-bleed hero plate. The footage carries the whole frame; scrims are shaped
- *  so the headline column stays legible while the right side of the scene reads
- *  at full clarity. Poster carries it on low-tier devices and reduced motion. */
-export function HeroVideo() {
+/** The footage as a surface: a clean framed panel at full clarity. No grade and
+ *  nothing laid over it, so it reads sharp rather than as a murky backdrop.
+ *  Poster carries it on low-tier devices and under reduced motion. */
+export function HeroVideo({ className = "" }: { className?: string }) {
   const el = useRef<HTMLVideoElement>(null);
   const reduced = usePrefersReducedMotion();
   const tier = useDeviceTier();
@@ -41,10 +41,11 @@ export function HeroVideo() {
   }, [play, inView]);
 
   return (
-    <div ref={ref} className="absolute inset-0 overflow-hidden bg-[#050A12]" aria-hidden="true">
+    <div ref={ref} className={`relative overflow-hidden bg-[#050A12] ${className}`}>
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${POSTER})` }}
+        aria-hidden="true"
       />
       {play && (
         <video
@@ -57,16 +58,10 @@ export function HeroVideo() {
           playsInline
           preload="none"
           tabIndex={-1}
+          aria-label="Singapore central business district"
         />
       )}
-
-      {/* Headline scrim — heavy at the left, clearing by mid-frame */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(5,10,18,0.985)_0%,rgba(5,10,18,0.96)_30%,rgba(5,10,18,0.86)_46%,rgba(5,10,18,0.52)_62%,rgba(5,10,18,0.14)_82%,transparent_100%)]" />
-      {/* Nav and rail scrims */}
-      <div className="absolute inset-x-0 top-0 h-40 bg-[linear-gradient(to_bottom,rgba(5,10,18,0.85),transparent)]" />
-      <div className="absolute inset-x-0 bottom-0 h-56 bg-[linear-gradient(to_top,rgba(5,10,18,0.96),transparent)]" />
-      {/* Warm horizon lift, tying the footage to the gold palette */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_78%_38%,rgba(201,160,64,0.10),transparent_70%)]" />
+      <div className="absolute inset-0 ring-1 ring-inset ring-white/[0.10] rounded-[inherit]" />
     </div>
   );
 }

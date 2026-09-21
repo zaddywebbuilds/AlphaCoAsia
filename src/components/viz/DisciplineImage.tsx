@@ -65,11 +65,10 @@ export function DisciplineHero({ id, className = "" }: { id: string; className?:
         fill
         sizes="(max-width: 1024px) 100vw, 50vw"
         priority
-        className="object-cover [filter:saturate(0.78)_contrast(1.01)_brightness(0.97)]"
+        className="object-cover"
       />
-      {/* Kept light: these frames carry readable dashboard detail worth seeing */}
-      <div className="absolute inset-0 mix-blend-multiply bg-[linear-gradient(150deg,rgba(10,22,40,0.18),transparent_60%,rgba(201,160,64,0.07))]" />
-      <div className="absolute inset-0 ring-1 ring-inset ring-white/[0.08]" />
+      {/* No grade. These are surfaces, not backdrops — the detail has to read. */}
+      <div className="absolute inset-0 ring-1 ring-inset ring-white/[0.10]" />
     </div>
   );
 }
@@ -95,10 +94,14 @@ export function DisciplineImage({
   id,
   className = "",
   priority = false,
+  scrim = false,
 }: {
   id: string;
   className?: string;
   priority?: boolean;
+  /** Only when copy is laid over the image. Bottom-weighted, so the upper
+   *  two-thirds of the frame stays completely clear. */
+  scrim?: boolean;
 }) {
   const file = SUBJECTS.has(id) ? id : "enterprise-risk-management";
 
@@ -108,15 +111,15 @@ export function DisciplineImage({
         src={`${BASE}/media/disciplines/${file}.jpg`}
         alt=""
         fill
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
         priority={priority}
-        className="object-cover [filter:saturate(0.4)_contrast(1.02)_brightness(0.82)] scale-[1.02] group-hover:scale-[1.07] group-hover/card:scale-[1.07] transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+        className="object-cover group-hover:scale-[1.04] group-hover/card:scale-[1.04] transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
       />
-      {/* Navy/cyan grade, so every image sits in the same palette */}
-      <div className="absolute inset-0 mix-blend-multiply bg-[linear-gradient(150deg,rgba(10,22,40,0.55),rgba(7,13,20,0.35)_55%,rgba(30,159,216,0.14))]" />
-      {/* Edge falloff, so the crop reads as intentional */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_82%_82%_at_50%_48%,transparent_48%,rgba(7,13,20,0.62)_100%)]" />
-      <div className="absolute inset-0 ring-1 ring-inset ring-white/[0.05]" />
+      {/* No grade. These are surfaces, not backdrops — the detail has to read. */}
+      {scrim && (
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(5,10,18,0.94)_0%,rgba(5,10,18,0.70)_26%,rgba(5,10,18,0.16)_52%,transparent_72%)]" />
+      )}
+      <div className="absolute inset-0 ring-1 ring-inset ring-white/[0.10]" />
     </div>
   );
 }
