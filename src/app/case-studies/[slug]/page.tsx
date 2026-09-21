@@ -97,17 +97,24 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
               </div>
 
               <div className="lg:col-span-5">
-                <div className="panel-dim p-8 text-slate-500">
-                  <ExpertiseGlyph id={glyph} active className="w-full h-[150px]" />
-                  <div className="rule-h my-6" />
-                  <div className="grid grid-cols-2 gap-5">
-                    <div>
-                      <span className="type-technical text-slate-600 block mb-1">Market</span>
-                      <span className="text-[13px] text-white">{cs.market}</span>
+                <div className="panel-dim overflow-hidden">
+                  <div className="relative h-[190px] bg-[#070D14] text-slate-500 border-b border-white/[0.07]">
+                    <div className="absolute inset-0 tex-grid-fine opacity-50" />
+                    <div className="absolute inset-0">
+                      <ExpertiseGlyph id={glyph} active className="w-full h-full" />
                     </div>
-                    <div>
-                      <span className="type-technical text-slate-600 block mb-1">Sector</span>
-                      <span className="text-[13px] text-white">{cs.industry}</span>
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_78%_78%_at_50%_45%,transparent_35%,rgba(7,13,20,0.8)_100%)]" />
+                  </div>
+                  <div className="p-7">
+                    <div className="grid grid-cols-2 gap-5">
+                      <div>
+                        <span className="type-technical text-slate-600 block mb-1">Market</span>
+                        <span className="text-[13px] text-white">{cs.market}</span>
+                      </div>
+                      <div>
+                        <span className="type-technical text-slate-600 block mb-1">Sector</span>
+                        <span className="text-[13px] text-white">{cs.industry}</span>
+                      </div>
                     </div>
                   </div>
                 </div>

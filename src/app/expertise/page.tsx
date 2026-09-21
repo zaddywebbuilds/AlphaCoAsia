@@ -45,19 +45,20 @@ export default function ExpertisePage() {
                   className="card p-7 flex flex-col group overflow-hidden"
                 >
                   {/* Discipline diagram on its own dark plane */}
-                  <div className="relative -mx-7 -mt-7 mb-6 h-[164px] bg-[#0A1119] overflow-hidden">
-                    <div className="absolute inset-0 tex-grid-fine opacity-60" />
-                    <div className="absolute inset-0 flex items-center justify-center px-5 pt-5 text-slate-500 group-hover:text-slate-300 transition-colors duration-500">
-                      <ExpertiseGlyph id={item.slug} active className="w-full h-[118px]" />
+                  <div className="relative -mx-7 -mt-7 mb-6 h-[176px] bg-[#070D14] overflow-hidden">
+                    <div className="absolute inset-0 tex-grid-fine opacity-50" />
+                    <div className="absolute inset-0 text-slate-500 group-hover:text-slate-300 transition-colors duration-500">
+                      <ExpertiseGlyph id={item.slug} active className="w-full h-full" />
                     </div>
-                    <span className="absolute top-3 left-4 type-technical text-slate-600 tabular">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="absolute top-3 right-4 type-technical text-[#38BDF8]/50">
-                      {item.shortTitle}
-                    </span>
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_48%,transparent_42%,rgba(7,13,20,0.72)_100%)]" />
                   </div>
 
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="type-technical text-[#94A3B8] tabular">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="type-technical text-[#A8801A]">{item.shortTitle}</span>
+                  </div>
                   <h2 className="text-base font-semibold text-[#0D1B2A] mb-2 leading-snug group-hover:text-[#1A3550] transition-colors">
                     {item.title}
                   </h2>

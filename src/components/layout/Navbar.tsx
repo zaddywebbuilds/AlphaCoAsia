@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { EXPERTISE, INDUSTRIES } from "@/lib/data";
-import { ExpertiseGlyph } from "@/components/viz/ExpertiseGlyph";
 
 const NAV = [
   {
@@ -97,11 +96,6 @@ export function Navbar() {
                             href={child.href}
                             className="flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-white/[0.06] group transition-colors"
                           >
-                            {item.label === "Expertise" && (
-                              <span className="w-9 h-9 shrink-0 rounded-md bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-slate-500 group-hover:text-slate-300 transition-colors">
-                                <ExpertiseGlyph id={child.slug} active className="w-8 h-6" />
-                              </span>
-                            )}
                             <span className="min-w-0 flex-1">
                               <span className="block text-[13px] font-medium text-slate-200 group-hover:text-white transition-colors truncate">
                                 {child.label}

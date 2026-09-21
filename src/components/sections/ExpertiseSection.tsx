@@ -94,34 +94,40 @@ export function ExpertiseSection() {
                   cards.current[i] = n;
                 }}
                 href={`/expertise/${item.slug}`}
-                className="tilt-card group/card relative flex flex-col h-full p-6 rounded-[14px] border border-white/[0.09] bg-[linear-gradient(158deg,rgba(255,255,255,0.055),rgba(255,255,255,0.015)_55%,rgba(255,255,255,0.035))] hover:border-[#38BDF8]/35 hover:[--tz:16px] focus-visible:[--tz:16px] shadow-[0_18px_44px_-24px_rgba(0,0,0,0.9)]"
+                className="tilt-card group/card relative flex flex-col h-full overflow-hidden rounded-[14px] border border-white/[0.09] bg-[linear-gradient(158deg,rgba(255,255,255,0.055),rgba(255,255,255,0.015)_55%,rgba(255,255,255,0.035))] hover:border-[#38BDF8]/35 hover:[--tz:16px] focus-visible:[--tz:16px] shadow-[0_18px_44px_-24px_rgba(0,0,0,0.9)]"
                 style={{ ["--tz" as string]: `${PLANE[i]}px` }}
               >
                 {/* Lit top bevel */}
-                <span className="absolute top-0 left-[14%] right-[14%] h-px bg-[linear-gradient(to_right,transparent,rgba(56,189,248,0.5),transparent)] opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+                <span className="absolute top-0 left-[14%] right-[14%] h-px bg-[linear-gradient(to_right,transparent,rgba(56,189,248,0.5),transparent)] opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 z-20" />
 
-                <div className="flex items-start justify-between mb-4">
-                  <span className="type-technical text-slate-600 tabular">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="type-technical text-[#38BDF8]/50">{item.shortTitle}</span>
+                {/* Full-bleed discipline panel */}
+                <div className="relative h-[168px] bg-[#070D14] overflow-hidden border-b border-white/[0.07]">
+                  <div className="absolute inset-0 tex-grid-fine opacity-50" />
+                  <div className="absolute inset-0 text-slate-500 group-hover/card:text-slate-300 transition-colors duration-500">
+                    <ExpertiseGlyph id={item.slug} active={inView} className="w-full h-full" />
+                  </div>
+                  {/* Edge falloff so the crop reads as intentional */}
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_48%,transparent_42%,rgba(7,13,20,0.72)_100%)]" />
                 </div>
 
-                {/* Discipline diagram */}
-                <div className="h-[120px] mb-5 text-slate-500 group-hover/card:text-slate-300 transition-colors duration-500">
-                  <ExpertiseGlyph id={item.slug} active={inView} className="w-full h-full" />
-                </div>
+                <div className="flex flex-col flex-1 p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="type-technical text-slate-600 tabular">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="type-technical text-[#38BDF8]/60">{item.shortTitle}</span>
+                  </div>
+                  <h3 className="text-[15px] font-semibold text-white mb-2.5 leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="text-[13.5px] text-slate-400 leading-relaxed">
+                    {item.tagline}
+                  </p>
 
-                <h3 className="text-[15px] font-semibold text-white mb-2.5 leading-snug">
-                  {item.title}
-                </h3>
-                <p className="text-[13.5px] text-slate-400 leading-relaxed flex-1">
-                  {item.tagline}
-                </p>
-
-                <div className="mt-5 pt-4 border-t border-white/[0.07] flex items-center gap-1.5 type-technical text-[#C9A040] opacity-0 group-hover/card:opacity-100 translate-y-1 group-hover/card:translate-y-0 transition-all duration-400">
-                  View discipline
-                  <ArrowRight size={11} />
+                  <div className="mt-auto pt-5 flex items-center gap-1.5 type-technical text-[#C9A040] opacity-0 group-hover/card:opacity-100 translate-y-1 group-hover/card:translate-y-0 transition-all duration-400">
+                    View discipline
+                    <ArrowRight size={11} />
+                  </div>
                 </div>
               </Link>
             </motion.div>

@@ -1,33 +1,37 @@
 "use client";
 
-/* Each discipline is drawn as the actual professional artifact a practitioner
-   would recognise — a risk heat map, a loss distribution, a solvency fan chart,
-   capital adequacy columns — not abstract line art. Every diagram draws itself
-   in on arrival then holds a slow continuous life. All motion stops under
-   prefers-reduced-motion. */
+/* Each discipline is composed as a full-bleed panel graphic — the artifact fills
+   its frame and crops at the edges rather than floating as a thumbnail. Forms
+   are large, strokes are heavy, and labels are few and set at a readable size.
+   Rendered with preserveAspectRatio="slice", so the viewBox is kept close to the
+   host panel's aspect and all type stays inside SAFE_TOP..SAFE_BOTTOM.
+   Every diagram draws in on arrival then holds slow continuous motion. */
 
 type Props = { id: string; active: boolean; className?: string };
 
 const CYAN = "#38BDF8";
 const GOLD = "#C9A040";
 const WARM = "#FFE6A8";
+const VIOLET = "#7B6FE8";
 const EASE = "cubic-bezier(0.22,1,0.36,1)";
 
-/** Draw-on: pathLength=1 normalises every path to one dashoffset value. */
+const W = 200;
+const H = 92;
+/* Type must stay inside this band or the slice crop will clip it. */
+const SAFE_TOP = 8;
+const SAFE_BOTTOM = 86;
+
 function draw(active: boolean, delay = 0) {
   return {
     pathLength: 1,
     strokeDasharray: 1,
     strokeDashoffset: active ? 0 : 1,
-    transition: `stroke-dashoffset 1.05s ${EASE} ${delay}s`,
+    transition: `stroke-dashoffset 1.1s ${EASE} ${delay}s`,
   } as const;
 }
 
 function fade(active: boolean, delay = 0, to = 1) {
-  return {
-    opacity: active ? to : 0,
-    transition: `opacity .6s ${EASE} ${delay}s`,
-  };
+  return { opacity: active ? to : 0, transition: `opacity .65s ${EASE} ${delay}s` };
 }
 
 function grow(active: boolean, delay = 0) {
@@ -35,192 +39,189 @@ function grow(active: boolean, delay = 0) {
     transform: `scaleY(${active ? 1 : 0})`,
     transformOrigin: "bottom",
     transformBox: "fill-box" as const,
-    transition: `transform .75s ${EASE} ${delay}s`,
+    transition: `transform .8s ${EASE} ${delay}s`,
   };
 }
 
 const delay = (s: number) => ({ animationDelay: `${s}s` });
 
-/** A signal that rides a path exactly, via offset-path. */
-function Signal({ d, dur = 3.4, wait = 0, color = WARM, r = 2 }: { d: string; dur?: number; wait?: number; color?: string; r?: number }) {
+function Signal({ d, dur = 3.6, wait = 0, color = WARM, r = 3 }: { d: string; dur?: number; wait?: number; color?: string; r?: number }) {
   return (
     <circle r={r} fill={color} className="g-travel"
       style={{ offsetPath: `path('${d}')`, animationDuration: `${dur}s`, animationDelay: `${wait}s` }} />
   );
 }
 
-const AXIS = { stroke: "currentColor", strokeWidth: 0.8, opacity: 0.35 };
-const LABEL = { fontFamily: "Inter, sans-serif", fontSize: 5.2, letterSpacing: 0.6, fill: "currentColor", opacity: 0.55 } as const;
+/** One label, set as a design element rather than chart furniture. */
+function Tag({ x, y, children, color = "currentColor", op = 0.62, size = 7.5, anchor = "start", active, d = 0 }: {
+  x: number; y: number; children: string; color?: string; op?: number; size?: number;
+  anchor?: "start" | "middle" | "end"; active: boolean; d?: number;
+}) {
+  return (
+    <text x={x} y={y} textAnchor={anchor} fill={color}
+      fontFamily="Inter, sans-serif" fontSize={size} fontWeight={600} letterSpacing="1.1"
+      style={fade(active, d, op)}>
+      {children}
+    </text>
+  );
+}
 
-/* ------------------------------------------------------------------
-   ERM — 5x5 risk heat map (likelihood x impact), the standard ERM artifact
-   ------------------------------------------------------------------ */
+/* ==================================================================
+   ERM — risk heat map, cells filling and bleeding off the frame
+   ================================================================== */
 function ERM(a: boolean) {
-  const X0 = 36, Y0 = 12, W = 21, H = 13;
-  const cells = [];
-  for (let j = 0; j < 5; j++) {
-    for (let i = 0; i < 5; i++) {
-      const score = (5 - j) * (i + 1);
-      const hot = score >= 15;
-      const mid = score >= 8 && score < 15;
-      cells.push({ i, j, score, hot, mid });
-    }
+  const COLS = 6, ROWS = 4;
+  const cw = 37, ch = 27, x0 = -10, y0 = -7;
+  const cells: { i: number; j: number; t: number }[] = [];
+  for (let j = 0; j < ROWS; j++) for (let i = 0; i < COLS; i++) {
+    // Severity rises toward the top-right corner.
+    cells.push({ i, j, t: (i / (COLS - 1)) * 0.55 + ((ROWS - 1 - j) / (ROWS - 1)) * 0.45 });
   }
-  // Three plotted risks sitting in the upper-right (high likelihood, high impact)
-  const plotted = [{ i: 3, j: 1 }, { i: 4, j: 0 }, { i: 2, j: 2 }];
+  const plotted = [{ i: 4, j: 0 }, { i: 3, j: 1 }, { i: 5, j: 1 }];
+  const cx = (i: number) => x0 + i * cw + cw / 2 - 1.5;
+  const cy = (j: number) => y0 + j * ch + ch / 2 - 1.5;
 
   return (
     <>
-      {cells.map(({ i, j, hot, mid }, k) => (
-        <rect key={k} x={X0 + i * W} y={Y0 + j * H} width={W - 1.4} height={H - 1.4} rx="1"
-          fill={hot ? GOLD : CYAN} fillOpacity={hot ? 0.3 : mid ? 0.16 : 0.07}
-          stroke={hot ? GOLD : CYAN} strokeWidth="0.5" strokeOpacity={hot ? 0.55 : 0.22}
-          style={fade(a, 0.04 * (i + j))} />
-      ))}
+      {cells.map(({ i, j, t }, k) => {
+        const hot = t > 0.66, mid = t > 0.38;
+        return (
+          <rect key={k} x={x0 + i * cw} y={y0 + j * ch} width={cw - 3} height={ch - 3} rx="2"
+            fill={hot ? GOLD : CYAN} fillOpacity={hot ? 0.3 + (t - 0.66) * 0.5 : mid ? 0.14 : 0.055}
+            stroke={hot ? GOLD : CYAN} strokeWidth="0.8" strokeOpacity={hot ? 0.6 : 0.2}
+            style={fade(a, 0.03 * (i + j))} />
+        );
+      })}
 
-      {/* Plotted risks */}
       {plotted.map((p, k) => (
-        <g key={k} className="g-node" style={{ ...fade(a, 0.55 + k * 0.12), ...delay(k * 0.7) }}>
-          <circle cx={X0 + p.i * W + (W - 1.4) / 2} cy={Y0 + p.j * H + (H - 1.4) / 2} r="3.4"
-            fill="none" stroke={WARM} strokeWidth="1.1" />
-          <circle cx={X0 + p.i * W + (W - 1.4) / 2} cy={Y0 + p.j * H + (H - 1.4) / 2} r="1.4" fill={WARM} />
+        <g key={k} style={fade(a, 0.5 + k * 0.12)}>
+          <circle cx={cx(p.i)} cy={cy(p.j)} r="11" fill="none" stroke={WARM} strokeWidth="1.4"
+            className="g-ring" style={{ transformBox: "view-box", transformOrigin: `${cx(p.i)}px ${cy(p.j)}px` }} />
+          <circle cx={cx(p.i)} cy={cy(p.j)} r="6.5" fill="none" stroke={WARM} strokeWidth="1.8" />
+          <circle cx={cx(p.i)} cy={cy(p.j)} r="2.8" fill={WARM} className="g-node" style={delay(k * 0.6)} />
         </g>
       ))}
 
-      {/* Axes */}
-      <line x1={X0 - 3} y1={Y0} x2={X0 - 3} y2={Y0 + 5 * H - 1.4} {...AXIS} style={draw(a, 0.1)} />
-      <line x1={X0 - 3} y1={Y0 + 5 * H - 1.4} x2={X0 + 5 * W - 1.4} y2={Y0 + 5 * H - 1.4} {...AXIS} style={draw(a, 0.15)} />
-      <text x={-46} y={9} transform="rotate(-90)" {...LABEL} style={fade(a, 0.7, 0.55)}>IMPACT</text>
-      <text x={X0} y={92} {...LABEL} style={fade(a, 0.7, 0.55)}>LIKELIHOOD</text>
+      {/* Severity direction, as a design mark rather than an axis */}
+      <g style={fade(a, 0.85, 0.6)}>
+        <line x1="10" y1="80" x2="50" y2="80" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M 46 76 L 51 80 L 46 84" fill="none" stroke="currentColor" strokeWidth="1.5"
+          strokeLinecap="round" strokeLinejoin="round" />
+      </g>
+      <Tag x={10} y={72} active={a} d={0.9}>SEVERITY</Tag>
     </>
   );
 }
 
-/* ------------------------------------------------------------------
-   Actuarial — loss distribution with fitted curve and a VaR percentile
-   ------------------------------------------------------------------ */
+/* ==================================================================
+   Actuarial — loss distribution, curve spanning the full width
+   ================================================================== */
 function Actuarial(a: boolean) {
-  const base = 78, x0 = 26;
-  const bars = [6, 14, 28, 46, 62, 58, 44, 30, 19, 11, 6, 3];
-  const bw = 9.4;
-  const curve = "M 26 76 C 44 74 48 22 74 20 C 100 18 112 62 150 74";
-  const varX = 112;
+  const base = 88;
+  const bars = [4, 8, 15, 26, 40, 54, 63, 58, 47, 35, 25, 16, 10, 6, 3];
+  const bw = 14.2;
+  const curve = "M -6 84 C 26 82 34 22 78 16 C 122 10 138 72 206 82";
+  const varX = 136;
 
   return (
     <>
-      <line x1={x0 - 4} y1={base} x2={152} y2={base} {...AXIS} style={draw(a, 0.1)} />
-      <line x1={x0 - 4} y1={14} x2={x0 - 4} y2={base} {...AXIS} style={draw(a, 0.12)} />
+      {bars.map((h, i) => {
+        const x = -6 + i * bw;
+        const past = x >= varX;
+        return (
+          <rect key={i} x={x} y={base - h} width={bw - 3} height={h} rx="1.5"
+            fill={past ? GOLD : CYAN} fillOpacity={past ? 0.5 : 0.22}
+            className="g-bar" style={{ ...grow(a, i * 0.03), ...delay(i * 0.1) }} />
+        );
+      })}
 
-      {bars.map((h, i) => (
-        <rect key={i} x={x0 + i * bw} y={base - h * 0.85} width={bw - 2} height={h * 0.85}
-          fill={x0 + i * bw >= varX ? GOLD : CYAN} fillOpacity={x0 + i * bw >= varX ? 0.42 : 0.2}
-          className="g-bar" style={{ ...grow(a, i * 0.035), ...delay(i * 0.12) }} />
-      ))}
+      <path d={curve} fill="none" stroke={CYAN} strokeWidth="2.6" strokeLinecap="round"
+        opacity="0.95" style={draw(a, 0.25)} />
 
-      <path d={curve} fill="none" stroke={CYAN} strokeWidth="1.5" strokeLinecap="round"
-        opacity="0.9" style={draw(a, 0.3)} />
+      <line x1={varX} y1={22} x2={varX} y2={base} stroke={GOLD} strokeWidth="1.8"
+        strokeDasharray="5 4" className="g-flow" style={draw(a, 0.75)} />
+      <Tag x={varX + 6} y={32} color={GOLD} op={0.95} size={8} active={a} d={0.95}>VaR 99.5%</Tag>
 
-      {/* Percentile / VaR marker */}
-      <line x1={varX} y1={16} x2={varX} y2={base} stroke={GOLD} strokeWidth="1.1"
-        strokeDasharray="3 2.5" className="g-flow" style={draw(a, 0.8)} />
-      <text x={varX + 3} y={22} {...LABEL} fill={GOLD} style={fade(a, 1.0, 0.9)}>VaR 99.5%</text>
-
-      {a && <Signal d={curve} dur={4.6} color={WARM} r={2.2} />}
-      <text x={x0} y={92} {...LABEL} style={fade(a, 0.9, 0.55)}>AGGREGATE LOSS</text>
+      {a && <Signal d={curve} dur={4.8} r={3.2} />}
+      <line x1={-6} y1={base} x2={206} y2={base} stroke="currentColor" strokeWidth="1.2" opacity="0.3" />
     </>
   );
 }
 
-/* ------------------------------------------------------------------
-   ORSA — forward solvency projection fan against the capital requirement
-   ------------------------------------------------------------------ */
+/* ==================================================================
+   ORSA — solvency projection fan against the capital requirement
+   ================================================================== */
 function ORSA(a: boolean) {
-  const base = 78, x0 = 28;
-  const upper = "M 28 52 C 62 44 96 26 148 14";
-  const lower = "M 28 52 C 62 58 96 58 148 56";
-  const central = "M 28 52 C 62 50 96 42 148 34";
+  const upper = "M -6 56 C 52 46 110 22 206 10";
+  const lower = "M -6 56 C 52 66 110 64 206 58";
+  const central = "M -6 56 C 52 54 110 42 206 32";
+  const req = 74;
 
   return (
     <>
-      <line x1={x0 - 4} y1={base} x2={152} y2={base} {...AXIS} style={draw(a, 0.1)} />
-      <line x1={x0 - 4} y1={10} x2={x0 - 4} y2={base} {...AXIS} style={draw(a, 0.12)} />
+      <path d={`${upper} L 206 58 C 110 64 52 66 -6 56 Z`} fill={CYAN} fillOpacity="0.15"
+        className="g-breathe" style={fade(a, 0.45)} />
+      <path d={upper} fill="none" stroke={CYAN} strokeWidth="1.4" opacity="0.5" style={draw(a, 0.3)} />
+      <path d={lower} fill="none" stroke={CYAN} strokeWidth="1.4" opacity="0.5" style={draw(a, 0.35)} />
+      <path d={central} fill="none" stroke={GOLD} strokeWidth="2.8" strokeLinecap="round" style={draw(a, 0.2)} />
 
-      {/* Confidence envelope */}
-      <path d={`${upper} L 148 56 C 96 58 62 58 28 52 Z`} fill={CYAN} fillOpacity="0.13"
-        style={fade(a, 0.55)} className="g-breathe" />
-      <path d={upper} fill="none" stroke={CYAN} strokeWidth="0.9" opacity="0.5" style={draw(a, 0.35)} />
-      <path d={lower} fill="none" stroke={CYAN} strokeWidth="0.9" opacity="0.5" style={draw(a, 0.4)} />
-      <path d={central} fill="none" stroke={GOLD} strokeWidth="1.6" strokeLinecap="round" style={draw(a, 0.25)} />
+      <line x1={-6} y1={req} x2={206} y2={req} stroke={WARM} strokeWidth="1.8"
+        strokeDasharray="6 4" className="g-flow" style={draw(a, 0.7)} />
+      <Tag x={10} y={84} color={WARM} op={0.9} active={a} d={0.9}>CAPITAL REQUIREMENT</Tag>
 
-      {/* Capital requirement threshold */}
-      <line x1={x0} y1={66} x2={150} y2={66} stroke={WARM} strokeWidth="1"
-        strokeDasharray="4 3" className="g-flow" style={draw(a, 0.7)} />
-      <text x={x0 + 2} y={73} {...LABEL} fill={WARM} style={fade(a, 0.95, 0.85)}>CAPITAL REQUIREMENT</text>
-
-      {a && <Signal d={central} dur={4.8} color={WARM} r={2.3} />}
-      <text x={x0} y={92} {...LABEL} style={fade(a, 0.9, 0.55)}>PROJECTION HORIZON</text>
+      {a && <Signal d={central} dur={5} r={3.4} />}
     </>
   );
 }
 
-/* ------------------------------------------------------------------
-   RBC — capital adequacy: available capital against required risk charges
-   ------------------------------------------------------------------ */
+/* ==================================================================
+   RBC — available capital against required risk charges
+   ================================================================== */
 function RBC(a: boolean) {
-  const base = 76;
-  const avail = [
-    { h: 30, c: GOLD, o: 0.5 },
-    { h: 18, c: GOLD, o: 0.3 },
-    { h: 12, c: GOLD, o: 0.18 },
-  ];
-  const req = [
-    { h: 20, c: CYAN, o: 0.4 },
-    { h: 14, c: CYAN, o: 0.28 },
-    { h: 10, c: CYAN, o: 0.18 },
-  ];
-  const col = (segs: { h: number; c: string; o: number }[], x: number, d0: number) => {
+  const base = 96;
+  const availSegs = [38, 22, 16];
+  const reqSegs = [26, 18, 12];
+  const stack = (segs: number[], x: number, c: string, d0: number) => {
     let y = base;
-    return segs.map((s, i) => {
-      y -= s.h;
+    return segs.map((h, i) => {
+      y -= h;
       return (
-        <rect key={i} x={x} y={y} width="30" height={s.h - 1.2} rx="1"
-          fill={s.c} fillOpacity={s.o} stroke={s.c} strokeWidth="0.6" strokeOpacity={s.o + 0.3}
+        <rect key={i} x={x} y={y} width="54" height={h - 3} rx="2"
+          fill={c} fillOpacity={0.5 - i * 0.14} stroke={c} strokeWidth="1.1" strokeOpacity={0.8 - i * 0.18}
           className="g-bar" style={{ ...grow(a, d0 + i * 0.1), ...delay(i * 0.35) }} />
       );
     });
   };
-  const availTop = base - 60;
-  const reqTop = base - 44;
+  const availTop = base - availSegs.reduce((s, v) => s + v, 0);
+  const reqTop = base - reqSegs.reduce((s, v) => s + v, 0);
 
   return (
     <>
-      <line x1={22} y1={base} x2={150} y2={base} {...AXIS} style={draw(a, 0.1)} />
+      {stack(availSegs, 26, GOLD, 0.15)}
+      {stack(reqSegs, 120, CYAN, 0.3)}
 
-      {col(avail, 40, 0.15)}
-      {col(req, 102, 0.3)}
+      {/* Headroom bracket between the two columns */}
+      <line x1={84} y1={availTop} x2={112} y2={availTop} stroke={WARM} strokeWidth="1.4"
+        strokeDasharray="4 3" className="g-flow" style={draw(a, 0.8)} />
+      <line x1={112} y1={availTop} x2={112} y2={reqTop} stroke={WARM} strokeWidth="1.4"
+        strokeDasharray="4 3" className="g-flow" style={draw(a, 0.9)} />
 
-      {/* Solvency ratio bracket between the two columns */}
-      <line x1={70} y1={availTop} x2={96} y2={availTop} stroke={WARM} strokeWidth="0.9"
-        strokeDasharray="3 2" className="g-flow" style={draw(a, 0.8)} />
-      <line x1={132} y1={reqTop} x2={150} y2={reqTop} stroke={CYAN} strokeWidth="0.9"
-        strokeDasharray="3 2" className="g-flow" style={draw(a, 0.85)} />
-      <text x={74} y={availTop - 3} {...LABEL} fill={WARM} style={fade(a, 1, 0.9)}>RATIO</text>
+      <Tag x={26} y={14} color={GOLD} op={0.9} active={a} d={0.85}>AVAILABLE</Tag>
+      <Tag x={120} y={34} color={CYAN} op={0.85} active={a} d={0.95}>REQUIRED</Tag>
 
-      <text x={38} y={88} {...LABEL} style={fade(a, 0.9, 0.55)}>AVAILABLE</text>
-      <text x={102} y={88} {...LABEL} style={fade(a, 0.95, 0.55)}>REQUIRED</text>
-
-      {a && <Signal d={`M 55 ${base} L 55 ${availTop}`} dur={3.4} color={WARM} r={2} />}
+      {a && <Signal d={`M 53 ${base} L 53 ${availTop}`} dur={3.6} r={3} />}
     </>
   );
 }
 
-/* ------------------------------------------------------------------
-   Regulatory — licence application process flow with progress
-   ------------------------------------------------------------------ */
+/* ==================================================================
+   Regulatory — MAS licence pathway, chevrons spanning the full width
+   ================================================================== */
 function Regulatory(a: boolean) {
   const stages = ["PREP", "SUBMIT", "REVIEW", "IPA", "LICENCE"];
-  const w = 27, gap = 1.5, x0 = 12, y = 30, h = 26;
-  const track = `M ${x0} ${y + h / 2} L ${x0 + 5 * (w + gap) - gap} ${y + h / 2}`;
+  // Sized so the first and last stage labels both stay inside the frame.
+  const w = 39, gap = 2, x0 = -2, y = 26, h = 40;
+  const track = `M ${x0 + 10} ${y + h / 2} L ${x0 + 4 * (w + gap) + w} ${y + h / 2}`;
 
   return (
     <>
@@ -228,79 +229,67 @@ function Regulatory(a: boolean) {
         const x = x0 + i * (w + gap);
         const done = i < 3;
         return (
-          <g key={s} style={fade(a, 0.1 + i * 0.12)}>
-            {/* Chevron stage */}
+          <g key={s} style={fade(a, 0.1 + i * 0.11)}>
             <path
-              d={`M ${x} ${y} L ${x + w - 6} ${y} L ${x + w} ${y + h / 2} L ${x + w - 6} ${y + h} L ${x} ${y + h} L ${x + 6} ${y + h / 2} Z`}
-              fill={done ? GOLD : CYAN} fillOpacity={done ? 0.26 : 0.08}
-              stroke={done ? GOLD : CYAN} strokeWidth="0.9" strokeOpacity={done ? 0.85 : 0.4}
+              d={`M ${x} ${y} L ${x + w - 10} ${y} L ${x + w} ${y + h / 2} L ${x + w - 10} ${y + h} L ${x} ${y + h} L ${x + 10} ${y + h / 2} Z`}
+              fill={done ? GOLD : CYAN} fillOpacity={done ? 0.28 : 0.07}
+              stroke={done ? GOLD : CYAN} strokeWidth="1.4" strokeOpacity={done ? 0.9 : 0.35}
               className={done ? undefined : "g-blink"} style={done ? undefined : delay(i * 0.5)} />
-            <text x={x + w / 2} y={y + h / 2 + 2} textAnchor="middle"
-              fontFamily="Inter, sans-serif" fontSize="4.6" letterSpacing="0.5"
-              fill={done ? GOLD : "currentColor"} opacity={done ? 0.95 : 0.5}>
+            <text x={x + w / 2} y={y + h / 2 + 3} textAnchor="middle"
+              fontFamily="Inter, sans-serif" fontSize="7" fontWeight={600} letterSpacing="0.6"
+              fill={done ? GOLD : "currentColor"} opacity={done ? 1 : 0.5}>
               {s}
             </text>
           </g>
         );
       })}
-      <line x1={x0} y1={y + h + 8} x2={x0 + 3 * (w + gap) - gap} y2={y + h + 8}
-        stroke={GOLD} strokeWidth="1.6" strokeLinecap="round" style={draw(a, 0.7)} />
-      <line x1={x0 + 3 * (w + gap) - gap} y1={y + h + 8} x2={x0 + 5 * (w + gap) - gap} y2={y + h + 8}
-        stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" opacity="0.18" style={draw(a, 0.75)} />
-      <text x={x0} y={y - 6} {...LABEL} style={fade(a, 0.85, 0.55)}>MAS LICENCE PATHWAY</text>
-      {a && <Signal d={track} dur={4.2} color={WARM} r={2.4} />}
+      {a && <Signal d={track} dur={4.4} r={3.4} />}
     </>
   );
 }
 
-/* ------------------------------------------------------------------
-   AML/CFT — transaction screening funnel into alerts and escalation
-   ------------------------------------------------------------------ */
+/* ==================================================================
+   AML/CFT — screening funnel into escalation
+   ================================================================== */
 function AML(a: boolean) {
-  const feeds = [16, 26, 36, 46, 56, 66];
-  const gateX = 74;
-  const esc = `M ${gateX + 12} 40 L 132 26`;
+  const feeds = [8, 22, 36, 50, 64, 78];
+  const gx = 84;
+  const esc = `M ${gx + 22} 44 L 196 22`;
 
   return (
     <>
-      {/* Inbound transaction flows */}
       {feeds.map((y, i) => (
-        <line key={y} x1={10} y1={y + 6} x2={gateX - 10} y2={40} stroke="currentColor"
-          strokeWidth="0.7" opacity="0.26" strokeDasharray="2.5 2.5"
+        <line key={y} x1={-8} y1={y} x2={gx - 18} y2={47} stroke="currentColor"
+          strokeWidth="1.1" opacity="0.26" strokeDasharray="4 3"
           className="g-flow" style={{ ...draw(a, i * 0.05), ...delay(i * 0.2) }} />
       ))}
       {feeds.map((y, i) => (
-        <circle key={`d${y}`} cx={10} cy={y + 6} r="1.8" fill={CYAN}
+        <circle key={`d${y}`} cx={-2} cy={y} r="3" fill={CYAN}
           className="g-node" style={{ ...fade(a, 0.2 + i * 0.05), ...delay(i * 0.33) }} />
       ))}
 
-      {/* Screening gate */}
-      <path d={`M ${gateX - 10} 22 L ${gateX + 12} 30 L ${gateX + 12} 50 L ${gateX - 10} 58 Z`}
-        fill={CYAN} fillOpacity="0.12" stroke={CYAN} strokeWidth="1" strokeOpacity="0.55"
+      <path d={`M ${gx - 18} 16 L ${gx + 22} 34 L ${gx + 22} 62 L ${gx - 18} 80 Z`}
+        fill={CYAN} fillOpacity="0.14" stroke={CYAN} strokeWidth="1.6" strokeOpacity="0.6"
         style={fade(a, 0.4)} />
-      <text x={gateX + 1} y={16} textAnchor="middle" {...LABEL} style={fade(a, 0.65, 0.6)}>SCREENING</text>
+      <Tag x={gx + 2} y={12} anchor="middle" active={a} d={0.6}>SCREENING</Tag>
 
-      {/* Cleared vs escalated */}
-      <line x1={gateX + 12} y1={48} x2={132} y2={58} stroke="currentColor" strokeWidth="0.8"
-        opacity="0.28" strokeDasharray="2.5 2.5" className="g-flow" style={draw(a, 0.6)} />
-      <path d={esc} fill="none" stroke={GOLD} strokeWidth="1.6" style={draw(a, 0.65)} />
+      <line x1={gx + 22} y1={56} x2={196} y2={74} stroke="currentColor" strokeWidth="1.2"
+        opacity="0.28" strokeDasharray="4 3" className="g-flow" style={draw(a, 0.6)} />
+      <path d={esc} fill="none" stroke={GOLD} strokeWidth="2.4" style={draw(a, 0.65)} />
 
-      <circle cx={132} cy={58} r="2.6" fill={CYAN} opacity="0.6" style={fade(a, 0.85, 0.6)} />
-      <text x={138} y={60} {...LABEL} style={fade(a, 0.9, 0.5)}>CLEAR</text>
+      <circle cx={176} cy={24} r="6.5" fill={GOLD} className="g-node" style={fade(a, 0.9)} />
+      <circle cx={176} cy={24} r="14" fill="none" stroke={GOLD} strokeWidth="1.4"
+        className="g-ring" style={{ transformBox: "view-box", transformOrigin: "176px 24px" }} />
+      <Tag x={196} y={46} anchor="end" color={GOLD} op={0.95} active={a} d={0.95}>ESCALATE</Tag>
 
-      <circle cx={132} cy={26} r="4" fill={GOLD} className="g-node" style={fade(a, 0.9)} />
-      <circle cx={132} cy={26} r="8" fill="none" stroke={GOLD} strokeWidth="0.9"
-        className="g-ring" style={{ transformBox: "view-box", transformOrigin: "132px 26px" }} />
-      <text x={124} y={13} {...LABEL} fill={GOLD} style={fade(a, 0.95, 0.9)}>ESCALATE</text>
-
-      {a && <Signal d={esc} dur={2.8} color={WARM} r={2.2} />}
+      {a && <Signal d={esc} dur={2.9} r={3.2} />}
     </>
   );
 }
 
-/* ------------------------------------------------------------------
-   Insurtech — platform stack architecture
-   ------------------------------------------------------------------ */
+/* ==================================================================
+   Insurtech — platform stack, layers bleeding off both edges
+   ================================================================== */
 function Insurtech(a: boolean) {
   const layers = [
     { label: "CHANNELS", mods: 4, accent: false },
@@ -308,204 +297,181 @@ function Insurtech(a: boolean) {
     { label: "POLICY CORE", mods: 3, accent: false },
     { label: "DATA", mods: 2, accent: false },
   ];
-  const x0 = 30, w = 116, h = 15, gap = 5;
+  const x0 = -10, w = 220, h = 17, gap = 4, top = 7;
 
   return (
     <>
       {layers.map((L, i) => {
-        const y = 10 + i * (h + gap);
+        const y = top + i * (h + gap);
         return (
-          <g key={L.label} style={fade(a, 0.1 + i * 0.12)}>
-            <rect x={x0} y={y} width={w} height={h} rx="2"
-              fill={L.accent ? GOLD : CYAN} fillOpacity={L.accent ? 0.18 : 0.07}
-              stroke={L.accent ? GOLD : CYAN} strokeWidth="0.9" strokeOpacity={L.accent ? 0.8 : 0.35} />
-            {/* Modules inside the layer */}
+          <g key={L.label} style={fade(a, 0.1 + i * 0.11)}>
+            <rect x={x0} y={y} width={w} height={h} rx="2.5"
+              fill={L.accent ? GOLD : CYAN} fillOpacity={L.accent ? 0.2 : 0.07}
+              stroke={L.accent ? GOLD : CYAN} strokeWidth="1.3" strokeOpacity={L.accent ? 0.85 : 0.32} />
             {Array.from({ length: L.mods }).map((_, m) => {
-              const mw = (w - 8 - (L.mods - 1) * 4) / L.mods;
+              const inner = 176;
+              const mw = (inner - (L.mods - 1) * 6) / L.mods;
               return (
-                <rect key={m} x={x0 + 4 + m * (mw + 4)} y={y + 4} width={mw} height={h - 8} rx="1"
-                  fill={L.accent ? GOLD : CYAN} fillOpacity={L.accent ? 0.3 : 0.16}
+                <rect key={m} x={12 + m * (mw + 6)} y={y + 4} width={mw} height={h - 8} rx="1.5"
+                  fill={L.accent ? GOLD : CYAN} fillOpacity={L.accent ? 0.32 : 0.16}
                   className="g-blink" style={delay((i * 4 + m) * 0.18)} />
               );
             })}
-            <text x={x0 - 3} y={y + h / 2 + 1.8} textAnchor="end"
-              fontFamily="Inter, sans-serif" fontSize="4.4" letterSpacing="0.4"
-              fill={L.accent ? GOLD : "currentColor"} opacity={L.accent ? 0.9 : 0.5}>
+            <text x={16} y={y + h / 2 + 2.6}
+              fontFamily="Inter, sans-serif" fontSize="7" fontWeight={600} letterSpacing="1"
+              fill={L.accent ? GOLD : "currentColor"} opacity={L.accent ? 0.95 : 0.55}>
               {L.label}
             </text>
           </g>
         );
       })}
-
-      {/* Inter-layer connectors */}
       {[0, 1, 2].map((i) => {
-        const y = 10 + i * (h + gap) + h;
+        const y = top + i * (h + gap) + h;
         return (
-          <line key={i} x1={88} y1={y} x2={88} y2={y + gap} stroke={GOLD} strokeWidth="1"
-            strokeDasharray="2 2" opacity="0.6" className="g-flow" style={{ ...draw(a, 0.5 + i * 0.08), ...delay(i * 0.25) }} />
+          <line key={i} x1={160} y1={y} x2={160} y2={y + gap} stroke={GOLD} strokeWidth="1.6"
+            strokeDasharray="3 2" opacity="0.65" className="g-flow"
+            style={{ ...draw(a, 0.5 + i * 0.08), ...delay(i * 0.25) }} />
         );
       })}
-      {a && <Signal d={`M 88 ${10 + h} L 88 ${10 + 3 * (h + gap)}`} dur={2.8} color={WARM} r={1.9} />}
+      {a && <Signal d={`M 160 ${top + h} L 160 ${top + 3 * (h + gap)}`} dur={2.9} r={2.6} />}
     </>
   );
 }
 
-/* ------------------------------------------------------------------
-   Market Entry — market prioritisation matrix, the standard entry artifact
-   ------------------------------------------------------------------ */
+/* ==================================================================
+   Market Entry — market prioritisation matrix filling the frame
+   ================================================================== */
 function MarketEntry(a: boolean) {
-  const X0 = 30, Y0 = 12, W = 118, H = 62;
-  // x = ease of entry, y = market attractiveness (higher is up)
   const markets = [
-    { c: "SG", x: 0.82, y: 0.88, hub: true },
-    { c: "MY", x: 0.62, y: 0.55, hub: false },
-    { c: "HK", x: 0.7, y: 0.72, hub: false },
-    { c: "ID", x: 0.3, y: 0.78, hub: false },
-    { c: "VN", x: 0.38, y: 0.46, hub: false },
+    { c: "SG", x: 0.84, y: 0.88, hub: true },
+    { c: "HK", x: 0.68, y: 0.7, hub: false },
+    { c: "MY", x: 0.58, y: 0.48, hub: false },
+    { c: "ID", x: 0.26, y: 0.76, hub: false },
+    { c: "VN", x: 0.34, y: 0.4, hub: false },
   ];
-  const px = (v: number) => X0 + v * W;
-  const py = (v: number) => Y0 + (1 - v) * H;
+  const px = (v: number) => -4 + v * 208;
+  const py = (v: number) => 88 - v * 74;
+  const midY = py(0.5);
 
   return (
     <>
-      {/* Quadrants */}
-      <rect x={X0} y={Y0} width={W} height={H} fill={CYAN} fillOpacity="0.04"
-        stroke={CYAN} strokeWidth="0.5" strokeOpacity="0.2" style={fade(a, 0.1)} />
-      <rect x={X0 + W / 2} y={Y0} width={W / 2} height={H / 2} fill={GOLD} fillOpacity="0.12"
-        style={fade(a, 0.3)} />
-      <line x1={X0 + W / 2} y1={Y0} x2={X0 + W / 2} y2={Y0 + H} stroke="currentColor"
-        strokeWidth="0.6" opacity="0.25" strokeDasharray="3 3" style={draw(a, 0.2)} />
-      <line x1={X0} y1={Y0 + H / 2} x2={X0 + W} y2={Y0 + H / 2} stroke="currentColor"
-        strokeWidth="0.6" opacity="0.25" strokeDasharray="3 3" style={draw(a, 0.25)} />
+      {/* Priority quadrant */}
+      <rect x={100} y={-4} width={108} height={midY + 4} fill={GOLD} fillOpacity="0.13" style={fade(a, 0.25)} />
+      <line x1={100} y1={-4} x2={100} y2={96} stroke="currentColor" strokeWidth="1"
+        opacity="0.22" strokeDasharray="5 4" style={draw(a, 0.15)} />
+      <line x1={-6} y1={midY} x2={206} y2={midY} stroke="currentColor" strokeWidth="1"
+        opacity="0.22" strokeDasharray="5 4" style={draw(a, 0.2)} />
 
-      {/* Plotted markets */}
       {markets.map((m, i) => (
-        <g key={m.c} className="g-node" style={{ ...fade(a, 0.45 + i * 0.1), ...delay(i * 0.55) }}>
+        <g key={m.c} style={fade(a, 0.4 + i * 0.1)}>
           {m.hub && (
-            <circle cx={px(m.x)} cy={py(m.y)} r="7" fill="none" stroke={GOLD} strokeWidth="0.9"
+            <circle cx={px(m.x)} cy={py(m.y)} r="15" fill="none" stroke={GOLD} strokeWidth="1.4"
               className="g-ring" style={{ transformBox: "view-box", transformOrigin: `${px(m.x)}px ${py(m.y)}px` }} />
           )}
-          <circle cx={px(m.x)} cy={py(m.y)} r={m.hub ? 4 : 2.8}
-            fill={m.hub ? GOLD : CYAN} />
-          <text x={px(m.x) + (m.hub ? 7 : 5)} y={py(m.y) + 2}
-            fontFamily="Inter, sans-serif" fontSize="4.8" letterSpacing="0.5"
-            fill={m.hub ? GOLD : "currentColor"} opacity={m.hub ? 0.95 : 0.6}>
+          <circle cx={px(m.x)} cy={py(m.y)} r={m.hub ? 7 : 4.8} fill={m.hub ? GOLD : CYAN}
+            className="g-node" style={delay(i * 0.5)} />
+          <text x={px(m.x)} y={py(m.y) + (m.hub ? 21 : 17)} textAnchor="middle"
+            fontFamily="Inter, sans-serif" fontSize={m.hub ? 8.5 : 7.5} fontWeight={600} letterSpacing="0.8"
+            fill={m.hub ? GOLD : "currentColor"} opacity={m.hub ? 1 : 0.6}>
             {m.c}
           </text>
         </g>
       ))}
-
-      {/* Axes */}
-      <line x1={X0} y1={Y0 + H} x2={X0 + W} y2={Y0 + H} {...AXIS} style={draw(a, 0.15)} />
-      <line x1={X0} y1={Y0} x2={X0} y2={Y0 + H} {...AXIS} style={draw(a, 0.18)} />
-      <text x={-74} y={9} transform="rotate(-90)" {...LABEL} style={fade(a, 0.85, 0.55)}>ATTRACTIVENESS</text>
-      <text x={X0} y={92} {...LABEL} style={fade(a, 0.85, 0.55)}>EASE OF ENTRY</text>
+      <Tag x={196} y={84} anchor="end" color={GOLD} op={0.9} active={a} d={0.9}>PRIORITY MARKETS</Tag>
     </>
   );
 }
 
-/* ------------------------------------------------------------------
-   Financial Modelling — waterfall bridge, the standard modelling output
-   ------------------------------------------------------------------ */
+/* ==================================================================
+   Financial Modelling — waterfall bridge across the full width
+   ================================================================== */
 function Modelling(a: boolean) {
-  const base = 76, x0 = 22, bw = 20, gap = 5;
-  // value, isTotal
+  const base = 88, x0 = -4, bw = 34, gap = 7;
   const steps = [
-    { from: 0, to: 34, total: true },
-    { from: 34, to: 50, total: false, up: true },
-    { from: 50, to: 38, total: false, up: false },
-    { from: 38, to: 54, total: false, up: true },
-    { from: 0, to: 54, total: true },
+    { from: 0, to: 38, total: true },
+    { from: 38, to: 54, up: true },
+    { from: 54, to: 42, up: false },
+    { from: 42, to: 60, up: true },
+    { from: 0, to: 60, total: true },
   ];
   const y = (v: number) => base - v;
 
   return (
     <>
-      <line x1={x0 - 4} y1={base} x2={152} y2={base} {...AXIS} style={draw(a, 0.1)} />
-
       {steps.map((s, i) => {
         const x = x0 + i * (bw + gap);
         const top = y(Math.max(s.from, s.to));
         const h = Math.abs(s.to - s.from);
-        const c = s.total ? GOLD : s.up ? CYAN : "#7B6FE8";
+        const c = s.total ? GOLD : s.up ? CYAN : VIOLET;
         return (
           <g key={i}>
-            <rect x={x} y={top} width={bw} height={h} rx="1"
-              fill={c} fillOpacity={s.total ? 0.42 : 0.26}
-              stroke={c} strokeWidth="0.7" strokeOpacity={s.total ? 0.85 : 0.5}
-              className="g-bar" style={{ ...grow(a, 0.1 + i * 0.12), ...delay(i * 0.3) }} />
-            {/* Bridge connector to the next step */}
+            <rect x={x} y={top} width={bw} height={h} rx="2"
+              fill={c} fillOpacity={s.total ? 0.45 : 0.28}
+              stroke={c} strokeWidth="1.2" strokeOpacity={s.total ? 0.9 : 0.55}
+              className="g-bar" style={{ ...grow(a, 0.1 + i * 0.11), ...delay(i * 0.3) }} />
             {i < steps.length - 1 && (
               <line x1={x + bw} y1={y(s.to)} x2={x + bw + gap} y2={y(s.to)}
-                stroke="currentColor" strokeWidth="0.7" opacity="0.35" strokeDasharray="2 2"
+                stroke="currentColor" strokeWidth="1.1" opacity="0.4" strokeDasharray="3 2"
                 className="g-flow" style={{ ...draw(a, 0.5 + i * 0.1), ...delay(i * 0.2) }} />
             )}
           </g>
         );
       })}
-
-      <text x={x0} y={88} {...LABEL} style={fade(a, 0.85, 0.55)}>OPENING</text>
-      <text x={x0 + 4 * (bw + gap) - 4} y={88} {...LABEL} style={fade(a, 0.9, 0.55)}>CLOSING</text>
-      {a && <Signal d={`M ${x0} ${y(34)} L 152 ${y(54)}`} dur={4.2} color={WARM} r={2} />}
+      <line x1={-6} y1={base} x2={206} y2={base} stroke="currentColor" strokeWidth="1.2" opacity="0.3" />
+      <Tag x={4} y={18} active={a} d={0.85}>OPENING</Tag>
+      <Tag x={196} y={18} anchor="end" color={GOLD} op={0.9} active={a} d={0.95}>CLOSING</Tag>
     </>
   );
 }
 
-/* ------------------------------------------------------------------
+/* ==================================================================
    Training — competency radar, current capability against target
-   ------------------------------------------------------------------ */
+   ================================================================== */
 function Training(a: boolean) {
-  const CX = 88, CY = 44, R = 34;
+  const CX = 100, CY = 48, RX = 56, RY = 30;
   const axes = ["ERM", "RBC", "ORSA", "AML", "ACT"];
   const pt = (i: number, v: number) => {
-    const ang = (-90 + i * (360 / 5)) * (Math.PI / 180);
-    return { x: CX + Math.cos(ang) * R * v, y: CY + Math.sin(ang) * R * v };
+    const ang = (-90 + i * 72) * (Math.PI / 180);
+    return { x: CX + Math.cos(ang) * RX * v, y: CY + Math.sin(ang) * RY * v };
   };
   const poly = (vals: number[]) => vals.map((v, i) => { const p = pt(i, v); return `${p.x},${p.y}`; }).join(" ");
-  const target = [0.95, 0.9, 0.95, 0.88, 0.92];
-  const current = [0.62, 0.48, 0.7, 0.55, 0.6];
+  const target = [0.96, 0.9, 0.96, 0.88, 0.92];
+  const current = [0.6, 0.46, 0.7, 0.52, 0.58];
 
   return (
     <>
-      {/* Web */}
-      {[0.33, 0.66, 1].map((r, k) => (
+      {[0.35, 0.68, 1].map((r, k) => (
         <polygon key={r} points={poly([r, r, r, r, r])} fill="none"
-          stroke="currentColor" strokeWidth="0.5" opacity={0.2} style={fade(a, 0.05 * k)} />
+          stroke="currentColor" strokeWidth="0.9" opacity={0.2} style={fade(a, 0.05 * k)} />
       ))}
       {axes.map((_, i) => {
         const p = pt(i, 1);
         return <line key={i} x1={CX} y1={CY} x2={p.x} y2={p.y} stroke="currentColor"
-          strokeWidth="0.5" opacity="0.2" style={draw(a, 0.1 + i * 0.04)} />;
+          strokeWidth="0.9" opacity="0.2" style={draw(a, 0.1 + i * 0.04)} />;
       })}
 
-      {/* Target */}
       <polygon points={poly(target)} fill={GOLD} fillOpacity="0.1"
-        stroke={GOLD} strokeWidth="1" strokeOpacity="0.6" strokeDasharray="3 2"
+        stroke={GOLD} strokeWidth="1.6" strokeOpacity="0.7" strokeDasharray="5 3"
         className="g-flow" style={fade(a, 0.4)} />
 
-      {/* Current capability */}
-      <polygon points={poly(current)} fill={CYAN} fillOpacity="0.25"
-        stroke={CYAN} strokeWidth="1.3" className="g-breathe" style={fade(a, 0.6)} />
+      <polygon points={poly(current)} fill={CYAN} fillOpacity="0.28"
+        stroke={CYAN} strokeWidth="2.2" className="g-breathe" style={fade(a, 0.6)} />
       {current.map((v, i) => {
         const p = pt(i, v);
-        return <circle key={i} cx={p.x} cy={p.y} r="2.2" fill={CYAN}
+        return <circle key={i} cx={p.x} cy={p.y} r="3.4" fill={CYAN}
           className="g-node" style={{ ...fade(a, 0.7 + i * 0.06), ...delay(i * 0.5) }} />;
       })}
 
-      {/* Axis labels */}
       {axes.map((label, i) => {
-        const p = pt(i, 1.24);
+        const p = pt(i, 1.22);
         return (
-          <text key={label} x={p.x} y={p.y + 1.6} textAnchor="middle"
-            fontFamily="Inter, sans-serif" fontSize="4.6" letterSpacing="0.5"
-            fill="currentColor" opacity="0.55" style={fade(a, 0.8, 0.55)}>
+          <text key={label} x={p.x} y={p.y + 2.6} textAnchor="middle"
+            fontFamily="Inter, sans-serif" fontSize="7.5" fontWeight={600} letterSpacing="0.8"
+            fill="currentColor" opacity="0.6" style={fade(a, 0.8, 0.6)}>
             {label}
           </text>
         );
       })}
-
-      <text x={10} y={90} {...LABEL} fill={GOLD} style={fade(a, 0.95, 0.85)}>TARGET</text>
-      <text x={46} y={90} {...LABEL} fill={CYAN} style={fade(a, 1, 0.85)}>CURRENT</text>
     </>
   );
 }
@@ -527,7 +493,8 @@ export function ExpertiseGlyph({ id, active, className }: Props) {
   const render = GLYPHS[id] ?? ERM;
   return (
     <svg
-      viewBox="0 0 160 100"
+      viewBox={`0 0 ${W} ${H}`}
+      preserveAspectRatio="xMidYMid slice"
       className={`${className ?? ""} ${active ? "" : "glyph-idle"}`}
       aria-hidden="true"
       fill="none"
