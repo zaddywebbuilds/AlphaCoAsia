@@ -5,6 +5,7 @@ import { ArrowRight, ArrowLeft, CheckCircle } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { DisciplineHero, hasDisciplineHero } from "@/components/viz/DisciplineImage";
 import { EXPERTISE } from "@/lib/data";
 
 export async function generateStaticParams() {
@@ -35,21 +36,38 @@ export default async function ExpertiseDetailPage({ params }: { params: Promise<
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-16 bg-[#0A1628]">
-          <div className="container-xl">
-            <Link href="/expertise" className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors mb-8">
-              <ArrowLeft size={14} />
+        <section className="relative pt-32 pb-16 bg-[#050A12] overflow-hidden">
+          <div className="absolute inset-0 tex-grid-fine opacity-30" />
+          <div className="container-xl relative z-10">
+            <Link href="/expertise" className="inline-flex items-center gap-1.5 type-technical text-slate-500 hover:text-white transition-colors mb-9">
+              <ArrowLeft size={12} />
               All Expertise
             </Link>
-            <div className="max-w-2xl">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-8 h-px bg-[#C9A040]" />
-                <span className="text-xs font-semibold text-[#C9A040] uppercase tracking-[0.15em]">{item.shortTitle}</span>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              <div className="lg:col-span-6">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-8 h-px bg-[#C9A040]" />
+                  <span className="type-technical text-[#C9A040]">{item.shortTitle}</span>
+                </div>
+                <h1
+                  className="font-display text-white mb-5 leading-[1.08]"
+                  style={{ fontSize: "clamp(2rem, 3.8vw, 3.2rem)", fontWeight: 600, letterSpacing: "-0.028em" }}
+                >
+                  {item.title}
+                </h1>
+                <p className="text-slate-300 text-lg leading-relaxed">{item.tagline}</p>
               </div>
-              <h1 className="font-display text-white text-4xl font-semibold mb-4 leading-tight" style={{ letterSpacing: "-0.02em" }}>
-                {item.title}
-              </h1>
-              <p className="text-slate-300 text-lg leading-relaxed">{item.tagline}</p>
+
+              {/* The work itself, at a size where the detail reads */}
+              {hasDisciplineHero(item.slug) && (
+                <div className="lg:col-span-6">
+                  <DisciplineHero
+                    id={item.slug}
+                    className="aspect-[1200/700] w-full rounded-[14px] shadow-[0_28px_64px_-30px_rgba(0,0,0,0.95)]"
+                  />
+                </div>
+              )}
             </div>
           </div>
         </section>

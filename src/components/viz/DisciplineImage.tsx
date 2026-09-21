@@ -36,6 +36,40 @@ export function hasDisciplineImage(id: string) {
   return SUBJECTS.has(id);
 }
 
+/* Subjects that also have a taller crop, for surfaces large enough to show
+   the detail in the frame rather than cropping it away. */
+const HERO_SUBJECTS = new Set([
+  "enterprise-risk-management",
+  "actuarial-consulting",
+  "orsa-advisory",
+  "risk-based-capital",
+  "regulatory-licensing",
+  "aml-cft",
+]);
+
+export function hasDisciplineHero(id: string) {
+  return HERO_SUBJECTS.has(id);
+}
+
+/** Large-format crop for detail-page heroes. */
+export function DisciplineHero({ id, className = "" }: { id: string; className?: string }) {
+  if (!HERO_SUBJECTS.has(id)) return null;
+  return (
+    <div className={`relative overflow-hidden bg-[#070D14] ${className}`} aria-hidden="true">
+      <Image
+        src={`${BASE}/media/disciplines/hero/${id}.jpg`}
+        alt=""
+        fill
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        priority
+        className="object-cover [filter:saturate(0.62)_contrast(1.02)_brightness(0.92)]"
+      />
+      <div className="absolute inset-0 mix-blend-multiply bg-[linear-gradient(150deg,rgba(10,22,40,0.34),transparent_55%,rgba(30,159,216,0.10))]" />
+      <div className="absolute inset-0 ring-1 ring-inset ring-white/[0.07]" />
+    </div>
+  );
+}
+
 /** An engagement's discipline decides its cover image. */
 export const SUBJECT_FOR_SERVICE: Record<string, string> = {
   "Enterprise Risk Management": "enterprise-risk-management",
