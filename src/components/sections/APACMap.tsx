@@ -226,7 +226,9 @@ export function APACMap() {
                   Engagement Markets · {APAC_MARKETS.length}
                 </span>
               </div>
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-4 pointer-events-none">
+              {/* Hidden on phones: at 375px the legend wraps and collides with
+                  the city label, and the panel below already names the categories. */}
+              <div className="absolute bottom-4 left-4 right-4 hidden sm:flex items-center justify-between gap-4 pointer-events-none">
                 <div className="flex items-center gap-2">
                   <span className="w-[17px] h-[17px] rounded-full bg-[#C9A040] text-[#221805] text-[10px] font-bold flex items-center justify-center shrink-0">
                     n
