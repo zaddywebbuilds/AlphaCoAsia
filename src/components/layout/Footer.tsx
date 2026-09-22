@@ -2,7 +2,7 @@ import Link from "next/link";
 import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
 import { COMPANY, EXPERTISE, INDUSTRIES } from "@/lib/data";
 
-const footerExpertise = EXPERTISE.slice(0, 7);
+const footerExpertise = EXPERTISE.slice(0, 8);
 const footerIndustries = INDUSTRIES.slice(0, 5);
 
 export function Footer() {

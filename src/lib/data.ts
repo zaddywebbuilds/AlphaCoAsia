@@ -71,21 +71,42 @@ export const EXPERTISE = [
     icon: "lock",
     topics: ["AML/CFT Framework", "Independent Review", "Compliance Outsourcing", "PDPA Compliance"],
   },
-  /* Added at the client's request and worded from alphacoasia.com, which now
-     presents this alongside the insurance-risk foundation. Led by Edmund Chan. */
+  /* The transactions and capital pillars, worded from alphacoasia.com, which
+     presents both alongside the insurance-risk foundation. Led by Edmund Chan.
+     M&A and due diligence sit here rather than under capital markets, so the
+     two do not overlap — this mirrors the split on their own site. */
+  {
+    slug: "due-diligence-corporate-deals",
+    title: "Due Diligence & Corporate Deals",
+    shortTitle: "Corporate Deals",
+    tagline: "Cross-border transactions, managed end to end.",
+    description:
+      "Buy-side and sell-side M&A advice, financial, actuarial, operational and regulatory due diligence, deal project management across jurisdictions, joint ventures, valuation and post-merger integration. An actuarial and regulatory background gives particular depth on insurers, brokers, fund managers and other regulated targets.",
+    icon: "search",
+    topics: [
+      "Mergers & Acquisitions",
+      "Financial & Actuarial Due Diligence",
+      "Deal Project Management",
+      "Joint Ventures & Strategic Partnerships",
+      "Valuation & Financial Modelling",
+      "Post-Merger Integration",
+    ],
+  },
   {
     slug: "capital-markets-advisory",
-    title: "IPO, M&A & Capital Markets Advisory",
+    title: "IPO & Capital Markets Advisory",
     shortTitle: "Capital Markets",
-    tagline: "From private company to listed issuer, and through the transactions along the way.",
+    tagline: "From private company to listed issuer.",
     description:
-      "IPO readiness and listing execution, pre-IPO restructuring and fundraising, M&A advisory and deal structuring, and financial, actuarial and regulatory due diligence on cross-border transactions.",
+      "IPO readiness and listing venue selection, pre-IPO restructuring and governance, pre-IPO and private fundraising, listing execution and roadshow coordination, cross-border and alternative listing routes, and ongoing obligations after listing.",
     icon: "trending-up",
     topics: [
-      "IPO Readiness & Listing Execution",
-      "Mergers & Acquisitions",
-      "Pre-IPO Restructuring & Fundraising",
-      "Due Diligence & Deal Project Management",
+      "IPO Readiness & Venue Selection",
+      "Pre-IPO Restructuring & Governance",
+      "Pre-IPO & Private Fundraising",
+      "Listing Execution & Roadshow",
+      "Cross-Border & Alternative Routes",
+      "Post-Listing Support",
     ],
   },
   {
