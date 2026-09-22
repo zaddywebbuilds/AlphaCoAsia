@@ -177,7 +177,7 @@ export default async function ExpertiseDetailPage({ params }: { params: Promise<
 
                 <div className="p-5 bg-[#0D1B2A] rounded-xl">
                   <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3">Singapore Office</p>
-                  <p className="text-xs text-slate-400 leading-relaxed mb-3">20 Maxwell Road, Singapore 069113</p>
+                  <p className="text-xs text-slate-400 leading-relaxed mb-3">139 Cecil Street, Singapore 069539</p>
                   <a href="tel:+6562277175" className="text-xs text-[#C9A040] font-medium">+65 6227 7175</a>
                 </div>
               </div>

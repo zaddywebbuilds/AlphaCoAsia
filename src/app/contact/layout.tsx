@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   // The root template appends "| Alpha Consultant" — do not repeat the brand.
   title: "Contact",
   description:
-    "Discuss an insurance, risk, actuarial or regulatory requirement with Alpha Consultant. Based at 20 Maxwell Road, Singapore, serving clients across Asia Pacific.",
+    "Discuss an insurance, risk, actuarial or regulatory requirement with Alpha Consultant. Based at 139 Cecil Street, Singapore, serving clients across Asia Pacific.",
   alternates: { canonical: "/contact" },
 };
 

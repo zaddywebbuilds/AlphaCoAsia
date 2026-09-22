@@ -20,6 +20,7 @@ const SUBJECTS = new Set([
   "insurtech-digital",
   "market-entry",
   "financial-modelling",
+  "capital-markets-advisory",
   "cyber-risk",
   "esg-risk",
   "training",
@@ -36,7 +37,7 @@ export function hasDisciplineImage(id: string) {
   return SUBJECTS.has(id);
 }
 
-/* The nine disciplines also ship an uncropped 16:9 frame, for surfaces large
+/* The ten disciplines also ship an uncropped 16:9 frame, for surfaces large
    enough to show the dashboard detail rather than cropping it away. */
 const HERO_SUBJECTS = new Set([
   "enterprise-risk-management",
@@ -48,6 +49,7 @@ const HERO_SUBJECTS = new Set([
   "insurtech-digital",
   "market-entry",
   "financial-modelling",
+  "capital-markets-advisory",
 ]);
 
 export function hasDisciplineHero(id: string) {
@@ -113,6 +115,7 @@ const ALT: Record<string, string> = {
   "insurtech-digital": "Insurtech and digital insurance: platform architecture from channels through to the policy core",
   "market-entry": "Asia market entry advisory: market prioritisation across Asia Pacific",
   "financial-modelling": "Financial modelling: business planning, valuation and scenario analysis",
+  "capital-markets-advisory": "IPO, M&A and capital markets advisory: the Singapore central business district and financial institutions along the Singapore River",
   "cyber-risk": "Cyber risk and insurance training for insurance and risk professionals",
   "esg-risk": "ESG risk management training covering regulatory trends and scenario analysis",
   training: "Professional training delivered to an insurance and risk management audience",

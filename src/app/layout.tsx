@@ -79,13 +79,13 @@ const orgSchema = {
     "Boutique insurance, actuarial, risk and regulatory advisory firm serving Asia Pacific.",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "20 Maxwell Road, #09-17 Maxwell House",
+    streetAddress: "139 Cecil Street, #03-12 YSY Building",
     addressLocality: "Singapore",
-    postalCode: "069113",
+    postalCode: "069539",
     addressCountry: "SG",
   },
   telephone: "+6562277175",
-  email: "info@alphacoasia.com",
+  email: "admin@alphacoasia.com",
   image: "https://alphacoasia.com/og-image.jpg",
   /* Every market with evidenced advisory experience, matching APAC_MARKETS. */
   areaServed: ["SG", "HK", "MY", "ID", "VN", "MM", "KH", "TW", "BN"],

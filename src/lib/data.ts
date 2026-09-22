@@ -4,10 +4,9 @@ export const COMPANY = {
   tagline: "Insurance, Risk, Actuarial & Regulatory Advisory Across Asia Pacific",
   description:
     "Helping insurers, financial institutions, fintechs and growing businesses navigate regulation, risk, market entry and transformation across Asia Pacific.",
-  address: "20 Maxwell Road, #09-17, Maxwell House, Singapore 069113",
+  address: "139 Cecil Street, #03-12 YSY Building, Singapore 069539",
   phone: "+65 6227 7175",
-  email: "info@alphacoasia.com",
-  linkedin: "https://www.linkedin.com/company/alpha-consultant-alphacoasia",
+  email: "admin@alphacoasia.com",
   url: "https://alphacoasia.com",
 };
 
@@ -71,6 +70,23 @@ export const EXPERTISE = [
       "Anti-money laundering and counter-financing of terrorism framework development, independent reviews and compliance outsourcing for regulated entities.",
     icon: "lock",
     topics: ["AML/CFT Framework", "Independent Review", "Compliance Outsourcing", "PDPA Compliance"],
+  },
+  /* Added at the client's request and worded from alphacoasia.com, which now
+     presents this alongside the insurance-risk foundation. Led by Edmund Chan. */
+  {
+    slug: "capital-markets-advisory",
+    title: "IPO, M&A & Capital Markets Advisory",
+    shortTitle: "Capital Markets",
+    tagline: "From private company to listed issuer, and through the transactions along the way.",
+    description:
+      "IPO readiness and listing execution, pre-IPO restructuring and fundraising, M&A advisory and deal structuring, and financial, actuarial and regulatory due diligence on cross-border transactions.",
+    icon: "trending-up",
+    topics: [
+      "IPO Readiness & Listing Execution",
+      "Mergers & Acquisitions",
+      "Pre-IPO Restructuring & Fundraising",
+      "Due Diligence & Deal Project Management",
+    ],
   },
   {
     slug: "insurtech-digital",
