@@ -2,7 +2,13 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "Insurance, Risk & Regulatory Insights",
+  /* A plain string here would replace the root title object for this whole
+     subtree, taking its "%s | Alpha Consultant" template with it and leaving
+     the article pages unbranded. Restate the template so children keep it. */
+  title: {
+    default: "Insurance, Risk & Regulatory Insights",
+    template: "%s | Alpha Consultant",
+  },
   description:
     "Perspectives on insurance regulation, enterprise risk management, actuarial matters, insurtech and emerging financial services trends across Asia Pacific.",
   alternates: { canonical: "/insights" },
