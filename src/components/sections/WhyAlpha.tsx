@@ -55,7 +55,7 @@ function Framework({ active, inView }: { active: number | null; inView: boolean 
       {/* Structural axis */}
       <motion.line
         x1={CX} y1={56} x2={CX} y2={296}
-        stroke="#0D1B2A" strokeOpacity="0.16" strokeWidth="1" strokeDasharray="3 4"
+        stroke="#C9A040" strokeOpacity="0.3" strokeWidth="1" strokeDasharray="3 4"
         initial={{ pathLength: 0 }}
         animate={inView ? { pathLength: 1 } : {}}
         transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
@@ -151,7 +151,7 @@ export function WhyAlpha() {
                 onFocus={() => setActive(i)}
                 tabIndex={0}
                 className={`group relative py-5 pl-7 pr-4 border-b border-white/[0.09] last:border-b-0 outline-none transition-colors duration-400 ${
-                  active === i ? "bg-white/70" : ""
+                  active === i ? "bg-white/[0.04]" : ""
                 }`}
               >
                 <span

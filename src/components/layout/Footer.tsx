@@ -140,14 +140,10 @@ export function Footer() {
           <p className="text-xs text-slate-500">
             &copy; {new Date().getFullYear()} Alpha Consultant | AlphaCoAsia. All rights reserved.
           </p>
-          <div className="flex items-center gap-5">
-            <Link href="/privacy-policy" className="text-xs text-slate-500 hover:text-slate-300 transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-xs text-slate-500 hover:text-slate-300 transition-colors">
-              Terms of Use
-            </Link>
-          </div>
+          {/* Privacy Policy and Terms links removed: both pointed at routes that
+             do not exist and 404d. They need real legal copy from the client —
+             a privacy notice in particular, given the contact form collects
+             personal data under Singapore's PDPA. */}
         </div>
       </div>
     </footer>
