@@ -3,11 +3,15 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
-import { DisciplineImage, SUBJECT_FOR_SERVICE } from "@/components/viz/DisciplineImage";
+import { DisciplineHero, SUBJECT_FOR_SERVICE } from "@/components/viz/DisciplineImage";
 import { CASE_STUDIES } from "@/lib/data";
 
-/* Editorial spans — deliberately uneven so the row never reads as a card grid. */
-const SPAN = ["lg:col-span-7", "lg:col-span-5", "lg:col-span-5", "lg:col-span-7", "lg:col-span-12"];
+/* Paired 6/6 rows, closed by a full-width card. The spans used to be uneven
+   (7/5, 5/7) for editorial rhythm, but with the covers now on a fixed 16:9 the
+   two bands in a row differed by ~115px in height, and grid stretch dumped that
+   difference as dead space inside the narrower card. Equal spans give identical
+   bands; the wide closer still breaks the grid. */
+const SPAN = ["lg:col-span-6", "lg:col-span-6", "lg:col-span-6", "lg:col-span-6", "lg:col-span-12"];
 
 
 export function CaseStudiesSection() {
@@ -67,7 +71,9 @@ export function CaseStudiesSection() {
                 {/* Cover sheet */}
                 <Link
                   href={`/case-studies/${cs.slug}`}
-                  className="relative flex flex-col h-full bg-[#0E1B30] rounded-[12px] border border-white/[0.09] overflow-hidden shadow-[0_2px_4px_rgba(10,22,40,0.04)] group-hover:shadow-[0_26px_54px_-26px_rgba(10,22,40,0.42)] group-hover:-translate-y-[3px] transition-[transform,box-shadow] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  className={`relative flex h-full bg-[#0E1B30] rounded-[12px] border border-white/[0.09] overflow-hidden shadow-[0_2px_4px_rgba(10,22,40,0.04)] group-hover:shadow-[0_26px_54px_-26px_rgba(10,22,40,0.42)] group-hover:-translate-y-[3px] transition-[transform,box-shadow] duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    wide ? "flex-col lg:flex-row lg:items-center" : "flex-col"
+                  }`}
                 >
                   {/* File tab */}
                   <span className="absolute top-0 left-8 h-[3px] w-16 bg-[#C9A040] rounded-b-sm" />
@@ -75,13 +81,21 @@ export function CaseStudiesSection() {
                   <span aria-hidden className="absolute top-3 right-3 w-3 h-3 border-t border-r border-[#C9A040]/0 group-hover:border-[#C9A040]/60 transition-colors duration-500" />
                   <span aria-hidden className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-[#C9A040]/0 group-hover:border-[#C9A040]/60 transition-colors duration-500 z-10" />
 
-                  <DisciplineImage
+                  {/* The full 16:9 frame in an aspect box — nothing is cropped at
+                     any width, and the band scales with the card instead of
+                     sitting at a fixed height that slices the image. */}
+                  <DisciplineHero
                     id={SUBJECT_FOR_SERVICE[cs.service] ?? "enterprise-risk-management"}
-                    className={wide ? "h-[128px]" : "h-[150px]"}
+                    sizes={
+                      wide
+                        ? "(max-width: 1024px) 100vw, 45vw"
+                        : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
+                    }
+                    className={`w-full aspect-video shrink-0 ${wide ? "lg:w-[45%]" : ""}`}
                   />
 
-                  <div className={`p-7 sm:p-8 flex ${wide ? "flex-col lg:flex-row lg:items-center gap-8" : "flex-col flex-1"}`}>
-                    <div className={wide ? "lg:w-[58%]" : ""}>
+                  <div className={`p-7 sm:p-8 flex flex-col flex-1 ${wide ? "lg:justify-center" : ""}`}>
+                    <div>
                       <div className="flex items-baseline gap-4 mb-5">
                         <span className="type-index text-white/13 text-[2.75rem] group-hover:text-[#C9A040]/35 transition-colors duration-600">
                           {String(i + 1).padStart(2, "0")}
@@ -100,7 +114,7 @@ export function CaseStudiesSection() {
                       <p className="text-sm text-slate-400 leading-relaxed">{cs.challenge}</p>
                     </div>
 
-                    <div className={wide ? "lg:w-[42%] lg:border-l lg:border-white/[0.09] lg:pl-8" : "mt-auto pt-6"}>
+                    <div className="mt-auto pt-6">
                       <div className="flex flex-wrap gap-1.5 mb-5">
                         {cs.tags.map((t) => (
                           <span key={t} className="px-2.5 py-1 bg-[#0A1628] border border-white/[0.09] rounded text-[11px] text-slate-400">

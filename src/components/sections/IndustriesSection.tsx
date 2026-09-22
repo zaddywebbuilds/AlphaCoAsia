@@ -163,7 +163,7 @@ export function IndustriesSection() {
 
               <Link
                 href={`/industries/${current.slug}`}
-                className="inline-flex items-center gap-1.5 type-technical text-white hover:text-[#C9A040] transition-colors group"
+                className="inline-flex items-center gap-1.5 py-2.5 type-technical text-white hover:text-[#C9A040] transition-colors group"
               >
                 <span className="link-rule">Explore this sector</span>
                 <ArrowRight size={11} className="group-hover:translate-x-1 transition-transform" />
@@ -177,7 +177,7 @@ export function IndustriesSection() {
                   key={n.slug}
                   onClick={() => setActive(i)}
                   aria-pressed={i === active}
-                  className={`px-3 py-1.5 rounded-full text-[11.5px] font-medium border transition-all ${
+                  className={`px-4 py-2.5 min-h-[40px] rounded-full text-[11.5px] font-medium border transition-all ${
                     i === active
                       ? "bg-[#0D1B2A] border-[#0D1B2A] text-white"
                       : "bg-white/[0.05] border-white/[0.09] text-slate-400 hover:border-[#C9A040]"

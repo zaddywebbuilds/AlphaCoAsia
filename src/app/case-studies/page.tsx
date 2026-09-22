@@ -48,7 +48,7 @@ export default function CaseStudiesPage() {
                   <DisciplineImage
                     id={SUBJECT_FOR_SERVICE[cs.service] ?? "enterprise-risk-management"}
                     priority={i < 2}
-                    className="-mx-8 -mt-8 mb-6 h-[160px]"
+                    className="-mx-8 -mt-8 mb-6 aspect-[1400/654]"
                   />
                   <div className="flex items-center justify-between mb-5">
                     <div className="flex items-center gap-2">

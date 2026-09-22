@@ -107,7 +107,7 @@ export function TestimonialsSection() {
                     }}
                     aria-label={`Testimonial ${n + 1}`}
                     aria-current={n === i}
-                    className={`transition-all duration-400 rounded-full ${
+                    className={`tap-target transition-all duration-400 rounded-full ${
                       n === i ? "bg-[#C9A040] w-5 h-1 lg:w-1 lg:h-5" : "bg-white/20 w-1.5 h-1 lg:w-1 lg:h-1.5 hover:bg-white/40"
                     }`}
                   />

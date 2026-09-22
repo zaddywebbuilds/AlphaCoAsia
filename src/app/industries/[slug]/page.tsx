@@ -96,7 +96,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {disciplines.map((d) => (
                     <Link key={d.slug} href={`/expertise/${d.slug}`} className="card p-6 flex flex-col group overflow-hidden">
-                      <DisciplineImage id={d.slug} className="-mx-6 -mt-6 mb-5 h-[150px]" />
+                      <DisciplineImage id={d.slug} className="-mx-6 -mt-6 mb-5 aspect-[1400/654]" />
                       <h3 className="text-[15px] font-semibold text-white mb-1.5 leading-snug">
                         <span className="link-rule">{d.title}</span>
                       </h3>

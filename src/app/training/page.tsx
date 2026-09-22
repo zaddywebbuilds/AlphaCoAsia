@@ -133,7 +133,7 @@ export default function TrainingPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {COURSES.map((course, i) => (
                 <div key={course.title} className="card p-6 flex flex-col group overflow-hidden">
-                  <DisciplineImage id={course.subject} priority={i < 2} className="-mx-6 -mt-6 mb-5 h-[150px]" />
+                  <DisciplineImage id={course.subject} priority={i < 2} className="-mx-6 -mt-6 mb-5 aspect-[1400/654]" />
                   <h3 className="text-base font-semibold text-white mb-3">{course.title}</h3>
                   <ul className="space-y-1.5 mb-4 flex-1">
                     {course.topics.map((t) => (

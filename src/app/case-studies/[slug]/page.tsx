@@ -106,7 +106,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
               <div className="lg:col-span-5">
                 <div className="panel-dim overflow-hidden">
-                  <DisciplineImage id={glyph} className="h-[190px] border-b border-white/[0.07]" />
+                  <DisciplineImage id={glyph} className="aspect-[1400/654] border-b border-white/[0.07]" />
                   <div className="p-7">
                     <div className="grid grid-cols-2 gap-5">
                       <div>

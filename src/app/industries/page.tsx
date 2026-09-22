@@ -52,7 +52,7 @@ export default function IndustriesPage() {
                   href={`/industries/${ind.slug}`}
                   className="card p-7 flex flex-col group overflow-hidden"
                 >
-                  <DisciplineImage id={ind.slug} priority={i < 3} className="-mx-7 -mt-7 mb-6 h-[164px]" />
+                  <DisciplineImage id={ind.slug} priority={i < 3} className="-mx-7 -mt-7 mb-6 aspect-[1400/654]" />
                   <div className="flex items-baseline justify-between mb-3">
                     <span className="type-technical text-slate-500 tabular">
                       {String(i + 1).padStart(2, "0")}

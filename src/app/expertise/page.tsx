@@ -63,7 +63,7 @@ export default function ExpertisePage() {
                   className="card p-7 flex flex-col group overflow-hidden"
                 >
                   {/* Discipline diagram on its own dark plane */}
-                  <DisciplineImage id={item.slug} priority={i < 3} className="-mx-7 -mt-7 mb-6 h-[176px]" />
+                  <DisciplineImage id={item.slug} priority={i < 3} className="-mx-7 -mt-7 mb-6 aspect-[1400/654]" />
 
                   <div className="flex items-center justify-between mb-3">
                     <span className="type-technical text-slate-500 tabular">

@@ -67,7 +67,7 @@ export default function InsightsPage() {
                 <article key={insight.slug} className="card p-6 flex flex-col group overflow-hidden">
                   <DisciplineImage
                     id={SUBJECT_FOR[insight.category] ?? "enterprise-risk-management"}
-                    className="-mx-6 -mt-6 mb-5 h-[140px]"
+                    className="-mx-6 -mt-6 mb-5 aspect-[1400/654]"
                   />
                   <div className="flex items-center gap-2 mb-4">
                     <span className="inline-block px-2.5 py-1 bg-[#C9A040]/12 text-[#E8D9A8] text-xs font-semibold rounded-md">

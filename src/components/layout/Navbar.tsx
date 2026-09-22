@@ -133,7 +133,7 @@ export function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="lg:hidden p-2 -mr-2 text-white rounded-md"
+            className="lg:hidden -mr-2 w-11 h-11 flex items-center justify-center text-white rounded-md"
             onClick={() => setOpen(!open)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}

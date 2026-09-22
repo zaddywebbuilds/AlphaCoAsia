@@ -54,8 +54,18 @@ export function hasDisciplineHero(id: string) {
   return HERO_SUBJECTS.has(id);
 }
 
-/** Large-format crop for detail-page heroes. */
-export function DisciplineHero({ id, className = "" }: { id: string; className?: string }) {
+/** Large-format 16:9 frame. Give it an `aspect-video` box and nothing is cropped. */
+export function DisciplineHero({
+  id,
+  className = "",
+  priority = false,
+  sizes = "(max-width: 1024px) 100vw, 50vw",
+}: {
+  id: string;
+  className?: string;
+  priority?: boolean;
+  sizes?: string;
+}) {
   if (!HERO_SUBJECTS.has(id)) return null;
   return (
     <div className={`relative overflow-hidden bg-[#070D14] ${className}`}>
@@ -63,8 +73,8 @@ export function DisciplineHero({ id, className = "" }: { id: string; className?:
         src={`${BASE}/media/disciplines/hero/${id}.jpg`}
         alt={ALT[id] ?? ""}
         fill
-        sizes="(max-width: 1024px) 100vw, 50vw"
-        priority
+        sizes={sizes}
+        priority={priority}
         className="object-cover"
       />
       {/* No grade. These are surfaces, not backdrops — the detail has to read. */}

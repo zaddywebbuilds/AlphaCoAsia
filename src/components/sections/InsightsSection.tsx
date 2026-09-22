@@ -82,7 +82,7 @@ export function InsightsSection() {
 
               <DisciplineImage
                 id={SUBJECT_FOR[a.category] ?? "enterprise-risk-management"}
-                className="hidden sm:block w-[150px] h-[84px] shrink-0 rounded-lg"
+                className="hidden sm:block w-[150px] aspect-[1400/654] shrink-0 rounded-lg"
               />
             </motion.div>
           ))}

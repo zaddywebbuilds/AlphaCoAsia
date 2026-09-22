@@ -27,14 +27,14 @@ export function Footer() {
             <div className="space-y-3">
               <a
                 href={`mailto:${COMPANY.email}`}
-                className="flex items-start gap-3 text-sm text-slate-400 hover:text-white transition-colors group"
+                className="flex items-start gap-3 py-2 text-sm text-slate-400 hover:text-white transition-colors group"
               >
                 <Mail size={14} className="mt-0.5 text-[#C9A040] shrink-0" />
                 {COMPANY.email}
               </a>
               <a
                 href={`tel:${COMPANY.phone.replace(/\s/g, "")}`}
-                className="flex items-start gap-3 text-sm text-slate-400 hover:text-white transition-colors group"
+                className="flex items-start gap-3 py-2 text-sm text-slate-400 hover:text-white transition-colors group"
               >
                 <Phone size={14} className="mt-0.5 text-[#C9A040] shrink-0" />
                 {COMPANY.phone}
