@@ -421,3 +421,15 @@ body {
   .anim-dash, .anim-node, .anim-drift { animation: none !important; }
   .tilt-card { transform: none !important; }
 }
+
+/* Industries ecosystem diagram.
+   SVG text scales with the viewBox, so on a narrow phone the 12-unit labels
+   render at under 7px. Below the point where the diagram stops being 600
+   units wide (~648px viewport) the type units are scaled up to compensate;
+   CSS beats the presentation attribute, so the attribute stays as a
+   no-CSS fallback. */
+@media (max-width: 640px) {
+  .ind-label { font-size: 18px; }
+  .ind-core-title { font-size: 28px; }
+  .ind-core-sub { font-size: 11px; letter-spacing: 3.6px; }
+}
