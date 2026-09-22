@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { EXPERTISE } from "@/lib/data";
 import "./globals.css";
 
 const geist = Geist({
@@ -59,8 +60,9 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true },
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
+  alternates: { canonical: "/" },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },
@@ -84,14 +86,33 @@ const orgSchema = {
   },
   telephone: "+6562277175",
   email: "info@alphacoasia.com",
-  areaServed: ["SG", "HK", "MY", "ID", "VN", "MM"],
-  serviceType: [
-    "Insurance Advisory",
+  image: "https://alphacoasia.com/og-image.jpg",
+  /* Every market with evidenced advisory experience, matching APAC_MARKETS. */
+  areaServed: ["SG", "HK", "MY", "ID", "VN", "MM", "KH", "TW", "BN"],
+  knowsAbout: [
     "Enterprise Risk Management",
-    "Actuarial Consulting",
-    "Regulatory Advisory",
+    "Own Risk and Solvency Assessment",
+    "Risk-Based Capital",
+    "Actuarial Pricing and Reserving",
+    "MAS Regulatory Licensing",
     "AML/CFT Compliance",
+    "Insurtech and Digital Insurance",
+    "Asia Market Entry",
+    "Financial Modelling",
   ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Advisory Services",
+    itemListElement: EXPERTISE.map((e) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: e.title,
+        description: e.description,
+        url: `https://alphacoasia.com/expertise/${e.slug}`,
+      },
+    })),
+  },
 };
 
 export default function RootLayout({

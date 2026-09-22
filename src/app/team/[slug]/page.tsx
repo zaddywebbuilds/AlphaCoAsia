@@ -18,7 +18,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const p = LEADERSHIP.find((x) => x.slug === slug);
   if (!p) return {};
-  return { title: `${p.name}, ${p.title}`, description: p.shortBio };
+  return {
+    title: `${p.name}, ${p.title}`,
+    description: p.shortBio,
+    alternates: { canonical: `/team/${slug}` },
+    openGraph: {
+      title: `${p.name}, ${p.title} | Alpha Consultant`,
+      description: p.shortBio,
+      url: `https://alphacoasia.com/team/${slug}`,
+      type: "profile",
+      images: [{ url: p.image, width: 240, height: 300, alt: p.name }],
+    },
+  };
 }
 
 export default async function TeamPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -31,8 +42,38 @@ export default async function TeamPage({ params }: { params: Promise<{ slug: str
     .map((e) => EXPERTISE.find((x) => x.title === e || x.shortTitle === e))
     .filter((x): x is (typeof EXPERTISE)[number] => Boolean(x));
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        name: person.name,
+        jobTitle: person.title,
+        description: person.shortBio,
+        url: `https://alphacoasia.com/team/${slug}`,
+        image: `https://alphacoasia.com${person.image}`,
+        ...(person.email ? { email: person.email } : {}),
+        ...(person.linkedin ? { sameAs: [person.linkedin] } : {}),
+        worksFor: { "@type": "ProfessionalService", name: "Alpha Consultant", url: "https://alphacoasia.com" },
+        knowsAbout: person.expertise,
+        ...(person.affiliations.length
+          ? { affiliation: person.affiliations.map((a) => ({ "@type": "Organization", name: a })) }
+          : {}),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://alphacoasia.com" },
+          { "@type": "ListItem", position: 2, name: "About", item: "https://alphacoasia.com/about" },
+          { "@type": "ListItem", position: 3, name: person.name },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Navbar />
       <main>
         {/* Profile hero */}

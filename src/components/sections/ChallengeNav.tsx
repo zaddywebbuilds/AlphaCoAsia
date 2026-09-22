@@ -10,14 +10,14 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 /* Each challenge carries its own image, distinct from the discipline artwork
    used elsewhere, so the two sets never read as duplicates. */
 const CHALLENGES = [
-  { label: "Entering a new Asian market", href: "/expertise/market-entry", tag: "Market Entry", img: "market-entry" },
-  { label: "Navigating regulatory licensing", href: "/expertise/regulatory-licensing", tag: "Regulatory", img: "regulatory-licensing" },
-  { label: "Strengthening your ERM framework", href: "/expertise/enterprise-risk-management", tag: "ERM", img: "enterprise-risk-management" },
-  { label: "Preparing or reviewing ORSA", href: "/expertise/orsa-advisory", tag: "ORSA", img: "orsa-advisory" },
-  { label: "Reviewing AML/CFT controls", href: "/expertise/aml-cft", tag: "AML/CFT", img: "aml-cft" },
-  { label: "Developing a digital insurance proposition", href: "/expertise/insurtech-digital", tag: "Insurtech", img: "insurtech-digital" },
-  { label: "Navigating RBC2 requirements", href: "/expertise/risk-based-capital", tag: "RBC", img: "risk-based-capital" },
-  { label: "Training your risk or insurance team", href: "/training", tag: "Training", img: "training" },
+  { label: "Entering a new Asian market", href: "/expertise/market-entry", tag: "Market Entry", img: "market-entry", alt: "Asian financial centre at night, representing market entry advisory" },
+  { label: "Navigating regulatory licensing", href: "/expertise/regulatory-licensing", tag: "Regulatory", img: "regulatory-licensing", alt: "Government building at night, representing regulatory and licensing advisory" },
+  { label: "Strengthening your ERM framework", href: "/expertise/enterprise-risk-management", tag: "ERM", img: "enterprise-risk-management", alt: "Steel bridge truss, representing an enterprise risk management framework" },
+  { label: "Preparing or reviewing ORSA", href: "/expertise/orsa-advisory", tag: "ORSA", img: "orsa-advisory", alt: "View above the clouds, representing forward-looking solvency assessment" },
+  { label: "Reviewing AML/CFT controls", href: "/expertise/aml-cft", tag: "AML/CFT", img: "aml-cft", alt: "Bank safe deposit boxes, representing AML and CFT controls" },
+  { label: "Developing a digital insurance proposition", href: "/expertise/insurtech-digital", tag: "Insurtech", img: "insurtech-digital", alt: "Digital product interface, representing insurtech and digital insurance" },
+  { label: "Navigating RBC2 requirements", href: "/expertise/risk-based-capital", tag: "RBC", img: "risk-based-capital", alt: "Classical bank columns, representing risk-based capital requirements" },
+  { label: "Training your risk or insurance team", href: "/training", tag: "Training", img: "training", alt: "Auditorium, representing professional training for risk and insurance teams" },
 ];
 
 export function ChallengeNav() {
@@ -62,7 +62,7 @@ export function ChallengeNav() {
                 {/* The image is the card, at full clarity */}
                 <Image
                   src={`${BASE}/media/challenges/${c.img}.jpg`}
-                  alt=""
+                  alt={c.alt}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="object-cover group-hover/p:scale-[1.05] transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]"

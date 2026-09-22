@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "Insurance, Risk & Actuarial Advisory Expertise",
   description:
     "Alpha Consultant's specialist expertise spans enterprise risk management, actuarial consulting, ORSA, RBC2, regulatory licensing, AML/CFT, insurtech and Asia market entry.",
+  alternates: { canonical: "/expertise" },
 };
 
 export default function ExpertisePage() {

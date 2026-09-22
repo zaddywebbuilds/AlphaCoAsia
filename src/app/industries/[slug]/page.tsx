@@ -27,7 +27,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const ind = INDUSTRIES.find((i) => i.slug === slug);
   if (!ind) return {};
-  return { title: ind.title, description: ind.description };
+  return {
+    title: ind.title,
+    description: ind.description,
+    keywords: ind.challenges,
+    alternates: { canonical: `/industries/${slug}` },
+    openGraph: {
+      title: `${ind.title} | Alpha Consultant`,
+      description: ind.description,
+      url: `https://alphacoasia.com/industries/${slug}`,
+      type: "article",
+    },
+  };
 }
 
 export default async function IndustryPage({ params }: { params: Promise<{ slug: string }> }) {

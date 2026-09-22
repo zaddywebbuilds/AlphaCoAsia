@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   title: "Insurance, Risk & Regulatory Insights",
   description:
     "Perspectives on insurance regulation, enterprise risk management, actuarial matters, insurtech and emerging financial services trends across Asia Pacific.",
+  alternates: { canonical: "/insights" },
 };
 
 const CATEGORIES = ["All", "Regulatory Compliance", "Risk & Governance", "Actuarial", "Fintech & Insurtech", "APAC Markets"];

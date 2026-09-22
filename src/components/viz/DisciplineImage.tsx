@@ -58,10 +58,10 @@ export function hasDisciplineHero(id: string) {
 export function DisciplineHero({ id, className = "" }: { id: string; className?: string }) {
   if (!HERO_SUBJECTS.has(id)) return null;
   return (
-    <div className={`relative overflow-hidden bg-[#070D14] ${className}`} aria-hidden="true">
+    <div className={`relative overflow-hidden bg-[#070D14] ${className}`}>
       <Image
         src={`${BASE}/media/disciplines/hero/${id}.jpg`}
-        alt=""
+        alt={ALT[id] ?? ""}
         fill
         sizes="(max-width: 1024px) 100vw, 50vw"
         priority
@@ -90,11 +90,37 @@ export const SUBJECT_FOR_CATEGORY: Record<string, string> = {
   "APAC Markets": "market-entry",
 };
 
+/* Descriptive alt per subject. These images carry real content — a risk heat
+   map, a capital adequacy chart — so an empty alt throws that away for search
+   and for anyone using a screen reader. */
+const ALT: Record<string, string> = {
+  "enterprise-risk-management": "Enterprise risk management review: risk heat map, exposure by category and mitigation controls",
+  "actuarial-consulting": "Actuarial consulting: pricing and reserving analysis with loss distribution modelling",
+  "orsa-advisory": "ORSA advisory: forward solvency projection assessed against the regulatory capital requirement",
+  "risk-based-capital": "Risk-based capital advisory: capital adequacy by tier and RBC2 solvency ratio",
+  "regulatory-licensing": "Regulatory and licensing advisory: MAS financial services licensing process and approval milestones",
+  "aml-cft": "AML/CFT compliance: transaction monitoring, customer risk profiling and alert review",
+  "insurtech-digital": "Insurtech and digital insurance: platform architecture from channels through to the policy core",
+  "market-entry": "Asia market entry advisory: market prioritisation across Asia Pacific",
+  "financial-modelling": "Financial modelling: business planning, valuation and scenario analysis",
+  "cyber-risk": "Cyber risk and insurance training for insurance and risk professionals",
+  "esg-risk": "ESG risk management training covering regulatory trends and scenario analysis",
+  training: "Professional training delivered to an insurance and risk management audience",
+  "insurance-companies": "Advisory for licensed insurance companies across Asia Pacific",
+  "insurance-brokers": "Advisory for licensed insurance brokers",
+  "financial-advisers": "Advisory for financial advisory firms and representatives",
+  "fintech-insurtech": "Advisory for fintech and insurtech companies building financial services propositions",
+  banking: "Risk and compliance advisory for banking institutions",
+  "asset-management": "Advisory for asset managers and fund management companies",
+  "professional-services": "Specialist advisory for professional services firms serving regulated clients",
+};
+
 export function DisciplineImage({
   id,
   className = "",
   priority = false,
   scrim = false,
+  decorative = false,
 }: {
   id: string;
   className?: string;
@@ -102,14 +128,18 @@ export function DisciplineImage({
   /** Only when copy is laid over the image. Bottom-weighted, so the upper
    *  two-thirds of the frame stays completely clear. */
   scrim?: boolean;
+  /** Set when an adjacent heading already states the same thing, so the image
+   *  would only repeat it to a screen reader. */
+  decorative?: boolean;
 }) {
   const file = SUBJECTS.has(id) ? id : "enterprise-risk-management";
+  const alt = decorative ? "" : ALT[file] ?? "";
 
   return (
-    <div className={`relative overflow-hidden bg-[#070D14] ${className}`} aria-hidden="true">
+    <div className={`relative overflow-hidden bg-[#070D14] ${className}`} aria-hidden={alt ? undefined : true}>
       <Image
         src={`${BASE}/media/disciplines/${file}.jpg`}
-        alt=""
+        alt={alt}
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
         priority={priority}

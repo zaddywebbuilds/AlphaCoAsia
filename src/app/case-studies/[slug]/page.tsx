@@ -34,7 +34,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!cs) return {};
   return {
     title: cs.title,
-    description: `${cs.title} — an Alpha Consultant advisory engagement in ${cs.market} across ${cs.service}.`,
+    description: `${cs.title} — an Alpha Consultant advisory engagement in ${cs.market} across ${cs.service}. ${cs.challenge}`.slice(0, 300),
+    keywords: cs.tags,
+    alternates: { canonical: `/case-studies/${slug}` },
+    openGraph: {
+      title: `${cs.title} | Alpha Consultant`,
+      description: cs.challenge,
+      url: `https://alphacoasia.com/case-studies/${slug}`,
+      type: "article",
+    },
   };
 }
 

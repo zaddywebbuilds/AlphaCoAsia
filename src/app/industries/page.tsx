@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Industries We Serve",
   description:
     "Alpha Consultant advises insurers, insurance brokers, financial advisers, fintechs, banks, asset managers and professional services firms across Asia Pacific.",
+  alternates: { canonical: "/industries" },
 };
 
 export default function IndustriesPage() {

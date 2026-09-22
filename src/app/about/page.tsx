@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "About Us",
   description:
     "Alpha Consultant is a boutique insurance, actuarial, risk and regulatory advisory firm based in Singapore, led by senior practitioners with 20+ years of APAC experience.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

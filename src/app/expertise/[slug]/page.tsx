@@ -19,6 +19,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: item.title,
     description: item.description,
+    keywords: item.topics,
+    alternates: { canonical: `/expertise/${slug}` },
+    openGraph: {
+      title: `${item.title} | Alpha Consultant`,
+      description: item.description,
+      url: `https://alphacoasia.com/expertise/${slug}`,
+      type: "article",
+    },
   };
 }
 
@@ -31,8 +39,39 @@ export default async function ExpertiseDetailPage({ params }: { params: Promise<
   const prev = EXPERTISE[idx - 1];
   const next = EXPERTISE[idx + 1];
 
+  /* Service + breadcrumb, so the discipline can surface as its own result
+     rather than only as part of the firm. */
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        name: item.title,
+        serviceType: item.title,
+        description: item.description,
+        url: `https://alphacoasia.com/expertise/${slug}`,
+        provider: { "@type": "ProfessionalService", name: "Alpha Consultant", url: "https://alphacoasia.com" },
+        areaServed: ["SG", "HK", "MY", "ID", "VN", "MM", "KH", "TW", "BN"],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: `${item.title} service areas`,
+          itemListElement: item.topics.map((t) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: t } })),
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://alphacoasia.com" },
+          { "@type": "ListItem", position: 2, name: "Expertise", item: "https://alphacoasia.com/expertise" },
+          { "@type": "ListItem", position: 3, name: item.title },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Navbar />
       <main>
         {/* Hero */}

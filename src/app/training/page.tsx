@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Insurance, Risk & Actuarial Training Programmes",
   description:
     "Alpha Consultant delivers professional training programmes in ERM, ORSA, RBC2, AML/CFT, cyber risk, ESG and insurtech for insurance and financial services professionals.",
+  alternates: { canonical: "/training" },
 };
 
 const COURSES = [
