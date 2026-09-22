@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { EXPERTISE, INDUSTRIES, CASE_STUDIES, LEADERSHIP } from "@/lib/data";
+import { EXPERTISE, INDUSTRIES, CASE_STUDIES, LEADERSHIP, INSIGHTS_PLACEHOLDER } from "@/lib/data";
 
 export const dynamic = "force-static";
 
@@ -35,13 +35,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "yearly" as const,
   }));
 
-  // Individual insight articles are not published yet, so they stay out of the
-  // sitemap until the pages exist.
+  const insight_pages = INSIGHTS_PLACEHOLDER.map((a) => ({
+    url: `${BASE}/insights/${a.slug}`,
+    lastModified: new Date(a.date),
+    priority: 0.7,
+    changeFrequency: "monthly" as const,
+  }));
+
   const team_pages = LEADERSHIP.map((p) => ({
     url: `${BASE}/team/${p.slug}`,
     priority: 0.7,
     changeFrequency: "yearly" as const,
   }));
 
-  return [...static_pages, ...expertise_pages, ...industry_pages, ...case_study_pages, ...team_pages];
+  return [
+    ...static_pages,
+    ...expertise_pages,
+    ...industry_pages,
+    ...case_study_pages,
+    ...insight_pages,
+    ...team_pages,
+  ];
 }
