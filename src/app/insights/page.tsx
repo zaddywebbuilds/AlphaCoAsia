@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
-import { Clock } from "lucide-react";
+"use client";
+import { useState } from "react";
+import { Clock, ArrowRight, ChevronRight } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { DisciplineImage } from "@/components/viz/DisciplineImage";
+import { DisciplineHero, DisciplineImage } from "@/components/viz/DisciplineImage";
 import { INSIGHTS_PLACEHOLDER } from "@/lib/data";
+import Link from "next/link";
 
 const SUBJECT_FOR: Record<string, string> = {
   "Regulatory Compliance": "regulatory-licensing",
@@ -13,48 +15,143 @@ const SUBJECT_FOR: Record<string, string> = {
   "APAC Markets": "market-entry",
 };
 
-export const metadata: Metadata = {
-  title: "Insurance, Risk & Regulatory Insights",
-  description:
-    "Perspectives on insurance regulation, enterprise risk management, actuarial matters, insurtech and emerging financial services trends across Asia Pacific.",
-  alternates: { canonical: "/insights" },
-};
+const CATEGORIES = [
+  "All",
+  "Regulatory Compliance",
+  "Risk & Governance",
+  "Actuarial",
+  "Fintech & Insurtech",
+  "APAC Markets",
+];
 
-const CATEGORIES = ["All", "Regulatory Compliance", "Risk & Governance", "Actuarial", "Fintech & Insurtech", "APAC Markets"];
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
 
 export default function InsightsPage() {
+  const [active, setActive] = useState("All");
+  const featured = INSIGHTS_PLACEHOLDER.find((a) => (a as any).featured);
+  const filtered =
+    active === "All"
+      ? INSIGHTS_PLACEHOLDER.filter((a) => !(a as any).featured)
+      : INSIGHTS_PLACEHOLDER.filter(
+          (a) => a.category === active && !(a as any).featured
+        );
+
   return (
     <>
       <Navbar />
       <main>
-        <section className="pt-32 pb-16 bg-[#0A1628]">
+        {/* ─── Hero banner ─── */}
+        <section className="pt-32 pb-16 bg-[#050A12] border-b border-white/[0.07]">
           <div className="container-xl">
             <div className="max-w-2xl">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-px bg-[#C9A040]" />
-                <span className="text-xs font-semibold text-[#C9A040] uppercase tracking-[0.15em]">Insights</span>
+                <span className="text-xs font-semibold text-[#C9A040] uppercase tracking-[0.15em]">
+                  Insights
+                </span>
               </div>
-              <h1 className="font-display text-white text-4xl font-semibold mb-4 leading-tight" style={{ letterSpacing: "-0.02em" }}>
-                Perspectives on Insurance, Risk &amp; Regulation
+              <h1
+                className="font-display text-white leading-[1.06] mb-5"
+                style={{
+                  fontSize: "clamp(2.1rem, 4.5vw, 3.4rem)",
+                  fontWeight: 600,
+                  letterSpacing: "-0.025em",
+                }}
+              >
+                Perspectives on Insurance,
+                <br className="hidden sm:block" /> Risk &amp; Regulation
               </h1>
-              <p className="text-slate-300 text-base leading-relaxed">
-                Thought leadership on regulatory developments, risk management practice, actuarial matters and emerging trends across Asia Pacific financial services.
+              <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl">
+                Thought leadership on regulatory developments, risk management
+                practice, actuarial matters and emerging trends across Asia
+                Pacific financial services.
               </p>
             </div>
           </div>
         </section>
 
-        <section className="section-py bg-[#0A1628]">
+        {/* ─── Featured article ─── */}
+        {featured && (
+          <section className="bg-[#0A1628] py-12 border-b border-white/[0.07]">
+            <div className="container-xl">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-8 h-px bg-[#C9A040]" />
+                <span className="text-xs font-semibold text-[#C9A040] uppercase tracking-[0.15em]">
+                  Latest
+                </span>
+              </div>
+              <Link
+                href={`/insights/${featured.slug}`}
+                className="group grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-white/[0.09] hover:border-[#C9A040]/40 transition-colors duration-500 bg-[#0E1B30]"
+              >
+                {/* Image */}
+                <div className="relative overflow-hidden">
+                  <DisciplineHero
+                    id={SUBJECT_FOR[featured.category] ?? "enterprise-risk-management"}
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="aspect-video lg:aspect-auto lg:h-full w-full"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0E1B30]/60 to-transparent lg:bg-gradient-to-r" />
+                </div>
+
+                {/* Copy */}
+                <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
+                  <div className="flex flex-wrap items-center gap-3 mb-5">
+                    <span className="inline-block px-3 py-1 bg-[#C9A040]/15 text-[#E8D9A8] text-xs font-semibold rounded-full tracking-wide uppercase">
+                      {featured.category}
+                    </span>
+                    <span className="text-xs text-slate-500 flex items-center gap-1.5">
+                      <Clock size={11} />
+                      {featured.readTime}
+                    </span>
+                    <span className="text-xs text-slate-500">
+                      {formatDate(featured.date)}
+                    </span>
+                  </div>
+
+                  <h2
+                    className="font-display text-white leading-snug mb-5 group-hover:text-[#E8D9A8] transition-colors duration-300"
+                    style={{
+                      fontSize: "clamp(1.3rem, 2.4vw, 1.85rem)",
+                      fontWeight: 600,
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    {featured.title}
+                  </h2>
+                  <p className="text-[15px] text-slate-400 leading-relaxed mb-8 max-w-lg">
+                    {featured.excerpt}
+                  </p>
+                  <div className="flex items-center gap-2 text-[#C9A040] text-sm font-semibold group-hover:gap-3 transition-all duration-300">
+                    Read the analysis
+                    <ArrowRight size={15} />
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </section>
+        )}
+
+        {/* ─── Article grid ─── */}
+        <section className="bg-[#0A1628] section-py">
           <div className="container-xl">
             {/* Category filter */}
             <div className="flex flex-wrap gap-2 mb-10">
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat}
-                  className={`px-4 py-2 rounded-full text-xs font-medium transition-colors border ${
-                    cat === "All"
-                      ? "bg-[#0D1B2A] text-white border-[#0D1B2A]"
-                      : "bg-white/[0.05] text-slate-400 border-white/[0.09] hover:border-[#C9A040] hover:text-white"
+                  onClick={() => setActive(cat)}
+                  className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-200 border ${
+                    cat === active
+                      ? "bg-[#C9A040] text-[#0A1628] border-[#C9A040] font-semibold"
+                      : "bg-white/[0.05] text-slate-400 border-white/[0.09] hover:border-[#C9A040]/60 hover:text-white"
                   }`}
                 >
                   {cat}
@@ -62,53 +159,139 @@ export default function InsightsPage() {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {INSIGHTS_PLACEHOLDER.map((insight) => (
-                <article key={insight.slug} className="card p-6 flex flex-col group overflow-hidden">
-                  <DisciplineImage
-                    id={SUBJECT_FOR[insight.category] ?? "enterprise-risk-management"}
-                    className="-mx-6 -mt-6 mb-5 aspect-[1400/654]"
-                  />
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="inline-block px-2.5 py-1 bg-[#C9A040]/12 text-[#E8D9A8] text-xs font-semibold rounded-md">
-                      {insight.category}
-                    </span>
-                    <span className="px-2 py-1 border border-white/[0.09] rounded type-technical text-slate-500">
-                      In Preparation
-                    </span>
-                  </div>
-                  <h2 className="text-sm font-semibold text-white leading-snug mb-3 flex-1">
-                    {insight.title}
-                  </h2>
-                  <p className="text-sm text-slate-400 leading-relaxed mb-5">{insight.excerpt}</p>
-                  <div className="flex items-center justify-between pt-4 border-t border-white/[0.09]">
-                    <span className="text-xs text-slate-500 flex items-center gap-1">
-                      <Clock size={11} /> {insight.readTime}
-                    </span>
-                  </div>
-                </article>
-              ))}
-            </div>
+            {filtered.length === 0 ? (
+              <p className="text-slate-500 py-10 text-sm">
+                No articles in this category yet.
+              </p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                {filtered.map((article) => {
+                  const imgId =
+                    SUBJECT_FOR[article.category] ?? "enterprise-risk-management";
+                  return (
+                    <Link
+                      key={article.slug}
+                      href={`/insights/${article.slug}`}
+                      className="group card p-0 flex flex-col overflow-hidden hover:border-[#C9A040]/40 transition-colors duration-400"
+                    >
+                      {/* Cover image */}
+                      <DisciplineImage
+                        id={imgId}
+                        className="-mx-0 -mt-0 aspect-[1400/654] w-full"
+                      />
+
+                      {/* Content */}
+                      <div className="flex flex-col flex-1 p-6 sm:p-7">
+                        <div className="flex flex-wrap items-center gap-2.5 mb-4">
+                          <span className="inline-block px-2.5 py-1 bg-[#C9A040]/12 text-[#E8D9A8] text-[11px] font-semibold rounded-md tracking-wide uppercase">
+                            {article.category}
+                          </span>
+                        </div>
+
+                        <h2 className="font-display text-white text-[1.05rem] font-semibold leading-snug mb-3 group-hover:text-[#E8D9A8] transition-colors duration-300">
+                          {article.title}
+                        </h2>
+
+                        <p className="text-[13.5px] text-slate-400 leading-relaxed flex-1 mb-5">
+                          {article.excerpt}
+                        </p>
+
+                        <div className="flex items-center justify-between pt-4 border-t border-white/[0.09]">
+                          <div className="flex items-center gap-3 text-xs text-slate-500">
+                            <span className="flex items-center gap-1.5">
+                              <Clock size={11} />
+                              {article.readTime}
+                            </span>
+                            <span className="w-px h-3 bg-white/20" />
+                            <span>{formatDate(article.date)}</span>
+                          </div>
+                          <div className="flex items-center gap-1 text-[#C9A040] text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            Read <ChevronRight size={12} />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
 
             {/* Newsletter */}
-            <div className="mt-16 p-10 bg-[#0D1B2A] rounded-2xl text-center">
-              <h3 className="font-display text-xl font-semibold text-white mb-3">APAC Insurance &amp; Risk Brief</h3>
-              <p className="text-sm text-slate-400 max-w-md mx-auto mb-6">
-                Perspectives on insurance regulation, risk management and emerging financial services developments across Asia Pacific.
-              </p>
-              <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="Work email address"
-                  className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-white/40"
-                />
-                <button
-                  type="submit"
-                  className="px-6 py-3 bg-[#C9A040] text-white text-sm font-semibold rounded-lg hover:bg-[#C9A040] transition-colors whitespace-nowrap"
-                >
-                  Subscribe
-                </button>
-              </form>
+            <div className="mt-20 rounded-2xl overflow-hidden border border-white/[0.09]">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                {/* Left — copy */}
+                <div className="p-10 sm:p-14 bg-[#0D1B2A]">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-8 h-px bg-[#C9A040]" />
+                    <span className="text-xs font-semibold text-[#C9A040] uppercase tracking-[0.15em]">
+                      Briefing
+                    </span>
+                  </div>
+                  <h3
+                    className="font-display text-white mb-4 leading-snug"
+                    style={{
+                      fontSize: "clamp(1.35rem, 2.4vw, 1.85rem)",
+                      fontWeight: 600,
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    APAC Insurance &amp; Risk Brief
+                  </h3>
+                  <p className="text-slate-400 text-[15px] leading-relaxed mb-8 max-w-sm">
+                    Periodic perspectives on insurance regulation, risk management
+                    practice and emerging developments across Asia Pacific. Written
+                    for senior insurance and risk professionals.
+                  </p>
+                  <form className="flex flex-col sm:flex-row gap-3 max-w-sm">
+                    <input
+                      type="email"
+                      placeholder="Work email address"
+                      className="flex-1 px-4 py-3 bg-white/[0.07] border border-white/[0.15] rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#C9A040]/60 transition-colors"
+                    />
+                    <button
+                      type="submit"
+                      className="px-5 py-3 bg-[#C9A040] text-[#0A1628] text-sm font-semibold rounded-lg hover:bg-[#E0C870] transition-colors whitespace-nowrap"
+                    >
+                      Subscribe
+                    </button>
+                  </form>
+                </div>
+
+                {/* Right — what to expect */}
+                <div className="p-10 sm:p-14 bg-[#0A1628] border-t lg:border-t-0 lg:border-l border-white/[0.07]">
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-[0.12em] mb-6">
+                    What you receive
+                  </p>
+                  <ul className="space-y-5">
+                    {[
+                      {
+                        head: "Regulatory updates",
+                        body: "Key MAS and regional regulatory developments that affect licensed insurers, intermediaries and fintech platforms.",
+                      },
+                      {
+                        head: "Risk practice",
+                        body: "Practical commentary on enterprise risk management, ORSA, capital frameworks and governance.",
+                      },
+                      {
+                        head: "Market intelligence",
+                        body: "Emerging trends in Asia Pacific financial services and what they mean for risk, compliance and business strategy.",
+                      },
+                    ].map(({ head, body }) => (
+                      <li key={head} className="flex gap-4">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#C9A040] mt-[7px] shrink-0" />
+                        <div>
+                          <p className="text-sm font-semibold text-white mb-1">
+                            {head}
+                          </p>
+                          <p className="text-[13px] text-slate-400 leading-relaxed">
+                            {body}
+                          </p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </section>
