@@ -34,6 +34,23 @@ function formatDate(iso: string) {
 
 export default function InsightsPage() {
   const [active, setActive] = useState("All");
+  const [nlStatus, setNlStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
+
+  async function handleNewsletter(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setNlStatus("loading");
+    const data = new FormData(e.currentTarget);
+    data.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "");
+    data.append("subject", "APAC Insurance Brief subscription request");
+    data.append("from_name", "Alpha Consultant Website");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: data });
+      const json = await res.json();
+      setNlStatus(json.success ? "ok" : "error");
+    } catch {
+      setNlStatus("error");
+    }
+  }
   const featured = INSIGHTS_PLACEHOLDER.find((a) => (a as any).featured);
   const filtered =
     active === "All"
@@ -242,19 +259,32 @@ export default function InsightsPage() {
                     practice and emerging developments across Asia Pacific. Written
                     for senior insurance and risk professionals.
                   </p>
-                  <form className="flex flex-col sm:flex-row gap-3 max-w-sm">
-                    <input
-                      type="email"
-                      placeholder="Work email address"
-                      className="flex-1 px-4 py-3 bg-white/[0.07] border border-white/[0.15] rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#C9A040]/60 transition-colors"
-                    />
-                    <button
-                      type="submit"
-                      className="px-5 py-3 bg-[#C9A040] text-[#0A1628] text-sm font-semibold rounded-lg hover:bg-[#E0C870] transition-colors whitespace-nowrap"
-                    >
-                      Subscribe
-                    </button>
-                  </form>
+                  {nlStatus === "ok" ? (
+                    <p className="text-sm text-[#E8D9A8] bg-[#C9A040]/10 border border-[#C9A040]/20 rounded-lg px-4 py-3">
+                      Subscribed. We will be in touch with the next briefing.
+                    </p>
+                  ) : (
+                    <form onSubmit={handleNewsletter} className="flex flex-col sm:flex-row gap-3 max-w-sm">
+                      <input type="checkbox" name="botcheck" className="hidden" />
+                      <input
+                        required
+                        name="email"
+                        type="email"
+                        placeholder="Work email address"
+                        className="flex-1 px-4 py-3 bg-white/[0.07] border border-white/[0.15] rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#C9A040]/60 transition-colors"
+                      />
+                      <button
+                        type="submit"
+                        disabled={nlStatus === "loading"}
+                        className="px-5 py-3 bg-[#C9A040] text-[#0A1628] text-sm font-semibold rounded-lg hover:bg-[#E0C870] transition-colors whitespace-nowrap disabled:opacity-60"
+                      >
+                        {nlStatus === "loading" ? "…" : "Subscribe"}
+                      </button>
+                      {nlStatus === "error" && (
+                        <p className="text-xs text-red-400 mt-1 w-full">Something went wrong — please try again.</p>
+                      )}
+                    </form>
+                  )}
                 </div>
 
                 {/* Right — what to expect */}
