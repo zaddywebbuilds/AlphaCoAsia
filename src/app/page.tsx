@@ -9,6 +9,7 @@ import { WhyAlpha } from "@/components/sections/WhyAlpha";
 import { LeadershipSection } from "@/components/sections/LeadershipSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { InsightsSection } from "@/components/sections/InsightsSection";
+import { JourneySection } from "@/components/sections/JourneySection";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export default function HomePage() {
@@ -18,6 +19,7 @@ export default function HomePage() {
       <main>
         <Hero />
         <AuthorityStrip />
+        <JourneySection />
         <IndustriesSection />
         <CaseStudiesSection />
         <APACMap />
