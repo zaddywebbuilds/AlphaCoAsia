@@ -48,7 +48,7 @@ export function CaseStudiesSection() {
 
         {/* Dossiers */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-5 gap-y-6">
-          {CASE_STUDIES.map((cs, i) => {
+          {CASE_STUDIES.slice(0, 5).map((cs, i) => {
             const wide = i === 4;
             return (
               <motion.article
