@@ -66,6 +66,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },
+  manifest: "/AlphaCoAsia/site.webmanifest",
 };
 
 const orgSchema = {

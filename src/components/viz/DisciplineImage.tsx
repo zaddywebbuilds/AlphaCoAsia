@@ -93,6 +93,11 @@ export const SUBJECT_FOR_SERVICE: Record<string, string> = {
   "Regulatory & Licensing": "regulatory-licensing",
   "Risk-Based Capital": "risk-based-capital",
   "AML/CFT Compliance": "aml-cft",
+  "Due Diligence & Corporate Deals": "due-diligence-corporate-deals",
+  "IPO & Capital Markets Advisory": "capital-markets-advisory",
+  "Actuarial Consulting": "actuarial-consulting",
+  "Insurtech & Digital Insurance": "insurtech-digital",
+  "Market Entry": "market-entry",
 };
 
 /** An article's category decides its image. */

@@ -327,6 +327,14 @@ export const TESTIMONIALS = [
     role: "South-East Asia Representative",
     service: "actuarial-consulting",
   },
+  {
+    quote:
+      "In ORSA and its applications in the insurance context, Alpha consultancy is one of the best ERM and insurance consulting firms I know in my professional life.",
+    author: "Agustinus Nicholas L Tobing",
+    company: "RISE",
+    role: "Security Assurance Country Lead",
+    service: "orsa-advisory",
+  },
 ];
 
 export const CASE_STUDIES = [
@@ -389,6 +397,162 @@ export const CASE_STUDIES = [
     alphaRole:
       "Developed an AML/CFT governance framework including policies, procedures, risk assessment methodology and training materials aligned with MAS Notice requirements.",
     tags: ["AML/CFT", "Compliance", "Regulatory", "MAS"],
+  },
+  {
+    slug: "medical-group-acquisition-singapore",
+    title: "Medical Group Acquisition and Integration",
+    industry: "Healthcare",
+    market: "Singapore",
+    service: "Due Diligence & Corporate Deals",
+    challenge:
+      "A corporate client sought to complete the acquisition of a medical group and required deal advisory and post-acquisition support.",
+    alphaRole:
+      "Advised on the transaction and managed the post-acquisition integration process.",
+    tags: ["M&A", "Healthcare", "Integration", "Singapore"],
+  },
+  {
+    slug: "insurance-due-diligence-indonesia",
+    title: "Financial Due Diligence on Indonesian General Insurer",
+    industry: "Insurance",
+    market: "Indonesia",
+    service: "Due Diligence & Corporate Deals",
+    challenge:
+      "An M&A client required financial due diligence on a licensed local general insurer in Indonesia.",
+    alphaRole:
+      "Conducted financial due diligence covering the insurer's balance sheet, technical reserves, underwriting performance and regulatory standing.",
+    tags: ["Due Diligence", "Insurance", "Indonesia", "M&A"],
+  },
+  {
+    slug: "insurance-due-diligence-malaysia",
+    title: "M&A Due Diligence on Three Malaysian Insurers",
+    industry: "Insurance",
+    market: "Malaysia",
+    service: "Due Diligence & Corporate Deals",
+    challenge:
+      "A client required M&A due diligence across three insurers in Malaysia. Separately, the regulator sought actuarial advice on an RM15m insurer acquisition.",
+    alphaRole:
+      "Conducted M&A due diligence across three insurers and provided actuarial advice to the regulator in connection with the RM15m acquisition.",
+    tags: ["Due Diligence", "Insurance", "Malaysia", "Actuarial", "Regulatory"],
+  },
+  {
+    slug: "multi-sector-acquisition-advisory",
+    title: "Strategic Acquisition Advisory",
+    industry: "Multi-Sector",
+    market: "Asia Pacific",
+    service: "Due Diligence & Corporate Deals",
+    challenge:
+      "A client sought strategic advice on acquisition opportunities across insurance, consumer retail and fund management.",
+    alphaRole:
+      "Provided strategic acquisition advisory covering target assessment, deal structuring and negotiation support.",
+    tags: ["M&A", "Strategy", "Insurance", "Fund Management"],
+  },
+  {
+    slug: "digital-asset-exchange-rmo-licence",
+    title: "Digital Asset Exchange Regulatory Licence",
+    industry: "Fintech",
+    market: "Singapore",
+    service: "Regulatory & Licensing",
+    challenge:
+      "A digital asset exchange sought to obtain an MAS Recognised Market Operator licence.",
+    alphaRole:
+      "Oversaw the MAS Recognised Market Operator licence application, which MAS granted.",
+    tags: ["Licensing", "MAS", "Digital Asset", "Regulatory"],
+  },
+  {
+    slug: "financial-adviser-ifa-licence-compliance",
+    title: "Financial Adviser and IFA Licensing",
+    industry: "Financial Services",
+    market: "Singapore",
+    service: "Regulatory & Licensing",
+    challenge:
+      "A financial services group required MAS licences for its financial adviser and independent financial adviser businesses, followed by ongoing compliance support.",
+    alphaRole:
+      "Managed the licence applications through to approval and provided outsourced compliance services after licensing.",
+    tags: ["Licensing", "MAS", "Financial Adviser", "Compliance"],
+  },
+  {
+    slug: "risk-management-review-cambodia",
+    title: "Risk Management Review — Microfinance and Banking",
+    industry: "Financial Services",
+    market: "Cambodia",
+    service: "Enterprise Risk Management",
+    challenge:
+      "A microfinance institution and local bank in Cambodia required an independent risk management review.",
+    alphaRole:
+      "Conducted a risk management review covering governance, risk identification, controls and reporting for both institutions.",
+    tags: ["ERM", "Microfinance", "Banking", "Cambodia"],
+  },
+  {
+    slug: "internal-audit-fund-management-singapore",
+    title: "Internal Audit for Fund Management Company",
+    industry: "Asset Management",
+    market: "Singapore",
+    service: "Enterprise Risk Management",
+    challenge:
+      "A fund management company required an internal audit, control and assurance review.",
+    alphaRole:
+      "Conducted the internal audit and control review, covering governance arrangements, operational controls and assurance processes.",
+    tags: ["Internal Audit", "Fund Management", "Controls", "Singapore"],
+  },
+  {
+    slug: "erm-charitable-organisation-singapore",
+    title: "ERM and Risk Control Review — Charitable Organisation",
+    industry: "Non-Profit",
+    market: "Singapore",
+    service: "Enterprise Risk Management",
+    challenge:
+      "A large charitable organisation required ERM consultancy and a risk and control review.",
+    alphaRole:
+      "Delivered ERM consultancy and conducted a risk and control review covering governance, risk appetite and the internal control environment.",
+    tags: ["ERM", "Governance", "Risk Controls", "Singapore"],
+  },
+  {
+    slug: "actuarial-motor-warranty-singapore",
+    title: "Actuarial Review of Motor Warranty Portfolio",
+    industry: "Insurance",
+    market: "Singapore",
+    service: "Actuarial Consulting",
+    challenge:
+      "An insurer required an actuarial pricing review of its motor warranty portfolio, alongside motor insurance strategy for a broker.",
+    alphaRole:
+      "Conducted the actuarial pricing review of the motor warranty portfolio and provided motor insurance strategy advice to the broker.",
+    tags: ["Actuarial", "Motor Insurance", "Pricing", "Singapore"],
+  },
+  {
+    slug: "cyber-insurance-market-research-indonesia",
+    title: "Cyber Insurance Market Research — Indonesia",
+    industry: "Insurance",
+    market: "Indonesia",
+    service: "Insurtech & Digital Insurance",
+    challenge:
+      "A Lloyd's coverholder required market research on personal and SME cyber insurance demand in Indonesia.",
+    alphaRole:
+      "Conducted market research covering personal and SME cyber insurance demand, distribution and regulatory landscape in Indonesia.",
+    tags: ["Cyber Insurance", "Market Research", "Indonesia", "Insurtech"],
+  },
+  {
+    slug: "balanced-scorecard-healthcare-malaysia",
+    title: "Balanced Scorecard Advisory — Healthcare Software",
+    industry: "Healthcare",
+    market: "Malaysia",
+    service: "Enterprise Risk Management",
+    challenge:
+      "A Bursa-listed healthcare software provider required balanced scorecard advisory to strengthen strategic performance management.",
+    alphaRole:
+      "Provided balanced scorecard advisory covering strategic objective-setting, KPI design and implementation.",
+    tags: ["Strategy", "Balanced Scorecard", "Healthcare", "Malaysia"],
+  },
+  {
+    slug: "fintech-micro-lending-indonesia",
+    title: "Technical Adviser to Digital Micro-Lending Platform",
+    industry: "Fintech",
+    market: "Indonesia",
+    service: "Insurtech & Digital Insurance",
+    challenge:
+      "A digital micro-lending platform in Indonesia required a technical adviser to support its development.",
+    alphaRole:
+      "Served as technical adviser, providing guidance on platform design, risk controls and regulatory considerations.",
+    tags: ["Fintech", "Micro-Lending", "Indonesia", "Digital"],
   },
 ];
 
