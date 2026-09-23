@@ -2,7 +2,7 @@
   "name": "Alpha Consultant",
   "short_name": "AlphaCoAsia",
   "description": "Insurance, Risk & Regulatory Advisory across Asia Pacific",
-  "start_url": "/AlphaCoAsia/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#0A1628",
   "theme_color": "#0A1628",
