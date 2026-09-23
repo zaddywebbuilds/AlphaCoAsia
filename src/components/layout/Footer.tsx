@@ -102,7 +102,7 @@ export function Footer() {
             <ul className="space-y-2.5">
               {[
                 { label: "About Us", href: "/about" },
-                { label: "Leadership", href: "/about#leadership" },
+                { label: "Our Team", href: "/team" },
                 { label: "APAC Experience", href: "/about#apac" },
                 { label: "Testimonials", href: "/about#testimonials" },
                 { label: "Case Studies", href: "/case-studies" },
