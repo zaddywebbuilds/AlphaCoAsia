@@ -70,8 +70,8 @@
   --font-mono: var(--font-geist-mono), monospace;
 
   /* Spacing scale */
-  --spacing-section: 7rem;
-  --spacing-section-sm: 4rem;
+  --spacing-section: 4.5rem;
+  --spacing-section-sm: 2.5rem;
 
   /* Radius */
   --radius-sm: 4px;
