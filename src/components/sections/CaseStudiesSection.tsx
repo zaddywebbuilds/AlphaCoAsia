@@ -19,8 +19,7 @@ export function CaseStudiesSection() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="relative section-py bg-[#0A1628] overflow-hidden">
-      <div className="absolute inset-0 tex-grid-fine opacity-70" />
+    <section ref={ref} className="relative section-py bg-[#F2F4F7] overflow-hidden">
 
       <div className="container-xl relative z-10">
         {/* Header */}
@@ -31,15 +30,15 @@ export function CaseStudiesSection() {
               <span className="type-technical text-[#C9A040]">Track Record</span>
             </div>
             <h2
-              className="font-display text-white leading-[1.08]"
+              className="font-display text-[#0D1B2A] leading-[1.08]"
               style={{ fontSize: "clamp(1.9rem, 3.6vw, 3.1rem)", fontWeight: 600, letterSpacing: "-0.025em" }}
             >
               Selected engagements
             </h2>
           </div>
           <div className="lg:col-span-5 lg:pb-2">
-            <div className="rule-h mb-5" />
-            <p className="text-sm text-slate-400 leading-relaxed">
+            <div className="rule-h-dark mb-5" />
+            <p className="text-sm text-slate-600 leading-relaxed">
               Advisory and consulting work across insurance, risk, regulatory and actuarial
               disciplines throughout Asia Pacific.
             </p>
@@ -137,7 +136,7 @@ export function CaseStudiesSection() {
         <div className="mt-14 flex justify-center">
           <Link
             href="/case-studies"
-            className="btn-magnetic inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#C9A040] text-[#221805] text-sm font-semibold rounded-lg hover:bg-[#12213A]"
+            className="btn-magnetic inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#C9A040] text-[#221805] text-sm font-semibold rounded-lg hover:bg-[#0D1B2A] hover:text-white"
           >
             View all engagements
             <ArrowRight size={14} className="btn-arrow" />

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme inline {
@@ -65,7 +65,7 @@
   --color-accent-hover: var(--color-gold-700);
 
   /* Typography */
-  --font-display: "Playfair Display", Georgia, serif;
+  --font-display: var(--font-cormorant), "Cormorant Garant", Georgia, serif;
   --font-sans: "Inter", var(--font-geist-sans), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
 
