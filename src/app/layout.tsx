@@ -51,9 +51,10 @@ export const metadata: Metadata = {
       "Helping insurers, financial institutions, fintechs and growing businesses navigate regulation, risk, market entry and transformation across Asia Pacific.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.jpg?v=2",
         width: 1200,
         height: 630,
+        type: "image/jpeg",
         alt: "Alpha Consultant - Insurance, Risk & Actuarial Advisory Asia Pacific",
       },
     ],
@@ -63,7 +64,7 @@ export const metadata: Metadata = {
     title: "Insurance, Risk & Actuarial Consulting Singapore | Alpha Consultant",
     description:
       "Helping insurers and financial institutions navigate regulation, risk and transformation across Asia Pacific.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.jpg?v=2"],
   },
   robots: {
     index: true,
