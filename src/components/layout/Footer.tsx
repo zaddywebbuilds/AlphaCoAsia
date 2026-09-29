@@ -103,12 +103,12 @@ export function Footer() {
               {[
                 { label: "About Us", href: "/about" },
                 { label: "Our Team", href: "/team" },
-                { label: "APAC Experience", href: "/about#apac" },
-                { label: "Testimonials", href: "/about#testimonials" },
+                { label: "Testimonials", href: "/testimonials" },
                 { label: "Case Studies", href: "/case-studies" },
                 { label: "Insights", href: "/insights" },
                 { label: "Training", href: "/training" },
                 { label: "Contact", href: "/contact" },
+                { label: "Privacy Notice", href: "/privacy" },
               ].map((item) => (
                 <li key={item.href}>
                   <Link

@@ -16,6 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/insights`, priority: 0.8, changeFrequency: "weekly" as const },
     { url: `${BASE}/contact`, priority: 0.7, changeFrequency: "yearly" as const },
     { url: `${BASE}/team`, priority: 0.75, changeFrequency: "yearly" as const },
+    { url: `${BASE}/testimonials`, priority: 0.7, changeFrequency: "monthly" as const },
+    { url: `${BASE}/privacy`, priority: 0.4, changeFrequency: "yearly" as const },
   ];
 
   const expertise_pages = EXPERTISE.map((e) => ({
