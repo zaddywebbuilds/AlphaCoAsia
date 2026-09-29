@@ -119,7 +119,7 @@ export function WhyAlpha() {
             Senior expertise. Direct access.
             <br className="hidden sm:block" /> Practical execution.
           </h2>
-          <p className="text-[15px] text-slate-600 leading-relaxed">
+          <p className="text-[15px] text-slate-700 leading-relaxed">
             Large consultancies sell scale. Alpha Consultant offers specialist depth, senior-level
             involvement and the kind of direct access that drives better outcomes for clients.
           </p>
@@ -163,7 +163,7 @@ export function WhyAlpha() {
                   </span>
                   <h3 className="text-[15px] font-semibold text-[#0D1B2A]">{p.title}</h3>
                 </div>
-                <p className="text-[13.5px] text-slate-600 leading-relaxed">{p.description}</p>
+                <p className="text-[13.5px] text-slate-700 leading-relaxed">{p.description}</p>
               </motion.div>
             ))}
           </div>

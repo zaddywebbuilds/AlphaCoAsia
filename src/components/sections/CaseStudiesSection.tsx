@@ -38,7 +38,7 @@ export function CaseStudiesSection() {
           </div>
           <div className="lg:col-span-5 lg:pb-2">
             <div className="rule-h-dark mb-5" />
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-slate-700 leading-relaxed">
               Advisory and consulting work across insurance, risk, regulatory and actuarial
               disciplines throughout Asia Pacific.
             </p>
