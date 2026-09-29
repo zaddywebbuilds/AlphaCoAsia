@@ -67,14 +67,14 @@ export function InsightsSection() {
                   <div className="flex flex-wrap items-center gap-3 mb-2">
                     <span className="type-technical text-[#A8801A]">{a.category}</span>
                     <span className="w-1 h-1 rounded-full bg-slate-300" />
-                    <span className="type-technical text-slate-400 flex items-center gap-1">
+                    <span className="type-technical text-slate-500 flex items-center gap-1">
                       <Clock size={9} /> {a.readTime}
                     </span>
                   </div>
                   <h3 className="font-display text-[#0D1B2A] text-lg sm:text-xl font-semibold leading-snug group-hover:text-[#A8801A] transition-colors duration-300">
                     {a.title}
                   </h3>
-                  <p className="text-[13.5px] text-slate-500 leading-relaxed mt-1.5 max-w-2xl">
+                  <p className="text-[13.5px] text-slate-700 leading-relaxed mt-1.5 max-w-2xl">
                     {a.excerpt}
                   </p>
                 </div>
