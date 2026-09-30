@@ -16,6 +16,21 @@ export const metadata: Metadata = {
     title: "Insurance, Risk & Regulatory Insights | Alpha Consultant",
     description:
       "Thought leadership on regulatory developments, risk management practice, actuarial matters and emerging trends across Asia Pacific financial services.",
+    images: [
+      {
+        url: "https://alphacoasia.com/og-image.jpg?v=2",
+        width: 1200,
+        height: 630,
+        alt: "Alpha Consultant - Insurance, Risk & Actuarial Advisory Asia Pacific",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Insurance, Risk & Regulatory Insights | Alpha Consultant",
+    description:
+      "Thought leadership on regulatory developments, risk management and actuarial matters across Asia Pacific financial services.",
+    images: ["https://alphacoasia.com/og-image.jpg?v=2"],
   },
 };
 

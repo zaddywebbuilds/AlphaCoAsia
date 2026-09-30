@@ -29,11 +29,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: "profile",
       images: [
         {
-          url: "https://alphacoasia.com/og-image.jpg?v=2",
+          url: `https://alphacoasia.com/media/og/og-team-${slug}.jpg`,
           width: 1200,
           height: 630,
           type: "image/jpeg",
-          alt: `${p.name} - Alpha Consultant`,
+          alt: `${p.name}, ${p.title} - Alpha Consultant`,
         },
       ],
     },
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: "summary_large_image",
       title: `${p.name}, ${p.title} | Alpha Consultant`,
       description: p.shortBio,
-      images: ["https://alphacoasia.com/og-image.jpg?v=2"],
+      images: [`https://alphacoasia.com/media/og/og-team-${slug}.jpg`],
     },
   };
 }
