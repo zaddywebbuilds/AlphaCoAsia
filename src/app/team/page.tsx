@@ -19,6 +19,22 @@ export const metadata: Metadata = {
     description:
       "Meet the partners and directors behind Alpha Consultant's insurance, risk and capital markets advisory practice.",
     url: "https://alphacoasia.com/team",
+    images: [
+      {
+        url: "https://alphacoasia.com/og-image.jpg?v=2",
+        width: 1200,
+        height: 630,
+        type: "image/jpeg",
+        alt: "Alpha Consultant Leadership Team",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Team | Alpha Consultant",
+    description:
+      "Meet the partners and directors behind Alpha Consultant's insurance, risk and capital markets advisory practice.",
+    images: ["https://alphacoasia.com/og-image.jpg?v=2"],
   },
 };
 

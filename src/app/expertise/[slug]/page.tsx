@@ -26,6 +26,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: item.description,
       url: `https://alphacoasia.com/expertise/${slug}`,
       type: "article",
+      images: [
+        {
+          url: "https://alphacoasia.com/og-image.jpg?v=2",
+          width: 1200,
+          height: 630,
+          type: "image/jpeg",
+          alt: `${item.title} - Alpha Consultant`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${item.title} | Alpha Consultant`,
+      description: item.description,
+      images: ["https://alphacoasia.com/og-image.jpg?v=2"],
     },
   };
 }
