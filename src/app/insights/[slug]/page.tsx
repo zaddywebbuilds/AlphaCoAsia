@@ -6,6 +6,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { DisciplineHero, SUBJECT_FOR_CATEGORY } from "@/components/viz/DisciplineImage";
 import { INSIGHTS_PLACEHOLDER, EXPERTISE } from "@/lib/data";
+import { getArticleContent } from "@/lib/mdx";
 
 /** The discipline a briefing's category maps onto, for the related-expertise rail. */
 const EXPERTISE_FOR_CATEGORY: Record<string, string> = {
@@ -68,6 +69,7 @@ export default async function InsightDetailPage({ params }: { params: Promise<{ 
   const imgId = SUBJECT_FOR_CATEGORY[a.category] ?? "enterprise-risk-management";
   const related = EXPERTISE.find((e) => e.slug === EXPERTISE_FOR_CATEGORY[a.category]);
   const alsoIn = INSIGHTS_PLACEHOLDER.filter((x) => x.category === a.category && x.slug !== a.slug).slice(0, 3);
+  const mdx = await getArticleContent(slug);
 
   const schema = {
     "@context": "https://schema.org",
@@ -155,45 +157,78 @@ export default async function InsightDetailPage({ params }: { params: Promise<{ 
                   {a.excerpt}
                 </p>
 
-                {/* What it covers */}
-                <div>
-                  <h2 className="text-lg font-semibold text-white mb-5">What this briefing covers</h2>
-                  <ul className="space-y-3">
-                    {a.covers.map((c) => (
-                      <li key={c} className="flex gap-3.5 items-start">
-                        <CheckCircle size={15} className="text-[#C9A040] shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-300 leading-relaxed">{c}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {mdx ? (
+                  /* Full article body */
+                  <div
+                    className="article-prose"
+                    dangerouslySetInnerHTML={{ __html: mdx.htmlContent }}
+                  />
+                ) : (
+                  <>
+                    {/* What it covers (stub fallback) */}
+                    <div>
+                      <h2 className="text-lg font-semibold text-white mb-5">What this briefing covers</h2>
+                      <ul className="space-y-3">
+                        {a.covers.map((c) => (
+                          <li key={c} className="flex gap-3.5 items-start">
+                            <CheckCircle size={15} className="text-[#C9A040] shrink-0 mt-0.5" />
+                            <span className="text-sm text-slate-300 leading-relaxed">{c}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                {/* Honest status. The written piece does not exist yet, so the
-                   page routes to a conversation rather than implying a body of
-                   text that was never published. */}
-                <div className="p-6 bg-[#0D1B2A] rounded-xl border border-white/[0.09]">
-                  <h3 className="text-sm font-semibold text-white mb-2">Full briefing</h3>
-                  <p className="text-sm text-slate-400 leading-relaxed mb-5">
-                    The written briefing on this topic is being prepared. In the meantime our
-                    consultants can talk through how it applies to your organisation directly.
-                  </p>
-                  <div className="flex flex-wrap gap-3">
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#C9A040] text-[#221805] text-sm font-semibold rounded-lg hover:bg-[#E0C870] transition-colors"
-                    >
-                      Discuss this topic <ArrowRight size={13} />
-                    </Link>
-                    {related && (
+                    {/* Honest status placeholder */}
+                    <div className="p-6 bg-[#0D1B2A] rounded-xl border border-white/[0.09]">
+                      <h3 className="text-sm font-semibold text-white mb-2">Full briefing</h3>
+                      <p className="text-sm text-slate-400 leading-relaxed mb-5">
+                        The written briefing on this topic is being prepared. In the meantime our
+                        consultants can talk through how it applies to your organisation directly.
+                      </p>
+                      <div className="flex flex-wrap gap-3">
+                        <Link
+                          href="/contact"
+                          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#C9A040] text-[#221805] text-sm font-semibold rounded-lg hover:bg-[#E0C870] transition-colors"
+                        >
+                          Discuss this topic <ArrowRight size={13} />
+                        </Link>
+                        {related && (
+                          <Link
+                            href={`/expertise/${related.slug}`}
+                            className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/[0.15] text-white text-sm font-medium rounded-lg hover:border-[#C9A040] transition-colors"
+                          >
+                            {related.shortTitle} expertise <ArrowRight size={13} />
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {/* End-of-article CTA (shown for full articles) */}
+                {mdx && (
+                  <div className="p-6 bg-[#0D1B2A] rounded-xl border border-white/[0.09] mt-4">
+                    <p className="text-sm text-slate-400 leading-relaxed mb-4">
+                      Questions about how this applies to your organisation? Our consultants are available to discuss your specific position.
+                    </p>
+                    <div className="flex flex-wrap gap-3">
                       <Link
-                        href={`/expertise/${related.slug}`}
-                        className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/[0.15] text-white text-sm font-medium rounded-lg hover:border-[#C9A040] transition-colors"
+                        href="/contact"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#C9A040] text-[#221805] text-sm font-semibold rounded-lg hover:bg-[#E0C870] transition-colors"
                       >
-                        {related.shortTitle} expertise <ArrowRight size={13} />
+                        Get in touch <ArrowRight size={13} />
                       </Link>
-                    )}
+                      {related && (
+                        <Link
+                          href={`/expertise/${related.slug}`}
+                          className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/[0.15] text-white text-sm font-medium rounded-lg hover:border-[#C9A040] transition-colors"
+                        >
+                          {related.shortTitle} expertise <ArrowRight size={13} />
+                        </Link>
+                      )}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Prev / next */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
