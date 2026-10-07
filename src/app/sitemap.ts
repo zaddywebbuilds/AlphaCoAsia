@@ -38,12 +38,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "yearly" as const,
   }));
 
-  const insight_pages = INSIGHTS_PLACEHOLDER.map((a) => ({
-    url: `${BASE}/insights/${a.slug}`,
-    lastModified: new Date(a.date),
-    priority: 0.7,
-    changeFrequency: "monthly" as const,
-  }));
+  const insight_pages = INSIGHTS_PLACEHOLDER.map((a) => {
+    const isRecent = a.date >= "2026-01-01";
+    return {
+      url: `${BASE}/insights/${a.slug}`,
+      lastModified: new Date(a.date),
+      priority: isRecent ? 0.85 : 0.65,
+      changeFrequency: (isRecent ? "weekly" : "monthly") as "weekly" | "monthly",
+    };
+  });
 
   const team_pages = LEADERSHIP.map((p) => ({
     url: `${BASE}/team/${p.slug}`,

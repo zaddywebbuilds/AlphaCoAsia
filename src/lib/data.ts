@@ -645,6 +645,23 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "digital-distribution-conduct-regulation",
+    title: "Digital Distribution and Conduct Risk: What Insurers and Intermediaries Need to Know",
+    category: "Fintech & Insurtech",
+    excerpt: "The growth of digital insurance distribution has moved faster than regulatory frameworks across most Asia Pacific markets. Regulators are catching up, with conduct risk, suitability assessment and product governance all under increased scrutiny. The scale of digital distribution amplifies conduct exposure rather than reducing the standard of care expected. We examine the key obligations and practical controls insurers and digital platforms should have in place.",
+    covers: [
+      "Direct-to-consumer, embedded insurance and aggregator models under scrutiny",
+      "Suitability assessment obligations in a digital journey",
+      "Product governance and target market determination",
+      "Claims handling transparency and complaints data",
+      "Practical controls for insurers and platform operators",
+    ],
+    readTime: "7 min read",
+    date: "2026-10-07",
+    author: "Alpha Consultant",
+    draft: false,
+  },
+  {
     slug: "esg-risk-insurance-apac",
     title: "ESG Risk Management for Asia Pacific Insurers: From Reporting to Integration",
     category: "Risk & Governance",
@@ -778,23 +795,6 @@ export const INSIGHTS_PLACEHOLDER = [
     ],
     readTime: "8 min read",
     date: "2026-09-29",
-    author: "Alpha Consultant",
-    draft: false,
-  },
-  {
-    slug: "digital-distribution-conduct-regulation",
-    title: "Digital Distribution and Conduct Risk: What Insurers and Intermediaries Need to Know",
-    category: "Fintech & Insurtech",
-    excerpt: "The growth of digital insurance distribution has moved faster than regulatory frameworks across most Asia Pacific markets. Regulators are catching up, with conduct risk, suitability assessment and product governance all under increased scrutiny. The scale of digital distribution amplifies conduct exposure rather than reducing the standard of care expected. We examine the key obligations and practical controls insurers and digital platforms should have in place.",
-    covers: [
-      "Direct-to-consumer, embedded insurance and aggregator models under scrutiny",
-      "Suitability assessment obligations in a digital journey",
-      "Product governance and target market determination",
-      "Claims handling transparency and complaints data",
-      "Practical controls for insurers and platform operators",
-    ],
-    readTime: "7 min read",
-    date: "2024-06-22",
     author: "Alpha Consultant",
     draft: false,
   },

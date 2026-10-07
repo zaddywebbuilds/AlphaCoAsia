@@ -71,6 +71,10 @@ export default async function InsightDetailPage({ params }: { params: Promise<{ 
   const alsoIn = INSIGHTS_PLACEHOLDER.filter((x) => x.category === a.category && x.slug !== a.slug).slice(0, 3);
   const mdx = await getArticleContent(slug);
 
+  const wordCount = mdx
+    ? mdx.htmlContent.replace(/<[^>]+>/g, " ").trim().split(/\s+/).length
+    : undefined;
+
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -79,10 +83,20 @@ export default async function InsightDetailPage({ params }: { params: Promise<{ 
         headline: a.title,
         description: a.excerpt,
         datePublished: a.date,
+        dateModified: a.date,
         articleSection: a.category,
+        keywords: a.covers.join(", "),
         url: `https://alphacoasia.com/insights/${slug}`,
+        image: "https://alphacoasia.com/og-image.jpg?v=2",
+        ...(wordCount ? { wordCount } : {}),
         author: { "@type": "Organization", name: "Alpha Consultant", url: "https://alphacoasia.com" },
-        publisher: { "@type": "Organization", name: "Alpha Consultant", url: "https://alphacoasia.com" },
+        publisher: {
+          "@type": "Organization",
+          name: "Alpha Consultant",
+          url: "https://alphacoasia.com",
+          logo: { "@type": "ImageObject", url: "https://alphacoasia.com/logo.svg" },
+        },
+        mainEntityOfPage: { "@type": "WebPage", "@id": `https://alphacoasia.com/insights/${slug}` },
       },
       {
         "@type": "BreadcrumbList",
