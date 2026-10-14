@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Alpha Consultant Insights</title>
+    <link>https://alphacoasia.com/insights</link>
+    <description>Insurance, risk, actuarial and regulatory intelligence for Asia Pacific financial institutions.</description>
+    <language>en-sg</language>
+    <atom:link href="https://alphacoasia.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://alphacoasia.com/og-image.jpg</url>
+      <title>Alpha Consultant Insights</title>
+      <link>https://alphacoasia.com/insights</link>
+    </image>
+    
+    <item>
+      <title><![CDATA[Financial Modelling for Insurance Business Planning and Capital Decisions]]></title>
+      <link>https://alphacoasia.com/insights/financial-modelling-insurance-capital-planning</link>
+      <guid isPermaLink="true">https://alphacoasia.com/insights/financial-modelling-insurance-capital-planning</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Robust financial modelling is central to how insurance boards and management teams make capital allocation, product strategy and M&A decisions. A model is only as good as the assumptions behind it and the governance around it. This briefing examines what good insurance financial modelling looks like across business planning, capital allocation, product development and M&A due diligence.]]></description>
+      <category>Actuarial</category>
+      <author>admin@alphacoasia.com (Alpha Consultant)</author>
+    </item>
+    <item>
+      <title><![CDATA[Bancassurance Conduct Risk and Regulatory Reform Across Asia Pacific]]></title>
+      <link>https://alphacoasia.com/insights/bancassurance-conduct-risk-apac</link>
+      <guid isPermaLink="true">https://alphacoasia.com/insights/bancassurance-conduct-risk-apac</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Bancassurance is one of the most significant insurance distribution channels in Asia Pacific and one of the most persistently problematic from a conduct perspective. Mis-selling through bank channels has generated regulatory action across Singapore, Hong Kong, Vietnam and other markets. This briefing examines the structural causes of conduct risk in bancassurance and how regulation is responding.]]></description>
+      <category>Regulatory</category>
+      <author>admin@alphacoasia.com (Alpha Consultant)</author>
+    </item>
+    <item>
+      <title><![CDATA[M&A Due Diligence in Asian Insurance Markets: What Buyers Need to Know]]></title>
+      <link>https://alphacoasia.com/insights/ma-due-diligence-asian-insurance-markets</link>
+      <guid isPermaLink="true">https://alphacoasia.com/insights/ma-due-diligence-asian-insurance-markets</guid>
+      <pubDate>Mon, 12 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Acquiring an insurer or insurance intermediary in Asia Pacific involves financial, actuarial, regulatory and operational due diligence that differs materially from a non-financial transaction. Discovering post-closing that reserves were inadequate or that the regulator had concerns can result in losses that dwarf the cost of proper pre-closing work. This briefing covers the key dimensions that acquirers need to assess.]]></description>
+      <category>Corporate Deals</category>
+      <author>admin@alphacoasia.com (Alpha Consultant)</author>
+    </item>
+    <item>
+      <title><![CDATA[Cyber Insurance: Regulatory Expectations and Underwriting Challenges in Asia Pacific]]></title>
+      <link>https://alphacoasia.com/insights/cyber-insurance-regulatory-underwriting-apac</link>
+      <guid isPermaLink="true">https://alphacoasia.com/insights/cyber-insurance-regulatory-underwriting-apac</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Cyber insurance is one of the fastest-growing and most technically demanding lines in the region. Regulatory expectations are developing alongside the product, and underwriters face genuine challenges in modelling a risk that is constantly evolving. This briefing examines MAS technology risk expectations, the conduct risk dimension of cyber product governance, and the underwriting challenges of accumulation, moral hazard and silent cyber.]]></description>
+      <category>Insurtech & Digital</category>
+      <author>admin@alphacoasia.com (Alpha Consultant)</author>
+    </item>
+    <item>
+      <title><![CDATA[IPO Readiness for Insurance and Financial Services Companies in Asia]]></title>
+      <link>https://alphacoasia.com/insights/ipo-readiness-insurance-financial-services-asia</link>
+      <guid isPermaLink="true">https://alphacoasia.com/insights/ipo-readiness-insurance-financial-services-asia</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Preparing a regulated financial services business for a public listing in Asia requires governance, regulatory, actuarial and financial work that goes well beyond standard IPO preparation. MAS change-of-control approvals, IFRS 17 prospectus financials, embedded value disclosure and the investor education challenge all need to be addressed earlier than most issuers expect. This briefing sets out the key readiness dimensions.]]></description>
+      <category>Capital Markets</category>
+      <author>admin@alphacoasia.com (Alpha Consultant)</author>
+    </item>
+    <item>
+      <title><![CDATA[Reinsurance Arrangements and Regulatory Requirements Across Asia Pacific]]></title>
+      <link>https://alphacoasia.com/insights/reinsurance-regulatory-requirements-apac</link>
+      <guid isPermaLink="true">https://alphacoasia.com/insights/reinsurance-regulatory-requirements-apac</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Reinsurance is central to how insurers manage capital and risk, but regulatory requirements governing reinsurance arrangements vary significantly across Asia Pacific markets. The credit an insurer can take for ceded risk, local retention requirements, counterparty approval frameworks and the treatment of reinsurance in the ORSA all differ by jurisdiction. This briefing covers the key regulatory dimensions insurers and reinsurers need to understand.]]></description>
+      <category>Risk & Governance</category>
+      <author>admin@alphacoasia.com (Alpha Consultant)</author>
+    </item>
+    <item>
+      <title><![CDATA[IFRS 17 in Practice: Implementation Challenges for Asian Insurers]]></title>
+      <link>https://alphacoasia.com/insights/ifrs17-implementation-asian-insurers</link>
+      <guid isPermaLink="true">https://alphacoasia.com/insights/ifrs17-implementation-asian-insurers</guid>
+      <pubDate>Thu, 08 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[IFRS 17 has reshaped how insurance contracts are measured and reported. For Asian insurers, the practical challenges of data, modelling, disclosure and governance are proving more demanding than the initial accounting analysis suggested. First reporting periods have exposed gaps that were not visible in parallel runs. This briefing addresses where implementation challenges have been most persistent and what a sustainable operating model looks like.]]></description>
+      <category>Actuarial</category>
+      <author>admin@alphacoasia.com (Alpha Consultant)</author>
+    </item>
+    <item>
+      <title><![CDATA[Digital Distribution and Conduct Risk: What Insurers and Intermediaries Need to Know]]></title>
+      <link>https://alphacoasia.com/insights/digital-distribution-conduct-regulation</link>
+      <guid isPermaLink="true">https://alphacoasia.com/insights/digital-distribution-conduct-regulation</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[The growth of digital insurance distribution has moved faster than regulatory frameworks across most Asia Pacific markets. Regulators are catching up, with conduct risk, suitability assessment and product governance all under increased scrutiny. The scale of digital distribution amplifies conduct exposure rather than reducing the standard of care expected. We examine the key obligations and practical controls insurers and digital platforms should have in place.]]></description>
+      <category>Fintech & Insurtech</category>
+      <author>admin@alphacoasia.com (Alpha Consultant)</author>
+    </item>
+    <item>
+      <title><![CDATA[ESG Risk Management for Asia Pacific Insurers: From Reporting to Integration]]></title>
+      <link>https://alphacoasia.com/insights/esg-risk-insurance-apac</link>
+      <guid isPermaLink="true">https://alphacoasia.com/insights/esg-risk-insurance-apac</guid>
+      <pubDate>Tue, 06 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Regional regulators have made clear that climate and broader ESG risks should be integrated into insurers governance and risk frameworks, not treated as a sustainability reporting exercise. For most insurers in the region, the gap between regulatory expectation and current practice remains wide. This piece covers the key dimensions of ESG risk integration, from scenario analysis and transition risk assessment through to board-level governance and disclosure requirements.]]></description>
+      <category>Risk & Governance</category>
+      <author>admin@alphacoasia.com (Alpha Consultant)</author>
+    </item>
+    <item>
+      <title><![CDATA[Entering Asia Pacific Insurance Markets: A Regulatory and Commercial Roadmap]]></title>
+      <link>https://alphacoasia.com/insights/market-entry-asia-pacific-insurance</link>
+      <guid isPermaLink="true">https://alphacoasia.com/insights/market-entry-asia-pacific-insurance</guid>
+      <pubDate>Mon, 05 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Expanding into Asia Pacific requires navigating nine distinct regulatory systems, each with its own foreign ownership rules, capital requirements, product approval timelines and distribution restrictions. Strategic decisions made at the design stage have long-term cost and operational consequences that are difficult to unwind. We set out the framework considerations for insurers and intermediaries assessing entry into Singapore, Malaysia, Indonesia, the Philippines, Thailand or Vietnam.]]></description>
+      <category>APAC Markets</category>
+      <author>admin@alphacoasia.com (Alpha Consultant)</author>
+    </item>
+    <item>
+      <title><![CDATA[Licensing Strategy for Insurtech and Digital Insurance Platforms in Asia Pacific]]></title>
+      <link>https://alphacoasia.com/insights/insurtech-regulatory-strategy-singapore</link>
+      <guid isPermaLink="true">https://alphacoasia.com/insights/insurtech-regulatory-strategy-singapore</guid>
+      <pubDate>Sun, 04 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Asia Pacific has no single regulatory template for digital insurance. Singapore, Hong Kong, Malaysia and Indonesia each provide different licensing pathways, capital thresholds and conduct requirements. The right choice of initial market depends on product design, target customer base and expansion roadmap. Sandbox regimes offer early-stage optionality but carry their own constraints. This guide sets out the structural decisions digital insurance founders need to make, and the questions regulators will ask.]]></description>
+      <category>Fintech & Insurtech</category>
+      <author>admin@alphacoasia.com (Alpha Consultant)</author>
+    </item>
+    <item>
+      <title><![CDATA[AML/CFT in Asia Pacific Insurance: Where Regulators Are Focusing]]></title>
+      <link>https://alphacoasia.com/insights/aml-cft-insurance-sector-apac</link>
+      <guid isPermaLink="true">https://alphacoasia.com/insights/aml-cft-insurance-sector-apac</guid>
+      <pubDate>Sat, 03 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[FATF Mutual Evaluation reports across Southeast and Northeast Asia have repeatedly identified the insurance sector as carrying under-appreciated money laundering exposure, particularly in high-value single-premium life and cross-border distribution. Regional regulators have responded with enhanced customer due diligence requirements, transaction monitoring obligations and, in several markets, mandatory AML culture reviews. We examine current supervisory priorities and what insurers and brokers need to have in place.]]></description>
+      <category>Regulatory Compliance</category>
+      <author>admin@alphacoasia.com (Alpha Consultant)</author>
+    </item>
+    <item>
+      <title><![CDATA[RBC2: Capital Framework Implications for Singapore Insurers]]></title>
+      <link>https://alphacoasia.com/insights/rbc2-capital-framework-singapore</link>
+      <guid isPermaLink="true">https://alphacoasia.com/insights/rbc2-capital-framework-singapore</guid>
+      <pubDate>Fri, 02 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[The revised Risk-Based Capital framework introduces more granular treatment of insurance risk, market risk and credit risk, and tighter rules on admissible capital quality. General and life insurers face materially different impacts depending on their asset mix, product profile and reinsurance arrangements. We outline the key technical changes, where the final framework diverged from earlier consultation papers, and the practical steps insurers should take to assess their position and engage with their boards.]]></description>
+      <category>Risk & Governance</category>
+      <author>admin@alphacoasia.com (Alpha Consultant)</author>
+    </item>
+    <item>
+      <title><![CDATA[ORSA in Practice: Moving Beyond Compliance to Strategic Value]]></title>
+      <link>https://alphacoasia.com/insights/orsa-best-practice-apac</link>
+      <guid isPermaLink="true">https://alphacoasia.com/insights/orsa-best-practice-apac</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[The Own Risk and Solvency Assessment has become a regulatory fixture across Asia Pacific, yet many insurers still treat it as an annual compliance exercise. A well-executed ORSA should influence business planning, capital allocation and stress testing. This piece sets out what a high-quality ORSA looks like in practice, covering risk appetite integration, forward-looking capital projections and how regulators across Singapore, Malaysia and Hong Kong are evaluating submissions.]]></description>
+      <category>Risk & Governance</category>
+      <author>admin@alphacoasia.com (Alpha Consultant)</author>
+    </item>
+    <item>
+      <title><![CDATA[MAS Insurance Regulatory Developments: What Singapore Insurers Need to Act On]]></title>
+      <link>https://alphacoasia.com/insights/mas-insurance-regulatory-update</link>
+      <guid isPermaLink="true">https://alphacoasia.com/insights/mas-insurance-regulatory-update</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[The Monetary Authority of Singapore has intensified its supervisory focus on insurance company governance, risk culture and senior management accountability. Recent thematic reviews have highlighted gaps in board oversight of risk appetite, weaknesses in outsourcing due diligence and inconsistencies in policyholder disclosure. We examine the key findings, the regulatory expectations boards are being held to, and how insurers can close the most common gaps before the next supervisory cycle.]]></description>
+      <category>Regulatory Compliance</category>
+      <author>admin@alphacoasia.com (Alpha Consultant)</author>
+    </item>
+    <item>
+      <title><![CDATA[Actuarial Assumptions and the Interest Rate Environment: Implications for Asian Life Insurers]]></title>
+      <link>https://alphacoasia.com/insights/actuarial-assumptions-interest-rates-asia</link>
+      <guid isPermaLink="true">https://alphacoasia.com/insights/actuarial-assumptions-interest-rates-asia</guid>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[The shift from the prolonged low-rate era to a higher-for-longer regime has significant implications for the reserving, pricing and investment strategies of Asian life insurers. Many policies priced during the low-rate era embedded guaranteed return assumptions that now look exposed. Simultaneously, rising discount rates have reduced the present value of long-duration liabilities. We examine how actuarial teams and boards should be revisiting assumptions, stress testing positions and communicating changes to regulators.]]></description>
+      <category>Actuarial</category>
+      <author>admin@alphacoasia.com (Alpha Consultant)</author>
+    </item>
+  </channel>
+</rss>
