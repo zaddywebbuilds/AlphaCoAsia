@@ -39,3 +39,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
           publish_branch: gh-pages
+
+      - name: Ping Google sitemap
+        run: curl -s "https://www.google.com/ping?sitemap=https://alphacoasia.com/sitemap.xml" -o /dev/null -w "%{http_code}"
