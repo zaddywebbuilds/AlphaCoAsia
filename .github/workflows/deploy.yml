@@ -42,3 +42,6 @@ jobs:
 
       - name: Ping Google sitemap
         run: curl -s "https://www.google.com/ping?sitemap=https://alphacoasia.com/sitemap.xml" -o /dev/null -w "%{http_code}"
+
+      - name: Ping Bing sitemap
+        run: curl -s "https://www.bing.com/ping?sitemap=https://alphacoasia.com/sitemap.xml" -o /dev/null -w "%{http_code}"
