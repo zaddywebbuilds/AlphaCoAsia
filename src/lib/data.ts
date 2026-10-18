@@ -20,6 +20,11 @@ export const EXPERTISE = [
       "Independent ERM framework reviews, ORSA advisory, risk governance design and risk culture development for insurers and financial institutions across Asia Pacific.",
     icon: "shield",
     topics: ["ERM Framework Review", "Risk Governance", "Risk Culture", "Risk Appetite", "ORSA", "Stress Testing"],
+    faqs: [
+      { q: "What is an ERM framework review?", a: "An independent assessment of an organisation's enterprise risk management framework, covering risk governance, risk appetite, risk identification and assessment processes, stress testing and management reporting. The review benchmarks the framework against regulatory expectations and industry practice, and identifies gaps that need to be addressed." },
+      { q: "Who typically commissions an ERM framework review?", a: "Boards and senior management of licensed insurers and financial institutions, often in advance of a regulatory inspection, following changes in ownership or business strategy, or as part of an ongoing governance improvement programme." },
+      { q: "What is the difference between ERM and ORSA?", a: "ERM is the broader framework within which risk is identified, measured and managed across the organisation. ORSA is a specific regulatory requirement that assesses the insurer's solvency needs relative to its risk profile and is produced within the ERM framework. A sound ERM framework is a precondition for a credible ORSA." },
+    ],
   },
   {
     slug: "actuarial-consulting",
@@ -30,6 +35,11 @@ export const EXPERTISE = [
       "Actuarial pricing, reserving, financial modelling and capital analysis for insurance companies, reinsurers and financial institutions.",
     icon: "calculator",
     topics: ["Pricing & Reserving", "Financial Modelling", "Capital Modelling", "Product Development", "Peer Review"],
+    faqs: [
+      { q: "When does an insurer need external actuarial support?", a: "External actuarial support is typically engaged for independent peer review of internal actuarial work, specialist pricing and reserving projects, capital modelling, product development and regulatory submissions where an independent actuarial opinion is expected or required." },
+      { q: "What is actuarial peer review?", a: "An independent review of actuarial assumptions, methods and outputs conducted by a qualified actuary who was not involved in producing the original work. Regulatory frameworks and governance standards in Singapore and across Asia Pacific expect peer review for material actuarial work." },
+      { q: "What actuarial work is required under IFRS 17?", a: "IFRS 17 requires insurers to measure insurance contracts using actuarial estimates of future cash flows, a risk adjustment for non-financial risk, and a Contractual Service Margin representing unearned profit. The transition and ongoing production of IFRS 17 results typically requires actuarial modelling and governance support." },
+    ],
   },
   {
     slug: "orsa-advisory",
@@ -40,6 +50,11 @@ export const EXPERTISE = [
       "Own Risk and Solvency Assessment advisory including independent reviews, framework design, governance assessment and regulatory alignment.",
     icon: "chart",
     topics: ["Independent ORSA Review", "ORSA Framework Design", "Governance Assessment", "Regulatory Alignment"],
+    faqs: [
+      { q: "What is an ORSA?", a: "The Own Risk and Solvency Assessment is a regulatory requirement for licensed insurers under risk-based supervisory frameworks including Singapore's RBC2 framework. It requires the insurer to assess its overall solvency needs relative to its risk profile, business strategy and risk appetite, and to demonstrate that it holds adequate capital to support those risks." },
+      { q: "How often must Singapore insurers complete an ORSA?", a: "MAS requires licensed insurers to complete an ORSA at least annually and more frequently following material changes to the risk profile, business strategy or solvency position. The ORSA report is submitted to MAS as part of the insurer's regulatory reporting obligations." },
+      { q: "What does MAS expect from an ORSA report?", a: "MAS expects the ORSA to cover the insurer's risk profile and risk appetite, forward-looking solvency projections under base case and stress scenarios, and an assessment of capital adequacy relative to the insurer's own risk tolerance. The ORSA must demonstrate board engagement and ownership of the risk and solvency assessment process." },
+    ],
   },
   {
     slug: "risk-based-capital",
@@ -50,6 +65,11 @@ export const EXPERTISE = [
       "Risk-Based Capital (RBC2) advisory, implementation support and professional training for insurers navigating the Singapore regulatory capital framework.",
     icon: "trending",
     topics: ["RBC2 Advisory", "Capital Planning", "RBC Training", "Implementation Support"],
+    faqs: [
+      { q: "What is the RBC2 framework in Singapore?", a: "Risk-Based Capital 2 (RBC2) is the capital adequacy regulatory framework for Singapore-licensed insurers, administered by MAS. It replaced the original RBC framework and introduced more risk-sensitive capital requirements aligned with international standards. Insurers must maintain Financial Resources at least equal to their Total Risk Requirement at all times." },
+      { q: "Which insurers does RBC2 apply to?", a: "RBC2 applies to all insurers licensed in Singapore under the Insurance Act, including life insurers, general insurers and composite insurers. The framework includes specific requirements calibrated to each business type and the insurer's risk profile." },
+      { q: "What triggers an RBC2 regulatory intervention?", a: "MAS may intervene when an insurer's capital adequacy ratio falls below the supervisory intervention levels set under RBC2. Insurers approaching these thresholds are expected to notify MAS and submit a capital restoration plan. Maintaining a capital buffer above the minimum is standard practice for licensed insurers." },
+    ],
   },
   {
     slug: "regulatory-licensing",
@@ -60,6 +80,11 @@ export const EXPERTISE = [
       "MAS insurance and financial adviser licence applications, regulatory compliance advisory, licensing strategy and regulatory change management across Singapore and Asia.",
     icon: "document",
     topics: ["MAS Licence Applications", "Regulatory Compliance", "Licensing Strategy", "Regulatory Change"],
+    faqs: [
+      { q: "What types of licences does MAS issue for insurance?", a: "MAS issues licences for life insurance, general insurance and composite insurance business, as well as licences for Lloyd's Managing Agents operating in Singapore. Separate licensing frameworks apply to insurance intermediaries including insurance brokers, financial advisers and MAS-regulated fintech firms." },
+      { q: "How long does a MAS insurance licence application take?", a: "The timeline depends on the completeness of the application and the complexity of the proposed business model. Applicants should plan for a process of several months from submission to in-principle approval, with additional time required to fulfil pre-licensing conditions before the licence is granted." },
+      { q: "What documentation is required for a MAS insurance licence application?", a: "A MAS insurance licence application requires a detailed business plan, financial projections, fit and proper documentation for key individuals, governance and risk management frameworks, AML/CFT policies and regulatory capital projections among other materials. MAS has published detailed guidance on its requirements." },
+    ],
   },
   {
     slug: "aml-cft",
@@ -70,6 +95,11 @@ export const EXPERTISE = [
       "Anti-money laundering and counter-financing of terrorism framework development, independent reviews and compliance outsourcing for regulated entities.",
     icon: "lock",
     topics: ["AML/CFT Framework", "Independent Review", "Compliance Outsourcing", "PDPA Compliance"],
+    faqs: [
+      { q: "What is an AML/CFT independent review?", a: "An independent review of an organisation's anti-money laundering and counter-financing of terrorism framework, conducted by a party external to the compliance function. It assesses the adequacy of policies, controls and procedures against MAS regulatory requirements and identifies gaps requiring remediation." },
+      { q: "How often should AML/CFT frameworks be reviewed?", a: "MAS regulations require regulated entities to conduct periodic reviews of their AML/CFT frameworks. The frequency depends on the entity type and risk profile, but annual reviews of key framework components are standard practice for Singapore-regulated insurers, financial advisers and other MAS-regulated entities." },
+      { q: "What triggers an enhanced AML/CFT review?", a: "Enhanced reviews are typically triggered by regulatory changes, a material change in business model or customer base, findings from internal audit or prior external reviews, or regulatory feedback following a MAS inspection. Boards are expected to commission independent reviews when these triggers arise." },
+    ],
   },
   /* The transactions and capital pillars, worded from alphacoasia.com, which
      presents both alongside the insurance-risk foundation. Led by Edmund Chan.
@@ -91,6 +121,11 @@ export const EXPERTISE = [
       "Valuation & Financial Modelling",
       "Post-Merger Integration",
     ],
+    faqs: [
+      { q: "What is involved in insurance M&A due diligence?", a: "Insurance M&A due diligence covers financial, actuarial, regulatory and operational assessment of the target. Key areas include reserve adequacy, capital position and projections, regulatory compliance status, licensing, reinsurance arrangements, management quality and systems infrastructure. The actuarial component is often the most material because reserve adequacy directly affects the value of the business." },
+      { q: "Why is actuarial due diligence important in insurance transactions?", a: "Reserve adequacy is often the most material uncertainty in an insurance acquisition. Independent actuarial review of the target's technical provisions, claims development experience and pricing assumptions helps buyers form a realistic view of the balance sheet before the transaction completes and avoids post-closing reserve surprises." },
+      { q: "What regulatory approvals are required for insurance M&A in Asia?", a: "Most Asian markets require regulatory approval for changes of control in licensed insurance companies. In Singapore, MAS must approve any acquisition of a substantial shareholding in a licensed insurer. Similar requirements apply in Hong Kong, Malaysia and Indonesia, each with their own notification timelines and approval criteria." },
+    ],
   },
   {
     slug: "capital-markets-advisory",
@@ -108,6 +143,11 @@ export const EXPERTISE = [
       "Cross-Border & Alternative Routes",
       "Post-Listing Support",
     ],
+    faqs: [
+      { q: "What is an IPO readiness assessment for an insurance company?", a: "An assessment of the company's preparedness for a public listing, covering governance and board composition, financial reporting and controls, regulatory standing, disclosure requirements and investor relations capability. It identifies gaps that need to be addressed before a listing process begins and gives management a realistic view of the work required." },
+      { q: "Which listing venues are most relevant for Asian insurance companies?", a: "Singapore Exchange (SGX), Hong Kong Stock Exchange (HKEX) and Bursa Malaysia are the primary venues for regional insurance companies. Each has different listing requirements, liquidity profiles and investor bases. The choice of venue depends on the company's size, business focus, shareholder profile and strategic objectives." },
+      { q: "What pre-IPO restructuring is typically required for insurers?", a: "Pre-IPO restructuring for insurers often covers group structure simplification, transfer of non-core assets, governance enhancements including board independence requirements, related party transaction policies, and financial reporting alignment with listing venue standards. Regulatory approval from the relevant insurance supervisor may be required for structural changes." },
+    ],
   },
   {
     slug: "insurtech-digital",
@@ -118,6 +158,11 @@ export const EXPERTISE = [
       "Strategy, regulatory and operational advisory for insurtech companies, digital insurance platforms and financial institutions building insurance propositions.",
     icon: "zap",
     topics: ["Digital Insurance Strategy", "Insurtech Advisory", "Platform Development", "Regulatory Navigation"],
+    faqs: [
+      { q: "What regulatory requirements apply to digital insurers in Singapore?", a: "Digital insurers in Singapore require a licence from MAS under the Insurance Act. MAS has issued guidelines covering technology risk management, business continuity, cyber resilience and customer protection that apply specifically to digital insurance operations. Product approval processes apply to all insurance products regardless of distribution channel." },
+      { q: "What is an MGA and does it need a licence in Singapore?", a: "A Managing General Agent (MGA) underwrites insurance on behalf of a licensed insurer, typically with delegated binding authority for a defined class of business. Whether an MGA platform requires its own MAS licence depends on the scope of its activities. MAS has published guidance on the regulatory perimeter for intermediaries including MGAs." },
+      { q: "What is the difference between a digital insurer and an insurtech?", a: "A digital insurer is a licensed insurance company that distributes and manages insurance products through digital channels. An insurtech is typically a technology company operating in the insurance value chain, which may or may not require a licence depending on its activities. Some insurtechs hold or require insurance distribution, brokerage or underwriting licences." },
+    ],
   },
   {
     slug: "market-entry",
@@ -128,6 +173,11 @@ export const EXPERTISE = [
       "Market assessment, regulatory strategy, licensing and operational advisory for companies entering Singapore, Hong Kong, Indonesia, Malaysia and other Asian markets.",
     icon: "globe",
     topics: ["Market Assessment", "Regulatory Strategy", "Licensing", "Operational Setup"],
+    faqs: [
+      { q: "What does market entry advisory involve for insurance companies entering Singapore?", a: "Market entry advisory covers regulatory strategy and licensing route assessment, business plan development, regulatory submissions to MAS, governance framework design, fit and proper documentation for key individuals and operational setup to meet MAS requirements. The process spans from initial feasibility through to licence grant and operational launch." },
+      { q: "How do foreign insurers establish a presence in Singapore?", a: "Foreign insurers can establish a presence in Singapore as a licensed branch, a locally incorporated subsidiary or through a representative office for non-underwriting activities. Each route has different regulatory requirements, capital implications and operational constraints. The choice depends on the nature of the business and the insurer's long-term objectives in Singapore." },
+      { q: "Which Asian markets require local insurance licences for foreign insurers?", a: "Most Asian markets require foreign insurers to obtain a local licence to write insurance business in that jurisdiction. Singapore, Hong Kong, Malaysia, Indonesia and Vietnam each have distinct licensing regimes with different capital requirements, governance standards and business plan expectations. Some markets impose restrictions on foreign ownership that affect the entry structure." },
+    ],
   },
   {
     slug: "financial-modelling",
@@ -138,6 +188,11 @@ export const EXPERTISE = [
       "Financial modelling, due diligence support, business planning and valuation analysis for insurance and financial services transactions.",
     icon: "bar-chart",
     topics: ["Business Planning Models", "Due Diligence", "Valuation", "Scenario Analysis"],
+    faqs: [
+      { q: "What is a financial model review for an insurance company?", a: "An independent assessment of the design, assumptions and outputs of an insurer's financial model, covering model structure and logic, assumption setting and governance, output validation and the appropriateness of the model for its intended use. Model reviews are expected for material models used in regulatory submissions, capital decisions and transaction support." },
+      { q: "When do insurers need external financial modelling support?", a: "External modelling support is typically engaged for business planning, capital management decisions, M&A and due diligence, regulatory submissions where model validation is required, and product development where pricing models need independent assessment. It is also used when an insurer lacks in-house modelling capacity for a specific project." },
+      { q: "What financial modelling is required under RBC2 and IFRS 17?", a: "RBC2 requires insurers to model their capital requirements under a range of stress scenarios and to project solvency ratios over a forward-looking planning horizon. IFRS 17 requires actuarial cash flow models to estimate future insurance cash flows and measure insurance liabilities. Both frameworks involve significant modelling infrastructure and governance requirements." },
+    ],
   },
 ];
 
@@ -644,6 +699,33 @@ export const APAC_MARKETS = [
 ];
 
 export const INSIGHTS_PLACEHOLDER = [
+  {
+    slug: "preparing-mas-insurance-licence-application",
+    title: "Preparing a MAS Insurance Licence Application: A Practical Guide",
+    category: "Regulatory",
+    excerpt: "What a MAS insurance licence application involves, what MAS scrutinises closely, and how to prepare a submission that gives your application the best chance of a smooth, efficient process.",
+    date: "2026-10-21",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+  },
+  {
+    slug: "what-to-expect-orsa-advisory-engagement",
+    title: "What to Expect from an ORSA Advisory Engagement",
+    category: "Risk",
+    excerpt: "A practical guide to what an ORSA advisory engagement involves, what a quality ORSA review covers, the most common gaps external reviews find, and how to get the most from working with an external adviser.",
+    date: "2026-10-20",
+    readTime: "7 min read",
+    author: "Alpha Consultant",
+  },
+  {
+    slug: "choosing-insurance-regulatory-consultant-singapore",
+    title: "Choosing an Insurance Regulatory Consultant in Singapore: What to Look For",
+    category: "Regulatory",
+    excerpt: "A practical guide to selecting the right insurance regulatory consultant for MAS licensing, compliance and risk advisory work -- what to ask, what to look for, and what to avoid.",
+    date: "2026-10-19",
+    readTime: "7 min read",
+    author: "Alpha Consultant",
+  },
   {
     slug: "financial-modelling-insurance-capital-planning",
     title: "Financial Modelling for Insurance Business Planning and Capital Decisions",

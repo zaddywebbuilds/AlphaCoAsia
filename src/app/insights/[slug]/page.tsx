@@ -85,7 +85,7 @@ export default async function InsightDetailPage({ params }: { params: Promise<{ 
         datePublished: a.date,
         dateModified: a.date,
         articleSection: a.category,
-        keywords: a.covers.join(", "),
+        keywords: a.covers?.join(", "),
         url: `https://alphacoasia.com/insights/${slug}`,
         image: "https://alphacoasia.com/og-image.jpg?v=2",
         ...(wordCount ? { wordCount } : {}),
@@ -183,7 +183,7 @@ export default async function InsightDetailPage({ params }: { params: Promise<{ 
                     <div>
                       <h2 className="text-lg font-semibold text-white mb-5">What this briefing covers</h2>
                       <ul className="space-y-3">
-                        {a.covers.map((c) => (
+                        {(a.covers ?? []).map((c) => (
                           <li key={c} className="flex gap-3.5 items-start">
                             <CheckCircle size={15} className="text-[#C9A040] shrink-0 mt-0.5" />
                             <span className="text-sm text-slate-300 leading-relaxed">{c}</span>

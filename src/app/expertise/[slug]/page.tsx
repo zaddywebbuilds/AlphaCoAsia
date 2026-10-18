@@ -56,33 +56,43 @@ export default async function ExpertiseDetailPage({ params }: { params: Promise<
 
   /* Service + breadcrumb, so the discipline can surface as its own result
      rather than only as part of the firm. */
-  const schema = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Service",
-        name: item.title,
-        serviceType: item.title,
-        description: item.description,
-        url: `https://alphacoasia.com/expertise/${slug}`,
-        provider: { "@type": "ProfessionalService", name: "Alpha Consultant", url: "https://alphacoasia.com" },
-        areaServed: ["SG", "HK", "MY", "ID", "VN", "MM", "KH", "TW", "BN"],
-        hasOfferCatalog: {
-          "@type": "OfferCatalog",
-          name: `${item.title} service areas`,
-          itemListElement: item.topics.map((t) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: t } })),
-        },
+  const graph: object[] = [
+    {
+      "@type": "Service",
+      name: item.title,
+      serviceType: item.title,
+      description: item.description,
+      url: `https://alphacoasia.com/expertise/${slug}`,
+      provider: { "@type": "ProfessionalService", name: "Alpha Consultant", url: "https://alphacoasia.com" },
+      areaServed: ["SG", "HK", "MY", "ID", "VN", "MM", "KH", "TW", "BN"],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: `${item.title} service areas`,
+        itemListElement: item.topics.map((t) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: t } })),
       },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://alphacoasia.com" },
-          { "@type": "ListItem", position: 2, name: "Expertise", item: "https://alphacoasia.com/expertise" },
-          { "@type": "ListItem", position: 3, name: item.title },
-        ],
-      },
-    ],
-  };
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://alphacoasia.com" },
+        { "@type": "ListItem", position: 2, name: "Expertise", item: "https://alphacoasia.com/expertise" },
+        { "@type": "ListItem", position: 3, name: item.title },
+      ],
+    },
+  ];
+
+  if (item.faqs?.length) {
+    graph.push({
+      "@type": "FAQPage",
+      mainEntity: item.faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    });
+  }
+
+  const schema = { "@context": "https://schema.org", "@graph": graph };
 
   return (
     <>
@@ -159,6 +169,20 @@ export default async function ExpertiseDetailPage({ params }: { params: Promise<
                     ))}
                   </div>
                 </div>
+
+                {item.faqs?.length ? (
+                  <div>
+                    <h2 className="text-lg font-semibold text-white mb-4">Frequently Asked Questions</h2>
+                    <div className="space-y-4">
+                      {item.faqs.map((faq) => (
+                        <div key={faq.q} className="p-4 bg-[#0D1B2A] rounded-lg border border-white/[0.07]">
+                          <h3 className="text-sm font-semibold text-white mb-2">{faq.q}</h3>
+                          <p className="text-sm text-slate-400 leading-relaxed">{faq.a}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
 
                 <div className="p-6 bg-[#C9A040]/10 rounded-xl border border-[#C9A040]/25">
                   <h3 className="text-sm font-semibold text-white mb-2">Discuss Your {item.shortTitle} Requirements</h3>
