@@ -9,20 +9,6 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_BASE_PATH: "",
   },
-  async redirects() {
-    return [
-      {
-        source: "/raymond-cheung",
-        destination: "/team/raymond-cheung",
-        permanent: true,
-      },
-      {
-        source: "/raymond-cheung/",
-        destination: "/team/raymond-cheung/",
-        permanent: true,
-      },
-    ];
-  },
 };
 
 export default nextConfig;
