@@ -700,6 +700,22 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "mas-fit-and-proper-assessment-insurers",
+    title: "MAS Fit and Proper Assessment for Insurance Key Appointments",
+    category: "Regulatory",
+    excerpt: "How the MAS fit and proper assessment applies to directors, key appointment holders and controllers of Singapore insurers, the four criteria under FSG-G01, and how to prepare a submission that avoids delay.",
+    date: "2026-10-26",
+    readTime: "7 min read",
+    author: "Alpha Consultant",
+    covers: [
+      "MAS fit and proper assessment for insurers",
+      "Fit and proper criteria Singapore FSG-G01",
+      "Insurer director and key appointment holder approval",
+      "Insurance corporate governance regulations Singapore",
+      "Handling adverse disclosures in MAS submissions",
+    ],
+  },
+  {
     slug: "internal-audit-requirements-singapore-insurers",
     title: "Internal Audit Requirements for Singapore Insurers: What MAS Expects",
     category: "Regulatory",
