@@ -700,6 +700,42 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "internal-audit-requirements-singapore-insurers",
+    title: "Internal Audit Requirements for Singapore Insurers: What MAS Expects",
+    category: "Regulatory",
+    excerpt: "What MAS requires of the internal audit function for licensed insurers, how to structure an effective audit programme, and what boards need to understand about their oversight responsibilities.",
+    date: "2026-10-25",
+    readTime: "7 min read",
+    author: "Alpha Consultant",
+  },
+  {
+    slug: "mas-market-conduct-framework-insurers",
+    title: "MAS Market Conduct Framework: What Singapore Insurers Need to Know",
+    category: "Regulatory",
+    excerpt: "How MAS approaches market conduct supervision for Singapore insurers, the key requirements for sales, disclosure and customer outcomes, and what boards need to demonstrate.",
+    date: "2026-10-24",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+  },
+  {
+    slug: "appointed-actuary-requirements-singapore",
+    title: "Appointed Actuary Requirements for Singapore Insurers",
+    category: "Actuarial",
+    excerpt: "What MAS requires of the Appointed Actuary role, who must appoint one, what the actuary is responsible for, and what insurers need to understand about this key regulatory obligation.",
+    date: "2026-10-23",
+    readTime: "7 min read",
+    author: "Alpha Consultant",
+  },
+  {
+    slug: "technology-risk-management-insurers-singapore",
+    title: "Technology Risk Management for Singapore Insurers: MAS TRM Guidelines",
+    category: "Regulatory",
+    excerpt: "How Singapore-licensed insurers must manage technology risk under MAS Notice 655 and the Technology Risk Management Guidelines, and what regulators expect in practice.",
+    date: "2026-10-22",
+    readTime: "7 min read",
+    author: "Alpha Consultant",
+  },
+  {
     slug: "preparing-mas-insurance-licence-application",
     title: "Preparing a MAS Insurance Licence Application: A Practical Guide",
     category: "Regulatory",
