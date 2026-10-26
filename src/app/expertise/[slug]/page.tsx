@@ -6,7 +6,21 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { DisciplineHero, hasDisciplineHero } from "@/components/viz/DisciplineImage";
-import { EXPERTISE } from "@/lib/data";
+import { EXPERTISE, INSIGHTS_PLACEHOLDER } from "@/lib/data";
+
+const ARTICLE_KEYWORDS_FOR: Record<string, RegExp> = {
+  "regulatory-licensing":   /regulat|licen|mas-insurance|market-conduct|mas-market|internal-audit/,
+  "orsa-advisory":          /orsa/,
+  "enterprise-risk-management": /\brisk\b|erm|technology-risk|internal-audit/,
+  "actuarial-consulting":   /actuarial|appointed-actuary|ifrs17|financial-modelling/,
+  "risk-based-capital":     /rbc2|capital/,
+  "aml-cft":                /aml|financial-crime|bancassurance|market-conduct/,
+  "insurtech-digital":      /insurtech|digital-distribution/,
+  "market-entry":           /market-entry|asia-pacific/,
+  "reinsurance":            /reinsurance/,
+  "corporate-advisory":     /due-diligence|ipo|ma-due/,
+  "financial-crime":        /aml|financial-crime/,
+};
 
 export async function generateStaticParams() {
   return EXPERTISE.map((e) => ({ slug: e.slug }));
@@ -53,6 +67,10 @@ export default async function ExpertiseDetailPage({ params }: { params: Promise<
   const idx = EXPERTISE.findIndex((e) => e.slug === slug);
   const prev = EXPERTISE[idx - 1];
   const next = EXPERTISE[idx + 1];
+
+  const relatedArticles = INSIGHTS_PLACEHOLDER
+    .filter((a) => ARTICLE_KEYWORDS_FOR[slug]?.test(a.slug))
+    .slice(0, 3);
 
   /* Service + breadcrumb, so the discipline can surface as its own result
      rather than only as part of the firm. */
@@ -213,6 +231,25 @@ export default async function ExpertiseDetailPage({ params }: { params: Promise<
                     ))}
                   </ul>
                 </div>
+
+                {relatedArticles.length > 0 && (
+                  <div className="p-5 bg-[#0A1628] rounded-xl border border-white/[0.09]">
+                    <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Related Insights</h3>
+                    <ul className="space-y-3">
+                      {relatedArticles.map((a) => (
+                        <li key={a.slug}>
+                          <Link href={`/insights/${a.slug}`} className="text-sm text-slate-400 hover:text-white flex items-start gap-1.5 group leading-snug">
+                            <ArrowRight size={10} className="text-[#C9A040] opacity-0 group-hover:opacity-100 transition-opacity shrink-0 mt-1" />
+                            {a.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link href="/insights" className="inline-block mt-3 text-xs font-semibold text-[#C9A040] hover:text-[#D4AF60] uppercase tracking-wide">
+                      All Insights
+                    </Link>
+                  </div>
+                )}
 
                 <div className="p-5 bg-[#0D1B2A] rounded-xl">
                   <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3">Singapore Office</p>

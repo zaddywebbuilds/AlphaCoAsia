@@ -103,6 +103,7 @@ export function Footer() {
               {[
                 { label: "About Us", href: "/about" },
                 { label: "Our Team", href: "/team" },
+                { label: "Singapore", href: "/singapore" },
                 { label: "Testimonials", href: "/testimonials" },
                 { label: "Case Studies", href: "/case-studies" },
                 { label: "Insights", href: "/insights" },
