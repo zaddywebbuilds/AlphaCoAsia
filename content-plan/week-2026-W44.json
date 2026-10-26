@@ -1,0 +1,77 @@
+{
+  "week": "2026-W44",
+  "planned_on": "2026-10-26",
+  "search_summary": "Searches show fresh regulatory news with little dedicated advisory content: MAS's July 2026 Protected Cell Company consultation, updated MAS compliance toolkits (captive, SPRV, direct insurers, revised June 2026), MAS Circular ID 01/26 on ORSA submission lapses, and the AI governance rules phasing in from 2027. Competitor results are mostly generic law-firm or Big Four pages and job ads, so practical long-tail guides on licence types, timelines, ORSA lapses and the 2025 AML/CFT revisions are thin.",
+  "articles": [
+    {
+      "date": "2026-10-26",
+      "title": "MAS Protected Cell Company Framework: What Insurers and Captives Need to Know",
+      "slug": "mas-protected-cell-company-framework-insurers",
+      "primary_keyword": "MAS protected cell company framework",
+      "secondary_keywords": ["protected cell company Singapore insurance", "alternative risk transfer Singapore", "PCC consultation MAS 2026"],
+      "category": "Regulatory",
+      "angle": "Break down the July 2026 MAS PCC consultation and what it means for captives, reinsurers and ILS sponsors considering Singapore.",
+      "search_evidence": "MAS media release on the PCC consultation (7 July 2026) is the top 'MAS insurance Singapore 2026' result; no advisory-firm explainers appeared."
+    },
+    {
+      "date": "2026-10-27",
+      "title": "MAS Circular ID 01/26: Avoiding Lapses in ORSA Report Submissions",
+      "slug": "mas-circular-id-01-26-orsa-submission-lapses",
+      "primary_keyword": "ORSA report submission MAS Notice 126",
+      "secondary_keywords": ["ORSA requirements Singapore insurer", "Notice 126 enterprise risk management", "board-approved ORSA report"],
+      "category": "Risk",
+      "angle": "Explain the circular's reminders, common causes of late or deficient ORSA submissions, and a pre-submission checklist.",
+      "search_evidence": "ORSA search surfaced MAS Circular ID 01/26 and MAS commentary on gaps in non-financial and group risk coverage; results otherwise were 2013-2014 vintage."
+    },
+    {
+      "date": "2026-10-28",
+      "title": "Singapore Insurer Licence Types Explained: Direct, Reinsurer, Captive and Authorised Reinsurer",
+      "slug": "singapore-insurer-licence-types-direct-reinsurer-captive",
+      "primary_keyword": "MAS insurer licence types",
+      "secondary_keywords": ["captive insurer licence Singapore", "authorised reinsurer Singapore", "MAS licence application insurance"],
+      "category": "Regulatory",
+      "angle": "Side-by-side guide to choosing the right MAS licence route, with processing-time expectations (MAS up to 3 months vs. law-firm 6-8 week estimates).",
+      "search_evidence": "'MAS licence application insurance' returns separate MAS pages per licence type with no comparison content, and conflicting timeline estimates."
+    },
+    {
+      "date": "2026-10-29",
+      "title": "How to Use the MAS Compliance Toolkit for Insurers: A Practical Walkthrough",
+      "slug": "mas-compliance-toolkit-direct-insurers-reinsurers-captives",
+      "primary_keyword": "MAS compliance toolkit insurers",
+      "secondary_keywords": ["Singapore insurance compliance 2026", "captive insurer compliance toolkit", "insurer regulatory notifications MAS"],
+      "category": "Regulatory",
+      "angle": "Show compliance teams how to turn the updated toolkits (revised Feb and June 2026) into an annual approvals, notifications and submissions calendar.",
+      "search_evidence": "'Singapore insurance compliance 2026' top results are MAS toolkit PDFs for direct insurers, SPRVs and captives (revised June 2026) with no third-party guidance."
+    },
+    {
+      "date": "2026-10-30",
+      "title": "2025 AML/CFT Updates for Singapore Insurers: Proliferation Financing and STR Changes",
+      "slug": "mas-aml-cft-2025-revisions-insurers-proliferation-financing",
+      "primary_keyword": "AML CFT insurance Singapore MAS",
+      "secondary_keywords": ["MAS Notice 314 life insurers", "proliferation financing assessment insurers", "suspicious transaction reporting insurers Singapore"],
+      "category": "Regulatory",
+      "angle": "Gap-assessment guide to the 1 July 2025 revisions, distinguishing Notice 314 (life) from the non-life/reinsurance guidelines.",
+      "search_evidence": "Clyde & Co and Allen & Gledhill coverage dominates; Swiss Life S$200,000 penalty shows enforcement risk; no practical implementation guides found."
+    },
+    {
+      "date": "2026-10-31",
+      "title": "Singapore RBC2 Capital Requirements: A Practical Guide to Solvency Management",
+      "slug": "rbc2-solvency-management-practical-guide-singapore",
+      "primary_keyword": "RBC2 capital requirements Singapore",
+      "secondary_keywords": ["RBC2 Singapore insurers", "MAS Notice 133 valuation capital framework", "insurance RBC optimisation"],
+      "category": "Actuarial",
+      "angle": "Focus on day-to-day capital management under Notice 133: solvency buffers, internal targets and optimisation levers, going beyond the framework overview already published.",
+      "search_evidence": "RBC2 results are dated 2016 consultation commentary and a single abrdn piece; MAS Notice 133 appears in 2026 results; current practical content is absent."
+    },
+    {
+      "date": "2026-11-01",
+      "title": "Singapore AI Governance for Insurers: Preparing for the 2027 Compliance Phase-In",
+      "slug": "singapore-ai-governance-insurers-2027-readiness",
+      "primary_keyword": "Singapore AI governance insurers",
+      "secondary_keywords": ["MAS AI risk management toolkit", "Project MindForge insurers", "third-party AI risk insurance Singapore"],
+      "category": "APAC Markets",
+      "angle": "Readiness roadmap for insurers and intermediaries: AI inventory, third-party tool governance and board accountability ahead of October 2027.",
+      "search_evidence": "Insurance Business Asia article on AI governance rules before 2027 and MAS's March 2026 AI Risk Management Toolkit appeared; no consultancy-led guidance."
+    }
+  ]
+}
