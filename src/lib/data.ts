@@ -700,6 +700,21 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "mas-circular-id-01-26-orsa-submission-lapses",
+    title: "MAS Circular ID 01/26: Avoiding Lapses in ORSA Report Submissions",
+    category: "Risk",
+    excerpt: "Why ORSA report submissions to MAS lapse, what Notice 126 expects of a board-approved ORSA, and a pre-submission checklist for risk and compliance teams at Singapore insurers.",
+    date: "2026-10-27",
+    readTime: "7 min read",
+    author: "Alpha Consultant",
+    covers: [
+      "ORSA report submission MAS Notice 126",
+      "ORSA requirements Singapore insurer",
+      "Notice 126 enterprise risk management",
+      "Board-approved ORSA report",
+    ],
+  },
+  {
     slug: "mas-fit-and-proper-assessment-insurers",
     title: "MAS Fit and Proper Assessment for Insurance Key Appointments",
     category: "Regulatory",
