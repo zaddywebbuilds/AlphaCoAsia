@@ -700,6 +700,21 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "singapore-insurer-licence-types-direct-reinsurer-captive",
+    title: "Singapore Insurer Licence Types Explained: Direct, Reinsurer, Captive and Authorised Reinsurer",
+    category: "Regulatory",
+    excerpt: "A side-by-side comparison of the MAS insurer licence routes in Singapore: direct insurer, reinsurer, captive and authorised reinsurer. Covers how to choose, what each route demands and what drives application timelines.",
+    date: "2026-10-28",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: [
+      "MAS insurer licence types",
+      "captive insurer licence Singapore",
+      "authorised reinsurer Singapore",
+      "MAS licence application insurance",
+    ],
+  },
+  {
     slug: "mas-circular-id-01-26-orsa-submission-lapses",
     title: "MAS Circular ID 01/26: Avoiding Lapses in ORSA Report Submissions",
     category: "Risk",
