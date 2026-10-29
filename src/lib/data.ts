@@ -700,6 +700,21 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "mas-compliance-toolkit-direct-insurers-reinsurers-captives",
+    title: "How to Use the MAS Compliance Toolkit for Insurers: A Practical Walkthrough",
+    category: "Regulatory",
+    excerpt: "How compliance teams can turn the MAS compliance toolkits into an annual calendar of approvals, notifications and submissions. Covers owners, dependencies, captive-specific points and keeping the register current.",
+    date: "2026-10-29",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: [
+      "MAS compliance toolkit insurers",
+      "Singapore insurance compliance 2026",
+      "captive insurer compliance toolkit",
+      "insurer regulatory notifications MAS",
+    ],
+  },
+  {
     slug: "singapore-insurer-licence-types-direct-reinsurer-captive",
     title: "Singapore Insurer Licence Types Explained: Direct, Reinsurer, Captive and Authorised Reinsurer",
     category: "Regulatory",
