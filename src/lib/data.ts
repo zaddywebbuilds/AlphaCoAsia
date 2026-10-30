@@ -700,6 +700,21 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "mas-aml-cft-2025-revisions-insurers-proliferation-financing",
+    title: "2025 AML/CFT Updates for Singapore Insurers: Proliferation Financing and STR Changes",
+    category: "Regulatory",
+    excerpt: "A gap-assessment guide to the 1 July 2025 MAS AML/CFT revisions for Singapore insurers. Covers which instrument applies to life and non-life insurers, proliferation financing risk assessment and suspicious transaction reporting controls.",
+    date: "2026-10-30",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: [
+      "AML CFT insurance Singapore MAS",
+      "MAS Notice 314 life insurers",
+      "proliferation financing assessment insurers",
+      "suspicious transaction reporting insurers Singapore",
+    ],
+  },
+  {
     slug: "mas-compliance-toolkit-direct-insurers-reinsurers-captives",
     title: "How to Use the MAS Compliance Toolkit for Insurers: A Practical Walkthrough",
     category: "Regulatory",
