@@ -700,6 +700,21 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "rbc2-solvency-management-practical-guide-singapore",
+    title: "Singapore RBC2 Capital Requirements: A Practical Guide to Solvency Management",
+    category: "Actuarial",
+    excerpt: "A practical guide to managing RBC2 capital requirements in Singapore beyond framework implementation. Covers internal capital targets, tiered solvency buffers, sensitivity management, ORSA alignment and optimisation levers under MAS Notice 133.",
+    date: "2026-10-31",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: [
+      "RBC2 capital requirements Singapore",
+      "RBC2 Singapore insurers",
+      "MAS Notice 133 valuation capital framework",
+      "insurance RBC optimisation",
+    ],
+  },
+  {
     slug: "mas-aml-cft-2025-revisions-insurers-proliferation-financing",
     title: "2025 AML/CFT Updates for Singapore Insurers: Proliferation Financing and STR Changes",
     category: "Regulatory",
