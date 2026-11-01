@@ -700,6 +700,21 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "singapore-ai-governance-insurers-2027-readiness",
+    title: "Singapore AI Governance for Insurers: Preparing for the 2027 Compliance Phase-In",
+    category: "APAC Markets",
+    excerpt: "A readiness roadmap for Singapore insurers ahead of the 2027 AI governance phase-in. Covers AI inventory, materiality classification, third-party AI oversight, board accountability and a 12-month action plan aligned to the MAS AI risk management toolkit.",
+    date: "2026-11-01",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: [
+      "Singapore AI governance insurers",
+      "MAS AI risk management toolkit",
+      "Project MindForge insurers",
+      "third-party AI risk insurance Singapore",
+    ],
+  },
+  {
     slug: "rbc2-solvency-management-practical-guide-singapore",
     title: "Singapore RBC2 Capital Requirements: A Practical Guide to Solvency Management",
     category: "Actuarial",
