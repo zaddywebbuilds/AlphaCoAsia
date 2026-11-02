@@ -1,0 +1,77 @@
+{
+  "week": "2026-W45",
+  "planned_on": "2026-11-02",
+  "search_summary": "Searches show 2026 demand centred on MAS's July 2026 consultation on collateralised reinsurance/insurance-linked securities structures, the revised Notice 314 and AML/CFT guidelines (Oct 2025), the MAS captive compliance toolkit revised June 2026, and the ORSA 'refine your reports' supervisory feedback. Competitor results are dominated by law firms and generic MAS compliance outfits, with thin dedicated content on insurer-specific topics such as the 2024 ERM/investment/disclosure revisions, licence timelines by licence type, IFRS 17/RBC2 actuarial skills, and ILS/captive set-up in Singapore.",
+  "articles": [
+    {
+      "date": "2026-11-02",
+      "title": "MAS Collateralised Reinsurance and Insurance-Linked Securities Consultation 2026: What Insurers Should Do Now",
+      "slug": "mas-collateralised-reinsurance-ils-consultation-2026",
+      "primary_keyword": "Singapore insurance-linked securities framework",
+      "secondary_keywords": ["collateralised reinsurance Singapore", "MAS consultation 2026 insurance", "special purpose reinsurance vehicle Singapore"],
+      "category": "Regulatory",
+      "angle": "Practical breakdown of the July 2026 MAS consultation on ILS and collateralised reinsurance structures and the implications for sponsors, cedants and reinsurers.",
+      "search_evidence": "Extended 'MAS insurance Singapore 2026' results surfaced the July 2026 MAS consultation on new ILS structures, with no dedicated advisory explainer from competitors."
+    },
+    {
+      "date": "2026-11-03",
+      "title": "How Long Does a MAS Insurance Licence Application Take? Timelines by Licence Type",
+      "slug": "mas-insurance-licence-application-timeline-by-licence-type",
+      "primary_keyword": "MAS insurance licence application timeline",
+      "secondary_keywords": ["how long MAS licence approval", "captive insurer licence 3 months", "insurance broker registration Singapore"],
+      "category": "Regulatory",
+      "angle": "Compares MAS processing expectations for direct insurer, reinsurer, captive and broker applications and what delays them.",
+      "search_evidence": "'MAS licence application insurance' results show separate MAS pages (captive up to 3 months, broker about 4 months) but no consolidated timeline comparison."
+    },
+    {
+      "date": "2026-11-04",
+      "title": "ORSA Report Quality in Singapore: Addressing MAS Feedback on Non-Financial Risks",
+      "slug": "orsa-report-quality-mas-feedback-non-financial-risks",
+      "primary_keyword": "ORSA requirements Singapore insurer",
+      "secondary_keywords": ["ORSA report MAS feedback", "non-financial risk ORSA", "ORSA stress testing reverse stress test"],
+      "category": "Risk",
+      "angle": "Turns MAS's feedback that insurers gave limited consideration to non-financial risks into a checklist for strengthening the ORSA report.",
+      "search_evidence": "ORSA search returned the MAS review asking insurers to 'refine' reports and limited non-financial risk coverage; results otherwise dated 2013-2014 content."
+    },
+    {
+      "date": "2026-11-05",
+      "title": "MAS Notice 314 Revisions: Source of Wealth and Source of Funds Expectations for Life Insurers",
+      "slug": "mas-notice-314-source-of-wealth-source-of-funds-life-insurers",
+      "primary_keyword": "MAS Notice 314 insurers",
+      "secondary_keywords": ["source of wealth source of funds insurance Singapore", "AML CFT direct life insurers", "customer due diligence insurance Singapore"],
+      "category": "Regulatory",
+      "angle": "Focuses on screening and SoW/SoF expectations for direct life insurers and how to evidence them to MAS inspectors.",
+      "search_evidence": "AML/CFT search surfaced Clyde & Co and Deloitte commentary on revised Notice 314 with compressed timelines; no practitioner implementation guide."
+    },
+    {
+      "date": "2026-11-06",
+      "title": "Actuarial Skills Gap in Singapore Insurance: RBC2, IFRS 17 and When to Outsource",
+      "slug": "actuarial-outsourcing-rbc2-ifrs17-singapore-insurers",
+      "primary_keyword": "actuarial consulting Singapore insurance",
+      "secondary_keywords": ["outsourced actuarial services Singapore", "RBC2 modelling Prophet RAFM", "IFRS 17 actuarial support"],
+      "category": "Actuarial",
+      "angle": "Explains why insurers struggle to hire RBC2/IFRS 17 modelling talent and when targeted outsourced actuarial support is the better route.",
+      "search_evidence": "Actuarial search results were dominated by job postings (WTW, KPMG, Gravitas) citing RBC2, Prophet/RAFM and IFRS 17, signalling talent scarcity and no advisory content."
+    },
+    {
+      "date": "2026-11-07",
+      "title": "Setting Up a Captive Insurer in Singapore: Using the MAS 2026 Compliance Toolkit",
+      "slug": "setting-up-captive-insurer-singapore-mas-compliance-toolkit",
+      "primary_keyword": "captive insurer Singapore",
+      "secondary_keywords": ["captive insurance Singapore licence", "MAS captive compliance toolkit", "Singapore captive domicile Asia"],
+      "category": "APAC Markets",
+      "angle": "Step-by-step captive set-up guide for regional corporates, anchored on the June 2026 revised MAS captive toolkit.",
+      "search_evidence": "'Singapore insurance compliance 2026' returned the MAS captive toolkit last revised 22 June 2026, alongside the PCC consultation boosting captive interest."
+    },
+    {
+      "date": "2026-11-08",
+      "title": "Choosing an Insurance Regulatory Consultant vs a Law Firm in Singapore",
+      "slug": "insurance-regulatory-consultant-vs-law-firm-singapore",
+      "primary_keyword": "insurance regulatory consultant Singapore",
+      "secondary_keywords": ["MAS compliance consulting insurers", "insurance compliance advisory Singapore", "regulatory consultant vs lawyer"],
+      "category": "Regulatory",
+      "angle": "Helps insurers decide which regulatory workstreams suit a specialist adviser versus legal counsel, and how to scope a combined engagement.",
+      "search_evidence": "Consultant search results were law firms (WongPartnership, CMS), Big-4 and generic MAS compliance firms; no content comparing roles for insurers."
+    }
+  ]
+}
