@@ -700,6 +700,21 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "mas-collateralised-reinsurance-ils-consultation-2026",
+    title: "MAS Collateralised Reinsurance and Insurance-Linked Securities Consultation 2026: What Insurers Should Do Now",
+    category: "Regulatory",
+    excerpt: "A practical breakdown of the July 2026 MAS protected cell company consultation and what it means for the Singapore insurance-linked securities framework. Covers the contrast with the SPRV route, the ILS Grant Scheme, and preparation steps for cedants, sponsors and reinsurers.",
+    date: "2026-11-02",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: [
+      "Singapore insurance-linked securities framework",
+      "collateralised reinsurance Singapore",
+      "MAS consultation 2026 insurance",
+      "special purpose reinsurance vehicle Singapore",
+    ],
+  },
+  {
     slug: "singapore-ai-governance-insurers-2027-readiness",
     title: "Singapore AI Governance for Insurers: Preparing for the 2027 Compliance Phase-In",
     category: "APAC Markets",
