@@ -700,6 +700,21 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "mas-notice-314-source-of-wealth-source-of-funds-life-insurers",
+    title: "MAS Notice 314 Insurers: Source of Wealth and Source of Funds Expectations for Life Insurers",
+    category: "Regulatory",
+    excerpt: "Explains the difference between source of wealth and source of funds under MAS Notice 314 and what evidence MAS inspectors expect on higher risk life insurance files. Includes screening, monitoring, distributor and inspection readiness steps for direct life insurers.",
+    date: "2026-11-05",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: [
+      "MAS Notice 314 insurers",
+      "source of wealth source of funds insurance Singapore",
+      "AML CFT direct life insurers",
+      "customer due diligence insurance Singapore",
+    ],
+  },
+  {
     slug: "mas-collateralised-reinsurance-ils-consultation-2026",
     title: "MAS Collateralised Reinsurance and Insurance-Linked Securities Consultation 2026: What Insurers Should Do Now",
     category: "Regulatory",
