@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "actuarial-outsourcing-rbc2-ifrs17-singapore-insurers",
+    title: "Actuarial Consulting for Singapore Insurance: RBC2, IFRS 17 and When to Outsource",
+    category: "Actuarial",
+    excerpt: "RBC2 and IFRS 17 have created persistent demand for modelling talent that Singapore insurers struggle to hire. This article sets out which actuarial workstreams outsource well, which must stay in-house, and how to scope an engagement that meets MAS outsourcing expectations.",
+    date: "2026-11-06",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["actuarial consulting Singapore insurance", "outsourced actuarial services Singapore", "RBC2 modelling Prophet RAFM", "IFRS 17 actuarial support"],
+  },
+  {
     slug: "mas-notice-314-source-of-wealth-source-of-funds-life-insurers",
     title: "MAS Notice 314 Insurers: Source of Wealth and Source of Funds Expectations for Life Insurers",
     category: "Regulatory",
