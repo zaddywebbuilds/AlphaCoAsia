@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "setting-up-captive-insurer-singapore-mas-compliance-toolkit",
+    title: "Setting Up a Captive Insurer in Singapore: Using the MAS 2026 Compliance Toolkit",
+    category: "APAC Markets",
+    excerpt: "A step-by-step guide for regional groups setting up a captive insurer in Singapore, from licence route and application package to governance and capital. Shows how to use the MAS captive compliance toolkit, revised in June 2026, from day one.",
+    date: "2026-11-07",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["captive insurer Singapore", "captive insurance Singapore licence", "MAS captive compliance toolkit", "Singapore captive domicile Asia"],
+  },
+  {
     slug: "actuarial-outsourcing-rbc2-ifrs17-singapore-insurers",
     title: "Actuarial Consulting for Singapore Insurance: RBC2, IFRS 17 and When to Outsource",
     category: "Actuarial",
