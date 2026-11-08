@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "insurance-regulatory-consultant-vs-law-firm-singapore",
+    title: "Choosing an Insurance Regulatory Consultant vs a Law Firm in Singapore",
+    category: "Regulatory",
+    excerpt: "Which insurer regulatory workstreams suit a specialist consultant and which need legal counsel? This article sets out the boundary, the areas of overlap such as licensing and remediation, and how to scope a combined engagement.",
+    date: "2026-11-08",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["insurance regulatory consultant Singapore", "MAS compliance consulting insurers", "insurance compliance advisory Singapore", "regulatory consultant vs lawyer"],
+  },
+  {
     slug: "setting-up-captive-insurer-singapore-mas-compliance-toolkit",
     title: "Setting Up a Captive Insurer in Singapore: Using the MAS 2026 Compliance Toolkit",
     category: "APAC Markets",
