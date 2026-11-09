@@ -1,0 +1,77 @@
+{
+  "week": "2026-W46",
+  "planned_on": "2026-11-09",
+  "search_summary": "Demand is concentrated on fresh MAS developments: the November 2026 infrastructure/securitised asset capital measures (consultation closes 18 Dec), the July 2026 Protected Cell Company consultation, revised Notice 133 (RBC2), the FSG-03 digital advertising guidelines and updated compliance toolkits. Competitor results for 'insurance regulatory consultant Singapore' are law firms and generic compliance shops with little dedicated explanatory content on these topics, and ORSA group-risk findings and Notice 314 vs general AML guidelines have thin coverage.",
+  "articles": [
+    {
+      "date": "2026-11-09",
+      "title": "MAS Infrastructure and Securitised Asset Measures for Insurers: Capital Treatment and What to Do Before 18 December",
+      "slug": "mas-insurer-infrastructure-securitised-assets-capital-treatment-2026",
+      "primary_keyword": "MAS insurers infrastructure investment capital charges",
+      "secondary_keywords": ["MAS securitised assets insurers", "RBC2 infrastructure risk charge", "MAS S$30 million infrastructure insurers"],
+      "category": "Regulatory",
+      "angle": "Practical walkthrough of the November 2026 consultation on lower capital charges for qualifying infrastructure assets and how insurers should model and respond before it closes.",
+      "search_evidence": "Top news result for 'MAS insurance Singapore 2026': MAS media release, Insurance Asia News and Fintech News coverage; consultation closes 18 Dec 2026; no consultant explainer found."
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Singapore Protected Cell Company Framework: What the MAS Consultation Means for Captives and ILS Sponsors",
+      "slug": "singapore-protected-cell-company-framework-captives-ils",
+      "primary_keyword": "Singapore protected cell company insurance",
+      "secondary_keywords": ["MAS PCC framework consultation", "protected cell captive Singapore", "alternative risk transfer Singapore"],
+      "category": "Regulatory",
+      "angle": "Explains how a PCC structure could change captive and insurance-linked securities set-up and what sponsors should prepare for licensing.",
+      "search_evidence": "MAS July 2026 media release on PCC consultation appeared prominently in the extended 'MAS insurance Singapore 2026' search; no dedicated advisory pages seen."
+    },
+    {
+      "date": "2026-11-11",
+      "title": "ORSA Group Risk Assessment in Singapore: Closing the Gap MAS Keeps Finding",
+      "slug": "orsa-group-risk-assessment-singapore-insurers-mas-findings",
+      "primary_keyword": "ORSA group risk Singapore insurer",
+      "secondary_keywords": ["MAS Notice 126 ORSA", "ORSA requirements Singapore", "ORSA report review"],
+      "category": "Risk",
+      "angle": "Shows how to embed group and contagion risk in the ORSA report, tied to MAS supervisory findings.",
+      "search_evidence": "'ORSA requirements Singapore insurer' results surfaced MAS review noting group risk not always considered and Notice 126 lapses; results were dated or weak sources."
+    },
+    {
+      "date": "2026-11-12",
+      "title": "MAS Notice 133 Revisions 2026: Cyclical Equity Charge and Capital Instrument Changes for Insurers",
+      "slug": "mas-notice-133-revisions-2026-cyclical-equity-charge-insurers",
+      "primary_keyword": "MAS Notice 133 revisions 2026",
+      "secondary_keywords": ["RBC2 capital requirements Singapore", "cyclical equity charge insurers", "capital instrument recognition Singapore insurers"],
+      "category": "Actuarial",
+      "angle": "Actuarial impact analysis of the revised Notice 133 on solvency ratios and capital planning.",
+      "search_evidence": "'RBC2 capital requirements Singapore' results showed MAS ID 05/26 revised Notice 133 and 2026 capital instrument changes only via low-quality summaries."
+    },
+    {
+      "date": "2026-11-13",
+      "title": "MAS FSG-03 Digital Advertising Guidelines: Compliance Checklist for Insurers and Financial Advisers",
+      "slug": "mas-fsg-03-digital-advertising-guidelines-insurers",
+      "primary_keyword": "MAS digital advertising guidelines insurance",
+      "secondary_keywords": ["FSG-03 MAS", "insurance advertising rules Singapore", "MAS advertisement regulations 2026"],
+      "category": "Regulatory",
+      "angle": "Checklist for marketing, compliance and distribution teams after FSG-03 took effect on 25 March 2026 and the May 2026 MAS feedback response.",
+      "search_evidence": "'Singapore insurance compliance 2026' results: FSG-03 effective 25 Mar 2026 and 22 May 2026 MAS response; only marketing-blog coverage."
+    },
+    {
+      "date": "2026-11-14",
+      "title": "Captive Insurer Domicile Comparison: Singapore vs Labuan vs Hong Kong for Asian Corporates",
+      "slug": "captive-insurer-domicile-comparison-singapore-labuan-hong-kong",
+      "primary_keyword": "captive insurance Singapore vs Labuan",
+      "secondary_keywords": ["captive domicile Asia", "MAS captive insurer licence", "Hong Kong captive insurer"],
+      "category": "APAC Markets",
+      "angle": "Decision guide comparing regulatory burden, capital, timelines (MAS up to 3 months) and revised June 2026 captive toolkit.",
+      "search_evidence": "MAS captive licence page (3-month processing) and June 2026 captive toolkit revision in licence and compliance searches; PCC news raises interest in domicile choice."
+    },
+    {
+      "date": "2026-11-15",
+      "title": "MAS Notice 314 vs the General AML/CFT Guidelines: Which Rules Apply to Your Insurance Licence?",
+      "slug": "mas-notice-314-vs-aml-cft-guidelines-which-applies-to-your-insurer",
+      "primary_keyword": "MAS Notice 314 direct life insurers",
+      "secondary_keywords": ["AML CFT insurance Singapore MAS", "proliferation financing insurers", "AML/CFT guidelines foreign insurers Singapore"],
+      "category": "Risk",
+      "angle": "Clarifies the two-regime split (Notice 314 for direct life insurers; guidelines for other licensed and foreign insurers) with a gap-assessment approach.",
+      "search_evidence": "'AML CFT insurance Singapore MAS' results from Clyde & Co and Allen & Gledhill describe two regimes but no plain-language applicability guide."
+    }
+  ]
+}
