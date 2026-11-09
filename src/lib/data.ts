@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "mas-insurer-infrastructure-securitised-assets-capital-treatment-2026",
+    title: "MAS Infrastructure and Securitised Asset Measures for Insurers: Capital Treatment and What to Do Before 18 December",
+    category: "Regulatory",
+    excerpt: "MAS has consulted on lower RBC2 capital charges for qualifying rated infrastructure debt and senior securitisation tranches, with responses due on 18 December 2026. This article sets out the proposals, how to quantify the capital impact and how to prepare a response.",
+    date: "2026-11-09",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["MAS insurers infrastructure investment capital charges", "MAS securitised assets insurers", "RBC2 infrastructure risk charge", "MAS S$30 million infrastructure insurers"],
+  },
+  {
     slug: "insurance-regulatory-consultant-vs-law-firm-singapore",
     title: "Choosing an Insurance Regulatory Consultant vs a Law Firm in Singapore",
     category: "Regulatory",
