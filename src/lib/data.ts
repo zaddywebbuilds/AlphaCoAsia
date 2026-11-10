@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "singapore-protected-cell-company-framework-captives-ils",
+    title: "Singapore Protected Cell Company Framework: What the MAS Consultation Means for Captives and ILS Sponsors",
+    category: "Regulatory",
+    excerpt: "MAS consulted in July 2026 on a protected cell company framework with captive insurance and insurance-linked securities as initial use cases. This article explains how a cell structure differs from a standalone captive, the design questions still open and how sponsors should prepare while legislation is pending.",
+    date: "2026-11-10",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["Singapore protected cell company insurance", "MAS PCC framework consultation", "protected cell captive Singapore", "alternative risk transfer Singapore"],
+  },
+  {
     slug: "mas-insurer-infrastructure-securitised-assets-capital-treatment-2026",
     title: "MAS Infrastructure and Securitised Asset Measures for Insurers: Capital Treatment and What to Do Before 18 December",
     category: "Regulatory",
