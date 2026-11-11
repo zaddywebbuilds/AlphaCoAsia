@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "orsa-group-risk-assessment-singapore-insurers-mas-findings",
+    title: "ORSA Group Risk Assessment in Singapore: Closing the Gap MAS Keeps Finding",
+    category: "Risk",
+    excerpt: "Group risk is the part of the ORSA that group-owned Singapore insurers most often under-deliver. This article sets out what MAS Notice 126 expects, the five gaps reviewers find most often and a practical sequence for embedding group dependencies and contagion scenarios in the report.",
+    date: "2026-11-11",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["ORSA group risk Singapore insurer", "MAS Notice 126 ORSA", "ORSA requirements Singapore", "ORSA report review"],
+  },
+  {
     slug: "singapore-protected-cell-company-framework-captives-ils",
     title: "Singapore Protected Cell Company Framework: What the MAS Consultation Means for Captives and ILS Sponsors",
     category: "Regulatory",
