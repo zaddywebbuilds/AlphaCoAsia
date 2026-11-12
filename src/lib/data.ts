@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "mas-notice-133-revisions-2026-cyclical-equity-charge-insurers",
+    title: "MAS Notice 133 Revisions 2026: Cyclical Equity Charge and Capital Instrument Changes for Insurers",
+    category: "Actuarial",
+    excerpt: "The 2026 revisions to MAS Notice 133 introduce an equity counter-cyclical adjustment and amended capital instrument criteria. This article explains where the effect on the RBC2 solvency ratio arises and sets out a practical review sequence for actuarial, finance and risk teams.",
+    date: "2026-11-12",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["MAS Notice 133 revisions 2026", "RBC2 capital requirements Singapore", "cyclical equity charge insurers", "capital instrument recognition Singapore insurers"],
+  },
+  {
     slug: "orsa-group-risk-assessment-singapore-insurers-mas-findings",
     title: "ORSA Group Risk Assessment in Singapore: Closing the Gap MAS Keeps Finding",
     category: "Risk",
