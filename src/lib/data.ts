@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "mas-fsg-03-digital-advertising-guidelines-insurers",
+    title: "MAS FSG-03 Digital Advertising Guidelines: Compliance Checklist for Insurers and Financial Advisers",
+    category: "Regulatory",
+    excerpt: "The MAS Guidelines on Standards of Conduct for Digital Advertising Activities have applied since 25 March 2026. This article turns the five safeguards into a practical checklist covering platform selection, digital marketer oversight, monitoring and board reporting.",
+    date: "2026-11-13",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["MAS digital advertising guidelines insurance", "FSG-03 MAS", "insurance advertising rules Singapore", "MAS advertisement regulations 2026"],
+  },
+  {
     slug: "mas-notice-133-revisions-2026-cyclical-equity-charge-insurers",
     title: "MAS Notice 133 Revisions 2026: Cyclical Equity Charge and Capital Instrument Changes for Insurers",
     category: "Actuarial",
