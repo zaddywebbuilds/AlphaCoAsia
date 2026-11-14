@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "captive-insurer-domicile-comparison-singapore-labuan-hong-kong",
+    title: "Captive Insurance Singapore vs Labuan vs Hong Kong: Domicile Comparison for Asian Corporates",
+    category: "APAC Markets",
+    excerpt: "Choosing a captive domicile in Asia turns on regulator recognition, substance, reinsurance access and tax scrutiny rather than headline cost. This guide compares Singapore, Labuan and Hong Kong and sets out a four-step decision process for the board.",
+    date: "2026-11-14",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["captive insurance Singapore vs Labuan", "captive domicile Asia", "MAS captive insurer licence", "Hong Kong captive insurer"],
+  },
+  {
     slug: "mas-fsg-03-digital-advertising-guidelines-insurers",
     title: "MAS FSG-03 Digital Advertising Guidelines: Compliance Checklist for Insurers and Financial Advisers",
     category: "Regulatory",
