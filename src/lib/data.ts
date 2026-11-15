@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "mas-notice-314-vs-aml-cft-guidelines-which-applies-to-your-insurer",
+    title: "MAS Notice 314 vs the General AML/CFT Guidelines: Which Rules Apply to Your Insurance Licence?",
+    category: "Risk",
+    excerpt: "Notice 314 binds direct life insurers, while other licensed and foreign insurers work from MAS general AML/CFT guidance. This guide explains how to document which regime applies to each entity and how to run a five-step gap assessment.",
+    date: "2026-11-15",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["MAS Notice 314 direct life insurers", "AML CFT insurance Singapore MAS", "proliferation financing insurers", "AML/CFT guidelines foreign insurers Singapore"],
+  },
+  {
     slug: "captive-insurer-domicile-comparison-singapore-labuan-hong-kong",
     title: "Captive Insurance Singapore vs Labuan vs Hong Kong: Domicile Comparison for Asian Corporates",
     category: "APAC Markets",
