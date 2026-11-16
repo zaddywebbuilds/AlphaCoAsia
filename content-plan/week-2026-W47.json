@@ -1,0 +1,77 @@
+{
+  "week": "2026-W47",
+  "planned_on": "2026-11-16",
+  "search_summary": "Searches show demand centred on MAS licensing routes and processing times, Notice 126 ERM/ORSA expectations, RBC2 capital changes (equity counter-cyclical adjustment, AT1/Tier 2 criteria, DFHC group capital), and the Oct 2025 AML/CFT revisions. Competitor results are dominated by law-firm practice pages and job listings, leaving gaps in practical explainers on Notice 126, SPRV licensing, group capital, STR filing changes, actuarial engagement scoping and the single family office insurance angle.",
+  "articles": [
+    {
+      "date": "2026-11-16",
+      "title": "MAS Notice 126 Enterprise Risk Management for Insurers: A Practical Compliance Guide",
+      "slug": "mas-notice-126-enterprise-risk-management-insurers-guide",
+      "primary_keyword": "MAS Notice 126 enterprise risk management insurers",
+      "secondary_keywords": ["ORSA requirements Singapore insurer", "Notice FHC-N126", "insurer ERM framework Singapore"],
+      "category": "Risk",
+      "angle": "Clause-by-clause walk-through of Notice 126 mandatory vs non-mandatory requirements, including captive and marine mutual exclusions and the FHC-N126 group extension.",
+      "search_evidence": "ORSA requirements search returned only the MAS notice, a 2017 MAS findings story and the Apr 2024 FHC-N126 amendment, with no practical explainer from advisory competitors."
+    },
+    {
+      "date": "2026-11-17",
+      "title": "MAS Group Capital Framework for Designated Financial Holding Companies: What Insurers Need to Know",
+      "slug": "mas-group-capital-framework-dfhc-licensed-insurer-changes",
+      "primary_keyword": "group capital framework DFHC licensed insurer Singapore",
+      "secondary_keywords": ["Notice FHC-N133", "RBC2 group capital", "catastrophe risk requirement DFHC"],
+      "category": "Regulatory",
+      "angle": "Explains the July 2025 group capital consultation, catastrophe risk requirement and implications for insurance groups headquartered in Singapore.",
+      "search_evidence": "RBC2 capital requirements search surfaced multiple law-firm consultation summaries on DFHC group capital but no implementation-focused guidance."
+    },
+    {
+      "date": "2026-11-18",
+      "title": "AT1 and Tier 2 Capital Instruments for Singapore Insurers: RBC2 Criteria Explained",
+      "slug": "at1-tier-2-capital-instruments-singapore-insurers-rbc2-criteria",
+      "primary_keyword": "AT1 Tier 2 capital instruments Singapore insurers",
+      "secondary_keywords": ["RBC2 capital resources", "equity counter-cyclical adjustment insurers", "insurer capital raising Singapore"],
+      "category": "Actuarial",
+      "angle": "Shows how the non-retail restriction and extra eligibility criteria affect capital planning, with a worked example of capital resource composition.",
+      "search_evidence": "Search results show the MAS March 2025 consultation and response on AT1/Tier 2 criteria (intended effective 1 Jan 2026) with only legal-alert coverage."
+    },
+    {
+      "date": "2026-11-19",
+      "title": "Special Purpose Reinsurance Vehicle Licence Singapore: Requirements, Timeline and Process",
+      "slug": "special-purpose-reinsurance-vehicle-licence-singapore-requirements",
+      "primary_keyword": "special purpose reinsurance vehicle licence Singapore",
+      "secondary_keywords": ["SPRV Singapore ILS", "MAS reinsurer licence application", "insurance-linked securities Singapore"],
+      "category": "Regulatory",
+      "angle": "Step-by-step SPRV application guide, tied to MAS 2-4 week processing guidance and the new Protected Cell Company consultation.",
+      "search_evidence": "MAS licence application search listed the SPRV page with 2-4 week timing; the July 2026 PCC consultation news drives ILS interest, and no advisory firm has a dedicated explainer."
+    },
+    {
+      "date": "2026-11-20",
+      "title": "Suspicious Transaction Reporting for Singapore Life Insurers After the 2025 MAS AML/CFT Revisions",
+      "slug": "suspicious-transaction-reporting-life-insurers-singapore-2025-revisions",
+      "primary_keyword": "suspicious transaction report life insurers Singapore",
+      "secondary_keywords": ["STRO filing insurers", "MAS Notice 314 revisions", "AML/CFT insurer screening"],
+      "category": "Risk",
+      "angle": "Clarifies what changed in STR handling and screening expectations under the Oct 2025 Notice 314 guideline amendments and how to update procedures.",
+      "search_evidence": "AML CFT search results (Clyde & Co Oct 2025 update) highlight the STR filing change, while enforcement history such as Swiss Life penalty shows ongoing interest."
+    },
+    {
+      "date": "2026-11-21",
+      "title": "Actuarial Consulting for Singapore Insurers: Scope, Fees and When to Engage a Consultant",
+      "slug": "actuarial-consulting-singapore-insurers-scope-fees-when-to-engage",
+      "primary_keyword": "actuarial consulting Singapore insurance",
+      "secondary_keywords": ["actuarial consultant fees Singapore", "RBC2 IFRS 17 actuarial support", "insurance pricing and reserving consultant"],
+      "category": "Actuarial",
+      "angle": "Buyer's guide to engagement types (valuation, pricing, capital, IFRS 17), typical scoping and when in-house teams should bring in outside actuaries.",
+      "search_evidence": "Actuarial consulting search returned mostly job listings and firm profiles with no content on scope, fees or engagement decisions."
+    },
+    {
+      "date": "2026-11-22",
+      "title": "Insurance Policies as Designated Investments for Singapore Single Family Offices: MAS Review Explained",
+      "slug": "insurance-policies-designated-investments-single-family-offices-singapore",
+      "primary_keyword": "MAS designated investment list insurance policies single family office",
+      "secondary_keywords": ["single family office insurance Singapore", "fund tax incentive designated investments", "private placement life insurance Singapore"],
+      "category": "APAC Markets",
+      "angle": "Explores what inclusion of insurance policies and digital payment tokens could mean for insurers, brokers and family office structuring in Singapore.",
+      "search_evidence": "MAS insurance 2026 search returned news that MAS is reviewing adding insurance policies and digital payment tokens to the Designated Investment list, with no insurer-focused analysis yet."
+    }
+  ]
+}
