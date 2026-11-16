@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "mas-notice-126-enterprise-risk-management-insurers-guide",
+    title: "MAS Notice 126 Enterprise Risk Management for Insurers: A Practical Compliance Guide",
+    category: "Risk",
+    excerpt: "A practical walk-through of MAS Notice 126 and the FHC-N126 group extension, separating mandatory requirements from supporting guidance. Covers ORSA expectations, what MAS looks for in an ERM framework and a gap assessment checklist for compliance and risk teams.",
+    date: "2026-11-16",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["MAS Notice 126 enterprise risk management insurers", "ORSA requirements Singapore insurer", "Notice FHC-N126", "insurer ERM framework Singapore"],
+  },
+  {
     slug: "mas-notice-314-vs-aml-cft-guidelines-which-applies-to-your-insurer",
     title: "MAS Notice 314 vs the General AML/CFT Guidelines: Which Rules Apply to Your Insurance Licence?",
     category: "Risk",
