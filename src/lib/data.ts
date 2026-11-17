@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "mas-group-capital-framework-dfhc-licensed-insurer-changes",
+    title: "MAS Group Capital Framework for Designated Financial Holding Companies: What Insurers Need to Know",
+    category: "Regulatory",
+    excerpt: "MAS is changing the group capital framework for designated financial holding companies with a licensed insurer, with changes reported to take effect on 1 January 2027. This guide covers the non-insurance entity risk charge, the limit on non-controlling interest capital, the catastrophe risk requirement and a practical preparation timetable.",
+    date: "2026-11-17",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["group capital framework DFHC licensed insurer Singapore", "Notice FHC-N133", "RBC2 group capital", "catastrophe risk requirement DFHC"],
+  },
+  {
     slug: "mas-notice-126-enterprise-risk-management-insurers-guide",
     title: "MAS Notice 126 Enterprise Risk Management for Insurers: A Practical Compliance Guide",
     category: "Risk",
