@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "at1-tier-2-capital-instruments-singapore-insurers-rbc2-criteria",
+    title: "AT1 and Tier 2 Capital Instruments for Singapore Insurers: RBC2 Criteria Explained",
+    category: "Actuarial",
+    excerpt: "MAS has revised the eligibility criteria for AT1 and Tier 2 capital instruments issued by insurers, including a non-retail restriction. This guide explains what changed, shows a worked example of how a failed instrument affects capital resources and the PCR ratio, and sets out a practical capital planning sequence.",
+    date: "2026-11-18",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["AT1 Tier 2 capital instruments Singapore insurers", "RBC2 capital resources", "equity counter-cyclical adjustment insurers", "insurer capital raising Singapore"],
+  },
+  {
     slug: "mas-group-capital-framework-dfhc-licensed-insurer-changes",
     title: "MAS Group Capital Framework for Designated Financial Holding Companies: What Insurers Need to Know",
     category: "Regulatory",
