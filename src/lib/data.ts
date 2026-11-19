@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "special-purpose-reinsurance-vehicle-licence-singapore-requirements",
+    title: "Special Purpose Reinsurance Vehicle Licence Singapore: Requirements, Timeline and Process",
+    category: "Regulatory",
+    excerpt: "A step-by-step guide to applying for a special purpose reinsurance vehicle licence in Singapore, covering what MAS looks for, indicative processing time and the pitfalls that delay ILS and catastrophe bond applications. It also explains how the SPRV route sits alongside the proposed protected cell company framework.",
+    date: "2026-11-19",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["special purpose reinsurance vehicle licence Singapore", "SPRV Singapore ILS", "MAS reinsurer licence application", "insurance-linked securities Singapore"],
+  },
+  {
     slug: "at1-tier-2-capital-instruments-singapore-insurers-rbc2-criteria",
     title: "AT1 and Tier 2 Capital Instruments for Singapore Insurers: RBC2 Criteria Explained",
     category: "Actuarial",
