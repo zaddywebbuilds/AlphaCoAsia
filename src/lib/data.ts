@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "suspicious-transaction-reporting-life-insurers-singapore-2025-revisions",
+    title: "Suspicious Transaction Reporting for Singapore Life Insurers After the 2025 MAS AML/CFT Revisions",
+    category: "Risk",
+    excerpt: "A practical guide to rebuilding the suspicious transaction report process at a Singapore life insurer under MAS Notice 314 after the 2025 revisions. It covers alert sources, timing, narrative quality, screening, tipping-off controls and governance.",
+    date: "2026-11-20",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["suspicious transaction report life insurers Singapore", "STRO filing insurers", "MAS Notice 314 revisions", "AML/CFT insurer screening"],
+  },
+  {
     slug: "special-purpose-reinsurance-vehicle-licence-singapore-requirements",
     title: "Special Purpose Reinsurance Vehicle Licence Singapore: Requirements, Timeline and Process",
     category: "Regulatory",
