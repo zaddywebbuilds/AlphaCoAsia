@@ -1,0 +1,77 @@
+{
+  "week": "2026-W48",
+  "planned_on": "2026-11-23",
+  "search_summary": "Searches show demand clustered on MAS licensing routes, RBC2 mechanics and AML/CFT, with a fresh 20 Nov 2026 news item on the amendment act extending MAS's mandate to proliferation financing under the Insurance Act (new penalty regime). Competitor results are dominated by law-firm practice pages and job postings, leaving thin dedicated content on foreign reinsurer authorisation, overseas broker approval, PCR/MCR mechanics, ORSA stress testing and embedded value M&A work. MAS compliance toolkits were refreshed in June 2026 and the PCC consultation closed Aug 2026, supporting practical, how-to content.",
+  "articles": [
+    {
+      "date": "2026-11-23",
+      "title": "Proliferation Financing Amendment Act and the Insurance Act: New MAS Penalties for Singapore Insurers",
+      "slug": "proliferation-financing-amendment-act-insurance-act-penalties-singapore-insurers",
+      "primary_keyword": "proliferation financing Insurance Act penalties Singapore",
+      "secondary_keywords": ["MAS proliferation financing insurers", "AML CFT insurance Singapore MAS", "WMD financing insurer obligations"],
+      "category": "Regulatory",
+      "angle": "Break down the new statutory fines (up to S$250,000 plus daily penalties) and what insurer boards must change in controls before year-end.",
+      "search_evidence": "News dated 20 Nov 2026 in 'Singapore insurance compliance 2026' results; AML/CFT search shows proliferation financing now mandatory in frameworks."
+    },
+    {
+      "date": "2026-11-24",
+      "title": "Authorised Reinsurer Singapore: How Foreign Reinsurers Apply for MAS Authorisation",
+      "slug": "authorised-reinsurer-singapore-foreign-reinsurer-mas-authorisation",
+      "primary_keyword": "authorised reinsurer Singapore",
+      "secondary_keywords": ["foreign reinsurer Singapore without licence", "MAS reinsurer authorisation requirements", "reinsurer licence vs authorisation"],
+      "category": "Regulatory",
+      "angle": "Explain when a foreign reinsurer can solicit Singapore business without a local licence, and the application route, documents and timeline.",
+      "search_evidence": "MAS licence application search surfaced 'Authorised Reinsurer: Apply for Authorisation' as a distinct page; Norton Rose guide notes foreign reinsurers can be authorised without local presence; no dedicated advisory content found."
+    },
+    {
+      "date": "2026-11-25",
+      "title": "ORSA Stress Testing and Scenario Analysis for Singapore Insurers: What MAS Expects",
+      "slug": "orsa-stress-testing-scenario-analysis-singapore-insurers-mas-expectations",
+      "primary_keyword": "ORSA stress testing Singapore insurer",
+      "secondary_keywords": ["ORSA scenario analysis", "reverse stress testing insurers", "MAS ORSA guidance"],
+      "category": "Risk",
+      "angle": "Practical design of ORSA stress and reverse stress tests aligned to MAS guidance and the supervisory findings on non-financial risk.",
+      "search_evidence": "ORSA search returned MAS guidance, IAIS ORSA thematic note and MAS findings on limited non-financial risk consideration; results lack a practical stress-testing guide."
+    },
+    {
+      "date": "2026-11-26",
+      "title": "Embedded Value Appraisal in Singapore Insurer M&A: Actuarial Due Diligence Guide",
+      "slug": "embedded-value-appraisal-singapore-insurer-acquisition-actuarial-due-diligence",
+      "primary_keyword": "embedded value appraisal Singapore insurance acquisition",
+      "secondary_keywords": ["actuarial due diligence insurance M&A", "actuarial consulting Singapore insurance", "insurer valuation RBC2 IFRS 17"],
+      "category": "Actuarial",
+      "angle": "Show how embedded value, RBC2 capital and IFRS 17 CSM combine in valuing a target insurer and where deals go wrong.",
+      "search_evidence": "Actuarial consulting search shows Milliman and Forvis Mazars work centred on EV appraisals, M&A and RBC2 reviews, but only as profiles/job ads, not explanatory content."
+    },
+    {
+      "date": "2026-11-27",
+      "title": "Singapore vs Hong Kong Insurance Regulation: Capital, Licensing and Group Supervision Compared",
+      "slug": "singapore-vs-hong-kong-insurance-regulation-comparison-capital-licensing",
+      "primary_keyword": "Singapore vs Hong Kong insurance regulation",
+      "secondary_keywords": ["Hong Kong RBC vs Singapore RBC2", "insurance regulation Asia Pacific 2026", "choosing insurance hub Asia"],
+      "category": "APAC Markets",
+      "angle": "Side-by-side comparison for insurers choosing a regional hub, covering RBC regimes, group supervision and licensing routes.",
+      "search_evidence": "RBC2 search surfaced Skadden's June 2026 Hong Kong vs Singapore podcast; 'Singapore insurance compliance 2026' surfaced Norton Rose 'Insurance regulation in Asia Pacific 2026'."
+    },
+    {
+      "date": "2026-11-28",
+      "title": "Overseas Insurance Broker Approval in Singapore: MAS Requirements for Designated Countries",
+      "slug": "overseas-insurance-broker-approval-singapore-mas-designated-country",
+      "primary_keyword": "approved overseas insurance broker Singapore",
+      "secondary_keywords": ["MAS approved insurance broker application", "insurance broker licence Singapore costs", "MAS compliance toolkit insurance brokers"],
+      "category": "Regulatory",
+      "angle": "Walk through eligibility, the roughly four-month MAS processing window and post-approval submissions in the June 2026 broker toolkit.",
+      "search_evidence": "Licence search returned 'Approved Insurance Brokers: Apply for Approval' (4-month processing); MAS broker toolkit revised 5 June 2026; broker licensing cost guides rank in 'MAS insurance Singapore 2026'."
+    },
+    {
+      "date": "2026-11-29",
+      "title": "RBC2 PCR, MCR and CAR Explained: Singapore Insurer Capital Requirements in Plain Terms",
+      "slug": "rbc2-pcr-mcr-car-explained-singapore-insurer-capital-requirements",
+      "primary_keyword": "RBC2 capital requirements Singapore",
+      "secondary_keywords": ["prescribed capital requirement Singapore", "minimum capital requirement insurer MAS", "RBC2 99.5% VaR"],
+      "category": "Actuarial",
+      "angle": "Define PCR, MCR and capital adequacy ratio, the 99.5% one-year VaR calibration and the Tier 1/Tier 2/AT1 composition, with worked illustration.",
+      "search_evidence": "RBC2 search results give only fragmentary calibration facts from Milliman and MAS circulars; no plain-language explainer, and AT1/Tier 2 circular from Dec 2025 drives related queries."
+    }
+  ]
+}
