@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "proliferation-financing-amendment-act-insurance-act-penalties-singapore-insurers",
+    title: "Proliferation Financing Amendment Act and the Insurance Act: New MAS Penalties for Singapore Insurers",
+    category: "Regulatory",
+    excerpt: "The Financial Services and Markets (Amendment) Act 2026 extends MAS supervision to proliferation financing and amends the Insurance Act. This article explains the reported penalty regime, what to confirm in the gazetted text and the controls boards should fix before year-end.",
+    date: "2026-11-23",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["proliferation financing Insurance Act penalties Singapore", "MAS proliferation financing insurers", "AML CFT insurance Singapore MAS", "WMD financing insurer obligations"],
+  },
+  {
     slug: "suspicious-transaction-reporting-life-insurers-singapore-2025-revisions",
     title: "Suspicious Transaction Reporting for Singapore Life Insurers After the 2025 MAS AML/CFT Revisions",
     category: "Risk",
