@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "authorised-reinsurer-singapore-foreign-reinsurer-mas-authorisation",
+    title: "Authorised Reinsurer Singapore: How Foreign Reinsurers Apply for MAS Authorisation",
+    category: "Regulatory",
+    excerpt: "Foreign reinsurers can access Singapore cedants without a local licence if MAS authorises them. This article explains when authorisation beats a reinsurer licence, what MAS assesses, the documents to prepare and how to plan the timeline.",
+    date: "2026-11-24",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["authorised reinsurer Singapore", "foreign reinsurer Singapore without licence", "MAS reinsurer authorisation requirements", "reinsurer licence vs authorisation"],
+  },
+  {
     slug: "proliferation-financing-amendment-act-insurance-act-penalties-singapore-insurers",
     title: "Proliferation Financing Amendment Act and the Insurance Act: New MAS Penalties for Singapore Insurers",
     category: "Regulatory",
