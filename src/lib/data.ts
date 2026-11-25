@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "orsa-stress-testing-scenario-analysis-singapore-insurers-mas-expectations",
+    title: "ORSA Stress Testing and Scenario Analysis for Singapore Insurers: What MAS Expects",
+    category: "Risk",
+    excerpt: "How to design ORSA stress testing, scenario analysis and reverse stress tests that meet MAS expectations under Notice 126 and RBC2. Covers scenario design from the insurer's own risk profile, non-financial risk, management actions and board governance.",
+    date: "2026-11-25",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["ORSA stress testing Singapore insurer", "ORSA scenario analysis", "reverse stress testing insurers", "MAS ORSA guidance"],
+  },
+  {
     slug: "authorised-reinsurer-singapore-foreign-reinsurer-mas-authorisation",
     title: "Authorised Reinsurer Singapore: How Foreign Reinsurers Apply for MAS Authorisation",
     category: "Regulatory",
