@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "embedded-value-appraisal-singapore-insurer-acquisition-actuarial-due-diligence",
+    title: "Embedded Value Appraisal in Singapore Insurer M&A: Actuarial Due Diligence Guide",
+    category: "Actuarial",
+    excerpt: "How embedded value, RBC2 capital and IFRS 17 CSM combine when valuing a Singapore insurer in an acquisition. Covers the scope of actuarial due diligence, reconciliation between valuation bases and the mistakes that most often distort deal pricing.",
+    date: "2026-11-26",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["embedded value appraisal Singapore insurance acquisition", "actuarial due diligence insurance M&A", "actuarial consulting Singapore insurance", "insurer valuation RBC2 IFRS 17"],
+  },
+  {
     slug: "orsa-stress-testing-scenario-analysis-singapore-insurers-mas-expectations",
     title: "ORSA Stress Testing and Scenario Analysis for Singapore Insurers: What MAS Expects",
     category: "Risk",
