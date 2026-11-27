@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "singapore-vs-hong-kong-insurance-regulation-comparison-capital-licensing",
+    title: "Singapore vs Hong Kong Insurance Regulation: Capital, Licensing and Group Supervision Compared",
+    category: "APAC Markets",
+    excerpt: "A side-by-side comparison of Singapore RBC2 and the Hong Kong RBC regime, licensing routes and group supervision for insurers choosing a regional hub. Sets out the factors to test and the steps to complete before committing capital.",
+    date: "2026-11-27",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["Singapore vs Hong Kong insurance regulation", "Hong Kong RBC vs Singapore RBC2", "insurance regulation Asia Pacific 2026", "choosing insurance hub Asia"],
+  },
+  {
     slug: "embedded-value-appraisal-singapore-insurer-acquisition-actuarial-due-diligence",
     title: "Embedded Value Appraisal in Singapore Insurer M&A: Actuarial Due Diligence Guide",
     category: "Actuarial",
