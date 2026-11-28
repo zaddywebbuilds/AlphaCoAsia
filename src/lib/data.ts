@@ -700,6 +700,16 @@ export const APAC_MARKETS = [
 
 export const INSIGHTS_PLACEHOLDER = [
   {
+    slug: "overseas-insurance-broker-approval-singapore-mas-designated-country",
+    title: "Overseas Insurance Broker Approval in Singapore: MAS Requirements for Designated Countries",
+    category: "Regulatory",
+    excerpt: "How an overseas broker becomes an approved insurance broker in Singapore, covering eligibility, the application content MAS expects and the roughly four-month processing window. Also sets out post-approval obligations and where the MAS compliance toolkit helps.",
+    date: "2026-11-28",
+    readTime: "8 min read",
+    author: "Alpha Consultant",
+    covers: ["approved overseas insurance broker Singapore", "MAS approved insurance broker application", "insurance broker licence Singapore costs", "MAS compliance toolkit insurance brokers"],
+  },
+  {
     slug: "singapore-vs-hong-kong-insurance-regulation-comparison-capital-licensing",
     title: "Singapore vs Hong Kong Insurance Regulation: Capital, Licensing and Group Supervision Compared",
     category: "APAC Markets",
